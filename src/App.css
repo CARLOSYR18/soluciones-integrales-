@@ -1,0 +1,67 @@
+/* Efecto flip 3D */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Variables CSS */
+:root {
+  --blue: #0052cc;
+  --orange: #ff7a00;
+  --light-gray: #f5f5f5;
+  --dark-gray: #333;
+  --light-blue: #ffffff; /* BLANCO */
+
+  /* Variables para colores personalizables de la barra de navegación */
+  --navbar-bg: #090909ff; /* Color de fondo de la barra de navegación */
+  --navbar-text: #06bdebff; /* Color del texto de la barra de navegación */
+  --navbar-hover: #0052cc; /* Color al pasar el mouse sobre los enlaces */
+  --navbar-active: #06bdebff; /* Color del enlace activo */
+  
+  /* NUEVAS VARIABLES PARA COLORES DE SECCIONES */
+  --categories-bg: #aeb1b192; /* Color de fondo de la sección Categorías */
+  --why-us-bg: #ffffffff; /* Color de fondo de la sección ¿Por qué elegirnos? */
+  --products-bg: #ffffffff; /* Color de fondo de la sección Productos Destacados */
+  --footer-bg: #333; /* Color de fondo del footer */
+  --footer-text: #ffffff; /* Color del texto del footer */
+}
+
+/* Estilos generales */
+body {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  overflow-x: hidden;
+  background-color: var(--light-blue);
+}
+
+/* Estilos de Navbar */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  background-color: var(--navbar-bg) !important;
+}
+
+/* ... continuar con el resto de los estilos CSS ... */
+
+/* Estilos de la sección Categories */
+.categories {
+  /* Mantenemos el fondo del código original aquí */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), 
+              url('https://i.postimg.cc/bYHKxZMD/image.png') center/cover no-repeat;
+  background-attachment: scroll;
+  padding: 60px 0;
+  position: relative;
+}
+
+/* ... y así sucesivamente para todos los estilos ... */

@@ -1,0 +1,565 @@
+
+.tecnologia-seguridad-page {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/TYbQT3qb/fondo-oscuro.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  text-align: center;
+  color: white;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.breadcrumb {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.breadcrumb a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.protection-section,
+.technology-section,
+.service-section,
+.testimonials-section {
+  padding: 60px 0;
+}
+
+.protection-section {
+  background-color: #fff;
+}
+
+.solutions-section {
+  background-color: #262627;
+  padding: 40px 0;
+}
+
+.technology-section {
+  background-color: #fff;
+}
+
+.service-section {
+  background-color: #f8f9fa;
+}
+
+.testimonials-section {
+  background-color: #fff;
+}
+
+.protection-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.protection-text-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.protection-text {
+  padding-right: 20px;
+}
+
+.protection-title {
+  text-align: left;
+  font-size: 1.8rem;
+  color: #000000;
+  margin-bottom: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.protection-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.protection-features {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.protection-trust {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.protection-text strong {
+  color: #000000;
+  font-weight: 600;
+}
+
+.protection-image {
+  text-align: center;
+}
+
+.person-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.solutions-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.solutions-image {
+  text-align: center;
+}
+
+.solutions-img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.solutions-text-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.solutions-text {
+  padding-left: 20px;
+}
+
+.solutions-title {
+  text-align: left;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.solutions-description {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.separator {
+  height: 2px;
+  background-color: #ffffff;
+  margin: 20px 0;
+  width: 100%;
+  opacity: 0.3;
+}
+
+.solutions-contact-btn {
+  display: block;
+  padding: 12px 30px;
+  background: linear-gradient(to right, #1897e0, #0066ff);
+  color: white;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px auto 0 auto;
+}
+
+.solutions-contact-btn:hover {
+  background-color: #0091ea;
+  transform: translateY(-2px);
+}
+
+.technology-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.technology-text {
+  padding-right: 20px;
+}
+
+.technology-text h2 {
+  text-align: left;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.technology-description {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.technology-feature {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.technology-feature strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.technology-image {
+  text-align: center;
+}
+
+.camera-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.service-images {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.service-image-top,
+.service-image-bottom {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.service-text {
+  padding-left: 20px;
+}
+
+.service-text h2 {
+  text-align: left;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.service-description {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.contact-btn {
+  display: block;
+  padding: 12px 30px;
+  background: linear-gradient(to right, #000000, #0066ff);
+  color: white;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px auto 0 auto;
+
+/*
+display: block;
+  padding: 12px 30px;
+  background-color: #00b0ff;
+  color: white;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px auto 0 auto;
+
+*/
+}
+
+.contact-btn:hover {
+  background-color: #0056b3;
+}
+
+.testimonial-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial {
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.testimonial-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.testimonial-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.control-dot {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.control-dot.active {
+  color: #007bff;
+}
+
+.control-dot:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 968px) {
+  .protection-content,
+  .solutions-content,
+  .technology-content,
+  .service-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .protection-text-container,
+  .solutions-text-container {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .protection-text {
+    padding-right: 0;
+  }
+  
+  .solutions-text {
+    padding-left: 0;
+  }
+  
+  .technology-text {
+    padding-right: 0;
+  }
+  
+  .service-text {
+    padding-left: 0;
+  }
+  
+  .protection-title,
+  .solutions-title,
+  .technology-text h2,
+  .service-text h2 {
+    text-align: center;
+  }
+  
+  .solutions-content {
+    grid-template-areas: 
+      "image"
+      "text";
+  }
+  
+  .solutions-image {
+    grid-area: image;
+  }
+  
+  .solutions-text-container {
+    grid-area: text;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.7rem;
+  }
+  
+  .testimonial {
+    padding: 20px;
+  }
+  
+  .protection-content,
+  .solutions-content,
+  .technology-content,
+  .service-content {
+    gap: 30px;
+  }
+  
+  .person-image {
+    max-width: 400px;
+  }
+  
+  .solutions-img {
+    max-width: 350px;
+  }
+  
+  .camera-image,
+  .service-image-top,
+  .service-image-bottom {
+    max-width: 400px;
+  }
+  
+  .protection-title {
+    font-size: 1.6rem;
+  }
+  
+  .solutions-title {
+    font-size: 1.4rem;
+  }
+  
+  .protection-description,
+  .protection-features,
+  .protection-trust,
+  .solutions-description,
+  .technology-description,
+  .technology-feature,
+  .service-description {
+    font-size: 0.9rem;
+  }
+  
+  .solutions-contact-btn {
+    font-size: 0.95rem;
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.9rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .testimonial {
+    padding: 15px;
+  }
+  
+  .person-image {
+    max-width: 300px;
+  }
+  
+  .solutions-img {
+    max-width: 280px;
+  }
+  
+  .camera-image,
+  .service-image-top,
+  .service-image-bottom {
+    max-width: 300px;
+  }
+  
+  .protection-title {
+    font-size: 1.4rem;
+  }
+  
+  .solutions-title {
+    font-size: 1.3rem;
+  }
+  
+  .protection-description,
+  .protection-features,
+  .protection-trust,
+  .solutions-description,
+  .technology-description,
+  .technology-feature,
+  .service-description {
+    font-size: 0.85rem;
+  }
+  
+  .solutions-contact-btn {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+  
+  .protection-content,
+  .solutions-content,
+  .technology-content,
+  .service-content {
+    gap: 25px;
+  }
+  
+  .solutions-section {
+    padding: 30px 0;
+  }
+}

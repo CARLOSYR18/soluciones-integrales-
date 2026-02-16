@@ -1,0 +1,122 @@
+/*body styles*/
+.equipo-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+}
+
+.equipo-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-container h1 {
+  font-size: 20px;
+  color: #007bff;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.equipo-container h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* filas de equipo*/
+.fila-equipo {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/*centrada para 2 miembros*/
+.fila-inferior {
+  justify-content: center;
+  gap: 80px;
+}
+
+/*estilos cada miembro*/
+.miembro {
+  width: 250px;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.miembro:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.imagen {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #007bff;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.miembro:hover .imagen {
+  transform: scale(1.1);
+  border-color: #0056b3;
+}
+
+.imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nombre {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0;
+}
+
+.cargo {
+  font-size: 16px;
+  color: #777;
+  background-color: #f2f7ff;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cargo:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/*responsive design*/
+@media (max-width: 768px) {
+  .fila-equipo {
+    gap: 20px;
+  }
+  
+  .fila-inferior {
+    gap: 40px;
+  }
+  
+  .miembro {
+    width: 100%;
+    max-width: 300px;
+  }
+}
