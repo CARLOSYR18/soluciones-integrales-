@@ -297,14 +297,7 @@ function Navbar() {
           </Link>
         </li>
 
-        <li>
-          <Link
-            to="/prestamos"
-            className="hover:text-cyan-400 transition-colors duration-200"
-          >
-            PRESTAMOS
-          </Link>
-        </li>
+       
 
         <li>
           <Link
@@ -479,12 +472,7 @@ function Navbar() {
                 </Link>
               </li>
 
-              <li>
-                <Link to="/prestamos" onClick={() => setMobileMenuOpen(false)}>
-                  PRESTAMOS
-                </Link>
-              </li>
-
+              
               <li>
                 <Link to="/contacto" onClick={() => setMobileMenuOpen(false)}>
                   CONTACTO
