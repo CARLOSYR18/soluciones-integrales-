@@ -32,9 +32,6 @@ import SocialMedia from './pages/SocialMedia';
 import Merchandising from './pages/Merchandising';
 import GraficaPublicitaria from './pages/GraficaPublicitaria';
 import Productos from "./components/Productos";
-import Prestamos from './pages/Prestamos';
-
-
 // Layout para que Navbar y Footer estén siempre
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <div className="h-screen bg-white text-black flex flex-col">
@@ -63,14 +60,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           element={
             <Layout>
               <Contacto />
-            </Layout>
-          }
-        />
-        <Route
-          path="/prestamos"
-          element={
-            <Layout>
-              <Prestamos />
             </Layout>
           }
         />
