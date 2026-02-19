@@ -5,11 +5,11 @@ const miembros = [
     id: 1,
     nombre: "Wilder Julca",
     cargo: "Gerente de Servicios",
-    imagen: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-952.png"
+    imagen: "/src/assets/nuestro-equipo/wilder.png"
   },
   {
     id: 2,
-    nombre: "carlos yamacacho rocca",
+    nombre: "Carlos Yamacacho Rocca",
     cargo: "Programador Web",
     imagen: "https://i.postimg.cc/QCQRcRKh/image.png"
   },
@@ -21,28 +21,34 @@ const miembros = [
   },
   {
     id: 4,
-    nombre: "jared arroyo alarcon",
+    nombre: "Jared Arroyo Alarcon",
     cargo: "Programador Web",
     imagen: "https://i.postimg.cc/DfPjdQYJ/Imagen-de-Whats-App-2025-11-04-a-las-11-45-55-9088b08b.jpg"
   },
   {
     id: 5,
-    nombre: "gabriel sedano",
+    nombre: "Gabriel Sedano",
     cargo: "Programador Web",
     imagen: "https://i.postimg.cc/nhJqdNjC/Imagen-de-Whats-App-2025-11-04-a-las-11-46-04-63d8f5c0.jpg"
   },
   {
     id: 6,
-    nombre: "Edwin Bustamante",
-    cargo: "Administración de Redes",
-    imagen: "https://via.placeholder.com/200?text=Edwin"
+    nombre: "Nicolas Meza",
+    cargo: "Programador Web",
+    imagen: "/src/assets/nuestro-equipo/nicolas.png"
   },
   {
     id: 7,
-    nombre: "Juan Rodriguez",
+    nombre: "Hernan Salazar",
     cargo: "Programador Web",
-    imagen: "https://via.placeholder.com/200?text=Juan"
-  }
+    imagen: "/src/assets/nuestro-equipo/hernan.png"
+  },
+  {
+    id: 8,
+    nombre: "Carlos Yamacacho",
+    cargo: "Programador Web",
+    imagen: "/src/assets/nuestro-equipo/carlos.jpg"
+  },
 ];
 
 const NuestroEquipo: React.FC = () => {
@@ -301,83 +307,82 @@ const NuestroEquipo: React.FC = () => {
             ))}
           </div>
 
-          {/* Segunda fila - 3 miembros centrados */}
-          <div className="flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl w-full">
-              {miembros.slice(4, 7).map((miembro, index) => (
-                <div
-                  key={miembro.id}
-                  className={`animate-slide-in delay-${(index + 5) * 100} w-full card-3d`}
-                  onMouseEnter={() => setHoveredId(miembro.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  onMouseMove={handleMouseMove}
+          {/* Segunda fila - 4 miembros */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
+            {miembros.slice(4, 8).map((miembro, index) => (
+              <div
+                key={miembro.id}
+                className={`animate-slide-in delay-${(index + 1) * 100} w-full card-3d`}
+                onMouseEnter={() => setHoveredId(miembro.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onMouseMove={handleMouseMove}
+              >
+                <div 
+                  className={`relative bg-white p-8 rounded-2xl shadow-lg card-glow transition-all duration-500 ${hoveredId === miembro.id ? 'animate-float shadow-2xl' : ''}`}
+                  style={{
+                    '--x': `${mousePosition.x * 100}%`,
+                    '--y': `${mousePosition.y * 100}%`,
+                  } as React.CSSProperties & { '--x': string; '--y': string }}
                 >
                   <div 
-                    className={`relative bg-white p-8 rounded-2xl shadow-lg card-glow transition-all duration-500 ${hoveredId === miembro.id ? 'animate-float shadow-2xl' : ''}`}
+                    className={`card-3d-inner ${hoveredId === miembro.id ? 'active' : ''}`}
                     style={{
-                      '--x': `${mousePosition.x * 100}%`,
-                      '--y': `${mousePosition.y * 100}%`,
-                    } as React.CSSProperties & { '--x': string; '--y': string }}
+                      transform: hoveredId === miembro.id 
+                        ? `rotateX(${(mousePosition.y - 0.5) * 15}deg) rotateY(${(mousePosition.x - 0.5) * 15}deg)`
+                        : 'rotateX(0deg) rotateY(0deg)'
+                    }}
                   >
-                    <div 
-                      className={`card-3d-inner ${hoveredId === miembro.id ? 'active' : ''}`}
-                      style={{
-                        transform: hoveredId === miembro.id 
-                          ? `rotateX(${(mousePosition.y - 0.5) * 15}deg) rotateY(${(mousePosition.x - 0.5) * 15}deg)`
-                          : 'rotateX(0deg) rotateY(0deg)'
-                      }}
-                    >
-                      <div className="flex flex-col items-center relative z-10">
-                        {/* Imagen */}
-                        <div className="mb-8 relative">
-                          <div 
-                            className={`w-44 h-44 rounded-full border-4 border-blue-500 overflow-hidden bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center shimmer-effect transition-all duration-500 ${hoveredId === miembro.id ? 'animate-glow' : ''}`}
-                            style={{
-                              filter: hoveredId === miembro.id ? "brightness(1.2) drop-shadow(0 20px 50px rgba(59, 130, 246, 0.6))" : "brightness(1) drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15))",
-                              transform: hoveredId === miembro.id ? "scale(1.12) perspective(1000px) rotateZ(-5deg)" : "scale(1) perspective(1000px) rotateZ(0deg)"
-                            }}
-                          >
-                            <img
-                              src={miembro.imagen}
-                              alt={miembro.nombre}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          {hoveredId === miembro.id && (
-                            <div className="absolute inset-0 rounded-full animate-pulse-ring"></div>
-                          )}
-                        </div>
-
-                        {/* Info */}
-                        <h3 
-                          className="text-2xl font-bold text-gray-900 mb-4 text-center transition-all duration-500"
-                          style={{
-                            color: hoveredId === miembro.id ? "#3b82f6" : "#1f2937",
-                            textShadow: hoveredId === miembro.id ? "0 0 15px rgba(59, 130, 246, 0.3)" : "none",
-                            transform: hoveredId === miembro.id ? "scale(1.08)" : "scale(1)"
-                          }}
-                        >
-                          {miembro.nombre}
-                        </h3>
+                    <div className="flex flex-col items-center relative z-10">
+                      {/* Imagen */}
+                      <div className="mb-8 relative">
                         <div 
-                          className="px-6 py-3 rounded-xl text-center w-full border-2 transition-all duration-500 font-semibold"
+                          className={`w-44 h-44 rounded-full border-4 border-blue-500 overflow-hidden bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center shimmer-effect transition-all duration-500 ${hoveredId === miembro.id ? 'animate-glow' : ''}`}
                           style={{
-                            backgroundColor: hoveredId === miembro.id ? "#e0e9f5" : "#f8fbff",
-                            borderColor: hoveredId === miembro.id ? "#3b82f6" : "#bfdbfe",
-                            color: hoveredId === miembro.id ? "#1e40af" : "#4b5563",
-                            boxShadow: hoveredId === miembro.id ? "0 10px 25px rgba(59, 130, 246, 0.2)" : "none",
-                            transform: hoveredId === miembro.id ? "scale(1.05)" : "scale(1)"
+                            filter: hoveredId === miembro.id ? "brightness(1.2) drop-shadow(0 20px 50px rgba(59, 130, 246, 0.6))" : "brightness(1) drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15))",
+                            transform: hoveredId === miembro.id ? "scale(1.12) perspective(1000px) rotateZ(-5deg)" : "scale(1) perspective(1000px) rotateZ(0deg)"
                           }}
                         >
-                          <p className="text-sm">{miembro.cargo}</p>
+                          <img
+                            src={miembro.imagen}
+                            alt={miembro.nombre}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
+                        {hoveredId === miembro.id && (
+                          <div className="absolute inset-0 rounded-full animate-pulse-ring"></div>
+                        )}
+                      </div>
+
+                      {/* Info */}
+                      <h3 
+                        className="text-2xl font-bold text-gray-900 mb-4 text-center transition-all duration-500"
+                        style={{
+                          color: hoveredId === miembro.id ? "#3b82f6" : "#1f2937",
+                          textShadow: hoveredId === miembro.id ? "0 0 15px rgba(59, 130, 246, 0.3)" : "none",
+                          transform: hoveredId === miembro.id ? "scale(1.08)" : "scale(1)"
+                        }}
+                      >
+                        {miembro.nombre}
+                      </h3>
+                      <div 
+                        className="px-6 py-3 rounded-xl text-center w-full border-2 transition-all duration-500 font-semibold"
+                        style={{
+                          backgroundColor: hoveredId === miembro.id ? "#e0e9f5" : "#f8fbff",
+                          borderColor: hoveredId === miembro.id ? "#3b82f6" : "#bfdbfe",
+                          color: hoveredId === miembro.id ? "#1e40af" : "#4b5563",
+                          boxShadow: hoveredId === miembro.id ? "0 10px 25px rgba(59, 130, 246, 0.2)" : "none",
+                          transform: hoveredId === miembro.id ? "scale(1.05)" : "scale(1)"
+                        }}
+                      >
+                        <p className="text-sm">{miembro.cargo}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+          
         </div>
       </div>
     </section>
