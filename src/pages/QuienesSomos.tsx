@@ -3,7 +3,7 @@ import quienes from '../assets/quienes.jpg';
 import { FaChartLine, FaEye } from "react-icons/fa";
 import { FaShieldAlt, FaClock, FaKey, FaLightbulb, FaUsers, FaHeart } from "react-icons/fa";
 import ScrollButton from "../components/ScrollButton";
-
+import { motion } from "framer-motion";
 import {
   FaLock,
   FaCheckCircle,
@@ -29,17 +29,17 @@ interface Props {
 
 const badges = [
   { label: "Confianza", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
-  { label: "Velocidad", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
+  { label: "Velocidad", icon: "" },
   { label: "Calidad", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
   { label: "Seguridad", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
   { label: "Soporte", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
   { label: "Personalizado", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
 ];
 
-const hero3 = "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/Frame-911-1.png"
-const hero2 = "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-926.png"
-const heroImage = "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/Frame-907-1.png";
-const heroImageAlt = "Soluciones Integrales JB para impulsar tu negocio";
+const hero3 = "https://i.postimg.cc/3xpmd24k/image.png"
+const hero2 = "https://i.postimg.cc/NjwLCSFn/image.png"
+const heroImage = "https://i.postimg.cc/zfGKDvWg/image.png";
+const heroImageAlt = "";
 const uiImage = "https://solucionesintegralesjb.com/wp-content/uploads/elementor/thumbs/Frame-932-qqow7tfd3r2zohqj4jx9yf23tmjv30p5niiolmvipc.png";
 const mockupImage = "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/MacBook-Pro-and-iPhone-15-Pro-Mockup-768x787.png";
 const videoUrl = "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/ES-1.mp4";
@@ -57,7 +57,7 @@ const valores = [
     icon: <FaShieldAlt className="fa-3x" />,
     titulo: "SEGURIDAD",
     descripcion:
-      "Nuestro objetivo es la protección de la información porque es un activo importante dentro de la organización, y se requiere de una protección adecuada; implementando un conjunto de políticas y controles de seguridad para la preservación de su confidencialidad, integridad y disponibilidad.",
+      "Nuestro objetivo es proteger la información como un activo clave de la organización, mediante la implementación de políticas y controles que garanticen su confidencialidad, integridad y disponibilidad.",
   },
   {
     icon: <FaClock className="fa-3x" />,
@@ -96,7 +96,7 @@ const caracteristicas = [
     icon: <FaLock className="fa-3x"/>,
     titulo: "CONFIANZA",
     descripcion:
-      "Nuestro objetivo es la protección de la información porque es un activo importante dentro de la organización, y se requiere de una protección adecuada; implementando un conjunto de políticas y controles de seguridad para la preservación de su confidencialidad, integridad y disponibilidad.",
+      "El objetivo es proteger la información como un activo esencial de la organización, mediante la aplicación de políticas y controles de seguridad que garanticen su confidencialidad, integridad y disponibilidad de forma adecuada y continua.  ",
   },
   {
     icon: <FaCheckCircle className="fa-3x" />,
@@ -135,7 +135,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   <section className={"w-full " + (className || "")}>
   <div className="relative w-full h-[600px] sm:h-[500px] md:h-[600px] overflow-hidden flex items-center justify-center bg-gray-900">
   <img
-    src="https://solucionesintegralesjb.com/wp-content/uploads/2024/06/Frame-916-1.png"
+    src="https://i.postimg.cc/j58sskRM/Frame-916-1.png"
     alt="Quiénes somos"
     className="absolute w-full h-full object-cover object-center"
   />
@@ -196,73 +196,469 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
 </div>
 
 
-<div className="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-2 gap-8 items-center">
-  <div className="grid grid-cols-2 gap-4">
-    <img
-      src={hero2}
-      alt="Imagen 1"
-      className="w-full h-72 object-cover rounded-lg shadow-md"
-    />
-    <img
-      src={hero3}
-      alt="Imagen 2"
-      className="w-full h-72 object-cover rounded-lg shadow-md"
-    />
+{/* ====================== SECCIÓN QUIÉNES SOMOS MEJORADA + ANIMACIONES ====================== */}
+<section className="relative w-full bg-gradient-to-b from-white via-slate-50 to-white">
+  <div className="mx-auto max-w-6xl px-4 py-16">
+    <div className="grid lg:grid-cols-2 gap-16 items-start">
+      
+      {/* ================= IMÁGENES ================= */}
+      <div className="flex flex-col gap-10">
+        
+        {/* Imagen 1 (entrada desde izquierda + fade) */}
+        <motion.div
+          initial={{ opacity: 0, x: -30, y: 10 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
+        >
+          <img
+            src={hero2}
+            alt="Automatización"
+            className="w-full h-auto object-contain rounded-xl"
+          />
+          <div className="mt-4 text-center">
+            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
+              Automatización • ITSM • ITIL
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Imagen 2 (entrada desde izquierda + fade, un poquito más tarde) */}
+        <motion.div
+          initial={{ opacity: 0, x: -30, y: 10 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut", delay: 0.08 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
+        >
+          <img
+            src={hero3}
+            alt="Innovación"
+            className="w-full h-auto object-contain rounded-xl"
+          />
+          <div className="mt-4 text-center">
+            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
+              Innovación en procesos
+            </span>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ================= TEXTO ================= */}
+      <div className="flex flex-col h-full">
+        
+        {/* Badge + título (fade + slide suave) */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-cyan-500" />
+            INNOVACIÓN Y TECNOLOGÍA PARA TU CRECIMIENTO
+          </div>
+
+          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
+            Quiénes Somos
+          </h2>
+        </motion.div>
+
+        {/* Card principal (entrada desde derecha + fade) */}
+        <motion.div
+          initial={{ opacity: 0, x: 30, y: 10 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8"
+        >
+          <p className="text-slate-700 leading-relaxed">
+            Somos una empresa de tecnología especializada en automatizar procesos de
+            negocio para mejorar la eficiencia y resultados en diversas áreas de
+            producción. Nos enfocamos en la Gestión de Servicios de TI, ofreciendo
+            soluciones basadas en ITSM e ITIL.
+          </p>
+
+          <p className="mt-5 text-slate-700 leading-relaxed">
+            Contamos con un equipo de profesionales que optimizan tanto el tiempo
+            como los recursos económicos de nuestros clientes, garantizando un
+            servicio de alta calidad.
+          </p>
+
+          {/* Mini cards (stagger con delay) */}
+          <div className="mt-10 grid grid-cols-3 gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">ITSM</p>
+              <p className="text-xs text-slate-600 mt-1">Enfoque operativo</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">ITIL</p>
+              <p className="text-xs text-slate-600 mt-1">Buenas prácticas</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.18 }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">+Eficiencia</p>
+              <p className="text-xs text-slate-600 mt-1">Optimización real</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Recuadro celeste (entrada + “pop” suave) */}
+        <motion.div
+          initial={{ opacity: 0, y: 22, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
+        >
+          <h3 className="text-lg font-semibold">
+            Impulsamos la transformación digital de tu empresa
+          </h3>
+          <p className="text-sm mt-2 opacity-90">
+            Implementamos soluciones tecnológicas alineadas a tus objetivos estratégicos,
+            optimizando procesos y garantizando resultados medibles.
+          </p>
+        </motion.div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div className="space-y-4">
-    <p className="text-sm uppercase tracking-wider text-gray-500">
-      Innovación y tecnología para tu crecimiento
-    </p>
-    <h2 className="text-3xl font-bold text-cyan-500">Quiénes Somos</h2>
-    <p className="text-gray-700 leading-relaxed">
-      Somos una empresa de tecnología especializada en automatizar procesos de 
-      negocio para mejorar la eficiencia y resultados en diversas áreas de 
-      producción. Nos enfocamos en la Gestión de Servicios de TI, ofreciendo 
-      soluciones basadas en ITSM e ITIL. 
-    </p>
-    <p className="text-gray-700 leading-relaxed">
-      Contamos con un equipo de profesionales que optimizan tanto el tiempo 
-      como los recursos económicos de nuestros clientes, garantizando un 
-      servicio de alta calidad.
-    </p>
-  </div>
-</div>
+      {/* ====================== MISIÓN / VISIÓN (FLIP PRO - MISMO COLOR EN FRENTE) ====================== */}
+<section className="mx-auto max-w-6xl px-4 py-16">
+  <div className="grid md:grid-cols-2 gap-8">
 
-      <div className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-8">
-        <div className="custom-card">
-          <div className="custom-card__icon">
-            <FaChartLine />
-            <p className="custom-card__text">MISIÓN</p>
-          </div>
-          <div className="custom-card__content">
-            <p className="custom-card__title">Misión</p>
-            <p className="custom-card__description">
-              Trabajamos en el desarrollo e integración de múltiples soluciones
-              basadas en la tecnología, con un equipo de profesionales altamente
-              calificados para cumplir los requerimientos de nuestros clientes,
-              aplicando los estándares de calidad, seguridad, y responsabilidad
-              social, dentro del costo y plazo previsto.
-            </p>
-          </div>
-        </div>
+    {/* ====================== MISIÓN ====================== */}
+    <motion.div
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.25 }}
+      className="flip-wrap"
+    >
+      <div className="flip-card">
+        <div className="flip-inner">
 
-        <div className="custom-card light">
-          <div className="custom-card__icon">
-            <FaEye />
-            <p className="custom-card__text">VISIÓN</p>
+          {/* ---- FRENTE (SIMPLE) ---- */}
+          <div className="flip-front">
+            <div className="front-ring" />
+            <div className="front-content">
+              <div className="front-icon">
+                <FaChartLine />
+              </div>
+              <p className="front-title">MISIÓN</p>
+              <p className="front-subtitle">Pasa el mouse para ver más</p>
+            </div>
           </div>
-          <div className="custom-card__content">
-            <p className="custom-card__title">Visión</p>
-            <p className="custom-card__description">
-              Ser una empresa líder, en el desarrollo de soluciones de forma
-              integral en la Tecnología de Información, formando alianzas
-              estratégicas con la innovación tecnológica, para lograr los
-              objetivos de nuestros clientes.
-            </p>
+
+          {/* ---- REVERSO (PRO) ---- */}
+          <div className="flip-back">
+            <div className="back-glow back-glow-right" />
+            <div className="back-topbar" />
+
+            <div className="back-content">
+              <div className="back-head">
+                <div className="back-icon">
+                  <FaChartLine />
+                </div>
+                <div>
+                  <p className="back-kicker">MISIÓN</p>
+                  <p className="back-mini">Enfoque, calidad y resultados</p>
+                </div>
+              </div>
+
+              <div className="back-divider" />
+
+              <p className="back-text">
+                Trabajamos en el desarrollo e integración de múltiples soluciones
+                basadas en la tecnología, con un equipo de profesionales altamente
+                calificados para cumplir los requerimientos de nuestros clientes,
+                aplicando estándares de calidad, seguridad y responsabilidad social,
+                dentro del costo y plazo previsto.
+              </p>
+
+              <div className="back-tags">
+                <span className="tag">Calidad</span>
+                <span className="tag">Seguridad</span>
+                <span className="tag">Responsabilidad</span>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
+    </motion.div>
+
+    {/* ====================== VISIÓN ====================== */}
+    <motion.div
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
+      viewport={{ once: true, amount: 0.25 }}
+      className="flip-wrap"
+    >
+      <div className="flip-card">
+        <div className="flip-inner">
+
+          {/* ---- FRENTE (SIMPLE - IGUAL QUE MISIÓN) ---- */}
+          <div className="flip-front">
+            <div className="front-ring" />
+            <div className="front-content">
+              <div className="front-icon">
+                <FaEye />
+              </div>
+              <p className="front-title">VISIÓN</p>
+              <p className="front-subtitle">Pasa el mouse para ver más</p>
+            </div>
+          </div>
+
+          {/* ---- REVERSO (PRO) ---- */}
+          <div className="flip-back">
+            <div className="back-glow back-glow-left" />
+            <div className="back-topbar" />
+
+            <div className="back-content">
+              <div className="back-head">
+                <div className="back-icon">
+                  <FaEye />
+                </div>
+                <div>
+                  <p className="back-kicker">VISIÓN</p>
+                  <p className="back-mini">Innovación continua y liderazgo</p>
+                </div>
+              </div>
+
+              <div className="back-divider" />
+
+              <p className="back-text">
+                Ser una empresa líder en el desarrollo de soluciones integrales de
+                Tecnología de Información, formando alianzas estratégicas con la
+                innovación tecnológica para lograr los objetivos de nuestros clientes.
+              </p>
+
+              <div className="back-tags">
+                <span className="tag">Alianzas</span>
+                <span className="tag">Innovación</span>
+                <span className="tag">Liderazgo</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </motion.div>
+
+  </div>
+
+  {/* ====================== CSS ====================== */}
+  <style>{`
+    .flip-wrap { width: 100%; }
+
+    .flip-card {
+      width: 100%;
+      height: 340px;
+      perspective: 1200px;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 4px solid #1e88e5;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    }
+
+    /* ================= FRONT (SIMPLE - NEGRO) ================= */
+    .flip-front {
+      background: #000;
+      display: grid;
+      place-items: center;
+    }
+
+    .front-ring {
+      position: absolute;
+      inset: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .front-content {
+      position: relative;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .front-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px auto;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      font-size: 34px;
+      transition: transform .35s ease;
+    }
+
+    .flip-card:hover .front-icon { transform: translateY(-2px) scale(1.03); }
+
+    .front-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .front-subtitle {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ================= BACK (PRO) ================= */
+    .flip-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      position: absolute;
+    }
+
+    .back-topbar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: #06b6d4;
+    }
+
+    .back-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(6,182,212,0.18);
+      filter: blur(40px);
+    }
+    .back-glow-right { top: -120px; right: -120px; }
+    .back-glow-left { bottom: -120px; left: -120px; }
+
+    .back-content {
+      position: relative;
+      height: 100%;
+      padding: 28px 28px 22px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .back-head {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .back-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(6,182,212,0.12);
+      color: #06b6d4;
+      font-size: 26px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .back-kicker {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: #06b6d4;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .back-mini {
+      margin: 2px 0 0 0;
+      font-size: 12px;
+      color: rgba(15,23,42,0.6);
+      font-weight: 600;
+    }
+
+    .back-divider {
+      margin: 16px 0 14px 0;
+      height: 1px;
+      width: 100%;
+      background: rgba(15,23,42,0.12);
+    }
+
+    .back-text {
+      margin: 0;
+      color: #334155;
+      line-height: 1.65;
+      font-size: 14.5px;
+      flex: 1;
+    }
+
+    .back-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.12);
+      background: rgba(248,250,252,1);
+      color: rgba(15,23,42,0.70);
+    }
+
+    @media (max-width: 768px) {
+      .flip-card { height: 320px; }
+      .back-content { padding: 24px; }
+    }
+  `}</style>
+</section>
 
       <section className="w-full bg-[#007BFF] py-16 flex justify-center items-center">
         <div className="max-w-3xl w-full text-center px-4">
@@ -312,68 +708,680 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Nuestros Valores</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {valores.map((valor, index) => (
-            <div key={index} className="group w-full h-64 [perspective:1000px]">
-              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
-                <div className="absolute inset-0 bg-[#1c1c1c] text-white flex flex-col items-center justify-center p-6 rounded-lg [backface-visibility:hidden]">
-                  <div className="text-5xl">{valor.icon}</div>
-                  <h3 className="mt-4 font-bold text-lg">{valor.titulo}</h3>
+     {/* ====================== NUESTROS VALORES (FLIP PRO) ====================== */}
+<section className="mx-auto max-w-6xl px-4 py-16">
+  <h2 className="text-3xl font-bold text-center mb-12 text-cyan-500">Nuestros Valores</h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {valores.map((valor, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="flip-wrap"
+      >
+        <div className="flip-card flip-card-sm">
+          <div className="flip-inner">
+
+            {/* ================= FRONT (NEGRO) ================= */}
+            <div className="flip-front">
+              <div className="front-ring" />
+              <div className="front-content">
+                <div className="front-icon">
+                  {valor.icon}
                 </div>
-                
-                <div className="absolute inset-0 bg-black text-white flex flex-col items-center justify-center p-6 rounded-lg [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <p className="text-sm text-center">{valor.descripcion}</p>
+                <p className="front-title">{valor.titulo}</p>
+                <p className="front-subtitle">Pasa el mouse para ver más</p>
+              </div>
+            </div>
+
+            {/* ================= BACK (PRO) ================= */}
+            <div className="flip-back">
+              <div className="back-glow back-glow-right" />
+              <div className="back-topbar" />
+
+              <div className="back-content">
+                <div className="back-head">
+                  <div className="back-icon">
+                    {valor.icon}
+                  </div>
+                  <div>
+                    <p className="back-kicker">{valor.titulo}</p>
+                    <p className="back-mini">Valor que nos define</p>
+                  </div>
+                </div>
+
+                <div className="back-divider" />
+
+                <p className="back-text">
+                  {valor.descripcion}
+                </p>
+
+                {/* tags simples (opcional) */}
+                <div className="back-tags">
+                  <span className="tag">Compromiso</span>
+                  <span className="tag">Excelencia</span>
+                  <span className="tag">Resultados</span>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <div className="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-2 gap-8 items-center">
-        <div>
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* ====================== CSS FLIP PRO (incluido para que funcione) ====================== */}
+  <style>{`
+    .flip-wrap { width: 100%; }
+
+    .flip-card {
+      width: 100%;
+      height: 340px;
+      perspective: 1200px;
+    }
+
+    /* tamaño un poco menor para valores */
+    .flip-card-sm { height: 300px; }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 4px solid #1e88e5;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    }
+
+    /* ================= FRONT ================= */
+    .flip-front {
+      background: #000;
+      display: grid;
+      place-items: center;
+    }
+
+    .front-ring {
+      position: absolute;
+      inset: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .front-content {
+      position: relative;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .front-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px auto;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      font-size: 34px;
+      transition: transform .35s ease;
+    }
+
+    /* Para que los react-icons dentro no hereden tamaños raros */
+    .front-icon svg { width: 34px; height: 34px; }
+
+    .flip-card:hover .front-icon {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .front-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      font-size: 18px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .front-subtitle {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ================= BACK ================= */
+    .flip-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      position: absolute;
+    }
+
+    .back-topbar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: #06b6d4;
+    }
+
+    .back-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(6,182,212,0.18);
+      filter: blur(40px);
+    }
+
+    .back-glow-right { top: -120px; right: -120px; }
+
+    .back-content {
+      position: relative;
+      height: 100%;
+      padding: 22px 22px 18px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .back-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .back-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(6,182,212,0.12);
+      color: #06b6d4;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+    .back-icon svg { width: 24px; height: 24px; }
+
+    .back-kicker {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: #06b6d4;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .back-mini {
+      margin: 2px 0 0 0;
+      font-size: 12px;
+      color: rgba(15,23,42,0.6);
+      font-weight: 600;
+    }
+
+    .back-divider {
+      margin: 14px 0 12px 0;
+      height: 1px;
+      width: 100%;
+      background: rgba(15,23,42,0.12);
+    }
+
+    .back-text {
+      margin: 0;
+      color: #334155;
+      line-height: 1.6;
+      font-size: 13.5px;
+      flex: 1;
+    }
+
+    .back-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.12);
+      background: rgba(248,250,252,1);
+      color: rgba(15,23,42,0.70);
+    }
+
+    @media (max-width: 768px) {
+      .flip-card-sm { height: 300px; }
+      .back-content { padding: 20px; }
+    }
+  `}</style>
+</section>
+{/* ====================== QUIENES SOMOS - ALIADOS DIGITALES (FONDO OSCURO + ANIMACIONES) ====================== */}
+<section className="relative w-full overflow-hidden">
+  {/* Fondo oscuro */}
+  <div className="absolute inset-0 bg-[#2A2A2A]" />
+
+  {/* Glows suaves (opcionales) */}
+  <motion.div
+    aria-hidden
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1.0, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.2 }}
+    className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl"
+  />
+  <motion.div
+    aria-hidden
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1.0, ease: "easeOut", delay: 0.1 }}
+    viewport={{ once: true, amount: 0.2 }}
+    className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
+  />
+
+  <div className="relative mx-auto max-w-6xl px-4 py-16">
+    <div className="grid lg:grid-cols-2 gap-14 items-start">
+
+      {/* ================= IMAGEN ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -30, y: 10 }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.25 }}
+        whileHover={{ y: -6 }}
+        className="w-full"
+      >
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
           <img
             src={heroImage}
-            alt={heroImageAlt}
-            className="w-full max-w-md mx-auto md:mx-0"
+            alt={heroImageAlt || "Soluciones Integrales JB"}
+            className="w-full h-auto object-contain rounded-xl"
           />
+          <div className="mt-4 text-center">
+            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
+              Soluciones Integrales JB para impulsar tu negocio
+            </span>
+          </div>
         </div>
-        <div className="space-y-4">
-          <p className="text-sm uppercase tracking-wider text-gray-500">Quienes somos</p>
-          <h2 className="text-3xl font-bold">Somos tus aliados Digitales.</h2>
-          <p>
-            Somos una empresa dedicada a ofrecer servicios digitales personalizados, desde el desarrollo de software y sitios web con diseño gráfico. entre mas servicios. Transformamos sus ideas en soluciones que impulsan su negocio hacia el éxito corporativo con Soluciones Integrales.
-          </p>
-        </div>
-      </div>
+      </motion.div>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Características de Nuestros Servicios:
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {caracteristicas.map((valor, index) => (
-            <div key={index} className="group w-full h-64 [perspective:1000px]">
-              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
-                <div className="absolute inset-0 bg-[#1c1c1c] text-white flex flex-col items-center justify-center p-6 rounded-lg [backface-visibility:hidden]">
-                  <div className="text-5xl">{valor.icon}</div>
-                  <h3 className="mt-4 font-bold text-lg">{valor.titulo}</h3>
+      {/* ================= TEXTO ================= */}
+      <div className="flex flex-col">
+        {/* Badge + título */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-cyan-500" />
+            QUIENES SOMOS
+          </div>
+
+          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
+            Somos tus aliados Digitales.
+          </h2>
+        </motion.div>
+
+        {/* Card texto */}
+        <motion.div
+          initial={{ opacity: 0, x: 30, y: 10 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -6 }}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8"
+        >
+          <p className="text-slate-700 leading-relaxed">
+            Somos una empresa dedicada a ofrecer servicios digitales personalizados,
+            desde el desarrollo de software y sitios web con diseño gráfico, entre
+            más servicios. Transformamos sus ideas en soluciones que impulsan su
+            negocio hacia el éxito corporativo con Soluciones Integrales.
+          </p>
+
+          {/* Mini stats (stagger) */}
+          <div className="mt-8 grid grid-cols-3 gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
+              viewport={{ once: true, amount: 0.25 }}
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">Web</p>
+              <p className="text-xs text-slate-600 mt-1">Diseño moderno</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+              viewport={{ once: true, amount: 0.25 }}
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">Software</p>
+              <p className="text-xs text-slate-600 mt-1">A medida</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.18 }}
+              viewport={{ once: true, amount: 0.25 }}
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
+            >
+              <p className="text-xl font-bold text-slate-900">Soporte</p>
+              <p className="text-xs text-slate-600 mt-1">Acompañamiento</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Recuadro celeste (pop) */}
+        <motion.div
+          initial={{ opacity: 0, y: 22, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -4 }}
+          className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
+        >
+          <h3 className="text-lg font-semibold">
+            Transformamos ideas en soluciones reales
+          </h3>
+          <p className="text-sm mt-2 opacity-90">
+            Diseñamos, desarrollamos e implementamos servicios digitales alineados
+            a tus objetivos para crecer con tecnología.
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
+{/* ====================== CARACTERÍSTICAS DE NUESTROS SERVICIOS (FLIP PRO) ====================== */}
+<section className="mx-auto max-w-6xl px-4 py-16">
+  <h2 className="text-3xl font-bold text-center mb-12 text-cyan-500">
+    Características de Nuestros Servicios:
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {caracteristicas.map((valor, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="flip-wrap"
+      >
+        <div className="flip-card flip-card-sm">
+          <div className="flip-inner">
+
+            {/* ================= FRONT (NEGRO) ================= */}
+            <div className="flip-front">
+              <div className="front-ring" />
+              <div className="front-content">
+                <div className="front-icon">
+                  {valor.icon}
                 </div>
-                
-                <div className="absolute inset-0 bg-black text-white flex flex-col items-center justify-center p-6 rounded-lg [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <p className="text-sm text-center">{valor.descripcion}</p>
+                <p className="front-title">{valor.titulo}</p>
+                <p className="front-subtitle">Pasa el mouse para ver más</p>
+              </div>
+            </div>
+
+            {/* ================= BACK (PRO) ================= */}
+            <div className="flip-back">
+              <div className="back-glow back-glow-right" />
+              <div className="back-topbar" />
+
+              <div className="back-content">
+                <div className="back-head">
+                  <div className="back-icon">
+                    {valor.icon}
+                  </div>
+                  <div>
+                    <p className="back-kicker">{valor.titulo}</p>
+                    <p className="back-mini">Lo que te ofrecemos</p>
+                  </div>
+                </div>
+
+                <div className="back-divider" />
+
+                <p className="back-text">
+                  {valor.descripcion}
+                </p>
+
+                {/* tags decorativos */}
+                <div className="back-tags">
+                  <span className="tag">Eficiencia</span>
+                  <span className="tag">Innovación</span>
+                  <span className="tag">Resultados</span>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        <ScrollButton />
-      </section>
 
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  <ScrollButton />
+
+  <style>{`
+    .flip-wrap { width: 100%; }
+
+    .flip-card {
+      width: 100%;
+      height: 340px;
+      perspective: 1200px;
+    }
+
+    .flip-card-sm { height: 300px; }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 4px solid #1e88e5;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    }
+
+    /* ================= FRONT ================= */
+    .flip-front {
+      background: #000;
+      display: grid;
+      place-items: center;
+    }
+
+    .front-ring {
+      position: absolute;
+      inset: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .front-content {
+      position: relative;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .front-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px auto;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      font-size: 34px;
+      transition: transform .35s ease;
+    }
+
+    .front-icon svg { width: 34px; height: 34px; }
+
+    .flip-card:hover .front-icon {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .front-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      font-size: 18px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .front-subtitle {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ================= BACK ================= */
+    .flip-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      position: absolute;
+    }
+
+    .back-topbar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: #06b6d4;
+    }
+
+    .back-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(6,182,212,0.18);
+      filter: blur(40px);
+    }
+
+    .back-glow-right { top: -120px; right: -120px; }
+
+    .back-content {
+      position: relative;
+      height: 100%;
+      padding: 22px 22px 18px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .back-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .back-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(6,182,212,0.12);
+      color: #06b6d4;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+    .back-icon svg { width: 24px; height: 24px; }
+
+    .back-kicker {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: #06b6d4;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .back-mini {
+      margin: 2px 0 0 0;
+      font-size: 12px;
+      color: rgba(15,23,42,0.6);
+      font-weight: 600;
+    }
+
+    .back-divider {
+      margin: 14px 0 12px 0;
+      height: 1px;
+      width: 100%;
+      background: rgba(15,23,42,0.12);
+    }
+
+    .back-text {
+      margin: 0;
+      color: #334155;
+      line-height: 1.6;
+      font-size: 13.5px;
+      flex: 1;
+    }
+
+    .back-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.12);
+      background: rgba(248,250,252,1);
+      color: rgba(15,23,42,0.70);
+    }
+
+    @media (max-width: 768px) {
+      .flip-card-sm { height: 300px; }
+      .back-content { padding: 20px; }
+    }
+  `}</style>
+</section>
       <style>{`
         .custom-card {
           position: relative;
