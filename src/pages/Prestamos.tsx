@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 interface FormData {
   loanAmount: string;
