@@ -1,390 +1,385 @@
-import React, { useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
-const miembros = [
+type Miembro = {
+  id: number;
+  nombre: string;
+  cargo: string;
+  imagen: string;
+
+  // INFO EXTRA para el modal
+  bio?: string;
+  skills?: string[];
+  correo?: string;
+  linkedin?: string;
+  twitter?: string;
+};
+
+const miembros: Miembro[] = [
   {
     id: 1,
     nombre: "Wilder Julca",
     cargo: "Gerente de Servicios",
-    imagen: "/src/assets/nuestro-equipo/wilder.png"
+    imagen: "https://i.postimg.cc/ZKPgkFv5/image.png",
+    bio: "Lidera la gestión de servicios, asegurando calidad, cumplimiento y mejora continua en cada proyecto.",
+    skills: ["Gestión", "Operaciones", "Calidad", "Atención al cliente"],
+    linkedin: "#",
+    correo: "wilder@empresa.com",
   },
   {
     id: 2,
     nombre: "Carlos Yamacacho Rocca",
     cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/QCQRcRKh/image.png"
+    imagen: "https://i.postimg.cc/NGSGyb5R/image.png",
+    bio: "Desarrollador web enfocado en interfaces modernas, performance y buenas prácticas.",
+    skills: ["React", "TypeScript", "UI/UX", "APIs"],
+    linkedin: "#",
+    twitter: "#",
   },
   {
     id: 3,
     nombre: "Adixon Julca Ramirez",
     cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/nLpp5hTx/image.png"
+    imagen: "https://i.postimg.cc/G2jMWXVg/image.png",
+    bio: "Apasionado por crear productos escalables con código limpio y mantenible.",
+    skills: ["React", "Node.js", "SQL", "Arquitectura"],
+    linkedin: "#",
   },
   {
     id: 4,
     nombre: "Jared Arroyo Alarcon",
     cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/DfPjdQYJ/Imagen-de-Whats-App-2025-11-04-a-las-11-45-55-9088b08b.jpg"
+    imagen:
+      "https://i.postimg.cc/T1rs3RKF/Whats-App-Image-2026-02-27-at-10-30-16-AM.jpg",
+    bio: "Enfocado en desarrollo frontend con detalle visual y experiencia de usuario.",
+    skills: ["Frontend", "Tailwind", "Accesibilidad", "Optimización"],
+    linkedin: "#",
+    twitter: "#",
   },
   {
     id: 5,
     nombre: "Gabriel Sedano",
-    cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/nhJqdNjC/Imagen-de-Whats-App-2025-11-04-a-las-11-46-04-63d8f5c0.jpg"
+    cargo: "Programador Web ",
+    imagen:
+      "https://i.postimg.cc/76Lt0pKc/Whats-App-Image-2026-02-27-at-11-15-59-AM.jpg",
+    bio: "Construye soluciones web completas integrando diseño, lógica y despliegue.",
+    skills: ["Fullstack", "APIs", "Deploy", "Testing"],
+    linkedin: "#",
+    twitter: "#",
   },
   {
     id: 6,
     nombre: "Nicolas Meza",
     cargo: "Programador Web",
-    imagen: "/src/assets/nuestro-equipo/nicolas.png"
+    imagen: "https://i.postimg.cc/y8zfvJfD/image.png",
+    bio: "Desarrollador orientado a resultados, enfocado en funcionalidades robustas.",
+    skills: ["React", "Node", "Git", "Performance"],
+    linkedin: "#",
   },
   {
     id: 7,
     nombre: "Hernan Salazar",
     cargo: "Programador Web",
-    imagen: "/src/assets/nuestro-equipo/hernan.png"
+    imagen: "https://i.postimg.cc/YCWHmmvg/image.png",
+    bio: "Apoya el desarrollo y mejora continua del producto con enfoque en calidad.",
+    skills: ["Frontend", "QA", "Integraciones", "UI"],
+    linkedin: "#",
   },
   {
     id: 8,
     nombre: "Carlos Yamacacho",
     cargo: "Programador Web",
-    imagen: "/src/assets/nuestro-equipo/carlos.jpg"
+    imagen: "/src/assets/nuestro-equipo/carlos.jpg",
+    bio: "Desarrollador web con experiencia en construir interfaces limpias y rápidas.",
+    skills: ["React", "UI", "CSS", "Consumo de APIs"],
+    linkedin: "#",
   },
 ];
 
-const NuestroEquipo: React.FC = () => {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const IconLinkedIn = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5H4.5V23H.5V8.5zM8.5 8.5H12.3V10.5H12.36C12.89 9.5 14.2 8.4 16.12 8.4 20.1 8.4 20.8 11 20.8 14.4V23H16.8V15.2C16.8 13.3 16.77 10.9 14.26 10.9 11.72 10.9 11.33 12.9 11.33 15.1V23H7.33V8.5H8.5z" />
+  </svg>
+);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    setMousePosition({ x, y });
+const IconTwitter = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+    <path d="M23 4.6c-.8.4-1.7.6-2.6.8.9-.6 1.6-1.4 2-2.4-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 12 7.8c0 .3 0 .6.1.8-3.7-.2-7-2-9.2-4.8-.4.6-.6 1.4-.6 2.2 0 1.6.8 2.9 2 3.8-.7 0-1.4-.2-2-.6v.1c0 2.2 1.6 4 3.7 4.4-.4.1-.8.2-1.2.2-.3 0-.6 0-.9-.1.6 1.9 2.4 3.3 4.5 3.3A9.1 9.1 0 0 1 1 19.1 12.8 12.8 0 0 0 8 21.2c8.4 0 13-7 13-13v-.6c.9-.7 1.6-1.4 2.2-2.3Z" />
+  </svg>
+);
+
+const NuestroEquipo: React.FC = () => {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<Miembro | null>(null);
+
+  const items = useMemo(() => {
+    if (miembros.length <= 4) return miembros;
+    return [...miembros, ...miembros];
+  }, []);
+
+  const scrollByCards = (dir: "left" | "right") => {
+    const el = trackRef.current;
+    if (!el) return;
+    const step = Math.round(el.clientWidth * 0.92);
+    el.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
   };
 
-  const getImageAnimation = (id: number) => {
-    if (hoveredId === id) {
-      return "translateY(-25px)";
-    } else if (hoveredId !== null && hoveredId !== id) {
-      return "translateY(15px) opacity(0.6)";
-    }
-    return "translateY(0)";
+  const openModal = (m: Miembro) => {
+    setSelected(m);
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+    setSelected(null);
   };
 
   return (
-    <section className="w-full py-20 bg-gray-50">
+    <section className="relative w-full overflow-hidden py-24">
+      {/* Fondo suave */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50" />
+      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-blue-100/35 to-transparent" />
+      <div className="pointer-events-none absolute -left-24 top-32 h-80 w-80 rounded-full bg-blue-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-indigo-200/20 blur-3xl" />
+
       <style>{`
-        @keyframes slideInUp {
-          0% {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-12px);
-          }
-        }
-
-        @keyframes glow {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-          }
-        }
-
-        @keyframes pulse-ring {
-          0% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-          }
-          70% {
-            box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-          }
-        }
-
-        @keyframes shimmer {
-          0% {
-            background-position: -1000px 0;
-          }
-          100% {
-            background-position: 1000px 0;
-          }
-        }
-
-        @keyframes titleGlow {
-          0%, 100% {
-            text-shadow: 0 0 0px rgba(59, 130, 246, 0);
-          }
-          50% {
-            text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-          }
-        }
-
-        .animate-slide-in {
-          animation: slideInUp 0.7s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-glow {
-          animation: glow 3s ease-in-out infinite;
-        }
-
-        .animate-pulse-ring {
-          animation: pulse-ring 2s infinite;
-        }
-
-        .animate-title-glow {
-          animation: titleGlow 2s ease-in-out infinite;
-        }
-
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        .delay-500 { animation-delay: 0.5s; }
-        .delay-600 { animation-delay: 0.6s; }
-        .delay-700 { animation-delay: 0.7s; }
-
-        .shimmer-effect {
-          position: relative;
-          overflow: hidden;
-        }
-
-        .shimmer-effect::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-          );
-          animation: shimmer 3s infinite;
-        }
-
-        .card-3d {
-          perspective: 1000px;
-          transition: transform 0.3s ease-out;
-        }
-
-        .card-3d-inner {
-          transform-style: preserve-3d;
-          transition: transform 0.4s ease-out;
-        }
-
-        .card-glow {
-          position: relative;
-          transition: all 0.4s ease-out;
-        }
-
-        .card-glow::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 1rem;
-          background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(59, 130, 246, 0.15), transparent 50%);
-          opacity: 0;
-          transition: opacity 0.4s ease-out;
-          pointer-events: none;
-        }
-
-        .card-glow.active::before {
-          opacity: 1;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-20 animate-slide-in">
-          <p className="text-blue-500 font-semibold text-lg mb-4 tracking-widest uppercase">
-            ✨ Todos los miembros del equipo
-          </p>
-          <h2 className="text-6xl md:text-7xl font-black text-gray-900 tracking-tight mb-2 animate-title-glow">
+      <div className="relative mx-auto max-w-7xl px-4">
+        {/* HEADER: NO TOCAR */}
+        <header className="mx-auto mb-16 max-w-2xl text-center">
+          <p className="mb-4 text-sm font-semibold tracking-widest text-blue-600 uppercase">
             Nuestro Equipo
+          </p>
+
+          <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+            Conoce a nuestro equipo profesional
           </h2>
-          <div className="flex gap-3 justify-center mt-8">
-            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full animate-glow"></div>
-            <div className="w-10 h-1.5 bg-blue-400 rounded-full"></div>
-          </div>
-        </div>
 
-        {/* Grid */}
-        <div className="flex flex-col gap-16">
-          {/* Primera fila - 4 miembros */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
-            {miembros.slice(0, 4).map((miembro, index) => (
-              <div
-                key={miembro.id}
-                className={`animate-slide-in delay-${(index + 1) * 100} w-full card-3d`}
-                onMouseEnter={() => setHoveredId(miembro.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                onMouseMove={handleMouseMove}
+          <p className="mt-4 text-base text-slate-600">
+            Personas comprometidas con la excelencia y el desarrollo de soluciones
+            digitales de alto nivel.
+          </p>
+
+          <div className="mt-8 flex justify-center">
+            <div className="h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-600 to-sky-400" />
+          </div>
+        </header>
+
+        {/* Carrusel */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => scrollByCards("left")}
+            className="absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 shadow-lg backdrop-blur transition hover:scale-[1.03] hover:border-blue-200 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 sm:flex"
+            aria-label="Anterior"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollByCards("right")}
+            className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 shadow-lg backdrop-blur transition hover:scale-[1.03] hover:border-blue-200 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 sm:flex"
+            aria-label="Siguiente"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <div
+            ref={trackRef}
+            className="no-scrollbar flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3"
+          >
+            {items.map((m, idx) => (
+              <article
+                key={`${m.id}-${idx}`}
+                className="snap-start shrink-0 w-[90%] sm:w-[70%] md:w-[46%] lg:w-[32%]"
               >
-                <div 
-                  className={`relative bg-white p-8 rounded-2xl shadow-lg card-glow transition-all duration-500 ${hoveredId === miembro.id ? 'animate-float shadow-2xl' : ''}`}
-                  style={{
-                    '--x': `${mousePosition.x * 100}%`,
-                    '--y': `${mousePosition.y * 100}%`,
-                  } as React.CSSProperties & { '--x': string; '--y': string }}
-                >
-                  <div 
-                    className={`card-3d-inner ${hoveredId === miembro.id ? 'active' : ''}`}
-                    style={{
-                      transform: hoveredId === miembro.id 
-                        ? `rotateX(${(mousePosition.y - 0.5) * 15}deg) rotateY(${(mousePosition.x - 0.5) * 15}deg)`
-                        : 'rotateX(0deg) rotateY(0deg)'
-                    }}
-                  >
-                    <div className="flex flex-col items-center relative z-10">
-                      {/* Imagen */}
-                      <div className="mb-8 relative">
-                        <div 
-                          className={`w-44 h-44 rounded-full border-4 border-blue-500 overflow-hidden bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center shimmer-effect transition-all duration-500 ${hoveredId === miembro.id ? 'animate-glow' : ''}`}
-                          style={{
-                            filter: hoveredId === miembro.id ? "brightness(1.2) drop-shadow(0 20px 50px rgba(59, 130, 246, 0.6))" : "brightness(1) drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15))",
-                            transform: hoveredId === miembro.id ? "scale(1.12) perspective(1000px) rotateZ(-5deg)" : "scale(1) perspective(1000px) rotateZ(0deg)"
-                          }}
-                        >
-                          <img
-                            src={miembro.imagen}
-                            alt={miembro.nombre}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        {hoveredId === miembro.id && (
-                          <div className="absolute inset-0 rounded-full animate-pulse-ring"></div>
+                <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_12px_35px_rgba(15,23,42,0.10)] transition hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(15,23,42,0.16)]">
+                  {/* Foto grande */}
+                  <div className="relative h-[340px] w-full bg-slate-100">
+                    <img
+                      src={m.imagen}
+                      alt={m.nombre}
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Texto abajo */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-extrabold text-slate-900">{m.nombre}</h3>
+                    <p className="mt-1 text-sm text-slate-600">{m.cargo}</p>
+
+                    <div className="mt-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3 text-slate-500">
+                        {m.twitter && (
+                          <a
+                            href={m.twitter}
+                            className="rounded-md p-1 transition hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                            aria-label="Twitter"
+                          >
+                            <IconTwitter className="h-5 w-5" />
+                          </a>
+                        )}
+                        {m.linkedin && (
+                          <a
+                            href={m.linkedin}
+                            className="rounded-md p-1 transition hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                            aria-label="LinkedIn"
+                          >
+                            <IconLinkedIn className="h-5 w-5" />
+                          </a>
                         )}
                       </div>
 
-                      {/* Info */}
-                      <h3 
-                        className="text-2xl font-bold text-gray-900 mb-4 text-center transition-all duration-500"
-                        style={{
-                          color: hoveredId === miembro.id ? "#3b82f6" : "#1f2937",
-                          textShadow: hoveredId === miembro.id ? "0 0 15px rgba(59, 130, 246, 0.3)" : "none",
-                          transform: hoveredId === miembro.id ? "scale(1.08)" : "scale(1)"
-                        }}
+                      {/* AQUÍ ABRE EL MODAL */}
+                      <button
+                        type="button"
+                        onClick={() => openModal(m)}
+                        className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline"
                       >
-                        {miembro.nombre}
-                      </h3>
-                      <div 
-                        className="px-6 py-3 rounded-xl text-center w-full border-2 transition-all duration-500 font-semibold"
-                        style={{
-                          backgroundColor: hoveredId === miembro.id ? "#e0e9f5" : "#f8fbff",
-                          borderColor: hoveredId === miembro.id ? "#3b82f6" : "#bfdbfe",
-                          color: hoveredId === miembro.id ? "#1e40af" : "#4b5563",
-                          boxShadow: hoveredId === miembro.id ? "0 10px 25px rgba(59, 130, 246, 0.2)" : "none",
-                          transform: hoveredId === miembro.id ? "scale(1.05)" : "scale(1)"
-                        }}
-                      >
-                        <p className="text-sm">{miembro.cargo}</p>
-                      </div>
+                        Conocer más
+                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
-          {/* Segunda fila - 4 miembros */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
-            {miembros.slice(4, 8).map((miembro, index) => (
-              <div
-                key={miembro.id}
-                className={`animate-slide-in delay-${(index + 1) * 100} w-full card-3d`}
-                onMouseEnter={() => setHoveredId(miembro.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                onMouseMove={handleMouseMove}
-              >
-                <div 
-                  className={`relative bg-white p-8 rounded-2xl shadow-lg card-glow transition-all duration-500 ${hoveredId === miembro.id ? 'animate-float shadow-2xl' : ''}`}
-                  style={{
-                    '--x': `${mousePosition.x * 100}%`,
-                    '--y': `${mousePosition.y * 100}%`,
-                  } as React.CSSProperties & { '--x': string; '--y': string }}
-                >
-                  <div 
-                    className={`card-3d-inner ${hoveredId === miembro.id ? 'active' : ''}`}
-                    style={{
-                      transform: hoveredId === miembro.id 
-                        ? `rotateX(${(mousePosition.y - 0.5) * 15}deg) rotateY(${(mousePosition.x - 0.5) * 15}deg)`
-                        : 'rotateX(0deg) rotateY(0deg)'
-                    }}
-                  >
-                    <div className="flex flex-col items-center relative z-10">
-                      {/* Imagen */}
-                      <div className="mb-8 relative">
-                        <div 
-                          className={`w-44 h-44 rounded-full border-4 border-blue-500 overflow-hidden bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center shimmer-effect transition-all duration-500 ${hoveredId === miembro.id ? 'animate-glow' : ''}`}
-                          style={{
-                            filter: hoveredId === miembro.id ? "brightness(1.2) drop-shadow(0 20px 50px rgba(59, 130, 246, 0.6))" : "brightness(1) drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15))",
-                            transform: hoveredId === miembro.id ? "scale(1.12) perspective(1000px) rotateZ(-5deg)" : "scale(1) perspective(1000px) rotateZ(0deg)"
-                          }}
-                        >
-                          <img
-                            src={miembro.imagen}
-                            alt={miembro.nombre}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        {hoveredId === miembro.id && (
-                          <div className="absolute inset-0 rounded-full animate-pulse-ring"></div>
-                        )}
-                      </div>
-
-                      {/* Info */}
-                      <h3 
-                        className="text-2xl font-bold text-gray-900 mb-4 text-center transition-all duration-500"
-                        style={{
-                          color: hoveredId === miembro.id ? "#3b82f6" : "#1f2937",
-                          textShadow: hoveredId === miembro.id ? "0 0 15px rgba(59, 130, 246, 0.3)" : "none",
-                          transform: hoveredId === miembro.id ? "scale(1.08)" : "scale(1)"
-                        }}
-                      >
-                        {miembro.nombre}
-                      </h3>
-                      <div 
-                        className="px-6 py-3 rounded-xl text-center w-full border-2 transition-all duration-500 font-semibold"
-                        style={{
-                          backgroundColor: hoveredId === miembro.id ? "#e0e9f5" : "#f8fbff",
-                          borderColor: hoveredId === miembro.id ? "#3b82f6" : "#bfdbfe",
-                          color: hoveredId === miembro.id ? "#1e40af" : "#4b5563",
-                          boxShadow: hoveredId === miembro.id ? "0 10px 25px rgba(59, 130, 246, 0.2)" : "none",
-                          transform: hoveredId === miembro.id ? "scale(1.05)" : "scale(1)"
-                        }}
-                      >
-                        <p className="text-sm">{miembro.cargo}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
+          <p className="mt-4 text-center text-xs text-slate-500 sm:hidden">
+            Desliza con el dedo para ver más miembros →
+          </p>
         </div>
       </div>
+
+      {/* MODAL / CARTA */}
+      {open && selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Información de ${selected.nombre}`}
+          onMouseDown={(e) => {
+            // cerrar si clicas el backdrop
+            if (e.target === e.currentTarget) closeModal();
+          }}
+        >
+          {/* backdrop */}
+          <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" />
+
+          {/* card modal */}
+          <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Imagen grande */}
+              <div className="relative h-[320px] md:h-full bg-slate-100">
+                <img
+                  src={selected.imagen}
+                  alt={selected.nombre}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Info */}
+              <div className="p-6 md:p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-slate-900">
+                      {selected.nombre}
+                    </h3>
+                    <p className="mt-1 text-sm font-semibold text-blue-700">
+                      {selected.cargo}
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    aria-label="Cerrar"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Bio */}
+                <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                  {selected.bio ||
+                    "Aquí puedes colocar una breve descripción profesional de la persona. (bio)"}
+                </p>
+
+                {/* Skills */}
+                <div className="mt-5">
+                  <p className="text-xs font-bold tracking-widest text-slate-700 uppercase">
+                    Habilidades
+                  </p>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {(selected.skills?.length ? selected.skills : ["Trabajo en equipo", "Responsabilidad"]).map(
+                      (s) => (
+                        <span
+                          key={s}
+                          className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700"
+                        >
+                          {s}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                {/* Contacto */}
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {selected.linkedin && (
+                    <a
+                      href={selected.linkedin}
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
+                    >
+                      <IconLinkedIn className="h-4 w-4" />
+                      LinkedIn
+                    </a>
+                  )}
+                  {selected.twitter && (
+                    <a
+                      href={selected.twitter}
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
+                    >
+                      <IconTwitter className="h-4 w-4" />
+                      Twitter
+                    </a>
+                  )}
+                  {selected.correo && (
+                    <a
+                      href={`mailto:${selected.correo}`}
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
+                    >
+                      ✉️ {selected.correo}
+                    </a>
+                  )}
+                </div>
+
+                {/* CTA */}
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="w-full rounded-xl bg-gradient-to-r from-blue-700 to-sky-500 px-4 py-3 text-sm font-bold text-white shadow-lg transition hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -7,7 +7,7 @@ import ScrollButton from "../components/ScrollButton";
 import '../App.css'
 import LogoLoop from "./LogoLoop";
 import VoiceflowChat from "./VoiceflowChat";
-
+import LogoKeyed from "../components/LogoKeyed";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
 // ---- Types ----
@@ -65,13 +65,13 @@ interface Props {
 
 // ---- Data ----
 const heroSlides: HeroSlide[] = [
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/456a340008da7d76915187e50dcc7cf4/ed40b25e-eec1-4e3e-bf86-92ae710d6d06-e1727215670672.jpg", imageAlt: "Promoción de routers y conectividad", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/5f7d0fef1ec7a6d768636f30af4dcfb5/c3cc9f73-0e33-4fd0-aa2d-050c9b272e8c.jpg", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/4b9df303a3e55818808c971f39340ea6/d429c0fa-c3b2-4b6d-a65b-56c8ea26bcbc-1.jpg", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/382ed7f76699f6eae27f4e965558d97e/8671e011-0391-4bd6-a5b1-114495d3d898.jpg", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/bc0e25010ca8388680ab2c9af3bd226c/cdba0529-3664-4dff-92fb-2bbfe5cb09f6.jpg", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/794a0e0b79da6a5cf270643ec721eee8/Agregar-un-titulo.png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
-    { image: "https://solucionesintegralesjb.com/wp-content/uploads/slider/cache/0c9dd85eb5a49fc3e81e2093f2a540c6/Agregar-un-titulo-1.png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
+    { image: "https://i.postimg.cc/JncZqqhs/ed40b25e-eec1-4e3e-bf86-92ae710d6d06-e1727215670672.jpg", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
+    { image: "https://i.postimg.cc/DzQSkz3W/c3cc9f73-0e33-4fd0-aa2d-050c9b272e8c.jpg", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
+    { image: "https://i.postimg.cc/6355kL03/d429c0fa-c3b2-4b6d-a65b-56c8ea26bcbc-1.jpg", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
+    { image: "https://i.postimg.cc/gjs7f8gc/8671e011-0391-4bd6-a5b1-114495d3d898.jpg", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
+    { image: "https://i.postimg.cc/1zFjyLvF/cdba0529-3664-4dff-92fb-2bbfe5cb09f6.jpg", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
+    { image: "https://i.postimg.cc/hv2CCgGq/Agregar-un-titulo.png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
+    { image: "https://i.postimg.cc/wMj2RPQn/Agregar-un-titulo-1.png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
 ];
 
 const responsiveServices = {
@@ -89,10 +89,10 @@ const heroResponsive = {
 };
 
 const strategicServices: Service[] = [
-  { label: "Servicios", title: "Desarrollo de Software", image: "https://solucionesintegralesjb.com/wp-content/uploads/2024/09/mejores-herramientas-desarrollo-software-1-400x267.png", imageAlt: "Herramientas de desarrollo de software", cta: "INFORMACIÓN" },
-  { label: "Servicios", title: "Facturación Electrónica", image: "https://solucionesintegralesjb.com/wp-content/uploads/2024/09/s3-blog-facturacion-electronica-min-400x256.png", imageAlt: "Facturación electrónica", cta: "INFORMACIÓN" },
-  { label: "Servicios", title: "Soporte Técnico", image: "https://solucionesintegralesjb.com/wp-content/uploads/2024/09/Soporte-en-Sitio-¿Que-es-eso-copia.webp", imageAlt: "Soporte en sitio", cta: "INFORMACIÓN" },
-  { label: "Servicios", title: "Tecnología en Seguridad", image: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/tecnologia-seguridad-1-768x512.jpg", imageAlt: "Tecnología y seguridad", cta: "INFORMACIÓN" }
+  { label: "Servicios", title: "Desarrollo de Software", image: "https://i.postimg.cc/qgH0Q8DF/mejores-herramientas-desarrollo-software-1-400x267.png", imageAlt: "Herramientas de desarrollo de software", cta: "INFORMACIÓN" },
+  { label: "Servicios", title: "Facturación Electrónica", image: "https://i.postimg.cc/pLZhhTpW/s3-blog-facturacion-electronica-min-400x256.png", imageAlt: "Facturación electrónica", cta: "INFORMACIÓN" },
+  { label: "Servicios", title: "Soporte Técnico", image: "https://i.postimg.cc/Gmqt355h/image.png", imageAlt: "Soporte en sitio", cta: "INFORMACIÓN" },
+  { label: "Servicios", title: "Tecnología en Seguridad", image: "https://i.postimg.cc/k4tgcXMk/tecnologia-seguridad-1-768x512.jpg", imageAlt: "Tecnología y seguridad", cta: "INFORMACIÓN" }
 ];
 
 const features: Feature[] = [
@@ -105,30 +105,30 @@ const features: Feature[] = [
 ];
 
 const testimonials: Testimonial[] = [
-    { name: "Italo romero", avatar: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/unnamed-1.png", quote: "Buen servicio de sitios web, excelente diseño y experiencia." },
-    { name: "William Moises", avatar: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/unnamed-2.png", quote: "Buen lugar donde te ofrecen de todo en tecnología informática y de cyber vigilancia." },
-    { name: "Fritzl Yacomin", avatar: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/unnamed.png", quote: "Excelente atención, realmente muy profesionales en su trato y servicio." },
-    { name: "Marielis Baptista", avatar: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/unnamed-3.png", quote: "Excelentes los productos y trato para los clientes, lo recomiendo totalmente." },
-    { name: "Ana montes", avatar: "https://solucionesintegralesjb.com/wp-content/uploads/2024/10/unnamed-4.png", quote: "Muy buen servicio de parte de los empleados y cómo atienden y ayudan." },
+    { name: "Italo romero", avatar: "https://i.postimg.cc/HW9gC7KY/unnamed-1.png", quote: "Buen servicio de sitios web, excelente diseño y experiencia." },
+    { name: "William Moises", avatar: "https://i.postimg.cc/3xd5pfwK/unnamed-2.png", quote: "Buen lugar donde te ofrecen de todo en tecnología informática y de cyber vigilancia." },
+    { name: "Fritzl Yacomin", avatar: "https://i.postimg.cc/SsbwByfm/unnamed.png", quote: "Excelente atención, realmente muy profesionales en su trato y servicio." },
+    { name: "Marielis Baptista", avatar: "https://i.postimg.cc/wT4n65QP/image.png", quote: "Excelentes los productos y trato para los clientes, lo recomiendo totalmente." },
+    { name: "Ana montes", avatar: "https://i.postimg.cc/CxWt8FtH/unnamed-4.png", quote: "Muy buen servicio de parte de los empleados y cómo atienden y ayudan." },
 ];
 
 const clientLogos = [
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-5.svg", alt: "Cliente 1", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-4.svg", alt: "Cliente 2", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-1-1.svg", alt: "Cliente 3", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-7.svg", alt: "Cliente 4", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-10.svg", alt: "Cliente 5", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-3.svg", alt: "Cliente 6", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-9.svg", alt: "Cliente 7", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-11.svg", alt: "Cliente 8", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-12.svg", alt: "Cliente 9", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-6.svg", alt: "Cliente 10", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-18.svg", alt: "Cliente 11", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-19.svg", alt: "Cliente 12", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-8.svg", alt: "Cliente 13", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-15.svg", alt: "Cliente 14", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-13.svg", alt: "Cliente 15", href: "#" },
-  { src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/07/Frame-394-modified-14.svg", alt: "Cliente 16", href: "#" },
+  { src: "https://i.postimg.cc/RFGXg9PK/Frame-394-modified-5.jpg", alt: "Cliente 1", href: "#" },
+  { src: "https://i.postimg.cc/sf6TSjGy/Frame-394-modified-4.jpg", alt: "Cliente 2", href: "#" },
+  { src: "https://i.postimg.cc/q7Tw0gS2/Frame-394-modified-1-1.jpg", alt: "Cliente 3", href: "#" },
+  { src: "https://i.postimg.cc/636h2g98/Frame-394-modified-7.jpg", alt: "Cliente 4", href: "#" },
+  { src: "https://i.postimg.cc/zBdFn7vz/Frame-394-modified-10.jpg", alt: "Cliente 5", href: "#" },
+  { src: "https://i.postimg.cc/CxyHHzhg/Frame-394-modified-3.jpg", alt: "Cliente 6", href: "#" },
+  { src: "https://i.postimg.cc/V6NjLtR9/Frame-394-modified-9.jpg", alt: "Cliente 7", href: "#" },
+  { src: "https://i.postimg.cc/nry7kPJZ/Frame-394-modified-11.jpg", alt: "Cliente 8", href: "#" },
+  { src: "https://i.postimg.cc/BncDTp7h/Frame-394-modified-12.jpg", alt: "Cliente 9", href: "#" },
+  { src: "https://i.postimg.cc/MTXQ8S69/Frame-394-modified-6.jpg", alt: "Cliente 10", href: "#" },
+  { src: "https://i.postimg.cc/7PfcYsKy/Frame-394-modified-18.jpg", alt: "Cliente 11", href: "#" },
+  { src: "https://i.postimg.cc/Dzxj7LGt/Frame-394-modified-19.jpg", alt: "Cliente 12", href: "#" },
+  { src: "https://i.postimg.cc/MZMP8cGX/Frame-394-modified-8.jpg", alt: "Cliente 13", href: "#" },
+  { src: "https://i.postimg.cc/9fQbg0S2/Frame-394-modified-15.jpg", alt: "Cliente 14", href: "#" },
+  { src: "https://i.postimg.cc/kXPc3fZw/Frame-394-modified-13.jpg", alt: "Cliente 15", href: "#" },
+  { src: "https://i.postimg.cc/bvr0HMDG/Frame-394-modified-14.jpg", alt: "Cliente 16", href: "#" },
 ];
 
 const products: Product[] = [
@@ -212,7 +212,7 @@ const products: Product[] = [
   }
 ];
 
-const uiImage = "https://solucionesintegralesjb.com/wp-content/uploads/elementor/thumbs/Frame-932-qqow7tfd3r2zohqj4jx9yf23tmjv30p5niiolmvipc.png";
+const uiImage = "https://i.postimg.cc/TwmTb7CG/Frame-932-qqow7tfd3r2zohqj4jx9yf23tmjv30p5niiolmvipc.png";
 const videoUrl = "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/ES-1.mp4";
 const videoPoster = "https://solucionesintegralesjb.com/wp-content/uploads/2024/11/logo-cubo.png";
 
@@ -327,133 +327,172 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         </Carousel>
       </div>
       
-      {/* ====================== SERVICIOS ESTRATÉGICOS ====================== */}
-      <div className="bg-gradient-to-b from-black via-slate-900 to-black w-full px-6 py-16 md:py-24 relative overflow-hidden">
-        {/* Elementos decorativos de fondo */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    {/* ====================== SERVICIOS ESTRATÉGICOS ====================== */}
+<div className="bg-gradient-to-b from-black via-slate-900 to-black w-full px-6 py-16 md:py-24 relative overflow-hidden">
+  {/* Fondos decorativos */}
+  <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
-        {/* Encabezado mejorado */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16 relative z-10"
-        >
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-xl font-semibold tracking-wide text-cyan-400"
-          >
-            Soluciones Integrales para Impulsar tu Negocio
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-4 text-5xl md:text-6xl font-extrabold tracking-tight text-white"
-          >
-            Soluciones Estratégicas para <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Crecer</span>
-          </motion.p>
-        </motion.div>
+  {/* ================= HEADER (entrada + hover) ================= */}
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.3 }}
+    className="text-center mb-16 relative z-10"
+  >
+    <motion.h2
+      initial={{ opacity: 0, y: -25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="text-xl font-semibold tracking-wide text-cyan-400"
+    >
+      Soluciones Integrales para Impulsar tu Negocio
+    </motion.h2>
 
-        {/* Carrusel mejorado */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative z-10"
-        >
-          <Carousel
-            responsive={responsiveServices}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={4000}
-            keyBoardControl={true}
-            showDots={true}
-            arrows={true}
-            containerClass="carousel-container"
-            itemClass="p-2"
-            dotListClass="custom-strategic-dots"
+    {/* Wrapper para que todo el título "flote" un poco en hover */}
+    <motion.div
+      initial={{ opacity: 1 }}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      className="mt-4 text-5xl md:text-6xl font-extrabold tracking-tight text-white flex flex-wrap justify-center gap-x-4"
+    >
+      {/* Texto blanco: entra desde izquierda + se mueve en hover */}
+      <motion.span
+        initial={{ opacity: 0, x: -200 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        whileHover={{ x: -10 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ once: true }}
+      >
+        Soluciones Estratégicas para
+      </motion.span>
+
+      {/* "Crecer": entra desde derecha + se mueve/zoom en hover */}
+      <motion.span
+        initial={{ opacity: 0, x: 200 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        whileHover={{ x: 10, scale: 1.03 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+        viewport={{ once: true }}
+        className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+      >
+        Crecer
+      </motion.span>
+    </motion.div>
+  </motion.div>
+
+  {/* ================= CARRUSEL (AISLADO) ================= */}
+  <div className="strategic-carousel-scope relative z-10">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true, amount: 0.25 }}
+    >
+      <Carousel
+        responsive={responsiveServices} // tu config con slidesToSlide:2 ya ayuda a que dots no “confundan”
+        infinite
+        autoPlay
+        autoPlaySpeed={4000}
+        keyBoardControl
+        showDots
+        arrows
+        containerClass="strategic-carousel-container" // ✅ ÚNICO
+        itemClass="p-2"
+        dotListClass="strategic-dots" // ✅ ÚNICO
+      >
+        {strategicServices.map((s, idx) => (
+          <motion.div
+            key={`${s.title}-${idx}`}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -250 : 250 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: idx * 0.08 }}
+            viewport={{ once: true, amount: 0.35 }}
           >
-            {strategicServices.map((s, idx) => (
-              <motion.div
-                key={`${s.title}-${idx}`}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-              >
+            <div className="group relative rounded-3xl overflow-hidden">
+              {/* overlay oscuro hover */}
+              <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/45 transition-colors duration-300 z-10" />
+              <div className="relative z-0 group-hover:scale-[1.02] transition-transform duration-300">
                 <StrategicServiceCard item={s} />
-              </motion.div>
-            ))}
-          </Carousel>
-        </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </Carousel>
+    </motion.div>
 
-        <style jsx>{`
-          .carousel-container {
-            position: relative;
-            z-index: 10;
-          }
+    {/* ✅ En React normal: <style> (no jsx) */}
+    <style>{`
+      /* SOLO este carrusel */
+      .strategic-carousel-scope .strategic-carousel-container{
+        position: relative;
+        z-index: 10;
+        padding-bottom: 4.8rem; /* espacio para dots */
+      }
 
-          .react-multi-carousel-item {
-            animation: slideInUp 0.8s ease-out forwards;
-          }
+      .strategic-carousel-scope .react-multi-carousel-item{
+        animation: none !important;
+      }
 
-          @keyframes slideInUp {
-            from {
-              opacity: 0;
-              transform: translateY(40px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
+      /* DOTS PRO */
+      .strategic-carousel-scope .strategic-dots{
+        position: absolute !important;
+        left: 0;
+        right: 0;
+        bottom: 1rem; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.7rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 20;
+        pointer-events: auto;
+      }
 
-          .custom-strategic-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            list-style: none;
-            padding: 2rem 0 0 0;
-            margin: 0;
-          }
+      /* apagados */
+      .strategic-carousel-scope .strategic-dots li button{
+        width: 10px;
+        height: 10px;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(148, 163, 184, 0.35);
+        padding: 0;
+        cursor: pointer;
+        outline: none;
+        opacity: 0.35;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
 
-          .custom-strategic-dots li {
-            cursor: pointer;
-            transition: all 0.3s ease;
-          }
+      .strategic-carousel-scope .strategic-dots li button:hover{
+        transform: scale(1.15);
+        background: rgba(34, 211, 238, 0.55);
+        border-color: rgba(34, 211, 238, 0.75);
+        opacity: 1;
+      }
 
-          .custom-strategic-dots li.react-multi-carousel-dot {
-            background: rgba(148, 163, 184, 0.6);
-            height: 0.5rem;
-            width: 0.75rem;
-            border-radius: 9999px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          }
+      /* activo */
+      .strategic-carousel-scope .strategic-dots li.react-multi-carousel-dot--active button{
+        width: 36px;
+        height: 10px;
+        border-radius: 9999px;
+        background: linear-gradient(90deg, #22d3ee, #3b82f6);
+        border-color: rgba(34, 211, 238, 0.95);
+        box-shadow: 0 0 18px rgba(34, 211, 238, 0.6);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    `}</style>
+  </div>
+</div>
 
-          .custom-strategic-dots li.react-multi-carousel-dot:hover {
-            background: rgba(34, 211, 238, 0.8);
-            transform: scale(1.2);
-          }
-
-          .custom-strategic-dots li.react-multi-carousel-dot.active {
-            background: linear-gradient(90deg, #22d3ee, #3b82f6);
-            width: 2rem;
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
-          }
-        `}</style>
-      </div>
-      <div>
-      <Productos />   
-    </div>
-
+<div>
+  <Productos />
+</div>
       {/* ====================== CARACTERÍSTICAS CON ANIMACIÓN 3D ====================== */}
       <div className="mx-auto max-w-6xl px-4 py-10">
         <motion.p
@@ -602,233 +641,439 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         </div>
       </div>
 
-      {/* ====================== SECCIÓN DE VIDEO CON FONDO OSCURO ====================== */}
-      <section className="bg-neutral-800 text-white py-20 px-4 md:px-8 relative">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-white">Nuestras</span> <span className="text-cyan-400">Soluciones</span>
-            </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Mira cómo transformamos negocios con tecnología innovadora
-            </p>
-          </motion.div>
-
-          {/* Video Large */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <div className="relative rounded-xl overflow-hidden shadow-lg border border-gray-700 w-full h-96 md:h-[500px] bg-black">
-              <video
-                className="w-full h-full object-cover"
-                src={videoUrl}
-                controls
-                preload="none"
-                poster="https://i.postimg.cc/ncJGw17n/image.png"
-              />
-            </div>
-          </motion.div>
-
-          {/* Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                  Soluciones Digitales Personalizadas
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Transformamos tus ideas en soluciones digitales que generan resultados reales. Cada proyecto es único y diseñado específicamente para tus necesidades.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  "Consultoría estratégica personalizada",
-                  "Desarrollo de software a medida",
-                  "Implementación e integración"
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 + idx * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-cyan-600 flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <span className="text-gray-200 font-medium">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.a
-                href="/contacto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="inline-block px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors"
-              >
-                Contactar Ahora
-              </motion.a>
-            </motion.div>
-
-            {/* Right Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
-                <h4 className="text-lg font-bold text-white mb-4">¿Por qué elegirnos?</h4>
-                <div className="space-y-4">
-                  {[
-                    { label: "Experiencia", value: "15+ años" },
-                    { label: "Proyectos", value: "100+ completados" },
-                    { label: "Satisfacción", value: "98% clientes" },
-                    { label: "Soporte", value: "24/7 disponible" }
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
-                      viewport={{ once: true }}
-                      className="flex justify-between items-center pb-3 border-b border-slate-700 last:border-0 last:pb-0"
-                    >
-                      <span className="text-gray-300">{item.label}</span>
-                      <span className="font-bold text-cyan-400">{item.value}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-cyan-900/40 to-blue-900/40 border border-cyan-700/50 text-white p-8 rounded-lg">
-                <p className="text-sm mb-4">
-                  "Trabajar con este equipo fue transformacional para nuestro negocio. Son profesionales, dedicados y entienden realmente lo que necesitas."
-                </p>
-                <p className="font-semibold text-sm">Cliente Satisfecho</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-    {/* ====================== SECCIÓN DE OPINIONES CON CARRUSEL MEJORADA ====================== */}
-<section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
-  {/* Decorativos de fondo */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-20 right-20 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-    <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+     {/* ====================== SECCIÓN DE VIDEO (panel derecha fijo + métricas abajo) ====================== */}
+<section className="bg-neutral-800 text-white py-20 md:py-24 px-4 md:px-8 relative overflow-hidden">
+  {/* decor */}
+  <div className="pointer-events-none absolute inset-0">
+    <div className="absolute -top-40 -right-40 w-[560px] h-[560px] bg-cyan-500/15 rounded-full blur-3xl" />
+    <div className="absolute -bottom-40 -left-40 w-[560px] h-[560px] bg-blue-500/15 rounded-full blur-3xl" />
+    <div
+      className="absolute inset-0 opacity-[0.06]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+        backgroundSize: "18px 18px",
+      }}
+    />
   </div>
 
-  <div className="max-w-7xl mx-auto relative z-10">
-    {/* Encabezado mejorado */}
+  {/* CONTENEDOR CON PERSPECTIVA (3D GLOBAL) */}
+  <motion.div
+    className="max-w-6xl mx-auto relative z-10"
+    style={{ perspective: 1400 }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.2 }}
+    variants={{
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: { staggerChildren: 0.12, delayChildren: 0.06 },
+      },
+    }}
+  >
+    {/* HEADER */}
     <motion.div
-      initial={{ opacity: 0, y: -30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.3 }}
-      className="mb-12 text-center"
+      variants={{
+        hidden: { opacity: 0, y: 18, rotateX: 12 },
+        show: {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+        },
+      }}
+      style={{ transformStyle: "preserve-3d" }}
+      className="text-center mb-12 md:mb-16"
     >
-      <motion.span
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        viewport={{ once: true }}
-        className="text-cyan-400 text-sm font-black tracking-[0.2em] uppercase inline-block px-4 py-2 border border-cyan-400/30 rounded-full bg-cyan-400/5 mb-4"
+      <motion.div
+        whileHover={{ y: -2, rotateX: 2 }}
+        transition={{ type: "spring", stiffness: 220, damping: 18 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur"
       >
-        Testimonios
-      </motion.span>
-      
+        <span className="w-2 h-2 rounded-full bg-cyan-400" />
+        <span className="text-xs md:text-sm font-black tracking-[0.18em] uppercase text-cyan-300">
+          Soluciones
+        </span>
+      </motion.div>
+
+      {/* ✅ TÍTULO COMO TU PRIMERA CAP: BLANCO + CELESTE */}
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.15 }}
-        viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-black text-slate-900 mt-4 leading-tight"
+        variants={{
+          hidden: { opacity: 0, y: 14, rotateX: 14 },
+          show: {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+          },
+        }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="mt-5 text-4xl md:text-6xl font-black leading-tight"
       >
-        La voz de nuestros <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">clientes</span>
+        <span className="text-white">Nuestras</span>{" "}
+        <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]">
+          Soluciones
+        </span>
       </motion.h2>
 
       <motion.p
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.25 }}
-        viewport={{ once: true }}
-        className="text-base text-slate-600 mt-4 max-w-2xl mx-auto"
+        variants={{
+          hidden: { opacity: 0, y: 10 },
+          show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+        }}
+        className="mt-4 text-base md:text-lg text-slate-300 max-w-2xl mx-auto"
       >
-        Descubre cómo hemos transformado negocios y generado resultados tangibles
+        Mira cómo transformamos negocios con tecnología innovadora.
       </motion.p>
     </motion.div>
 
-    {/* Carrusel de testimonios mejorado - SIN ANIMACIONES PESADAS */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      viewport={{ once: true, amount: 0.2 }}
-      className="relative"
-    >
-      <Carousel
-        responsive={{
-          desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-          tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
-          mobile: { breakpoint: { max: 640, min: 0 }, items: 1 },
+    {/* ✅ BLOQUE 1: VIDEO + PANEL DERECHA */}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      {/* VIDEO */}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 26, rotateX: 18, rotateY: -10 },
+          show: {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            rotateY: 0,
+            transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+          },
         }}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={5000}
-        arrows={true}
-        showDots={true}
-        dotListClass="custom-testimonial-dots"
-        itemClass="px-3 md:px-4"
-        containerClass="pb-12"
+        style={{ transformStyle: "preserve-3d" }}
+        whileHover={{
+          rotateX: 2,
+          rotateY: -2,
+          y: -6,
+          transition: { type: "spring", stiffness: 220, damping: 18 },
+        }}
+        className="lg:col-span-8"
       >
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200 hover:-translate-y-3"
+        <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+          <div className="relative w-full aspect-video">
+            <video
+              className="w-full h-full object-cover"
+              src={videoUrl}
+              controls
+              preload="metadata"
+              poster="https://i.postimg.cc/ncJGw17n/image.png"
+            />
+          </div>
+
+          <div className="flex items-center justify-between gap-4 px-5 py-4 bg-gradient-to-r from-white/5 to-white/0 border-t border-white/10">
+            <p className="text-sm text-slate-200 font-semibold">
+              Demo de servicios • Implementación • Resultados
+            </p>
+            <div className="hidden sm:flex items-center gap-2">
+              <span className="text-[11px] px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/20 text-cyan-200 font-bold">
+                24/7
+              </span>
+              <span className="text-[11px] px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/20 text-blue-200 font-bold">
+                Soporte
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* PANEL DERECHA */}
+      <motion.aside
+        variants={{
+          hidden: { opacity: 0, y: 26, rotateX: 18, rotateY: 10 },
+          show: {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            rotateY: 0,
+            transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+          },
+        }}
+        style={{ transformStyle: "preserve-3d" }}
+        whileHover={{
+          rotateX: 2,
+          rotateY: 2,
+          y: -6,
+          transition: { type: "spring", stiffness: 220, damping: 18 },
+        }}
+        className="lg:col-span-4"
+      >
+        <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-7 shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
+          <h3 className="text-xl md:text-2xl font-black">
+            Soluciones Digitales Personalizadas
+          </h3>
+          <p className="mt-3 text-slate-300 leading-relaxed">
+            Transformamos tus ideas en soluciones digitales con impacto real.
+            Cada proyecto se diseña según tus objetivos.
+          </p>
+
+          <div className="mt-6 space-y-3">
+            {[
+              "Consultoría estratégica personalizada",
+              "Desarrollo de software a medida",
+              "Implementación e integración",
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.08 * idx }}
+                className="flex items-start gap-3"
+              >
+                <div className="mt-1 w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/20 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-cyan-200" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span className="text-slate-200 font-semibold">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-7 flex flex-col sm:flex-row gap-3">
+            <motion.a
+              href="/contacto"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold
+                         bg-gradient-to-r from-cyan-500 to-blue-600
+                         hover:from-cyan-400 hover:to-blue-500 transition-all"
+            >
+              Contactar ahora
+            </motion.a>
+
+            <motion.a
+              href="/servicios"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold
+                         border border-white/15 bg-white/5 hover:bg-white/10 transition-all"
+            >
+              Ver servicios
+            </motion.a>
+          </div>
+        </div>
+      </motion.aside>
+    </div>
+
+    {/* ✅ BLOQUE 2: MÉTRICAS + TESTIMONIO */}
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        show: { opacity: 1, transition: { staggerChildren: 0.10 } },
+      }}
+      className="mt-14 md:mt-16"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {/* MÉTRICAS */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: "EXPERIENCIA", main: "15+", sub: "años" },
+          { title: "PROYECTOS", main: "100+", sub: "completados" },
+          { title: "SATISFACCIÓN", main: "98%", sub: "clientes" },
+          { title: "SOPORTE", main: "24/7", sub: "disponible" },
+        ].map((m, idx) => (
+          <motion.div
+            key={idx}
+            variants={{
+              hidden: { opacity: 0, y: 18, rotateX: 14 },
+              show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+            }}
+            style={{ transformStyle: "preserve-3d" }}
+            whileHover={{
+              rotateX: 3,
+              rotateY: idx % 2 === 0 ? -3 : 3,
+              y: -8,
+              transition: { type: "spring", stiffness: 220, damping: 16 },
+            }}
+            className="group relative rounded-2xl p-7 border border-white/10 bg-white/5 backdrop-blur
+                       shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition-all duration-300"
           >
-            {/* Estrellas animadas */}
-            <div className="flex gap-2 mb-5">
-              {[...Array(5)].map((_, i) => (
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-70" />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                            bg-gradient-to-br from-cyan-500/12 via-transparent to-blue-500/12" />
+
+            <p className="text-[11px] uppercase tracking-[0.22em] font-extrabold text-slate-300">
+              {m.title}
+            </p>
+
+            <div className="mt-4 flex items-end gap-2">
+              <p className="text-4xl font-black bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent leading-none">
+                {m.main}
+              </p>
+              <span className="text-base font-bold text-slate-300/90">{m.sub}</span>
+            </div>
+
+            <p className="mt-4 text-sm text-slate-400 leading-relaxed">
+              Resultados medibles y enfoque en calidad.
+            </p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* TESTIMONIO */}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 18, rotateX: 14 },
+          show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+        }}
+        style={{ transformStyle: "preserve-3d" }}
+        whileHover={{
+          rotateX: 2,
+          rotateY: 2,
+          y: -6,
+          transition: { type: "spring", stiffness: 220, damping: 18 },
+        }}
+        className="mt-8"
+      >
+        <div className="relative overflow-hidden rounded-3xl p-8 md:p-10 border border-white/10 bg-white/5 backdrop-blur
+                        shadow-[0_22px_60px_rgba(0,0,0,0.45)]">
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-400/80 to-blue-500/70" />
+          <div className="pointer-events-none absolute -top-10 right-8 text-[120px] text-cyan-400/10 select-none">
+            “
+          </div>
+
+          <p className="text-base md:text-lg text-slate-200 leading-relaxed max-w-5xl">
+            “Trabajar con este equipo cambió nuestro negocio. Comunicación clara, entrega rápida y resultados.”
+          </p>
+
+          <div className="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center font-black text-slate-900">
+                CS
+              </div>
+              <div>
+                <p className="text-sm font-extrabold tracking-wide text-white">
+                  CLIENTE SATISFECHO
+                </p>
+                <p className="text-xs text-slate-400">Reseña verificada</p>
+              </div>
+            </div>
+
+            <div className="sm:ml-auto flex flex-wrap items-center gap-2">
+              <span className="text-[11px] px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-cyan-200 font-bold">
+                Calidad
+              </span>
+              <span className="text-[11px] px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-200 font-bold">
+                Entrega rápida
+              </span>
+              <span className="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 font-bold">
+                Soporte
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  </motion.div>
+</section>
+
+   {/* ====================== SECCIÓN TESTIMONIOS (BLANCO + TÍTULO ESTILO “SOLUCIONES”) ====================== */}
+<section className="relative overflow-hidden py-20 md:py-24 px-4 md:px-8 bg-white text-slate-900">
+  {/* Fondo decorativo (suave en blanco) */}
+  <div className="pointer-events-none absolute inset-0">
+    <div className="absolute -top-40 -right-40 w-[560px] h-[560px] bg-cyan-500/10 rounded-full blur-3xl" />
+    <div className="absolute -bottom-40 -left-40 w-[560px] h-[560px] bg-blue-500/10 rounded-full blur-3xl" />
+    <div
+      className="absolute inset-0 opacity-[0.25]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 1px 1px, rgba(15,23,42,.18) 1px, transparent 0)",
+        backgroundSize: "18px 18px",
+      }}
+    />
+  </div>
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    {/* HEADER (mismo estilo que “Nuestras Soluciones”: blanco + celeste) */}
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.35 }}
+      className="text-center mb-14 md:mb-16"
+    >
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-900/10 bg-white/70 backdrop-blur shadow-sm">
+        <span className="w-2 h-2 rounded-full bg-cyan-500" />
+        <span className="text-xs md:text-sm font-black tracking-[0.18em] uppercase text-cyan-700">
+          Testimonios
+        </span>
+      </div>
+
+      <h2 className="mt-5 text-4xl md:text-6xl font-black leading-tight">
+        <span className="text-slate-950">La voz de nuestros</span>{" "}
+        <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+          clientes
+        </span>
+      </h2>
+
+      <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+        Descubre cómo hemos transformado negocios y generado resultados tangibles.
+      </p>
+    </motion.div>
+
+    {/* CARRUSEL */}
+    <Carousel
+      responsive={{
+        desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
+        tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
+        mobile: { breakpoint: { max: 640, min: 0 }, items: 1 },
+      }}
+      infinite
+      autoPlay
+      autoPlaySpeed={5000}
+      arrows
+      showDots
+      dotListClass="testimonial-dots-light"
+      itemClass="px-3 md:px-4"
+      containerClass="pb-14"
+    >
+      {testimonials.map((t, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: index * 0.06 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="h-full"
+        >
+          {/* CARD (NO se mueve / NO “salta”) */}
+          <div
+            className="group relative h-full rounded-3xl border border-slate-900/10 bg-white/80 backdrop-blur
+                       shadow-[0_18px_50px_rgba(2,6,23,0.08)] p-8 flex flex-col overflow-hidden
+                       transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(2,6,23,0.12)]"
+          >
+            {/* brillo suave al hover (sin mover card) */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                         bg-gradient-to-br from-cyan-500/6 via-transparent to-blue-500/6"
+            />
+
+            {/* Estrellas (solo aquí hay animación + MÁS RÁPIDA) */}
+            <div className="flex gap-2 mb-6">
+              {Array.from({ length: 5 }).map((_, i) => (
                 <motion.svg
                   key={i}
-                  initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
-                  whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: "easeOut" }}
+                  initial={{ opacity: 0, scale: 0.6, y: 10, rotateZ: -80 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0, rotateZ: 0 }}
+                  transition={{
+                    duration: 0.22, // ✅ más rápido
+                    delay: 0.08 + i * 0.05, // ✅ menos delay
+                    ease: "easeOut",
+                  }}
                   viewport={{ once: true }}
-                  whileHover={{ 
-                    scale: 1.4, 
-                    rotateZ: 360,
-                    y: -10,
-                    transition: { duration: 0.5 } 
+                  whileHover={{
+                    y: -10, // ✅ “abajo pa arriba”
+                    scale: 1.25,
+                    rotateZ: 20,
+                    transition: { duration: 0.18, ease: "easeOut" }, // ✅ rápido
                   }}
                   className="w-6 h-6 fill-yellow-400 cursor-pointer"
                   viewBox="0 0 20 20"
@@ -838,293 +1083,309 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               ))}
             </div>
 
-            {/* Icono de comilla */}
-            <div className="text-5xl text-cyan-400/20 mb-3 leading-none">
-              "
-            </div>
-
-            {/* Texto del testimonio */}
+            {/* Quote */}
             <p className="text-slate-700 text-base leading-relaxed mb-8 flex-grow font-medium">
-              {testimonial.quote}
+              {t.quote}
             </p>
 
-            {/* Separador */}
-            <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 rounded-full"></div>
+            {/* Divider */}
+            <div className="h-1 w-14 bg-gradient-to-r from-cyan-500 to-blue-600 mb-6 rounded-full" />
 
-            {/* Avatar y nombre */}
+            {/* Footer */}
             <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 blur opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                 <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
+                  src={t.avatar}
+                  alt={t.name}
                   className="relative w-14 h-14 rounded-full object-cover border-2 border-white shadow-md"
                 />
               </div>
-              <div className="flex-1">
-                <p className="font-bold text-slate-900 text-sm">
-                  {testimonial.name}
-                </p>
-                <p className="text-cyan-500 text-xs font-semibold">Cliente satisfecho</p>
+
+              <div>
+                <p className="font-bold text-slate-900 text-sm">{t.name}</p>
+                <p className="text-cyan-700 text-xs font-semibold">Cliente satisfecho</p>
               </div>
             </div>
           </div>
-        ))}
-      </Carousel>
-    </motion.div>
+        </motion.div>
+      ))}
+    </Carousel>
 
-    {/* Estilos personalizados */}
-    <style jsx>{`
-      .custom-testimonial-dots {
-        display: flex;
-        justify-content: center;
-        gap: 0.75rem;
-        list-style: none;
-        padding: 2rem 0 0 0;
-        margin: 0;
+    {/* DOTS (para fondo blanco) */}
+    <style>{`
+      .testimonial-dots-light{
+        display:flex;
+        justify-content:center;
+        gap:.8rem;
+        list-style:none;
+        padding:2rem 0 0 0;
+        margin:0;
       }
 
-      .custom-testimonial-dots li {
-        cursor: pointer;
-        transition: all 0.3s ease;
+      .testimonial-dots-light li button{
+        width:10px;
+        height:10px;
+        border-radius:9999px;
+        border:1px solid rgba(15,23,42,.20);
+        background:rgba(15,23,42,.18);
+        padding:0;
+        transition:all .25s ease;
       }
 
-      .custom-testimonial-dots li.react-multi-carousel-dot {
-        background: rgba(148, 163, 184, 0.5);
-        height: 0.6rem;
-        width: 0.8rem;
-        border-radius: 9999px;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      .testimonial-dots-light li button:hover{
+        transform:scale(1.2);
+        background:rgba(34,211,238,.45);
+        border-color:rgba(34,211,238,.45);
       }
 
-      .custom-testimonial-dots li.react-multi-carousel-dot:hover {
-        background: rgba(34, 211, 238, 0.8);
-        transform: scale(1.2);
-      }
-
-      .custom-testimonial-dots li.react-multi-carousel-dot.active {
-        background: linear-gradient(90deg, #22d3ee, #3b82f6);
-        width: 2rem;
-        box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+      .testimonial-dots-light li.react-multi-carousel-dot--active button{
+        width:32px;
+        height:10px;
+        background:linear-gradient(90deg,#06b6d4,#2563eb);
+        border-color:rgba(37,99,235,.25);
+        box-shadow:0 0 14px rgba(34,211,238,.35);
       }
     `}</style>
   </div>
 </section>
+   {/* ====================== SECCIÓN DE CLIENTES GRID ====================== */}
+<div className="bg-gradient-to-b from-black via-slate-900 to-black text-white py-8 px-4 md:px-8 relative overflow-hidden">
+  {/* Fondo limpio */}
+  <div className="max-w-7xl mx-auto text-center relative z-10">
 
-      {/* ====================== SECCIÓN DE CLIENTES GRID ====================== */}
-      <div className="bg-neutral-800 text-white py-8 px-4 md:px-8 relative overflow-hidden">
-        {/* Fondo limpio */}
+    {/* ✅ HEADER (solo esto se cambió) */}
+    <motion.div
+      initial={{ opacity: 0, y: -18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.35 }}
+      className="mb-10"
+    >
+      <motion.div
+        whileHover={{ y: -2, rotateX: 2 }}
+        transition={{ type: "spring", stiffness: 220, damping: 18 }}
+        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        <span className="w-2 h-2 rounded-full bg-cyan-400" />
+        <span className="text-xs md:text-sm font-black tracking-[0.18em] uppercase text-cyan-300">
+          Clientes
+        </span>
+      </motion.div>
 
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: -15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-white mb-3 tracking-tight"
+      <motion.h2
+        initial={{ opacity: 0, y: 14, rotateX: 12 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ once: true }}
+        className="mt-6 text-4xl md:text-6xl font-black leading-tight tracking-tight"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        <span className="text-white">Nuestros</span>{" "}
+        <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]">
+          clientes
+        </span>
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="mt-4 text-gray-300 text-base md:text-lg font-semibold tracking-wide"
+      >
+        Las marcas que confían en{" "}
+        <span className="text-cyan-400">Soluciones Integrales JB</span>
+      </motion.p>
+    </motion.div>
+
+    {/* ✅ (desde aquí, TODO es tu diseño original) */}
+
+    {/* Estadísticas mejoradas */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="flex justify-center gap-8 md:gap-16 mb-8 flex-wrap"
+    >
+      {[
+        { number: "100+", text: "Clientes" },
+        { number: "15+", text: "Años" },
+        { number: "98%", text: "Satisfacción" },
+      ].map((stat, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, scale: 0.6, y: 25 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.2 + idx * 0.12,
+            ease: "backOut",
+            type: "spring",
+            stiffness: 120,
+            damping: 12
+          }}
+          viewport={{ once: true }}
+          whileHover={{
+            scale: 1.2,
+            y: -15,
+            transition: { duration: 0.3, type: "spring", stiffness: 300, damping: 10 }
+          }}
+          className="text-center group cursor-pointer relative px-6 py-4"
+        >
+          {/* Fondo decorativo hover */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 blur-md"
+            whileHover={{ opacity: 1 }}
+          />
+
+          {/* Borde animado */}
+          <motion.div
+            className="absolute inset-0 rounded-xl border-2 border-cyan-500/0 group-hover:border-cyan-500/40 transition-all duration-300"
+            whileHover={{ boxShadow: "0 0 20px rgba(34, 211, 238, 0.4)" }}
+          />
+
+          <motion.div
+            className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-purple-500 transition-all duration-300"
+            whileHover={{ scale: 1.25 }}
           >
-            Nuestros <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">clientes</span>
-          </motion.h2>
+            {stat.number}
+          </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-gray-300 text-lg md:text-xl mb-8 font-semibold tracking-wide"
+            className="relative text-gray-300 text-sm md:text-base mt-3 font-semibold group-hover:text-cyan-300 transition-colors duration-300"
+            whileHover={{ y: -3 }}
           >
-            Las marcas que confían en <span className="text-cyan-400">Soluciones Integrales JB</span>
+            {stat.text}
           </motion.p>
+        </motion.div>
+      ))}
+    </motion.div>
 
-          {/* Estadísticas mejoradas */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="flex justify-center gap-8 md:gap-16 mb-8 flex-wrap"
-          >
-            {[
-              { number: "100+", text: "Clientes" },
-              { number: "15+", text: "Años" },
-              { number: "98%", text: "Satisfacción" },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.6, y: 25 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 0.2 + idx * 0.12, 
-                  ease: "backOut",
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 12
-                }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.2, 
-                  y: -15,
-                  transition: { duration: 0.3, type: "spring", stiffness: 300, damping: 10 }
-                }}
-                className="text-center group cursor-pointer relative px-6 py-4"
-              >
-                {/* Fondo decorativo hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 blur-md"
-                  whileHover={{ opacity: 1 }}
-                ></motion.div>
-
-                {/* Borde animado */}
-                <motion.div
-                  className="absolute inset-0 rounded-xl border-2 border-cyan-500/0 group-hover:border-cyan-500/40 transition-all duration-300"
-                  whileHover={{ 
-                    boxShadow: "0 0 20px rgba(34, 211, 238, 0.4)"
-                  }}
-                ></motion.div>
-
-                <motion.div
-                  className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-purple-500 transition-all duration-300"
-                  whileHover={{ scale: 1.25 }}
-                >
-                  {stat.number}
-                </motion.div>
-                <motion.p 
-                  className="relative text-gray-300 text-sm md:text-base mt-3 font-semibold group-hover:text-cyan-300 transition-colors duration-300"
-                  whileHover={{ y: -3 }}
-                >
-                  {stat.text}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Carrusel de logos animado */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="relative w-full mt-8 overflow-hidden"
-          >
-            {/* Primera fila - movimiento izquierda */}
-            <motion.div 
-              className="h-28 md:h-32 overflow-hidden mb-6"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-              viewport={{ once: true }}
+    {/* Carrusel de logos animado */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="relative w-full mt-8 overflow-hidden"
+    >
+      {/* Primera fila - movimiento izquierda */}
+      <motion.div
+        className="h-28 md:h-32 overflow-hidden mb-6"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <motion.div
+          className="flex gap-12 md:gap-16 items-center"
+          animate={{ x: [0, -2000] }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+          whileHover={{ animationPlayState: "paused" }}
+        >
+          {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{
+                scale: 1.2,
+                y: -12,
+                transition: { duration: 0.3 }
+              }}
+              className="flex-shrink-0 flex items-center justify-center h-24 md:h-28 group cursor-pointer relative"
             >
+              {/* Borde glow hover */}
               <motion.div
-                className="flex gap-12 md:gap-16 items-center"
-                animate={{ x: [0, -2000] }}
-                transition={{ 
-                  duration: 40, 
-                  repeat: Infinity, 
-                  ease: "linear",
-                  repeatType: "loop"
+                className="absolute inset-0 rounded-lg border-2 border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-300"
+                whileHover={{ boxShadow: "0 0 25px rgba(34, 211, 238, 0.6)" }}
+              />
+
+              {/* Logo */}
+              <motion.img
+                src={logo.src}
+                alt={logo.alt}
+                className="relative h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-400"
+                whileHover={{
+                  scale: 1.15,
+                  filter: "drop-shadow(0 0 16px rgba(34, 211, 238, 0.8))"
                 }}
-                whileHover={{ animationPlayState: "paused" }}
-              >
-                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ 
-                      scale: 1.2,
-                      y: -12,
-                      transition: { duration: 0.3 }
-                    }}
-                    className="flex-shrink-0 flex items-center justify-center h-24 md:h-28 group cursor-pointer relative"
-                  >
-                    {/* Borde glow hover */}
-                    <motion.div
-                      className="absolute inset-0 rounded-lg border-2 border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-300"
-                      whileHover={{ 
-                        boxShadow: "0 0 25px rgba(34, 211, 238, 0.6)"
-                      }}
-                    ></motion.div>
-
-                    {/* Logo */}
-                    <motion.img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="relative h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-400"
-                      whileHover={{ 
-                        scale: 1.15,
-                        filter: "drop-shadow(0 0 16px rgba(34, 211, 238, 0.8))"
-                      }}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
+              />
             </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
 
-            {/* Segunda fila - movimiento derecha */}
-            <motion.div 
-              className="h-28 md:h-32 overflow-hidden"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-              viewport={{ once: true }}
+      {/* Segunda fila - movimiento derecha */}
+      <motion.div
+        className="h-28 md:h-32 overflow-hidden"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <motion.div
+          className="flex gap-12 md:gap-16 items-center"
+          animate={{ x: [-2000, 0] }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+          whileHover={{ animationPlayState: "paused" }}
+        >
+          {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{
+                scale: 1.2,
+                y: -12,
+                transition: { duration: 0.3 }
+              }}
+              className="flex-shrink-0 flex items-center justify-center h-24 md:h-28 group cursor-pointer relative"
             >
+              {/* Borde glow hover */}
               <motion.div
-                className="flex gap-12 md:gap-16 items-center"
-                animate={{ x: [-2000, 0] }}
-                transition={{ 
-                  duration: 40, 
-                  repeat: Infinity, 
-                  ease: "linear",
-                  repeatType: "loop"
+                className="absolute inset-0 rounded-lg border-2 border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-300"
+                whileHover={{ boxShadow: "0 0 25px rgba(34, 211, 238, 0.6)" }}
+              />
+
+              {/* Logo */}
+              <motion.img
+                src={logo.src}
+                alt={logo.alt}
+                className="relative h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-400"
+                whileHover={{
+                  scale: 1.15,
+                  filter: "drop-shadow(0 0 16px rgba(34, 211, 238, 0.8))"
                 }}
-                whileHover={{ animationPlayState: "paused" }}
-              >
-                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ 
-                      scale: 1.2,
-                      y: -12,
-                      transition: { duration: 0.3 }
-                    }}
-                    className="flex-shrink-0 flex items-center justify-center h-24 md:h-28 group cursor-pointer relative"
-                  >
-                    {/* Borde glow hover */}
-                    <motion.div
-                      className="absolute inset-0 rounded-lg border-2 border-cyan-500/0 group-hover:border-cyan-500/50 transition-all duration-300"
-                      whileHover={{ 
-                        boxShadow: "0 0 25px rgba(34, 211, 238, 0.6)"
-                      }}
-                    ></motion.div>
-
-                    {/* Logo */}
-                    <motion.img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="relative h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-400"
-                      whileHover={{ 
-                        scale: 1.15,
-                        filter: "drop-shadow(0 0 16px rgba(34, 211, 238, 0.8))"
-                      }}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
+              />
             </motion.div>
-          </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </motion.div>
 
-          {/* Componentes finales */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="mt-8 space-y-4"
-          >
-            <VoiceflowChat />
-            <ScrollButton />
-          </motion.div>
-        </div>
-      </div>
+    {/* Componentes finales */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="mt-8 space-y-4"
+    >
+      <VoiceflowChat />
+      <ScrollButton />
+    </motion.div>
+  </div>
+</div>
 
       {/* ====== ESTILOS PARA LA SECCIÓN DE PRODUCTOS ====== */}
       <style>{`
