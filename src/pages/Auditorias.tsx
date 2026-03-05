@@ -1,5 +1,5 @@
 import React from "react";
-import fondoN from "../assets/fondoN.jpg"; // 👈 asegúrate de que la ruta sea correcta
+import fondoN from "../assets/fondoN.jpg"; // 
 import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
 import { motion } from "framer-motion";
