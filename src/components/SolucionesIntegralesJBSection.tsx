@@ -65,13 +65,13 @@ interface Props {
 
 // ---- Data ----
 const heroSlides: HeroSlide[] = [
-    { image: "https://i.postimg.cc/k4st61Tv/image.png", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
-    { image: "https://i.postimg.cc/D0D0LtL9/image.png", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
-    { image: "https://i.postimg.cc/qvcBvtbQ/image.png", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
-    { image: "https://i.postimg.cc/gJt2bfSz/image.png", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
-    { image: "https://i.postimg.cc/3wSk34NP/image.png", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
-    { image: "https://i.postimg.cc/3JXWdbWb/image.png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
-    { image: "https://i.postimg.cc/1tV3PvL6/image.png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
+    { image: "https://i.postimg.cc/d1QtZqkW/Diseño_sin_título_(21).png", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
+    { image: "https://i.postimg.cc/ZKXRst2h/Diseño_sin_título_(15).png", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
+    { image: "https://i.postimg.cc/nh7L6Sf2/Diseño_sin_título_(17).png", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
+    { image: "https://i.postimg.cc/8zWCqXgJ/Diseño_sin_título_(16).png", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
+    { image: "https://i.postimg.cc/vmsmM7G3/Diseño_sin_título_(18).png", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
+    { image: "https://i.postimg.cc/Zqx5q9qg/Diseño_sin_título_(19).png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
+    { image: "https://i.postimg.cc/vB8HxQgm/Diseño_sin_título_(20).png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
 ];
 
 const responsiveServices = {
