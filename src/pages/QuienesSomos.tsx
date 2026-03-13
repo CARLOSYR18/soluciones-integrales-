@@ -4,6 +4,7 @@ import { FaChartLine, FaEye } from "react-icons/fa";
 import { FaShieldAlt, FaClock, FaKey, FaLightbulb, FaUsers, FaHeart } from "react-icons/fa";
 import ScrollButton from "../components/ScrollButton";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   FaLock,
   FaCheckCircle,
@@ -152,184 +153,137 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       <p className="text-white text-sm sm:text-base mb-6">
         Quiénes Somos y Hacia Dónde Vamos
       </p>
-      <a
-        href="https://solucionesintegralesjb.com/#services"
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link to="/DesarrolloDeSitiosWeb">
+  <button className="cta cta-large">
+    <span className="span">
+      Descubre
+      <br />
+      nuestros servicios
+    </span>
+
+    <span className="second">
+      <svg
+        width="50px"
+        height="20px"
+        viewBox="0 0 66 43"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <button className="cta cta-large">
-          <span className="span">
-            Descubre
-            <br />
-            nuestros servicios
-          </span>
-          <span className="second">
-            <svg
-              width="50px"
-              height="20px"
-              viewBox="0 0 66 43"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="arrow" fill="none" fillRule="evenodd">
-                <path
-                  className="one"
-                  d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
-                  fill="#fff"
-                />
-                <path
-                  className="two"
-                  d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
-                  fill="#fff"
-                />
-                <path
-                  className="three"
-                  d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
-                  fill="#fff"
-                />
-              </g>
-            </svg>
-          </span>
-        </button>
-      </a>
-    </div>
-  </div>
-</div>
+        <g fill="none" fillRule="evenodd">
+          <path
+            className="one"
+            d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
+            fill="#fff"
+          />
+          <path
+            className="two"
+            d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+            fill="#fff"
+          />
+        </g>
+      </svg>
+    </span>
+  </button>
+</Link>
 
-
-{/* ====================== SECCIÓN QUIÉNES SOMOS MEJORADA + ANIMACIONES ====================== */}
-<section className="relative w-full bg-gradient-to-b from-white via-slate-50 to-white">
-  <div className="mx-auto max-w-6xl px-4 py-16">
-    <div className="grid lg:grid-cols-2 gap-16 items-start">
-      
-      {/* ================= IMÁGENES ================= */}
-      <div className="flex flex-col gap-10">
+</div>   {/* cierra el cuadro negro */}
+</div>   {/* cierra el contenedor del hero */}
+</div>   {/* cierra el hero principal */}
+     
         
-        {/* Imagen 1 (entrada desde izquierda + fade) */}
+
+{/* ====================== QUIENES SOMOS - SECCIÓN LIMPIA ====================== */}
+<section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
+  <div className="mx-auto max-w-6xl px-4 py-16">
+    <div className="grid lg:grid-cols-2 gap-14 items-center">
+
+      {/* ================= IMÁGENES ================= */}
+      <div className="flex flex-col gap-8">
+
         <motion.div
-          initial={{ opacity: 0, x: -30, y: 10 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
         >
           <img
             src={hero2}
             alt="Automatización"
-            className="w-full h-auto object-contain rounded-xl"
+            className="w-full rounded-xl object-cover"
           />
           <div className="mt-4 text-center">
-            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
+            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm">
               Automatización • ITSM • ITIL
             </span>
           </div>
         </motion.div>
 
-        {/* Imagen 2 (entrada desde izquierda + fade, un poquito más tarde) */}
         <motion.div
-          initial={{ opacity: 0, x: -30, y: 10 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut", delay: 0.08 }}
-          viewport={{ once: true, amount: 0.25 }}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
         >
           <img
             src={hero3}
             alt="Innovación"
-            className="w-full h-auto object-contain rounded-xl"
+            className="w-full rounded-xl object-cover"
           />
           <div className="mt-4 text-center">
-            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
+            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm">
               Innovación en procesos
             </span>
           </div>
         </motion.div>
+
       </div>
 
       {/* ================= TEXTO ================= */}
-      <div className="flex flex-col h-full">
-        
-        {/* Badge + título (fade + slide suave) */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-cyan-500" />
-            INNOVACIÓN Y TECNOLOGÍA PARA TU CRECIMIENTO
-          </div>
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="flex flex-col"
+      >
 
-          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
-            Quiénes Somos
-          </h2>
-        </motion.div>
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm w-fit">
+          <span className="h-2 w-2 rounded-full bg-cyan-500"></span>
+          INNOVACIÓN Y TECNOLOGÍA PARA TU CRECIMIENTO
+        </div>
 
-        {/* Card principal (entrada desde derecha + fade) */}
-        <motion.div
-          initial={{ opacity: 0, x: 30, y: 10 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8"
-        >
-          <p className="text-slate-700 leading-relaxed">
+        {/* Título */}
+        <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
+          Quiénes Somos
+        </h2>
+
+        {/* Card de texto */}
+        <div className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
+
+          <p className="text-slate-700 leading-relaxed text-[15px] md:text-base">
             Somos una empresa de tecnología especializada en automatizar procesos de
             negocio para mejorar la eficiencia y resultados en diversas áreas de
             producción. Nos enfocamos en la Gestión de Servicios de TI, ofreciendo
             soluciones basadas en ITSM e ITIL.
           </p>
 
-          <p className="mt-5 text-slate-700 leading-relaxed">
+          <p className="mt-6 text-slate-700 leading-relaxed text-[15px] md:text-base">
             Contamos con un equipo de profesionales que optimizan tanto el tiempo
             como los recursos económicos de nuestros clientes, garantizando un
             servicio de alta calidad.
           </p>
 
-          {/* Mini cards (stagger con delay) */}
-          <div className="mt-10 grid grid-cols-3 gap-5">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
-              viewport={{ once: true, amount: 0.25 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">ITSM</p>
-              <p className="text-xs text-slate-600 mt-1">Enfoque operativo</p>
-            </motion.div>
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
-              viewport={{ once: true, amount: 0.25 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">ITIL</p>
-              <p className="text-xs text-slate-600 mt-1">Buenas prácticas</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.18 }}
-              viewport={{ once: true, amount: 0.25 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">+Eficiencia</p>
-              <p className="text-xs text-slate-600 mt-1">Optimización real</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Recuadro celeste (entrada + “pop” suave) */}
+        {/* Recuadro azul */}
         <motion.div
-          initial={{ opacity: 0, y: 22, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-          className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-8 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
         >
           <h3 className="text-lg font-semibold">
             Impulsamos la transformación digital de tu empresa
@@ -339,11 +293,12 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
             optimizando procesos y garantizando resultados medibles.
           </p>
         </motion.div>
-      </div>
+
+      </motion.div>
+
     </div>
   </div>
 </section>
-
       {/* ====================== MISIÓN / VISIÓN (FLIP PRO - MISMO COLOR EN FRENTE) ====================== */}
 <section className="mx-auto max-w-6xl px-4 py-16">
   <div className="grid md:grid-cols-2 gap-8">
@@ -660,54 +615,52 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   `}</style>
 </section>
 
-      <section className="w-full bg-[#007BFF] py-16 flex justify-center items-center">
-        <div className="max-w-3xl w-full text-center px-4">
-          <h2 className="text-white text-3xl font-bold mb-6">OBJETIVOS</h2>
-          <p className="text-white mb-8">
-            La empresa se centra en reforzar la gestión de servicios de TI,
-            desarrollando soluciones que respondan a las necesidades de los
-            clientes mediante el uso de tecnología avanzada. Buscamos mejorar
-            nuestras operaciones y proyectos, fortaleciendo nuestras habilidades
-            para enfrentar los retos digitales actuales, promoviendo la seguridad
-            y la productividad.
-          </p>
+      {/* ====================== OBJETIVOS ====================== */}
+<section className="w-full bg-[#007BFF] py-16 flex justify-center items-center">
+  <div className="max-w-3xl w-full text-center px-4">
+    <h2 className="text-white text-3xl font-bold mb-6">OBJETIVOS</h2>
 
-          <div className="flex justify-center">
-            <a href="#contact" target="_blank" rel="noopener noreferrer">
-              <button className="cta cta-large">
-                <span className="span">CONTACTANOS</span>
-                <span className="second">
-                  <svg
-                    width="50px"
-                    height="20px"
-                    viewBox="0 0 66 43"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="arrow" fill="none" fillRule="evenodd">
-                      <path
-                        className="one"
-                        d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
-                        fill="#fff"
-                      />
-                      <path
-                        className="two"
-                        d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
-                        fill="#fff"
-                      />
-                      <path
-                        className="three"
-                        d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
-                        fill="#fff"
-                      />
-                    </g>
-                  </svg>
-                </span>
-              </button>
-            </a>
-          </div>
-        </div>
-      </section>
+    <p className="text-white mb-8">
+      La empresa se centra en reforzar la gestión de servicios de TI,
+      desarrollando soluciones que respondan a las necesidades de los
+      clientes mediante el uso de tecnología avanzada. Buscamos mejorar
+      nuestras operaciones y proyectos, fortaleciendo nuestras habilidades
+      para enfrentar los retos digitales actuales, promoviendo la seguridad
+      y la productividad.
+    </p>
 
+    <div className="flex justify-center">
+      <Link to="/contacto">
+        <button className="cta cta-large">
+          <span className="span">CONTACTANOS</span>
+
+          <span className="second">
+            <svg
+              width="50px"
+              height="20px"
+              viewBox="0 0 66 43"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g fill="none" fillRule="evenodd">
+                <path
+                  className="one"
+                  d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
+                  fill="#fff"
+                />
+                <path
+                  className="two"
+                  d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+                  fill="#fff"
+                />
+              </g>
+            </svg>
+          </span>
+        </button>
+      </Link>
+    </div>
+
+  </div>
+</section>
      {/* ====================== NUESTROS VALORES (FLIP PRO) ====================== */}
 <section className="mx-auto max-w-6xl px-4 py-16">
   <h2 className="text-3xl font-bold text-center mb-12 text-cyan-500">Nuestros Valores</h2>
@@ -972,151 +925,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
     }
   `}</style>
 </section>
-{/* ====================== QUIENES SOMOS - ALIADOS DIGITALES (FONDO OSCURO + ANIMACIONES) ====================== */}
-<section className="relative w-full overflow-hidden">
-  {/* Fondo oscuro */}
-  <div className="absolute inset-0 bg-[#2A2A2A]" />
 
-  {/* Glows suaves (opcionales) */}
-  <motion.div
-    aria-hidden
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 1.0, ease: "easeOut" }}
-    viewport={{ once: true, amount: 0.2 }}
-    className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl"
-  />
-  <motion.div
-    aria-hidden
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 1.0, ease: "easeOut", delay: 0.1 }}
-    viewport={{ once: true, amount: 0.2 }}
-    className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
-  />
-
-  <div className="relative mx-auto max-w-6xl px-4 py-16">
-    <div className="grid lg:grid-cols-2 gap-14 items-start">
-
-      {/* ================= IMAGEN ================= */}
-      <motion.div
-        initial={{ opacity: 0, x: -30, y: 10 }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ duration: 0.75, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.25 }}
-        whileHover={{ y: -6 }}
-        className="w-full"
-      >
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
-          <img
-            src={heroImage}
-            alt={heroImageAlt || "Soluciones Integrales JB"}
-            className="w-full h-auto object-contain rounded-xl"
-          />
-          <div className="mt-4 text-center">
-            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm font-medium">
-              Soluciones Integrales JB para impulsar tu negocio
-            </span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ================= TEXTO ================= */}
-      <div className="flex flex-col">
-        {/* Badge + título */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-cyan-500" />
-            QUIENES SOMOS
-          </div>
-
-          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
-            Somos tus aliados Digitales.
-          </h2>
-        </motion.div>
-
-        {/* Card texto */}
-        <motion.div
-          initial={{ opacity: 0, x: 30, y: 10 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-          whileHover={{ y: -6 }}
-          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8"
-        >
-          <p className="text-slate-700 leading-relaxed">
-            Somos una empresa dedicada a ofrecer servicios digitales personalizados,
-            desde el desarrollo de software y sitios web con diseño gráfico, entre
-            más servicios. Transformamos sus ideas en soluciones que impulsan su
-            negocio hacia el éxito corporativo con Soluciones Integrales.
-          </p>
-
-          {/* Mini stats (stagger) */}
-          <div className="mt-8 grid grid-cols-3 gap-5">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
-              viewport={{ once: true, amount: 0.25 }}
-              whileHover={{ y: -4 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">Web</p>
-              <p className="text-xs text-slate-600 mt-1">Diseño moderno</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
-              viewport={{ once: true, amount: 0.25 }}
-              whileHover={{ y: -4 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">Software</p>
-              <p className="text-xs text-slate-600 mt-1">A medida</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.18 }}
-              viewport={{ once: true, amount: 0.25 }}
-              whileHover={{ y: -4 }}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm"
-            >
-              <p className="text-xl font-bold text-slate-900">Soporte</p>
-              <p className="text-xs text-slate-600 mt-1">Acompañamiento</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Recuadro celeste (pop) */}
-        <motion.div
-          initial={{ opacity: 0, y: 22, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-          whileHover={{ y: -4 }}
-          className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
-        >
-          <h3 className="text-lg font-semibold">
-            Transformamos ideas en soluciones reales
-          </h3>
-          <p className="text-sm mt-2 opacity-90">
-            Diseñamos, desarrollamos e implementamos servicios digitales alineados
-            a tus objetivos para crecer con tecnología.
-          </p>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
 {/* ====================== CARACTERÍSTICAS DE NUESTROS SERVICIOS (FLIP PRO) ====================== */}
 <section className="mx-auto max-w-6xl px-4 py-16">
   <h2 className="text-3xl font-bold text-center mb-12 text-cyan-500">
@@ -1536,7 +1345,18 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
             fill: #fff;
           }
         }
+          /* ================= TEXTO JUSTIFICADO GLOBAL ================= */
+section p,
+section span,
+section li,
+section a {
+  text-align: justify;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
       `}</style>
+      
     </section>
   );
 };

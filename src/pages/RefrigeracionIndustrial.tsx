@@ -77,7 +77,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2148921408.jpg"
+              src="https://i.postimg.cc/j2npCCK6/2148921408.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -98,7 +98,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             className="md:w-1/2 flex flex-col gap-6"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2149250244.jpg"
+              src="https://i.postimg.cc/9Q2f5HtB/2149250244.jpg"
               alt="Imagen 1"
               className="rounded-lg shadow-md w-full"
             />
@@ -156,7 +156,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/hombre-tiro-medio-que-trabaja-herramienta_23-2148921405.jpg"
+              src="https://i.postimg.cc/DZSvdvn2/hombre-tiro-medio-que-trabaja-herramienta-23-2148921405.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -177,7 +177,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             className="md:w-1/2 flex flex-col gap-6"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/gerente-empresa-tiene-planes-proyecto-mientras-habla-trabajador-manual-afroamericano-que-senala-algo-fabrica_637285-4115.jpg"
+              src="https://i.postimg.cc/R0F44S3Y/gerente-empresa-tiene-planes-proyecto-mientras-habla-trabajador-manual-afroamericano-que-senala-algo.jpg"
               className="rounded-lg shadow-md w-full"
             />
           </motion.div>

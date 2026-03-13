@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollButton from "../components/ScrollButton";
-
+import { Link } from "react-router-dom";
 const timelineItems = [
   {
     year: "2010",
@@ -287,91 +287,100 @@ const App: React.FC = () => {
         <p className="text-center font-bold text-gray-800">Menú de Navegación</p>
       </div>
 
-      {/* HERO */}
-      <div className="relative w-screen h-screen bg-gray-900 overflow-hidden">
-        <img src="https://i.postimg.cc/HL0K6p6C/nhhh.png" alt="Fondo de la historia" className="absolute inset-0 w-full h-full object-cover" />
+  {/* HERO */}
+<div className="relative w-screen h-screen bg-gray-900 overflow-hidden">
+  <img
+    src="https://i.postimg.cc/HL0K6p6C/nhhh.png"
+    alt="Fondo de la historia"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-        {/* CAJA DE “NUESTRA HISTORIA” (NO SE BORRA) */}
-        <motion.div
-          className="absolute top-1/2 right-20 transform -translate-y-1/2 z-20"
-          initial={{ opacity: 0, x: 100, rotateY: 90 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", type: "spring", stiffness: 80, damping: 15 }}
+  {/* CAJA NUESTRA HISTORIA */}
+  <motion.div
+    className="absolute top-1/2 right-20 transform -translate-y-1/2 z-20"
+    initial={{ opacity: 0, x: 100, rotateY: 90 }}
+    animate={{ opacity: 1, x: 0, rotateY: 0 }}
+    transition={{
+      duration: 1.2,
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    }}
+  >
+    <motion.div
+      className="bg-gradient-to-br from-black/75 to-black/90 px-12 py-10 rounded-2xl border-2 border-cyan-500 text-center w-[480px] shadow-2xl hover:shadow-cyan-500/60 transition-all duration-300 group relative overflow-hidden"
+      whileHover={{ scale: 1.05, borderColor: "rgb(34, 211, 238)" }}
+    >
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+      />
+
+      <div className="relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          whileHover={{ scale: 1.05 }}
+          className="text-5xl font-black text-white mb-4 tracking-tight"
         >
-          <motion.div
-            className="bg-gradient-to-br from-black/75 to-black/90 px-12 py-10 rounded-2xl border-2 border-cyan-500 text-center w-[480px] shadow-2xl hover:shadow-cyan-500/60 transition-all duration-300 group relative overflow-hidden"
-            whileHover={{ scale: 1.05, borderColor: "rgb(34, 211, 238)" }}
+          Nuestra <span className="text-cyan-400 drop-shadow-lg">historia</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-cyan-300 text-lg font-semibold mb-6"
+        >
+          ¡Conoce nuestra trayectoria!
+        </motion.p>
+
+        <Link to="/FacturacionElectronica">
+          <motion.button
+            whileHover={{
+              scale: 1.08,
+              boxShadow: "0 0 30px rgba(239, 68, 68, 0.8)",
+            }}
+            whileTap={{ scale: 0.92 }}
+            className="cta cta-large transition-all duration-300"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
-              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-            />
+            <span className="span">Descubre nuestros servicios</span>
 
-            <div className="relative z-10">
-              <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                whileHover={{ scale: 1.05 }}
-                className="text-5xl font-black text-white mb-4 tracking-tight"
+            <span className="second">
+              <svg
+                width="50px"
+                height="20px"
+                viewBox="0 0 66 43"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Nuestra <span className="text-cyan-400 drop-shadow-lg">historia</span>
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-cyan-300 text-lg font-semibold mb-6"
-              >
-                ¡Conoce nuestra trayectoria!
-              </motion.p>
-
-              <motion.a
-                href="https://solucionesintegralesjb.com/#services"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                whileHover={{ y: -3 }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.08, boxShadow: "0 0 30px rgba(239, 68, 68, 0.8)" }}
-                  whileTap={{ scale: 0.92 }}
-                  className="cta cta-large transition-all duration-300"
-                >
-                  <span className="span">Descubre nuestros servicios</span>
-                  <span className="second">
-                    <svg width="50px" height="20px" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
-                      <g id="arrow" fill="none" fillRule="evenodd">
-                        <path
-                          className="one"
-                          d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
-                          fill="#fff"
-                        />
-                        <path
-                          className="two"
-                          d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
-                          fill="#fff"
-                        />
-                        <path
-                          className="three"
-                          d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
-                          fill="#fff"
-                        />
-                      </g>
-                    </svg>
-                  </span>
-                </motion.button>
-              </motion.a>
-            </div>
-          </motion.div>
-        </motion.div>
+                <g id="arrow" fill="none" fillRule="evenodd">
+                  <path
+                    className="one"
+                    d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
+                    fill="#fff"
+                  />
+                  <path
+                    className="two"
+                    d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+                    fill="#fff"
+                  />
+                  <path
+                    className="three"
+                    d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
+            </span>
+          </motion.button>
+        </Link>
       </div>
-
-      <div className="w-full h-16 bg-white" />
+    </motion.div>
+  </motion.div>
+</div>
 
       {/* TIMELINE */}
       <section className="bg-[#1a1a1a] py-20 px-6 text-white relative overflow-hidden">

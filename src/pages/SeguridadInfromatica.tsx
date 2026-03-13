@@ -42,7 +42,7 @@ const SeguridadInformatica = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/12/seguridad_informatuca.jpg"
+              src="https://i.postimg.cc/k4KG8Mnq/seguridad-informatuca.jpg"
               alt="Consultoría en Seguridad Informática"
               className="w-full max-w-[3000px] h-auto rounded-lg shadow-lg"
             />

@@ -75,7 +75,7 @@ const PosicionamientoSEO: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/seo.94e1f354aed0.svg"
+              src="https://i.postimg.cc/hP5nDWBY/seo-94e1f354aed0.jpg"
               alt="Optimización SEO"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -96,7 +96,7 @@ const PosicionamientoSEO: React.FC = () => {
             className="md:w-1/2 flex flex-col gap-6"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/disenadora-web-femenina-papeles-notas-oficina_23-2149749879.jpg"
+              src="https://i.postimg.cc/ncg8844k/disenadora-web-femenina-papeles-notas-oficina-23-2149749879.jpg"
               alt="Mejora de la estructura"
               className="rounded-lg shadow-md w-full"
             />
@@ -159,7 +159,7 @@ const PosicionamientoSEO: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/medium.avif"
+              src="https://i.postimg.cc/nc6WSHZZ/medium.avif"
               alt="Contenido optimizado"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -180,7 +180,7 @@ const PosicionamientoSEO: React.FC = () => {
             className="md:w-1/2 flex flex-col gap-6"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/optimizacion-motores-busqueda-seo-concepto-digital-internet_53876-138498.avif"
+              src="https://i.postimg.cc/m2FXH098/optimizacion-motores-busqueda-seo-concepto-digital-internet-53876-138498.avif"
               alt="Reportes y seguimiento"
               className="rounded-lg shadow-md w-full"
             />

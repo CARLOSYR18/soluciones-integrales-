@@ -1,109 +1,203 @@
 import React from "react";
-
-import StickerPeel from '../components/StickerPeel';
-import logo from '../assets/logo2.jpg'
-
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
   FaYoutube,
+  FaLinkedinIn,
+  FaTiktok,
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-const Footer = () => {
+import logo from "../assets/logo.svg";
+
+function Footer() {
+  const linkStyle = "hover:text-cyan-400 transition-colors duration-200";
+
   return (
-    <footer className="bg-[#0b0b0b] text-gray-300 px-6 py-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-[#111] text-gray-300 pt-14 pb-6 px-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+
         {/* Logo + descripción */}
-  
- <div className="flex flex-col items-center"> 
-  {/* Logo con efecto */}
-  <div className="mb-6 relative w-[144px] h-[144px]">
-    <StickerPeel
-      imageSrc="/logo2.jpg"
-      width={144}               // mismo tamaño que el <img>
-      rotate={1}
-      peelBackHoverPct={39}
-      peelBackActivePct={40}
-      shadowIntensity={0.6}
-      lightingIntensity={0.1}
-      initialPosition="center"
-      peelDirection={45}
-    />
-  </div>
-
-  {/* Descripción */}
-  <p className="text-sm leading-relaxed text-gray-400 text-center">
-    Impulsamos el éxito de tu negocio con soluciones digitales
-    innovadoras y diseño creativo, adaptados a tus necesidades para
-    asegurar tu crecimiento.
-  </p>
-</div>
-
-
-
-        {/* Servicios */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Servicios</h3>
+          <img src={logo} alt="logo" className="h-12 mb-4" />
+
+          <p className="text-sm leading-relaxed text-gray-400">
+            Soluciones Integrales JB ofrece servicios tecnológicos,
+            consultoría empresarial, marketing digital y soluciones
+            de ingeniería para empresas y organizaciones.
+          </p>
+
+          {/* redes */}
+          <div className="flex gap-3 mt-5">
+            <a
+              href="https://www.facebook.com/solucionesintegralesJB/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://www.instagram.com/solucionesintegralesjb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://www.youtube.com/channel/UCwZllsxQMp2LwUSIDmldUeQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaYoutube />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaLinkedinIn />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@solucionesintegralesjb?lang=es"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaTiktok />
+            </a>
+          </div>
+        </div>
+
+        {/* Empresa */}
+        <div>
+          <h3 className="text-white font-semibold mb-4">Empresa</h3>
+
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-cyan-400 transition">Tecnología de información</li>
-            <li className="hover:text-cyan-400 transition">Ingeniería eléctrica</li>
-            <li className="hover:text-cyan-400 transition">Marketing digital</li>
+            <li>
+              <Link to="/QuienesSomos" className={linkStyle}>
+                Quiénes Somos
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/NuestraHistoria" className={linkStyle}>
+                Nuestra Historia
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/NuestroEquipo" className={linkStyle}>
+                Nuestro Equipo
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/Organigrama" className={linkStyle}>
+                Organigrama
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/Convenios" className={linkStyle}>
+                Convenios
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Nosotros */}
+        {/* Servicios */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Nosotros</h3>
+          <h3 className="text-white font-semibold mb-4">Servicios</h3>
+
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-cyan-400 transition">¿Quiénes Somos?</li>
-            <li className="hover:text-cyan-400 transition">Convenios</li>
-            <li className="hover:text-cyan-400 transition">Organigrama</li>
-            <li className="hover:text-cyan-400 transition">Términos y Garantías</li>
-            <li className="hover:text-cyan-400 transition">Formulario de Contacto</li>
+
+            <li>
+              <Link to="/DesarrolloDeSoftware" className={linkStyle}>
+                Desarrollo de Software
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/DesarrolloDeSitiosWeb" className={linkStyle}>
+                Desarrollo Web
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/FacturacionElectronica" className={linkStyle}>
+                Facturación Electrónica
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/HostingYDominio" className={linkStyle}>
+                Hosting y Dominio
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/SoporteTecnico" className={linkStyle}>
+                Soporte Técnico
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/SeguridadInformatica" className={linkStyle}>
+                Seguridad Informática
+              </Link>
+            </li>
+
           </ul>
         </div>
 
         {/* Contacto */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">
-            Conecta con nosotros
-          </h3>
+          <h3 className="text-white font-semibold mb-4">Contacto</h3>
+
           <ul className="space-y-3 text-sm">
+
             <li className="flex items-center gap-2">
-              <FaMapMarkerAlt className="text-cyan-400" />
-              Av. Lopez de Zúñiga Nº 547 2º Piso, Chancay
+              <FaMapMarkerAlt />
+              Lima, Perú
             </li>
+
             <li className="flex items-center gap-2">
-              <FaEnvelope className="text-cyan-400" />
-              consultas@solucionesintegralesjb.com
+              <FaPhoneAlt />
+              +51 900 000 000
             </li>
+
             <li className="flex items-center gap-2">
-              <FaPhoneAlt className="text-cyan-400" />
-              +51 996 720 630
+              <FaEnvelope />
+              contacto@solucionesjb.com
             </li>
-            <li className="flex items-center gap-2">
-              <FaPhoneAlt className="text-cyan-400" />
-              +51 979 687 700
+
+            <li>
+              <Link to="/contacto" className="text-cyan-400 hover:underline">
+                Ir a contacto →
+              </Link>
             </li>
+
           </ul>
         </div>
-        
       </div>
 
-      {/* Línea inferior */}
-      <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Copyright */}
-       {/* Copyright */}
-  <p className="text-xs text-gray-500 flex-1 text-center">
-    © 2024 Soluciones Integrales JB S.A.C. - Todos los derechos reservados.
-  </p>
+      {/* linea */}
+      <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Soluciones Integrales JB. Todos los derechos reservados.
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

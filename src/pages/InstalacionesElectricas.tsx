@@ -75,7 +75,7 @@ const InstalacionesElectricas: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/tecnico-electrico-que-parece-concentrado-mientras-trabaja-cuadro-distribucion-fusibles_169016-24151.jpg"
+              src="https://i.postimg.cc/mk307JzM/tecnico-electrico-que-parece-concentrado-mientras-trabaja-cuadro-distribucion-fusibles-169016-24151.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -101,7 +101,7 @@ const InstalacionesElectricas: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/dos-ingenieros-constructores-hablando-sitio-construccion-ingeniero-explicando-dibujo-trabajador_169016-12057.jpg"
+              src="https://i.postimg.cc/sxzLfm6S/dos-ingenieros-constructores-hablando-sitio-construccion-ingeniero-explicando-dibujo-trabajador-1690.jpg"
               alt="Imagen 1"
               className="rounded-lg shadow-md w-full"
             />
@@ -152,7 +152,7 @@ const InstalacionesElectricas: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/hombre-tecnico-electrico-que-trabaja-centralita-fusibles-instalacion-conexion-equipos-electricos_169016-5080.jpg"
+              src="https://i.postimg.cc/RZhD0NRN/hombre-tecnico-electrico-que-trabaja-centralita-fusibles-instalacion-conexion-equipos-electricos-169.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -178,7 +178,7 @@ const InstalacionesElectricas: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/hombre-tecnico-electrico-que-trabaja-centralita-fusibles-instalacion-conexion-equipos-electricos_169016-5078.jpg"
+              src="https://i.postimg.cc/25B94Mg4/hombre-tecnico-electrico-que-trabaja-centralita-fusibles-instalacion-conexion-equipos-electricos-169.jpg"
               alt="Imagen 1"
               className="rounded-lg shadow-md w-full"
             />

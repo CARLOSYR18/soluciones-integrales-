@@ -147,9 +147,17 @@ const FacturacionElectronica: React.FC = () => {
               La integración es rápida y sencilla, permitiéndote comenzar a emitir facturas electrónicas en poco tiempo. Además, ofrecemos soporte técnico para garantizar una implementación exitosa y sin complicaciones.
             </p>
 
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-              CONTÁCTANOS
-            </button>
+            <a
+href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Facturación%20Electrónica"
+target="_blank"
+rel="noopener noreferrer"
+>
+
+<button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
+CONTÁCTANOS
+</button>
+
+</a>
           </motion.div>
         </div>
       </section>
@@ -240,9 +248,17 @@ const FacturacionElectronica: React.FC = () => {
               Con actualizaciones automáticas que incorporan los últimos cambios en las normativas fiscales, puedes estar seguro de que siempre cumplirás con la ley sin necesidad de preocuparte por ajustes manuales o errores. Nuestra plataforma te permite mantener tu negocio al día con total confianza, ofreciendo soluciones confiables y seguras que no solo protegen la integridad de tus operaciones, sino que también te ayudan a evitar sanciones innecesarias. Al optar por nuestras soluciones, te aseguras de que tu negocio esté siempre en plena conformidad, permitiéndote concentrarte en lo que realmente importa: el crecimiento y éxito de tu empresa.
             </p>
 
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-              CONTACTAR
-            </button>
+           <a
+href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Facturación%20Electrónica"
+target="_blank"
+rel="noopener noreferrer"
+>
+
+<button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
+CONTACTAR
+</button>
+
+</a>
           </motion.div>
         </div>
       </section>

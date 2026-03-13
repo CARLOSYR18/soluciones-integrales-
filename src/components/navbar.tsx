@@ -399,16 +399,7 @@ function Navbar() {
           )}
         </li>
 
-        <li>
-          <Link to="/Productos" className={topLink}>
-            PRODUCTOS
-          </Link>
-        </li>
-        <li>
-          <Link to="/prestamos" className={topLink}>
-            PRESTAMOS
-          </Link>
-        </li>
+        
         <li>
           <Link to="/contacto" className={topLink}>
             CONTACTO

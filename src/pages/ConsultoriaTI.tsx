@@ -43,7 +43,7 @@ const ConsultoriaTI = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/qe0pwt6j.png"
+              src="https://i.postimg.cc/nLVG05Xg/qe0pwt6j.png"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
