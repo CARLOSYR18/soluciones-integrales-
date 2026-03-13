@@ -77,7 +77,7 @@ import fondoN from "../assets/fondoN.jpg";
     </h1>
 
     <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-      Inicio / Desarrollo de Software
+    
     </span>
 
   </div>

@@ -57,7 +57,7 @@ const DesarrolloWebBanner: React.FC = () => {
           </h1>
 
          <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                    Inicio / Desarrollo de Sitios Web
+                   
                   </span>
         </div>
 

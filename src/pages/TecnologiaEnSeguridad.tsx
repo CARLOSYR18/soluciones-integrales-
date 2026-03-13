@@ -49,7 +49,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
                 
                 
                  <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                            Inicio / Tecnología en Seguridad
+                           
                           </span>
                 </div>
       </section>
