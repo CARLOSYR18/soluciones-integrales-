@@ -1,4 +1,13 @@
-/*body styles*/
+/* =============================================
+   SECCIÓN EQUIPO — CSS CORREGIDO Y MEJORADO
+   ============================================= */
+
+/* [CAMBIO] font-family movido a nivel global para herencia correcta */
+:root {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ---- Contenedor principal ---- */
 .equipo-container {
   max-width: 1200px;
   margin: 50px auto;
@@ -7,14 +16,11 @@
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  font-family: 'Roboto', sans-serif;
+  /* [CAMBIO] Se eliminó el hover con translateY del contenedor completo
+     porque era brusco y aportaba poco valor UX en elementos grandes */
 }
 
-.equipo-container:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
+/* [CAMBIO] Se eliminó .equipo-container:hover con transform */
 
 .equipo-container h1 {
   font-size: 20px;
@@ -23,6 +29,9 @@
   font-weight: 600;
 }
 
+/* [NOTA] h1 (20px) y h2 (36px) están invertidos visualmente.
+   Si el h2 es el título principal, considera intercambiar sus tamaños
+   o usar clases (.titulo-principal, .subtitulo) para mayor semántica. */
 .equipo-container h2 {
   font-size: 36px;
   color: #333;
@@ -30,7 +39,7 @@
   font-weight: 500;
 }
 
-/* filas de equipo*/
+/* ---- Filas de equipo ---- */
 .fila-equipo {
   display: flex;
   justify-content: space-evenly;
@@ -39,21 +48,27 @@
   margin-bottom: 40px;
 }
 
-/*centrada para 2 miembros*/
+/* Fila centrada para 2 miembros */
 .fila-inferior {
   justify-content: center;
   gap: 80px;
 }
 
-/*estilos cada miembro*/
+/* ---- Tarjeta de cada miembro ---- */
 .miembro {
   width: 250px;
   text-align: center;
   padding: 20px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   border-radius: 12px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  /* [CAMBIO] Flexbox para alinear correctamente el contenido interno
+     y evitar desalineaciones entre tarjetas con distinto contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .miembro:hover {
@@ -61,14 +76,18 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* ---- Contenedor de imagen circular ---- */
 .imagen {
   width: 200px;
   height: 200px;
-  margin-bottom: 20px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid #007bff;
   transition: transform 0.3s ease, border-color 0.3s ease;
+
+  /* [CAMBIO] margin: 0 auto para centrar el círculo horizontalmente
+     dentro del contenedor, independiente de la imagen original */
+  margin: 0 auto 20px auto;
 }
 
 .miembro:hover .imagen {
@@ -76,12 +95,38 @@
   border-color: #0056b3;
 }
 
+/* ---- Imagen dentro del círculo ---- */
 .imagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  /* [CAMBIO] object-position: center top para enfocar la parte superior
+     de la imagen (zona del rostro), especialmente importante para
+     imágenes verticales como las de 533x800, 597x800 y 447x800.
+     Si alguna imagen queda mal encuadrada, usa las clases de ajuste fino */
+  object-position: center top;
 }
 
+/* ---- Clases de ajuste fino por miembro (uso opcional) ----
+   Aplica la clase al .miembro correspondiente si el recorte
+   predeterminado no encuadra bien el rostro.
+
+   Uso:  <div class="miembro ajuste-centro"> ... </div>
+*/
+.miembro.ajuste-centro img {
+  object-position: center center;
+}
+
+.miembro.ajuste-abajo img {
+  object-position: center 20%;
+}
+
+.miembro.ajuste-arriba img {
+  object-position: center top;  /* igual al default, por claridad */
+}
+
+/* ---- Nombre y cargo ---- */
 .nombre {
   font-size: 20px;
   font-weight: 600;
@@ -97,6 +142,11 @@
   border-radius: 6px;
   border: 1px solid #ddd;
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* [NOTA] El hover en .cargo simula un elemento interactivo.
+     Si no tiene acción (click/enlace), considera eliminar el :hover
+     para no confundir al usuario. Si lo mantienes, agrega cursor: pointer
+     solo cuando esté asociado a una acción real. */
 }
 
 .cargo:hover {
@@ -105,16 +155,27 @@
   border-color: #007bff;
 }
 
-/*responsive design*/
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+/* [CAMBIO] Breakpoint intermedio para tablets (768px–1024px) */
+@media (max-width: 1024px) {
+  .miembro {
+    width: 200px;
+  }
+}
+
+/* Móviles */
 @media (max-width: 768px) {
   .fila-equipo {
     gap: 20px;
   }
-  
+
   .fila-inferior {
     gap: 40px;
   }
-  
+
   .miembro {
     width: 100%;
     max-width: 300px;
