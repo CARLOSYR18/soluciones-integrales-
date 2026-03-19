@@ -42,7 +42,7 @@ const Auditorias = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/12/auditorias.jpg"
+              src="https://i.postimg.cc/L5Fq0Yys/auditorias.jpg"
               alt="Auditorías profesionales"
               className="w-full max-w-[3000px] h-auto rounded-lg shadow-lg"
             />

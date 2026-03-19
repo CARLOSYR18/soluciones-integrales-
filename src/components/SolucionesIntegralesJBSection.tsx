@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Carousel from "react-multi-carousel";
-import Productos from "./Productos";
+
 import "react-multi-carousel/lib/styles.css";
 import ScrollButton from "../components/ScrollButton";
 import '../App.css'
@@ -65,13 +65,13 @@ interface Props {
 
 // ---- Data ----
 const heroSlides: HeroSlide[] = [
-    { image: "https://i.postimg.cc/JncZqqhs/ed40b25e-eec1-4e3e-bf86-92ae710d6d06-e1727215670672.jpg", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
-    { image: "https://i.postimg.cc/DzQSkz3W/c3cc9f73-0e33-4fd0-aa2d-050c9b272e8c.jpg", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
-    { image: "https://i.postimg.cc/6355kL03/d429c0fa-c3b2-4b6d-a65b-56c8ea26bcbc-1.jpg", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
-    { image: "https://i.postimg.cc/gjs7f8gc/8671e011-0391-4bd6-a5b1-114495d3d898.jpg", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
-    { image: "https://i.postimg.cc/1zFjyLvF/cdba0529-3664-4dff-92fb-2bbfe5cb09f6.jpg", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
-    { image: "https://i.postimg.cc/hv2CCgGq/Agregar-un-titulo.png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
-    { image: "https://i.postimg.cc/wMj2RPQn/Agregar-un-titulo-1.png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
+    { image: "https://i.postimg.cc/529YHB9F/Diseno-sin-titulo-(28).png", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
+    { image: "https://i.postimg.cc/43d90zjq/Diseno-sin-titulo-(22).png", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
+    { image: "https://i.postimg.cc/Y0cLjT03/Diseno-sin-titulo-(24).png", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
+    { image: "https://i.postimg.cc/7LW2r5kf/Diseno-sin-titulo-(23).png", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
+    { image: "https://i.postimg.cc/gjvXh468/Diseno-sin-titulo-(25).png", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
+    { image: "https://i.postimg.cc/G3Ys63SL/Diseno-sin-titulo-(26).png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
+    { image: "https://i.postimg.cc/c4S8WqVB/Diseno-sin-titulo-(27).png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
 ];
 
 const responsiveServices = {
@@ -491,7 +491,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
 </div>
 
 <div>
-  <Productos />
+  
 </div>
       {/* ====================== CARACTERÍSTICAS CON ANIMACIÓN 3D ====================== */}
       <div className="mx-auto max-w-6xl px-4 py-10">
@@ -1175,25 +1175,25 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       </motion.div>
 
       <motion.h2
-        initial={{ opacity: 0, y: 14, rotateX: 12 }}
-        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        viewport={{ once: true }}
-        className="mt-6 text-4xl md:text-6xl font-black leading-tight tracking-tight"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        <span className="text-white">Nuestros</span>{" "}
-        <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]">
-          clientes
-        </span>
-      </motion.h2>
+  initial={{ opacity: 0, y: 14, rotateX: 12 }}
+  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+  viewport={{ once: true }}
+  className="mt-6 text-4xl md:text-6xl font-black leading-tight tracking-tight text-center"
+  style={{ transformStyle: "preserve-3d" }}
+>
+  <span className="text-white">Nuestros</span>{" "}
+  <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]">
+    clientes
+  </span>
+</motion.h2>
 
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="mt-4 text-gray-300 text-base md:text-lg font-semibold tracking-wide"
+       className="mt-4 text-gray-300 text-base md:text-lg font-semibold tracking-wide text-center"
       >
         Las marcas que confían en{" "}
         <span className="text-cyan-400">Soluciones Integrales JB</span>

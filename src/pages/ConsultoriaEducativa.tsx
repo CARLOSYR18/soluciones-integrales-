@@ -40,7 +40,7 @@ const ConsultoriaEducativa = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/12/educativa.jpg"
+              src="https://i.postimg.cc/vZYnsnGr/educativa.jpg"
               alt="Consultoría Educativa"
               className="w-full max-w-[3000px] h-auto rounded-lg shadow-lg"
             />

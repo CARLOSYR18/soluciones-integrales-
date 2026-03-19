@@ -6,7 +6,9 @@
   import "react-multi-carousel/lib/styles.css";
   import Magnet from '../components/magnet';
   import { Link } from "react-router-dom";
-
+import ClientesCarousel from "../components/ClientesCarousel";
+import TestimoniosCarousel from "../components/TestimoniosCarousel";
+import fondoN from "../assets/fondoN.jpg";
   const DesarrolloWebBanner: React.FC = () => {
     // Datos para el carrusel de testimonios (ahora con 4 comentarios)
     const testimonials = [
@@ -50,40 +52,37 @@
     };
 
     return (
-      <div className="font-sans">
-        {/* ====================== BANNER PRINCIPAL ====================== */}
-        <header className="relative w-full h-64 md:h-80 bg-black text-white flex flex-col items-center justify-center overflow-hidden">
-          {/* Imagen de fondo */}
-          <img
-            src="https://i.postimg.cc/90dGrGQD/fondoN.jpg"
-            alt="Fondo de ladrillos oscuros"
-            className="absolute inset-0 w-full h-full object-cover z-0"
-          />
+      <div id="desarrollo-software" className="font-sans">
+      {/* ====================== BANNER PRINCIPAL ====================== */}
+<header
+  className="relative w-full h-64 md:h-80 flex flex-col items-center justify-center text-white bg-cover bg-center overflow-hidden"
+  style={{ backgroundImage: `url(${fondoN})` }}
+>
 
-          {/* Overlay oscuro */}
-          <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
+  {/* Overlay oscuro */}
+  <div className="absolute inset-0 bg-black/60"></div>
 
-          {/* Contenido del banner */}
-          <div className="rrelative z-20 flex flex-col items-center justify-center text-center px-4">
-          
-            <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
-            <TextType
-              text={['Desarrollo de Software']}
-              typingSpeed={70}
-              pauseDuration={2000}
-              loop={false}
-              showCursor={false}
-              textColors={['#38bdf8']}
-            />
-            </h1>
-          
-          
-          <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                      Inicio / Desarrollo de Software
-                    </span>
-          </div>
-        </header>
+  {/* Contenido */}
+  <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
 
+    <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
+      <TextType
+        text={["Desarrollo de Software"]}
+        typingSpeed={70}
+        pauseDuration={2000}
+        loop={false}
+        showCursor={false}
+        textColors={["#38bdf8"]}
+      />
+    </h1>
+
+    <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
+    
+    </span>
+
+  </div>
+
+</header>
         {/* ====================== SECCIÓN DE CONTENIDO - DESARROLLO WEB ====================== */}
   <section className="bg-white py-16 px-4 md:px-8">
     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -202,20 +201,24 @@
         </motion.p>
 
         {/* BOTÓN ACTUALIZADO */}
-        <Link to="/contacto">
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 mx-auto block"
-          >
-            CONTÁCTANOS
-          </motion.button>
-        </Link>
-      </div>
-    </div>
-  </section>
+     <a
+href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
+target="_blank"
+rel="noopener noreferrer"
+>
+
+<button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
+
+CONTÁCTANOS
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+</section>
 
       {/* ====================== SECCIÓN DE DISEÑO UX/UI ====================== */}
   <section className="bg-white py-16 px-4 md:px-8">
@@ -343,230 +346,28 @@
         </motion.p>
 
         {/* BOTÓN ACTUALIZADO */}
-        <Link to="/contacto">
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 mx-auto block"
-          >
-            CONTACTAR
-          </motion.button>
-        </Link>
+       <a
+  href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Integración%20de%20Funcionalidades"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <motion.button
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.6 }}
+    viewport={{ once: true, amount: 0.3 }}
+    className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 mx-auto block"
+  >
+    CONTACTAR
+  </motion.button>
+</a>
       </div>
     </div>
   </section>
 
-  {/* ====================== SECCIÓN DE OPINIONES CON CARRUSEL MEJORADA ====================== */}
-  <section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
-    {/* Decorativos de fondo */}
-    <div className="absolute inset-0 opacity-10">
-      <div className="absolute top-20 right-20 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-    </div>
-
-    <div className="max-w-7xl mx-auto relative z-10">
-      {/* Encabezado mejorado */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="mb-12 text-center"
-      >
-        <motion.span
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="text-cyan-400 text-sm font-black tracking-[0.2em] uppercase inline-block px-4 py-2 border border-cyan-400/30 rounded-full bg-cyan-400/5 mb-4"
-        >
-          Testimonios
-        </motion.span>
-        
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-black text-slate-900 mt-4 leading-tight"
-        >
-          La voz de nuestros <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">clientes</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          viewport={{ once: true }}
-          className="text-base text-slate-600 mt-4 max-w-2xl mx-auto"
-        >
-          Descubre cómo hemos transformado negocios y generado resultados tangibles
-        </motion.p>
-      </motion.div>
-
-      {/* Carrusel de testimonios mejorado */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true, amount: 0.2 }}
-        className="relative"
-      >
-        <Carousel
-          responsive={{
-            desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-            tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
-            mobile: { breakpoint: { max: 640, min: 0 }, items: 1 },
-          }}
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={5000}
-          arrows={true}
-          showDots={true}
-          dotListClass="custom-testimonial-dots"
-          itemClass="px-3 md:px-4"
-          containerClass="pb-12"
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50, rotateX: 80 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: "backOut" }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -12,
-                scale: 1.04,
-                transition: { duration: 0.3, type: "spring", stiffness: 300, damping: 10 }
-              }}
-              style={{
-                perspective: "1200px",
-                transformStyle: "preserve-3d"
-              }}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200"
-            >
-              {/* Estrellas animadas */}
-              <div className="flex gap-2 mb-5">
-                {[...Array(5)].map((_, i) => (
-                  <motion.svg
-                    key={i}
-                    initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
-                    whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    whileHover={{ 
-                      scale: 1.4, 
-                      rotateZ: 360,
-                      y: -10,
-                      transition: { duration: 0.5 } 
-                    }}
-                    className="w-6 h-6 fill-yellow-400 cursor-pointer"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </motion.svg>
-                ))}
-              </div>
-
-              {/* Icono de comilla */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-5xl text-cyan-400/20 mb-3 leading-none"
-              >
-                "
-              </motion.div>
-
-              {/* Texto del testimonio */}
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25 }}
-                viewport={{ once: true }}
-                className="text-slate-700 text-base leading-relaxed mb-8 flex-grow font-medium"
-              >
-                {testimonial.quote}
-              </motion.p>
-
-              {/* Separador */}
-              <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 rounded-full"></div>
-
-              {/* Avatar y nombre */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4"
-              >
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.15,
-                    rotate: 5,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="relative w-14 h-14 rounded-full object-cover border-2 border-white shadow-md"
-                  />
-                </motion.div>
-                <div className="flex-1">
-                  <p className="font-bold text-slate-900 text-sm">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-cyan-500 text-xs font-semibold">Cliente satisfecho</p>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </Carousel>
-      </motion.div>
-
-      {/* Estilos personalizados */}
-      <style jsx>{`
-        .custom-testimonial-dots {
-          display: flex;
-          justify-content: center;
-          gap: 0.75rem;
-          list-style: none;
-          padding: 2rem 0 0 0;
-          margin: 0;
-        }
-
-        .custom-testimonial-dots li {
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .custom-testimonial-dots li.react-multi-carousel-dot {
-          background: rgba(148, 163, 184, 0.5);
-          height: 0.6rem;
-          width: 0.8rem;
-          border-radius: 9999px;
-          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .custom-testimonial-dots li.react-multi-carousel-dot:hover {
-          background: rgba(34, 211, 238, 0.8);
-          transform: scale(1.2);
-        }
-
-        .custom-testimonial-dots li.react-multi-carousel-dot.active {
-          background: linear-gradient(90deg, #22d3ee, #3b82f6);
-          width: 2rem;
-          box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
-        }
-      `}</style>
-    </div>
-  </section>
+  
+  {/* Carrusel de clientes al final */}
+<TestimoniosCarousel />
       </div>
     );
   };

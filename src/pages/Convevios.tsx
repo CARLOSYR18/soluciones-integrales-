@@ -205,15 +205,15 @@ const Convenios = () => {
           Prácticas - Profesionales
         </motion.p>
 
-        <motion.a
-          href="https://solucionesintegralesjb.com/convenio2/"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          whileHover={{ y: -5 }}
-        >
+       <motion.a
+  href="https://wa.me/51996720630"
+  target="_blank"
+  rel="noopener noreferrer"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+  whileHover={{ y: -5 }}
+>
           <motion.button
             whileHover={{
               scale: 1.08,
@@ -256,74 +256,71 @@ const Convenios = () => {
 </div>
 
 
-      {/* ====================== SECCIÓN IMPORTANCIA (AJUSTADA + SIN BORDE + ENTRADAS) ====================== */}
+    {/* ====================== SECCIÓN IMPORTANCIA CONVENIOS ====================== */}
 <section className="relative w-full overflow-hidden">
-  {/* Fondo suave */}
+  {/* Fondo */}
   <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white" />
   <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-200/30 blur-3xl" />
   <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />
 
   <div className="relative mx-auto max-w-7xl px-6 md:px-16 py-16 md:py-24">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-      {/* ================= IMAGEN (MÁS GRANDE + SIN BORDE CYAN) ================= */}
+      {/* ================= IMAGEN ================= */}
       <motion.div
-        initial={{ opacity: 0, x: -60, y: 18 }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        initial={{ opacity: 0, x: -60 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
         className="w-full"
       >
-        {/* Wrapper sin borde */}
-        <div className="relative rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-[0_30px_80px_rgba(0,0,0,0.14)] p-4">
-          {/* Glow suave */}
-          <div className="pointer-events-none absolute -top-10 -left-10 h-44 w-44 rounded-full bg-cyan-300/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-blue-300/20 blur-3xl" />
+        <div className="relative rounded-3xl bg-white shadow-xl border border-slate-200 p-4">
+          <div className="absolute -top-10 -left-10 h-44 w-44 rounded-full bg-cyan-300/20 blur-3xl" />
+          <div className="absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-blue-300/20 blur-3xl" />
 
-          {/* Imagen SIN BORDE, más alta para que no se vea “chica” */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="relative overflow-hidden rounded-2xl shadow-xl"
-          >
+          <div className="relative overflow-hidden rounded-2xl shadow-lg">
             <img
               src="https://i.postimg.cc/0QG1nHLt/image.png"
-              alt="Convenio"
+              alt="Convenios"
               className="w-full h-[320px] sm:h-[380px] lg:h-[430px] object-cover"
             />
-            {/* Overlay sutil */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 
-      {/* ================= TEXTO (ENTRADA PRO) ================= */}
+      {/* ================= TEXTO ================= */}
       <div className="flex flex-col">
-        {/* Badge + Título */}
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="flex justify-center lg:justify-start"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-cyan-500" />
             CONVENIOS
           </div>
-
-          <h3 className="mt-5 text-4xl md:text-5xl font-extrabold text-cyan-500 leading-tight">
-            ¿Por qué es importante el convenio?
-          </h3>
         </motion.div>
 
-        {/* Card de contenido */}
+        {/* TITULO EN UNA SOLA LÍNEA */}
+       <motion.h3
+  initial={{ opacity: 0, y: 25 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, delay: 0.1 }}
+  viewport={{ once: true }}
+  className="mt-6 text-[28px] md:text-[38px] lg:text-[44px] font-extrabold text-cyan-500 leading-tight text-center lg:text-left max-w-[720px] mx-auto lg:mx-0"
+>
+  ¿Por qué es importante el convenio?
+</motion.h3>
+
+        {/* TEXTO JUSTIFICADO */}
         <motion.div
-          initial={{ opacity: 0, x: 60, y: 12 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="mt-8 bg-white/85 backdrop-blur rounded-2xl border border-slate-200 shadow-[0_22px_60px_rgba(0,0,0,0.12)] p-8"
+          viewport={{ once: true }}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-lg p-8"
         >
           <p className="text-base md:text-lg text-slate-700 leading-8 text-justify">
             Nuestra empresa tiene convenios con diversas instituciones públicas y
@@ -343,8 +340,8 @@ const Convenios = () => {
                   key={t}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, ease: "easeOut", delay: 0.08 * i }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.45, delay: 0.08 * i }}
+                  viewport={{ once: true }}
                   className="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium border border-slate-200"
                 >
                   {t}
@@ -354,20 +351,21 @@ const Convenios = () => {
           </div>
         </motion.div>
 
-        {/* Recuadro celeste */}
+        {/* RECUADRO AZUL */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
         >
           <h4 className="text-lg font-semibold">
             Conectamos talento con experiencia real
           </h4>
+
           <p className="text-sm mt-2 opacity-90">
-            Impulsamos la empleabilidad con oportunidades, mentoría y formación en
-            entornos profesionales.
+            Impulsamos la empleabilidad con oportunidades, mentoría y formación
+            en entornos profesionales.
           </p>
         </motion.div>
       </div>

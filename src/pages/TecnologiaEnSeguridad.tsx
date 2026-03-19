@@ -49,7 +49,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
                 
                 
                  <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                            Inicio / Tecnología en Seguridad
+                           
                           </span>
                 </div>
       </section>
@@ -106,7 +106,17 @@ const TecnologiaEnSeguridad: React.FC = () => {
                 
                 <div className="separator"></div>
                 
-                <button className="solutions-contact-btn">CONTACTANOS</button>
+                <a
+href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Tecnología%20en%20Seguridad"
+target="_blank"
+rel="noopener noreferrer"
+>
+
+<button className="solutions-contact-btn">
+CONTACTANOS
+</button>
+
+</a>
               </div>
             </div>
           </div>
@@ -169,7 +179,17 @@ const TecnologiaEnSeguridad: React.FC = () => {
               <p className="service-description">
                 Tu seguridad es nuestra máxima prioridad, y estamos comprometidos a brindar un servicio excepcional que garantice la protección continua de tus propiedades. Con nosotros, obtienes más que equipos de seguridad; obtienes tranquilidad y la confianza de saber que estás protegido en todo momento.
               </p>
-              <button className="solutions-contact-btn">CONTACTAR</button>
+            <a
+href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Tecnología%20en%20Seguridad"
+target="_blank"
+rel="noopener noreferrer"
+>
+
+<button className="solutions-contact-btn">
+CONTACTAR
+</button>
+
+</a>
             </div>
           </div>
         </div>

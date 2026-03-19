@@ -112,7 +112,7 @@ const Graficapublicitaria: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2149337224.jpg"
+              src="https://i.postimg.cc/GtvXZDdz/2149337224.jpg"
               alt="Imagen 1"
               className="rounded-lg shadow-md w-full"
             />

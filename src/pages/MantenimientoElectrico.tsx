@@ -80,7 +80,7 @@ const MantenimientoElectrico: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/15085.jpg"
+              src="https://i.postimg.cc/rF3phtKt/15085.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />
@@ -101,7 +101,7 @@ const MantenimientoElectrico: React.FC = () => {
             className="md:w-1/2 flex flex-col gap-6"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/5077.jpg"
+              src="https://i.postimg.cc/1zHsZg5q/5077.jpg"
               className="rounded-lg shadow-md w-full"
             />
           </motion.div>
@@ -158,7 +158,7 @@ const MantenimientoElectrico: React.FC = () => {
             className="md:w-1/2"
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/6115.jpg"
+              src="https://i.postimg.cc/SQ5qqbqT/6115.jpg"
               alt="Descripción de la imagen"
               className="w-full max-w-[3000px] h-auto"
             />

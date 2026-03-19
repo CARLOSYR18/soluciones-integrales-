@@ -1,663 +1,1110 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import React, { useEffect, useMemo, useState, FormEvent, ChangeEvent } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+type PaymentMode = "cuotas" | "unico";
 
 interface FormData {
-  loanAmount: string;
-  interestRate: string;
-  loanTerm: string;
-  termType: string;
-  loanType: string;
   fullName: string;
   email: string;
   phone: string;
+  dni: string;
+  district: string;
 }
 
-interface ComparisonRow {
-  scenario: string;
-  term: string;
-  rate: string;
-  monthly: string;
-  total: string;
+interface TermOption {
+  id: string;
+  label: string;
+  weeks?: number;
+  days?: number;
+}
+
+interface Testimonial {
+  name: string;
+  role: string;
+  text: string;
+  stars: number;
 }
 
 const PrestamosCalculadora: React.FC = () => {
-  // Estados
+  // ====== UI / Datos ======
+  const termCuotas: TermOption[] = [
+    { id: "w4", label: "4 cuotas semanales (28 días)", weeks: 4 },
+    { id: "w8", label: "8 cuotas semanales (56 días)", weeks: 8 },
+    { id: "w12", label: "12 cuotas semanales (84 días)", weeks: 12 },
+  ];
+
+  const termUnico: TermOption[] = [
+    { id: "d7", label: "Pago único (7 días)", days: 7 },
+    { id: "d14", label: "Pago único (14 días)", days: 14 },
+    { id: "d30", label: "Pago único (30 días)", days: 30 },
+  ];
+
+  const whyCards = [
+    {
+      icon: "💸",
+      title: "Grandes descuentos",
+      desc: "Primer préstamo con grandes descuentos en intereses. Sin condiciones raras.",
+    },
+    {
+      icon: "⚡",
+      title: "Préstamo en menos de 24h",
+      desc: "100% digital. Sin colas ni papeles. Desde tu teléfono.",
+    },
+    {
+      icon: "⭐",
+      title: "Transparencia total",
+      desc: "El costo que ves es el que pagas. Cero sorpresas.",
+    },
+    {
+      icon: "⏱️",
+      title: "Respuesta inmediata",
+      desc: "Aprobamos en minutos. Tu tiempo vale.",
+    },
+  ];
+
+  const requirements = [
+    { n: 1, title: "Documento DNI vigente" },
+    { n: 2, title: "Ser mayor de 18 años" },
+    { n: 3, title: "Contar con ingresos demostrables" },
+    { n: 4, title: "Tener una cuenta bancaria activa" },
+  ];
+
+  const testimonials: Testimonial[] = [
+    {
+      name: "José Morante",
+      role: "Cliente desde 2023",
+      text: "Excelente atención y rapidez. El dinero llegó el mismo día.",
+      stars: 5,
+    },
+    {
+      name: "Renzo Huamanyauri",
+      role: "Cliente desde 2024",
+      text: "Desembolso rápido y seguro. Proceso muy sencillo y sin sorpresas.",
+      stars: 5,
+    },
+    {
+      name: "Archivos Digitales",
+      role: "Cliente recurrente",
+      text: "Muy conformes con el servicio. Lo recomendamos sin dudarlo.",
+      stars: 5,
+    },
+  ];
+
+  // ====== Estados (Calculadora) ======
+  const [mode, setMode] = useState<PaymentMode>("cuotas");
+  const [amount, setAmount] = useState<number>(500);
+  const [selectedTermId, setSelectedTermId] = useState<string>("w4");
+  const [interestPct, setInterestPct] = useState<number>(20); // estilo captura: 20%
+
+  // ====== Estados (Formulario) ======
   const [formData, setFormData] = useState<FormData>({
-    loanAmount: '',
-    interestRate: '',
-    loanTerm: '',
-    termType: 'months',
-    loanType: '',
-    fullName: '',
-    email: '',
-    phone: ''
+    fullName: "",
+    email: "",
+    phone: "",
+    dni: "",
+    district: "",
   });
 
-  const [monthlyPayment, setMonthlyPayment] = useState('0,00 €');
-  const [totalCost, setTotalCost] = useState('0,00 €');
-  const [loansCounter, setLoansCounter] = useState(187);
-  const [showModal, setShowModal] = useState(false);
-  const [referenceNumber, setReferenceNumber] = useState('');
-  const [comparisonData, setComparisonData] = useState<ComparisonRow[]>([
-    { scenario: 'Principal', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' },
-    { scenario: 'Plazo extendido', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' },
-    { scenario: 'Mejor tasa', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' }
-  ]);
-
   const [errors, setErrors] = useState({
-    loanAmount: false,
-    interestRate: false,
-    loanTerm: false,
-    loanType: false,
     fullName: false,
     email: false,
-    phone: false
+    phone: false,
+    dni: false,
+    district: false,
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [referenceNumber, setReferenceNumber] = useState("");
+  const [loansCounter, setLoansCounter] = useState(100);
 
-  // Validación en tiempo real
-  useEffect(() => {
-    validateForm();
-    if (formData.loanAmount && formData.interestRate && formData.loanTerm) {
-      calculateLoan();
+  // ====== Helpers ======
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("es-PE", {
+      style: "currency",
+      currency: "PEN",
+      minimumFractionDigits: 2,
+    }).format(value);
+
+  const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
+
+  const activeTerm = useMemo(() => {
+    const list = mode === "cuotas" ? termCuotas : termUnico;
+    return list.find((t) => t.id === selectedTermId) ?? list[0];
+  }, [mode, selectedTermId]);
+
+  const computed = useMemo(() => {
+    const principal = amount;
+    const interest = principal * (interestPct / 100);
+
+    if (mode === "cuotas") {
+      const weeks = activeTerm.weeks ?? 4;
+      const total = principal + interest;
+      const weekly = total / weeks;
+
+      const lastPayment = new Date();
+      lastPayment.setDate(lastPayment.getDate() + weeks * 7);
+
+      return {
+        principal,
+        interest,
+        installmentsText: `${weeks} cuotas semanales`,
+        installmentLabel: `Cuota semanal (× ${weeks})`,
+        installmentValue: weekly,
+        total,
+        lastPayment,
+      };
+    } else {
+      const days = activeTerm.days ?? 7;
+      // Puedes ajustar la lógica; aquí mantenemos interés fijo para que se vea como la captura
+      const total = principal + interest;
+
+      const lastPayment = new Date();
+      lastPayment.setDate(lastPayment.getDate() + days);
+
+      return {
+        principal,
+        interest,
+        installmentsText: `Pago único`,
+        installmentLabel: `Pago único (${days} días)`,
+        installmentValue: total,
+        total,
+        lastPayment,
+      };
     }
-  }, [formData]);
+  }, [amount, interestPct, mode, activeTerm]);
 
-  const validateForm = () => {
+  const lastPaymentText = useMemo(() => {
+    const d = computed.lastPayment;
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const yyyy = d.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  }, [computed.lastPayment]);
+
+  // ====== Validación ======
+  useEffect(() => {
     const newErrors = {
-      loanAmount: !formData.loanAmount || parseFloat(formData.loanAmount) < 1000 || parseFloat(formData.loanAmount) > 500000,
-      interestRate: !formData.interestRate || parseFloat(formData.interestRate) < 1 || parseFloat(formData.interestRate) > 20,
-      loanTerm: !formData.loanTerm || 
-        (formData.termType === 'months' && (parseInt(formData.loanTerm) < 3 || parseInt(formData.loanTerm) > 360)) ||
-        (formData.termType === 'years' && (parseInt(formData.loanTerm) < 1 || parseInt(formData.loanTerm) > 30)),
-      loanType: !formData.loanType,
       fullName: !formData.fullName || formData.fullName.trim().length < 3,
       email: !formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email),
-      phone: !formData.phone || !/^\d{9,}$/.test(formData.phone.replace(/\s/g, ''))
+      phone: !formData.phone || !/^\d{9}$/.test(formData.phone.replace(/\s/g, "")),
+      dni: !formData.dni || !/^\d{8}$/.test(formData.dni.trim()),
+      district: !formData.district || formData.district.trim().length < 2,
     };
 
     setErrors(newErrors);
     setIsFormValid(!Object.values(newErrors).includes(true));
-  };
+  }, [formData]);
 
-  const calculateLoan = () => {
-    const principal = parseFloat(formData.loanAmount);
-    const rate = parseFloat(formData.interestRate) / 100 / 12;
-    const time = formData.termType === 'years' ? parseInt(formData.loanTerm) * 12 : parseInt(formData.loanTerm);
-    
-    const x = Math.pow(1 + rate, time);
-    const monthly = (principal * x * rate) / (x - 1);
-    const totalAmount = monthly * time;
-    
-    setMonthlyPayment(formatCurrency(monthly));
-    setTotalCost(formatCurrency(totalAmount));
-    
-    updateComparisonTable(principal, rate, time);
-  };
-
-  const updateComparisonTable = (principal: number, monthlyRate: number, months: number) => {
-    const scenario1Monthly = calculateMonthlyPayment(principal, monthlyRate, months);
-    const scenario1Total = scenario1Monthly * months;
-    
-    const extendedMonths = Math.round(months * 1.25);
-    const scenario2Monthly = calculateMonthlyPayment(principal, monthlyRate, extendedMonths);
-    const scenario2Total = scenario2Monthly * extendedMonths;
-    
-    const betterRate = monthlyRate - (0.5 / 100 / 12);
-    const scenario3Monthly = calculateMonthlyPayment(principal, betterRate, months);
-    const scenario3Total = scenario3Monthly * months;
-    
-    const annualRate = monthlyRate * 12 * 100;
-    const betterAnnualRate = betterRate * 12 * 100;
-    
-    setComparisonData([
-      {
-        scenario: 'Principal',
-        term: `${months} meses`,
-        rate: `${annualRate.toFixed(2)}%`,
-        monthly: formatCurrency(scenario1Monthly),
-        total: formatCurrency(scenario1Total)
-      },
-      {
-        scenario: 'Plazo extendido',
-        term: `${extendedMonths} meses`,
-        rate: `${annualRate.toFixed(2)}%`,
-        monthly: formatCurrency(scenario2Monthly),
-        total: formatCurrency(scenario2Total)
-      },
-      {
-        scenario: 'Mejor tasa',
-        term: `${months} meses`,
-        rate: `${betterAnnualRate.toFixed(2)}%`,
-        monthly: formatCurrency(scenario3Monthly),
-        total: formatCurrency(scenario3Total)
-      }
-    ]);
-  };
-
-  const calculateMonthlyPayment = (principal: number, rate: number, time: number): number => {
-    const x = Math.pow(1 + rate, time);
-    return (principal * x * rate) / (x - 1);
-  };
-
-  const formatCurrency = (value: number): string => {
-    return new Intl.NumberFormat('es-ES', { 
-      style: 'currency', 
-      currency: 'EUR' 
-    }).format(value);
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
+  // ====== Submit ======
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    
-    if (isFormValid) {
-      const refNumber = `REF-${Date.now().toString().slice(-8)}-${Math.floor(Math.random() * 1000)}`;
-      setReferenceNumber(refNumber);
-      setLoansCounter(prev => prev + 1);
-      setShowModal(true);
-      
-      // Reset form
-      setFormData({
-        loanAmount: '',
-        interestRate: '',
-        loanTerm: '',
-        termType: 'months',
-        loanType: '',
-        fullName: '',
-        email: '',
-        phone: ''
-      });
-      
-      setMonthlyPayment('0,00 €');
-      setTotalCost('0,00 €');
-      setComparisonData([
-        { scenario: 'Principal', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' },
-        { scenario: 'Plazo extendido', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' },
-        { scenario: 'Mejor tasa', term: '- meses', rate: '-%', monthly: '0,00 €', total: '0,00 €' }
-      ]);
-    }
+    if (!isFormValid) return;
+
+    const refNumber = `JB-${Date.now().toString().slice(-8)}-${Math.floor(Math.random() * 900 + 100)}`;
+    setReferenceNumber(refNumber);
+    setLoansCounter((p) => p + 1);
+    setShowModal(true);
+
+    // reset (solo datos personales; dejamos calculadora como está)
+    setFormData({ fullName: "", email: "", phone: "", dni: "", district: "" });
   };
+
+  // ====== UX: si cambias modo, set term default ======
+  useEffect(() => {
+    if (mode === "cuotas") setSelectedTermId("w4");
+    else setSelectedTermId("d7");
+  }, [mode]);
 
   return (
     <>
-      {/* Estilos exactamente iguales al HTML */}
       <style>
         {`
-          :root {
-            --primary: #0a2540;
-            --secondary: #4a6fa5;
-            --light-gray: #f8f9fa;
-            --medium-gray: #e9ecef;
-            --dark-gray: #495057;
+          :root{
+            --jb-green:#12b347;
+            --jb-green-dark:#0e9a3d;
+            --jb-purple:#6f2dbd;
+            --jb-ink:#0b1220;
+            --jb-muted:#6b7280;
+            --jb-line:#e5e7eb;
+            --jb-card:#ffffff;
+            --jb-bg:#f7f8fb;
           }
 
-          body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--dark-gray);
-            background-color: var(--light-gray);
+          body{
+            background: var(--jb-bg);
+            color:#111827;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
           }
 
-          .navbar {
-            background-color: var(--primary);
+          /* Navbar */
+          .jb-nav{
+            background:#fff;
+            border-bottom:1px solid rgba(0,0,0,.06);
+            position:sticky;
+            top:0;
+            z-index:50;
+          }
+          .jb-brand{
+            display:flex; align-items:center; gap:.6rem;
+            font-weight:800; letter-spacing:.2px;
+            color:#0b1220; text-decoration:none;
+          }
+          .jb-logo{
+            width:34px;height:34px;border-radius:10px;
+            background: linear-gradient(135deg, var(--jb-green), #2dd4bf);
+            box-shadow: 0 10px 25px rgba(18,179,71,.18);
+          }
+          .jb-link{
+            color:#374151; text-decoration:none; font-weight:600;
+            padding:.4rem .6rem; border-radius:10px;
+          }
+          .jb-link:hover{ background: rgba(17,24,39,.06); color:#111827; }
+          .jb-link.active{ color: var(--jb-purple); }
+
+          .jb-btn{
+            border:0; border-radius:12px; font-weight:800;
+            padding:.65rem 1.05rem;
+          }
+          .jb-btn-green{
+            background: var(--jb-green); color:#fff;
+            box-shadow: 0 10px 24px rgba(18,179,71,.18);
+          }
+          .jb-btn-green:hover{ background: var(--jb-green-dark); }
+          .jb-btn-outline{
+            background:#fff; color:#111827;
+            border:1px solid rgba(17,24,39,.14);
+          }
+          .jb-btn-outline:hover{ background: rgba(17,24,39,.04); }
+
+          /* Hero split */
+          .jb-hero{
+            background:#fff;
+          }
+          .jb-hero-wrap{
+            display:grid;
+            grid-template-columns: 1.2fr .9fr;
+            gap: 2.2rem;
+            align-items: stretch;
+            padding: 1.6rem 0 2.1rem;
+          }
+          @media (max-width: 992px){
+            .jb-hero-wrap{ grid-template-columns: 1fr; }
           }
 
-          .hero-section {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            padding: 3rem 0;
+          .jb-hero-media{
+            border-radius: 18px;
+            overflow:hidden;
+            min-height: 420px;
+            position:relative;
+            background:
+              radial-gradient(1200px 500px at 0% 100%, rgba(18,179,71,.30), transparent 55%),
+              radial-gradient(900px 450px at 80% 10%, rgba(111,45,189,.22), transparent 60%),
+              linear-gradient(135deg, #0b1220, #111827);
+          }
+          .jb-hero-media::after{
+            content:"";
+            position:absolute; inset:0;
+            background: linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.10));
+          }
+          .jb-hero-text{
+            position:absolute; left: 28px; bottom: 28px; right: 28px;
+            z-index:2;
+            color:#fff;
+          }
+          .jb-hero-kicker{
+            font-size:.78rem;
+            letter-spacing:.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.74);
+            margin-bottom:.35rem;
+          }
+          .jb-hero-title{
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-weight:900;
+            font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+            line-height: 1.03;
+            margin:0 0 .35rem;
+          }
+          .jb-hero-title span{
+            color: #74f3a6;
+            font-style: italic;
+            font-weight:800;
+          }
+          .jb-hero-sub{
+            max-width: 520px;
+            color: rgba(255,255,255,.82);
+            margin: 0;
           }
 
-          .form-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            padding: 2rem;
+          /* Calculator card */
+          .jb-panel{
+            background: var(--jb-card);
+            border-radius: 18px;
+            border: 1px solid rgba(0,0,0,.06);
+            box-shadow: 0 10px 30px rgba(17,24,39,.08);
+            padding: 1.35rem;
+          }
+          .jb-panel h6{
+            color: var(--jb-green);
+            font-weight:900;
+            text-align:center;
+            margin-bottom: 1rem;
+          }
+          .jb-seg{
+            display:flex; gap:.6rem;
+            background:#f2f5f9;
+            border-radius: 14px;
+            padding:.45rem;
+            border:1px solid rgba(0,0,0,.06);
+          }
+          .jb-seg button{
+            flex:1; border:0; border-radius: 12px;
+            padding:.62rem .8rem;
+            font-weight:900;
+            background: transparent;
+            color:#111827;
+          }
+          .jb-seg button.active{
+            background: var(--jb-green);
+            color:#fff;
+            box-shadow: 0 10px 20px rgba(18,179,71,.16);
           }
 
-          .comparison-table {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            padding: 1.5rem;
+          .jb-box{
+            border:1px solid rgba(0,0,0,.06);
+            background:#fff;
+            border-radius: 14px;
+            padding: 1rem;
+            margin-top: .9rem;
+          }
+          .jb-label{
+            font-weight:800;
+            color:#111827;
+            margin-bottom:.65rem;
           }
 
-          .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+          .jb-amount-row{
+            display:flex; align-items:center; gap:.8rem;
+          }
+          .jb-circle{
+            width:40px;height:40px;border-radius:999px;border:0;
+            font-weight:900;
+            background:#eafff1; color: var(--jb-green-dark);
+          }
+          .jb-circle:hover{ background:#d9ffe6; }
+          input[type="range"].jb-range{
+            flex:1;
+            accent-color: var(--jb-green);
+          }
+          .jb-amount{
+            text-align:right;
+            font-weight:900;
+            color: var(--jb-green-dark);
+            margin-top:.5rem;
           }
 
-          .btn-primary:hover {
-            background-color: var(--secondary);
-            border-color: var(--secondary);
+          .jb-select{
+            width:100%;
+            border-radius: 12px;
+            border:1px solid rgba(0,0,0,.10);
+            padding:.72rem .85rem;
+            font-weight:700;
+            outline:none;
+          }
+          .jb-select:focus{
+            border-color: rgba(18,179,71,.5);
+            box-shadow: 0 0 0 .2rem rgba(18,179,71,.12);
           }
 
-          .counter-section {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            margin-top: 2rem;
+          .jb-summary{
+            display:grid;
+            grid-template-columns: 1fr auto;
+            gap:.35rem 1rem;
+            font-size: .95rem;
+            margin-top:.15rem;
+          }
+          .jb-summary .k{ color: var(--jb-muted); font-weight:700; }
+          .jb-summary .v{ font-weight:900; color:#111827; text-align:right; }
+          .jb-summary .v.green{ color: var(--jb-green-dark); }
+          .jb-summary .v.purple{ color: var(--jb-purple); }
+          .jb-cta{
+            margin-top: 1rem;
+            width:100%;
+            border-radius: 999px;
+            padding: .85rem 1rem;
+            font-weight: 1000;
           }
 
-          .counter-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
+          /* Section titles */
+          .jb-section{
+            padding: 4rem 0;
+          }
+          .jb-eyebrow{
+            text-transform: uppercase;
+            letter-spacing: .22em;
+            font-size: .75rem;
+            color: #9ca3af;
+            font-weight: 900;
+            text-align:center;
+            margin-bottom:.45rem;
+          }
+          .jb-h2{
+            text-align:center;
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-weight: 900;
+            font-size: clamp(2.05rem, 3.2vw, 3rem);
+            margin:0 0 2.25rem;
+          }
+          .jb-h2 span{
+            color: var(--jb-green);
+            font-style: italic;
           }
 
-          .highlight-cell {
-            background-color: rgba(74, 111, 165, 0.1);
-            font-weight: 500;
+          /* Cards row */
+          .jb-card{
+            background:#fff;
+            border:1px solid rgba(0,0,0,.06);
+            border-radius: 16px;
+            padding: 1.35rem 1.2rem;
+            height:100%;
+            box-shadow: 0 10px 25px rgba(17,24,39,.06);
+          }
+          .jb-icon{
+            width:44px;height:44px;border-radius: 14px;
+            display:grid; place-items:center;
+            background: rgba(111,45,189,.10);
+            color: var(--jb-purple);
+            font-weight: 900;
+            margin-bottom: 1rem;
+          }
+          .jb-card h5{ font-weight: 1000; margin:0 0 .5rem; }
+          .jb-card p{ margin:0; color: var(--jb-muted); font-weight:600; }
+
+          /* Stats strip */
+          .jb-strip{
+            background: radial-gradient(900px 400px at 20% 0%, rgba(18,179,71,.25), transparent 55%),
+                        radial-gradient(900px 400px at 80% 100%, rgba(111,45,189,.20), transparent 60%),
+                        linear-gradient(180deg, #0b1220, #0b1220);
+            color:#fff;
+            padding: 2.3rem 0;
+          }
+          .jb-stat{
+            text-align:center;
+            padding: 1rem .75rem;
+            border-right: 1px solid rgba(255,255,255,.10);
+          }
+          .jb-stat:last-child{ border-right:0; }
+          .jb-stat .num{
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            margin-top:.2rem;
+          }
+          .jb-stat .lab{
+            color: rgba(255,255,255,.65);
+            letter-spacing:.14em;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: .72rem;
+            margin-top:.1rem;
           }
 
-          .comparison-table th {
-            background-color: var(--primary);
-            color: white;
+          /* Requirements */
+          .jb-req-wrap{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items:center;
+          }
+          @media (max-width: 992px){
+            .jb-req-wrap{ grid-template-columns: 1fr; }
+          }
+          .jb-photo{
+            border-radius: 18px;
+            min-height: 280px;
+            border: 1px solid rgba(0,0,0,.06);
+            background:
+              radial-gradient(700px 300px at 30% 20%, rgba(18,179,71,.22), transparent 55%),
+              radial-gradient(700px 300px at 80% 80%, rgba(111,45,189,.18), transparent 60%),
+              linear-gradient(135deg, #ffffff, #f3f4f6);
+            box-shadow: 0 10px 25px rgba(17,24,39,.06);
+            position:relative;
+            overflow:hidden;
+          }
+          .jb-badge{
+            position:absolute;
+            right: 14px;
+            bottom: 14px;
+            background: var(--jb-green);
+            color:#fff;
+            font-weight: 1000;
+            padding: .45rem .7rem;
+            border-radius: 999px;
+            font-size: .82rem;
+            box-shadow: 0 10px 20px rgba(18,179,71,.20);
+          }
+          .jb-req-title{
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-weight: 900;
+            font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+            margin:0 0 .9rem;
+          }
+          .jb-req-title span{ color: var(--jb-purple); font-style: italic; }
+          .jb-steps{
+            display:flex; flex-direction:column; gap:.75rem;
+          }
+          .jb-step{
+            display:flex; align-items:center; gap:.9rem;
+            border:1px solid rgba(0,0,0,.06);
+            background:#fff;
+            border-radius: 14px;
+            padding:.85rem .95rem;
+            font-weight: 900;
+            color:#111827;
+          }
+          .jb-step .n{
+            width:28px;height:28px;border-radius: 999px;
+            display:grid; place-items:center;
+            background: rgba(111,45,189,.12);
+            color: var(--jb-purple);
+            font-weight: 1000;
+            font-size:.9rem;
+          }
+          .jb-step.active{
+            background: rgba(111,45,189,.10);
+            border-color: rgba(111,45,189,.22);
+          }
+          .jb-step.active .n{
+            background: var(--jb-purple);
+            color:#fff;
           }
 
-          .form-label {
-            font-weight: 500;
+          /* Testimonials */
+          .jb-stars{ color: var(--jb-green); letter-spacing:.08em; }
+          .jb-quote{ color: var(--jb-muted); font-weight:650; }
+
+          /* Form small */
+          .jb-form{
+            margin-top: .9rem;
+            border-top: 1px dashed rgba(17,24,39,.16);
+            padding-top: 1rem;
+          }
+          .jb-input{
+            border-radius: 12px !important;
+            font-weight: 700 !important;
           }
 
-          .invalid-feedback {
-            display: none;
-            font-size: 0.875em;
-            color: #dc3545;
+          /* Modal (simple) */
+          .jb-modal-backdrop{
+            position:fixed; inset:0; background: rgba(0,0,0,.55);
+            display:flex; align-items:center; justify-content:center;
+            z-index: 9999;
+            padding: 1rem;
           }
-
-          .is-invalid {
-            border-color: #dc3545;
+          .jb-modal{
+            width: min(560px, 96vw);
+            background:#fff;
+            border-radius: 18px;
+            border:1px solid rgba(0,0,0,.06);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+            overflow:hidden;
           }
-
-          .is-invalid ~ .invalid-feedback {
-            display: block;
+          .jb-modal header{
+            padding: 1rem 1.2rem;
+            display:flex; align-items:center; justify-content:space-between;
+            border-bottom:1px solid rgba(0,0,0,.06);
           }
-
-          footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
-          }
-
-          .footer-link {
-            color: #ccc;
-            text-decoration: none;
-          }
-
-          .footer-link:hover {
-            color: white;
-          }
-
-          @media (min-width: 992px) {
-            .form-and-comparison {
-              display: flex;
-              gap: 2rem;
-            }
-            
-            .form-container {
-              flex: 1;
-            }
-            
-            .comparison-container {
-              flex: 1;
-            }
-          }
-
-          .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-          }
-
-          .logo-accent {
-            color: #4a6fa5;
+          .jb-modal header h5{ margin:0; font-weight: 1000; }
+          .jb-modal .body{ padding: 1.1rem 1.2rem; }
+          .jb-modal .footer{ padding: 1rem 1.2rem; border-top:1px solid rgba(0,0,0,.06); }
+          .jb-x{
+            border:0; background: rgba(17,24,39,.06);
+            width:36px;height:36px;border-radius: 12px;
+            font-weight: 1000;
           }
         `}
       </style>
 
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container">
-          <a className="navbar-brand logo" href="#">Financia<span className="logo-accent">Más</span></a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link active" href="#">Inicio</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Préstamos</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Calculadora</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Nosotros</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Contacto</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      {/* NAVBAR */}
+      <header className="jb-nav">
+        <div className="container py-3 d-flex align-items-center justify-content-between">
+          <a className="jb-brand" href="#inicio">
+            <span className="jb-logo" />
+            <span>
+              SOLUCIONES <span style={{ color: "var(--jb-green)" }}>INTEGRALES</span> JB
+            </span>
+          </a>
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container text-center">
-          <h1 className="display-4">Solicita tu préstamo personalizado</h1>
-          <p className="lead">Compara y elige la mejor opción para tus necesidades financieras</p>
+          <nav className="d-none d-md-flex align-items-center gap-2">
+            <a className="jb-link active" href="#inicio">
+              Inicio
+            </a>
+            <a className="jb-link" href="#como-funciona">
+              ¿Cómo funciona?
+            </a>
+            <a className="jb-link" href="#como-pagar">
+              ¿Cómo pagar?
+            </a>
+          </nav>
+
+          <a className="jb-btn jb-btn-green text-decoration-none" href="#zona-clientes">
+            ZONA DE CLIENTES
+          </a>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section id="inicio" className="jb-hero">
+        <div className="container">
+          <div className="jb-hero-wrap">
+            {/* Izquierda: imagen / hero */}
+            <div className="jb-hero-media">
+              <div className="jb-hero-text">
+                <div className="jb-hero-kicker">— PRÉSTAMOS PERSONALES · LIMA</div>
+                <h1 className="jb-hero-title">
+                  Dinero en horas, <span>sin complicaciones.</span>
+                </h1>
+                <p className="jb-hero-sub">
+                  Desde S/ 200 hasta S/ 5,000 con aprobación inmediata. Sin colas ni papeleo.
+                </p>
+              </div>
+            </div>
+
+            {/* Derecha: calculadora */}
+            <div className="jb-panel">
+              <h6>Elige aquí el tipo de préstamo que necesitas</h6>
+
+              <div className="jb-seg">
+                <button className={mode === "cuotas" ? "active" : ""} onClick={() => setMode("cuotas")} type="button">
+                  Pago a Cuotas
+                </button>
+                <button className={mode === "unico" ? "active" : ""} onClick={() => setMode("unico")} type="button">
+                  Pago Único
+                </button>
+              </div>
+
+              <div className="jb-box">
+                <div className="jb-label">¿Cuánto necesitas?</div>
+                <div className="jb-amount-row">
+                  <button
+                    className="jb-circle"
+                    type="button"
+                    onClick={() => setAmount((p) => clamp(p - 50, 200, 5000))}
+                    aria-label="Disminuir"
+                  >
+                    −
+                  </button>
+
+                  <input
+                    className="jb-range"
+                    type="range"
+                    min={200}
+                    max={5000}
+                    step={50}
+                    value={amount}
+                    onChange={(e) => setAmount(parseInt(e.target.value, 10))}
+                  />
+
+                  <button
+                    className="jb-circle"
+                    type="button"
+                    onClick={() => setAmount((p) => clamp(p + 50, 200, 5000))}
+                    aria-label="Aumentar"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="jb-amount">{formatCurrency(amount)}</div>
+              </div>
+
+              <div className="jb-box">
+                <div className="jb-label">Plazo</div>
+                <select className="jb-select" value={selectedTermId} onChange={(e) => setSelectedTermId(e.target.value)}>
+                  {(mode === "cuotas" ? termCuotas : termUnico).map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="jb-box">
+                <div className="jb-summary">
+                  <div className="k">Cantidad solicitada</div>
+                  <div className="v">{formatCurrency(computed.principal)}</div>
+
+                  <div className="k">Interés Total ({interestPct}%)</div>
+                  <div className="v">{formatCurrency(computed.interest)}</div>
+
+                  <div className="k">N° de cuotas</div>
+                  <div className="v purple">{computed.installmentsText}</div>
+
+                  <div className="k">{computed.installmentLabel}</div>
+                  <div className="v green">{formatCurrency(computed.installmentValue)}</div>
+
+                  <div className="k">Total a pagar</div>
+                  <div className="v">{formatCurrency(computed.total)}</div>
+
+                  <div className="k">Fecha de último pago</div>
+                  <div className="v">{lastPaymentText}</div>
+                </div>
+
+                <button
+                  className="jb-btn jb-btn-green jb-cta"
+                  type="button"
+                  onClick={() => {
+                    // scroll al form
+                    const el = document.getElementById("solicitud");
+                    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                >
+                  Solicítalo Ahora
+                </button>
+
+                {/* FORM debajo, estilo “zona derecha” */}
+                <form id="solicitud" className="jb-form" onSubmit={handleSubmit} noValidate>
+                  <div className="row g-2">
+                    <div className="col-12">
+                      <input
+                        id="fullName"
+                        className={`form-control jb-input ${errors.fullName ? "is-invalid" : ""}`}
+                        placeholder="Nombre completo"
+                        value={formData.fullName}
+                        onChange={handleFormChange}
+                      />
+                      <div className="invalid-feedback">Ingresa tu nombre (mín. 3 caracteres).</div>
+                    </div>
+
+                    <div className="col-12">
+                      <input
+                        id="email"
+                        type="email"
+                        className={`form-control jb-input ${errors.email ? "is-invalid" : ""}`}
+                        placeholder="Correo"
+                        value={formData.email}
+                        onChange={handleFormChange}
+                      />
+                      <div className="invalid-feedback">Ingresa un correo válido.</div>
+                    </div>
+
+                    <div className="col-6">
+                      <input
+                        id="phone"
+                        className={`form-control jb-input ${errors.phone ? "is-invalid" : ""}`}
+                        placeholder="Celular (9 dígitos)"
+                        value={formData.phone}
+                        onChange={handleFormChange}
+                      />
+                      <div className="invalid-feedback">Debe tener 9 dígitos.</div>
+                    </div>
+
+                    <div className="col-6">
+                      <input
+                        id="dni"
+                        className={`form-control jb-input ${errors.dni ? "is-invalid" : ""}`}
+                        placeholder="DNI (8 dígitos)"
+                        value={formData.dni}
+                        onChange={handleFormChange}
+                      />
+                      <div className="invalid-feedback">DNI de 8 dígitos.</div>
+                    </div>
+
+                    <div className="col-12">
+                      <input
+                        id="district"
+                        className={`form-control jb-input ${errors.district ? "is-invalid" : ""}`}
+                        placeholder="Distrito"
+                        value={formData.district}
+                        onChange={handleFormChange}
+                      />
+                      <div className="invalid-feedback">Ingresa tu distrito.</div>
+                    </div>
+
+                    <div className="col-12 mt-1">
+                      <button className="jb-btn jb-btn-outline w-100" type="submit" disabled={!isFormValid}>
+                        Enviar Solicitud
+                      </button>
+                      <div className="text-center mt-2" style={{ color: "var(--jb-muted)", fontWeight: 700, fontSize: ".85rem" }}>
+                        * Los montos y costos son referenciales.
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div className="mt-3 text-center" style={{ color: "var(--jb-muted)", fontWeight: 800 }}>
+                Solicitudes hoy: <span style={{ color: "var(--jb-purple)" }}>{loansCounter}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div className="container my-5">
-        <div className="form-and-comparison">
-          {/* Formulario */}
-          <div className="form-container mb-4">
-            <h2 className="mb-4">Calculadora de préstamos</h2>
-            <form id="loan-form" noValidate onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="loanAmount" className="form-label">Monto del préstamo (€)</label>
-                <input
-                  type="number"
-                  className={`form-control ${errors.loanAmount ? 'is-invalid' : ''}`}
-                  id="loanAmount"
-                  placeholder="Ej: 10000"
-                  value={formData.loanAmount}
-                  onChange={handleInputChange}
-                  min="1000"
-                  max="500000"
-                />
-                <div className="invalid-feedback">
-                  Por favor ingrese un monto entre 1.000€ y 500.000€
+      {/* WHY */}
+      <section className="jb-section">
+        <div className="container">
+          <div className="jb-eyebrow">¿POR QUÉ ELEGIRNOS?</div>
+          <h2 className="jb-h2">
+            Préstamos online <span>sin complicaciones</span>
+          </h2>
+
+          <div className="row g-4">
+            {whyCards.map((c) => (
+              <div className="col-12 col-md-6 col-lg-3" key={c.title}>
+                <div className="jb-card">
+                  <div className="jb-icon">{c.icon}</div>
+                  <h5>{c.title}</h5>
+                  <p>{c.desc}</p>
                 </div>
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="interestRate" className="form-label">Tasa de interés anual (%)</label>
-                <input
-                  type="number"
-                  className={`form-control ${errors.interestRate ? 'is-invalid' : ''}`}
-                  id="interestRate"
-                  placeholder="Ej: 5.5"
-                  value={formData.interestRate}
-                  onChange={handleInputChange}
-                  min="1"
-                  max="20"
-                  step="0.1"
-                />
-                <div className="invalid-feedback">
-                  Por favor ingrese una tasa entre 1% y 20%
-                </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STATS STRIP */}
+      <section className="jb-strip" id="como-pagar">
+        <div className="container">
+          <div className="row g-0">
+            <div className="col-6 col-lg-3 jb-stat">
+              <div style={{ fontSize: "1.35rem" }}>🗓️</div>
+              <div className="num">90</div>
+              <div className="lab">Plazo de pago</div>
+            </div>
+            <div className="col-6 col-lg-3 jb-stat">
+              <div style={{ fontSize: "1.35rem" }}>🏅</div>
+              <div className="num">1</div>
+              <div className="lab">Fintech préstamos</div>
+            </div>
+            <div className="col-6 col-lg-3 jb-stat">
+              <div style={{ fontSize: "1.35rem" }}>🍎</div>
+              <div className="num">100</div>
+              <div className="lab">Solicitudes</div>
+            </div>
+            <div className="col-6 col-lg-3 jb-stat">
+              <div style={{ fontSize: "1.35rem" }}>🌍</div>
+              <div className="num">1</div>
+              <div className="lab">Distrito</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REQUIREMENTS + HOW IT WORKS */}
+      <section className="jb-section" id="como-funciona">
+        <div className="container">
+          <div className="jb-req-wrap">
+            <div className="jb-photo">
+              <div className="jb-badge">✔ Proceso 100% digital</div>
+            </div>
+
+            <div>
+              <div className="jb-eyebrow" style={{ textAlign: "left" }}>
+                — REQUISITOS
               </div>
-              
-              <div className="row mb-3">
-                <div className="col-md-6">
-                  <label htmlFor="loanTerm" className="form-label">Plazo</label>
-                  <input
-                    type="number"
-                    className={`form-control ${errors.loanTerm ? 'is-invalid' : ''}`}
-                    id="loanTerm"
-                    placeholder="Ej: 24"
-                    value={formData.loanTerm}
-                    onChange={handleInputChange}
-                    min="3"
-                    max="360"
-                  />
-                  <div className="invalid-feedback">
-                    Por favor ingrese un plazo válido
+              <h3 className="jb-req-title">
+                ¿Qué necesitas para <span>aplicar</span>?
+              </h3>
+
+              <div className="jb-steps">
+                {requirements.map((r, idx) => (
+                  <div key={r.title} className={`jb-step ${idx === 0 ? "active" : ""}`}>
+                    <div className="n">{r.n}</div>
+                    <div>{r.title}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="row g-4 mt-4">
+            <div className="col-12 col-lg-6">
+              <div className="jb-card">
+                <div className="jb-eyebrow" style={{ textAlign: "left", marginBottom: ".3rem" }}>
+                  — EJEMPLO REAL
+                </div>
+                <h4 style={{ fontFamily: "ui-serif", fontWeight: 900, marginBottom: "1rem" }}>
+                  Así funcionan nuestros <span style={{ color: "var(--jb-green)", fontStyle: "italic" }}>préstamos</span>
+                </h4>
+
+                <div className="p-3" style={{ borderRadius: 14, border: "1px solid rgba(0,0,0,.06)", background: "#fff" }}>
+                  <div className="d-flex justify-content-between" style={{ fontWeight: 800, color: "var(--jb-muted)" }}>
+                    <span>Monto solicitado</span>
+                    <span style={{ color: "#111827" }}>{formatCurrency(amount)}</span>
+                  </div>
+                  <hr style={{ opacity: 0.12 }} />
+                  <div className="d-flex justify-content-between" style={{ fontWeight: 800, color: "var(--jb-muted)" }}>
+                    <span>Interés ({interestPct}%)</span>
+                    <span style={{ color: "#111827" }}>{formatCurrency(amount * (interestPct / 100))}</span>
+                  </div>
+                  <hr style={{ opacity: 0.12 }} />
+                  <div className="d-flex justify-content-between" style={{ fontWeight: 900 }}>
+                    <span style={{ color: "#111827" }}>Total a pagar</span>
+                    <span style={{ color: "var(--jb-green-dark)" }}>{formatCurrency(computed.total)}</span>
+                  </div>
+                  <div className="mt-2" style={{ color: "var(--jb-muted)", fontWeight: 700, fontSize: ".88rem" }}>
+                    * Montos referenciales (pueden variar según evaluación crediticia).
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <label htmlFor="termType" className="form-label">Tipo de plazo</label>
-                  <select
-                    className="form-select"
-                    id="termType"
-                    value={formData.termType}
-                    onChange={handleInputChange}
-                  >
-                    <option value="months">Meses</option>
-                    <option value="years">Años</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div className="mb-3">
-                <label htmlFor="loanType" className="form-label">Tipo de préstamo</label>
-                <select
-                  className={`form-select ${errors.loanType ? 'is-invalid' : ''}`}
-                  id="loanType"
-                  value={formData.loanType}
-                  onChange={handleInputChange}
+
+                <button
+                  className="jb-btn jb-btn-green jb-cta mt-3"
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById("solicitud");
+                    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                 >
-                  <option value="">Seleccione un tipo</option>
-                  <option value="personal">Personal</option>
-                  <option value="mortgage">Hipotecario</option>
-                  <option value="auto">Automóvil</option>
-                </select>
-                <div className="invalid-feedback">
-                  Por favor seleccione un tipo de préstamo
-                </div>
+                  SOLICÍTALO AHORA →
+                </button>
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="fullName" className="form-label">Nombre completo</label>
-                <input
-                  type="text"
-                  className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
-                  id="fullName"
-                  placeholder="Ej: Juan Pérez"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                />
-                <div className="invalid-feedback">
-                  Por favor ingrese su nombre completo
-                </div>
-              </div>
-              
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">Correo electrónico</label>
-                <input
-                  type="email"
-                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                  id="email"
-                  placeholder="Ej: nombre@ejemplo.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-                <div className="invalid-feedback">
-                  Por favor ingrese un correo electrónico válido
-                </div>
-              </div>
-              
-              <div className="mb-3">
-                <label htmlFor="phone" className="form-label">Teléfono</label>
-                <input
-                  type="tel"
-                  className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                  id="phone"
-                  placeholder="Ej: 612345678"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
-                <div className="invalid-feedback">
-                  Por favor ingrese un número de teléfono válido
-                </div>
-              </div>
-              
-              <div className="alert alert-info mb-4">
-                <div className="row">
-                  <div className="col-md-6 mb-2 mb-md-0">
-                    <strong>Cuota mensual estimada:</strong>
-                    <div id="monthly-payment" className="fs-4">{monthlyPayment}</div>
-                  </div>
-                  <div className="col-md-6">
-                    <strong>Costo total del préstamo:</strong>
-                    <div id="total-cost" className="fs-4">{totalCost}</div>
-                  </div>
-                </div>
-              </div>
-              
-              <button 
-                type="submit" 
-                className="btn btn-primary btn-lg w-100" 
-                id="submit-btn" 
-                disabled={!isFormValid}
-              >
-                Enviar solicitud
-              </button>
-            </form>
-          </div>
-          
-          {/* Comparación y contador */}
-          <div className="comparison-container">
-            <div className="comparison-table mb-4">
-              <h2 className="mb-3">Comparativa de préstamos</h2>
-              <div className="table-responsive">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Escenario</th>
-                      <th>Plazo</th>
-                      <th>Tasa</th>
-                      <th>Cuota mensual</th>
-                      <th>Costo total</th>
-                    </tr>
-                  </thead>
-                  <tbody id="comparison-table-body">
-                    {comparisonData.map((row, index) => (
-                      <tr key={index}>
-                        <td>{row.scenario === 'Principal' ? <strong>{row.scenario}</strong> : row.scenario}</td>
-                        <td>{row.term}</td>
-                        <td>{row.rate}</td>
-                        <td>{row.monthly}</td>
-                        <td>{row.total}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="small text-muted mt-2">
-                * Los cálculos son estimativos y pueden variar según la evaluación crediticia.
-              </p>
             </div>
-            
-            <div className="counter-section text-center">
-              <p className="mb-1">Préstamos aprobados este mes</p>
-              <div className="counter-number" id="loans-counter">{loansCounter}</div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Características */}
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body text-center">
-                <i className="fas fa-clock fa-3x text-primary mb-3"></i>
-                <h5 className="card-title">Rápido y sencillo</h5>
-                <p className="card-text">Aprobación en menos de 24 horas y fondos disponibles de inmediato.</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body text-center">
-                <i className="fas fa-percentage fa-3x text-primary mb-3"></i>
-                <h5 className="card-title">Las mejores tasas</h5>
-                <p className="card-text">Tasas competitivas adaptadas a tu perfil financiero y necesidades.</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body text-center">
-                <i className="fas fa-shield-alt fa-3x text-primary mb-3"></i>
-                <h5 className="card-title">100% seguro</h5>
-                <p className="card-text">Tus datos están protegidos con la más alta tecnología de encriptación.</p>
+            <div className="col-12 col-lg-6">
+              <div className="jb-card" style={{ display: "grid", placeItems: "center", minHeight: 260 }}>
+                <div style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      width: 130,
+                      height: 130,
+                      borderRadius: 22,
+                      margin: "0 auto 10px",
+                      background:
+                        "radial-gradient(120px 120px at 30% 20%, rgba(18,179,71,.22), transparent 55%), radial-gradient(120px 120px at 80% 80%, rgba(111,45,189,.18), transparent 60%), linear-gradient(135deg, #ffffff, #f3f4f6)",
+                      border: "1px solid rgba(0,0,0,.06)",
+                      boxShadow: "0 10px 24px rgba(17,24,39,.06)",
+                      display: "grid",
+                      placeItems: "center",
+                      fontSize: "2rem",
+                    }}
+                  >
+                    📱
+                  </div>
+
+                  <div
+                    style={{
+                      display: "inline-block",
+                      padding: ".35rem .65rem",
+                      borderRadius: 999,
+                      background: "rgba(111,45,189,.10)",
+                      color: "var(--jb-purple)",
+                      fontWeight: 1000,
+                      fontSize: ".85rem",
+                    }}
+                  >
+                    Desembolso: 24 horas
+                  </div>
+
+                  <p className="jb-quote mt-3" style={{ margin: 0 }}>
+                    Completa tus datos, valida tu información y recibe respuesta en minutos.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Modal de confirmación */}
+      {/* TESTIMONIOS */}
+      <section className="jb-section" style={{ paddingTop: "2.4rem" }}>
+        <div className="container">
+          <div className="jb-eyebrow">— TESTIMONIOS</div>
+          <h2 className="jb-h2">
+            Lo que dicen nuestros <span>clientes</span>
+          </h2>
+
+          <div className="row g-4 justify-content-center">
+            {testimonials.map((t) => (
+              <div className="col-12 col-md-6 col-lg-4" key={t.name}>
+                <div className="jb-card">
+                  <div className="jb-stars">
+                    {"★★★★★".slice(0, t.stars)}
+                    <span style={{ opacity: 0.35 }}>{"★★★★★".slice(t.stars)}</span>
+                  </div>
+                  <p className="jb-quote mt-2">“{t.text}”</p>
+                  <div className="mt-3" style={{ fontWeight: 1000 }}>
+                    {t.name}
+                  </div>
+                  <div style={{ color: "var(--jb-muted)", fontWeight: 800, fontSize: ".9rem" }}>{t.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer simple */}
+      <footer style={{ background: "#fff", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+        <div className="container py-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+          <div style={{ fontWeight: 1000, color: "#111827" }}>
+            © {new Date().getFullYear()} SOLUCIONES INTEGRALES JB
+          </div>
+          <div id="zona-clientes" style={{ color: "var(--jb-muted)", fontWeight: 800 }}>
+            Atención: Lun–Sáb · WhatsApp: 999 999 999
+          </div>
+        </div>
+      </footer>
+
+      {/* MODAL */}
       {showModal && (
-        <div className="modal fade show" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }} tabIndex={-1}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">¡Solicitud recibida!</h5>
-                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+        <div className="jb-modal-backdrop" role="dialog" aria-modal="true">
+          <div className="jb-modal">
+            <header>
+              <h5>¡Solicitud recibida!</h5>
+              <button className="jb-x" onClick={() => setShowModal(false)} aria-label="Cerrar">
+                ✕
+              </button>
+            </header>
+
+            <div className="body">
+              <div
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: 18,
+                  background: "rgba(18,179,71,.12)",
+                  display: "grid",
+                  placeItems: "center",
+                  marginBottom: 12,
+                  fontSize: "1.7rem",
+                }}
+              >
+                ✅
               </div>
-              <div className="modal-body">
-                <div className="text-center mb-3">
-                  <i className="fas fa-check-circle text-success fa-4x"></i>
-                </div>
-                <p>Su solicitud de préstamo ha sido recibida correctamente. En breve, uno de nuestros asesores se pondrá en contacto con usted para continuar con el proceso.</p>
-                <p><strong>Número de referencia:</strong> <span id="reference-number">{referenceNumber}</span></p>
+
+              <p style={{ marginBottom: 8, fontWeight: 750, color: "#111827" }}>
+                Tu solicitud fue registrada. Un asesor te contactará para continuar con el proceso.
+              </p>
+
+              <div style={{ fontWeight: 900, color: "var(--jb-muted)" }}>
+                Número de referencia:{" "}
+                <span style={{ color: "var(--jb-purple)" }}>{referenceNumber}</span>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Aceptar</button>
+
+              <div className="mt-3" style={{ fontWeight: 800, color: "var(--jb-muted)" }}>
+                Resumen:
               </div>
+              <div style={{ fontWeight: 900 }}>
+                {mode === "cuotas" ? "Pago a Cuotas" : "Pago Único"} · {formatCurrency(amount)} · Interés {interestPct}%
+              </div>
+            </div>
+
+            <div className="footer">
+              <button className="jb-btn jb-btn-green w-100" onClick={() => setShowModal(false)}>
+                Aceptar
+              </button>
             </div>
           </div>
         </div>
       )}
-
-      {/* Footer */}
-      <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 mb-4 mb-md-0">
-              <h5 className="mb-3">FinanciaMás</h5>
-              <p>Soluciones financieras personalizadas para cumplir tus objetivos y facilitar tu vida.</p>
-            </div>
-            <div className="col-md-2 mb-4 mb-md-0">
-              <h5 className="mb-3">Enlaces</h5>
-              <ul className="list-unstyled">
-                <li><a href="#" className="footer-link">Inicio</a></li>
-                <li><a href="#" className="footer-link">Préstamos</a></li>
-                <li><a href="#" className="footer-link">Calculadora</a></li>
-                <li><a href="#" className="footer-link">FAQs</a></li>
-              </ul>
-            </div>
-            <div className="col-md-3 mb-4 mb-md-0">
-              <h5 className="mb-3">Legal</h5>
-              <ul className="list-unstyled">
-                <li><a href="#" className="footer-link">Términos y condiciones</a></li>
-                <li><a href="#" className="footer-link">Política de privacidad</a></li>
-                <li><a href="#" className="footer-link">Cookies</a></li>
-              </ul>
-            </div>
-            <div className="col-md-3">
-              <h5 className="mb-3">Contacto</h5>
-              <ul className="list-unstyled">
-                <li><i className="fas fa-phone me-2"></i> 900 123 456</li>
-                <li><i className="fas fa-envelope me-2"></i> info@financiamas.es</li>
-                <li><i className="fas fa-map-marker-alt me-2"></i> Calle Principal 123, Madrid</li>
-              </ul>
-            </div>
-          </div>
-          <hr className="mt-4 mb-3" style={{ borderColor: 'rgba(255,255,255,0.1)' }} />
-          <div className="text-center">
-            <p className="mb-0">&copy; 2025 FinanciaMás. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 };
 
-export default PrestamosCalculadora;
+export default PrestamosCalculadora;  

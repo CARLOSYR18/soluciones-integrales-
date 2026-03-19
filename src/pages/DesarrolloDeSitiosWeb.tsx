@@ -35,17 +35,15 @@ const DesarrolloWebBanner: React.FC = () => {
     <div className="font-sans">
       {/* ====================== BANNER PRINCIPAL ====================== */}
       <header className="relative w-full h-64 md:h-80 flex flex-col items-center justify-center overflow-hidden">
-        {/* Imagen de fondo */}
-        <img
-          src="https://i.postimg.cc/BQCfHxq9/Imagen-de-Whats-App-2025-10-23-a-las-12-26-05-bc027f73.jpg"
-          alt="Fondo de ladrillos oscuros"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
 
-        {/* Overlay oscuro */}
-        <div className="absolute inset-0 bg-sky-400city-70 z-10"></div>
-        {/* Contenido del banner */}
-        <div className="rrelative z-20 flex flex-col items-center justify-center text-center px-4">
+  <img
+    src="https://i.postimg.cc/HxBxQNQF/fondo-N.jpg"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <div className="absolute inset-0 bg-black/50"></div>
+
+  <div className="relative z-20 text-center">
 
           <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
           <TextType
@@ -59,7 +57,7 @@ const DesarrolloWebBanner: React.FC = () => {
           </h1>
 
          <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                    Inicio / Desarrollo de Sitios Web
+                   
                   </span>
         </div>
 

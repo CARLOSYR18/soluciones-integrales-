@@ -19,7 +19,7 @@ const miembros: Miembro[] = [
     id: 1,
     nombre: "Wilder Julca",
     cargo: "Gerente de Servicios",
-    imagen: "https://i.postimg.cc/ZKPgkFv5/image.png",
+    imagen: "https://i.postimg.cc/0y0wMnJ6/wilder1024-(2).png",
     bio: "Lidera la gestión de servicios, asegurando calidad, cumplimiento y mejora continua en cada proyecto.",
     skills: ["Gestión", "Operaciones", "Calidad", "Atención al cliente"],
     linkedin: "#",
@@ -27,9 +27,9 @@ const miembros: Miembro[] = [
   },
   {
     id: 2,
-    nombre: "Carlos Yamacacho Rocca",
-    cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/NGSGyb5R/image.png",
+    nombre: "Edwin Bustamante",
+    cargo: "tecnico electrico",
+    imagen: "https://i.postimg.cc/50GvM68v/unnamed_(2).jpg",
     bio: "Desarrollador web enfocado en interfaces modernas, performance y buenas prácticas.",
     skills: ["React", "TypeScript", "UI/UX", "APIs"],
     linkedin: "#",
@@ -37,64 +37,53 @@ const miembros: Miembro[] = [
   },
   {
     id: 3,
-    nombre: "Adixon Julca Ramirez",
+    nombre: "Juan Rodriguez",
     cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/G2jMWXVg/image.png",
+    imagen: "https://i.postimg.cc/X79df4y1/Gemini-Generated-Image-firbicfirbicfirb.png",
     bio: "Apasionado por crear productos escalables con código limpio y mantenible.",
     skills: ["React", "Node.js", "SQL", "Arquitectura"],
     linkedin: "#",
   },
   {
     id: 4,
-    nombre: "Jared Arroyo Alarcon",
+    nombre: "Adixon Julca Ramirez",
     cargo: "Programador Web",
-    imagen:
-      "https://i.postimg.cc/T1rs3RKF/Whats-App-Image-2026-02-27-at-10-30-16-AM.jpg",
+    imagen:"https://i.postimg.cc/m2rq6pTW/Gemini-Generated-Image-4ayvix4ayvix4ayv.png",
     bio: "Enfocado en desarrollo frontend con detalle visual y experiencia de usuario.",
     skills: ["Frontend", "Tailwind", "Accesibilidad", "Optimización"],
     linkedin: "#",
     twitter: "#",
   },
-  {
-    id: 5,
-    nombre: "Gabriel Sedano",
-    cargo: "Programador Web ",
-    imagen:
-      "https://i.postimg.cc/76Lt0pKc/Whats-App-Image-2026-02-27-at-11-15-59-AM.jpg",
-    bio: "Construye soluciones web completas integrando diseño, lógica y despliegue.",
-    skills: ["Fullstack", "APIs", "Deploy", "Testing"],
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    id: 6,
-    nombre: "Nicolas Meza",
-    cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/y8zfvJfD/image.png",
-    bio: "Desarrollador orientado a resultados, enfocado en funcionalidades robustas.",
-    skills: ["React", "Node", "Git", "Performance"],
-    linkedin: "#",
-  },
-  {
-    id: 7,
-    nombre: "Hernan Salazar",
-    cargo: "Programador Web",
-    imagen: "https://i.postimg.cc/YCWHmmvg/image.png",
-    bio: "Apoya el desarrollo y mejora continua del producto con enfoque en calidad.",
-    skills: ["Frontend", "QA", "Integraciones", "UI"],
-    linkedin: "#",
-  },
-  {
-    id: 8,
-    nombre: "Carlos Yamacacho",
-    cargo: "Programador Web",
-    imagen: "/src/assets/nuestro-equipo/carlos.jpg",
-    bio: "Desarrollador web con experiencia en construir interfaces limpias y rápidas.",
-    skills: ["React", "UI", "CSS", "Consumo de APIs"],
-    linkedin: "#",
-  },
+  
+ 
 ];
-
+const grupoApoyo: Miembro[] = [
+  {
+    id: 101,
+    nombre: "Carlos Yamacacho Rocca",
+    cargo: "Equipo de apoyo" ,
+    imagen: "https://i.postimg.cc/nVmYVvTm/yamac1024.png",
+    bio: "Brinda soporte técnico y asistencia en los proyectos.",
+    skills: ["Soporte", "Infraestructura", "Mantenimiento"],
+  },
+  {
+    id: 102,
+    nombre: "Jared Arroyo Alarco" ,
+    cargo: "Equipo de apoyo",
+    imagen: "https://i.postimg.cc/85VjPrZ7/jared1024.png" ,
+    bio: "Apoya en tareas operativas y coordinación de actividades.",
+    skills: ["Organización", "Logística", "Trabajo en equipo"],
+  },
+  {
+    id: 103,
+    nombre: "Gabriel Sedano" ,
+    cargo: "Equipo de apoyo",
+    imagen: "https://i.postimg.cc/8cYqbLJR/Gemini-Generated-Image-5rt2635rt2635rt2.png" ,
+    bio: "Gestiona procesos administrativos y apoyo organizacional.",
+    skills: ["Administración", "Gestión", "Documentación"],
+  },
+ 
+];  
 const IconLinkedIn = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
     <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5H4.5V23H.5V8.5zM8.5 8.5H12.3V10.5H12.36C12.89 9.5 14.2 8.4 16.12 8.4 20.1 8.4 20.8 11 20.8 14.4V23H16.8V15.2C16.8 13.3 16.77 10.9 14.26 10.9 11.72 10.9 11.33 12.9 11.33 15.1V23H7.33V8.5H8.5z" />
@@ -116,7 +105,10 @@ const NuestroEquipo: React.FC = () => {
     if (miembros.length <= 4) return miembros;
     return [...miembros, ...miembros];
   }, []);
-
+const itemsApoyo = useMemo(() => {
+  if (grupoApoyo.length <= 4) return grupoApoyo;
+  return [...grupoApoyo, ...grupoApoyo];
+}, []);
   const scrollByCards = (dir: "left" | "right") => {
     const el = trackRef.current;
     if (!el) return;
@@ -259,7 +251,88 @@ const NuestroEquipo: React.FC = () => {
           </p>
         </div>
       </div>
+{/* ===================== GRUPO DE APOYO ===================== */}
 
+<div className="relative mx-auto mt-24 max-w-7xl px-4">
+
+  <header className="mx-auto mb-16 max-w-2xl text-center">
+    <p className="mb-4 text-sm font-semibold tracking-widest text-blue-600 uppercase">
+      Equipo de apoyo
+    </p>
+
+    <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+      Grupo de apoyo
+    </h2>
+
+    <p className="mt-4 text-base text-slate-600">
+      Profesionales que respaldan cada proyecto y garantizan el correcto funcionamiento de nuestras soluciones.
+    </p>
+
+    <div className="mt-8 flex justify-center">
+      <div className="h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-600 to-sky-400" />
+    </div>
+  </header>
+
+  <div className="relative">
+
+    <div className="no-scrollbar flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3">
+
+      {itemsApoyo.map((m, idx) => (
+        <article
+          key={`${m.id}-${idx}`}
+          className="snap-start shrink-0 w-[90%] sm:w-[70%] md:w-[46%] lg:w-[32%]"
+        >
+
+          <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_12px_35px_rgba(15,23,42,0.10)] transition hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(15,23,42,0.16)]">
+
+            <div className="relative h-[340px] w-full bg-slate-100">
+              <img
+                src={m.imagen}
+                alt={m.nombre}
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+              />
+            </div>
+
+            <div className="p-5">
+              <h3 className="text-lg font-extrabold text-slate-900">
+                {m.nombre}
+              </h3>
+
+              <p className="mt-1 text-sm text-slate-600">
+                {m.cargo}
+              </p>
+
+              <div className="mt-4 flex items-center justify-between">
+
+                <div className="flex items-center gap-3 text-slate-500">
+                  {m.linkedin && (
+                    <a href={m.linkedin}>
+                      <IconLinkedIn className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => openModal(m)}
+                  className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline"
+                >
+                  Conocer más
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+
+  </div>
+
+</div>
       {/* MODAL / CARTA */}
       {open && selected && (
         <div
@@ -381,6 +454,7 @@ const NuestroEquipo: React.FC = () => {
         </div>
       )}
     </section>
+    
   );
 };
 

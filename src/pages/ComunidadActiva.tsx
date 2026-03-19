@@ -2,7 +2,7 @@ import React from "react";
 import '../comunidad.css';
 import '../boton.css'
 import ScrollButton from "../components/ScrollButton";
-
+import videoSoledad from "../assets/fc-soledad.mp4.mp4";
 import Reactt, { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, useAnimations, useGLTF } from "@react-three/drei"
@@ -18,7 +18,7 @@ const ComunidadActiva = () => {
       <div className="relative w-full h-[500px]">
         {/* Imagen de portada */}
         <img
-          src="https://solucionesintegralesjb.com/wp-content/uploads/2024/10/Fomentar-la-participacion-activa-en-tus-alumnos-1024x683-1.jpg"
+          src="https://i.postimg.cc/BQNNW42d/Fomentar-la-participacion-activa-en-tus-alumnos-1024x683-1.jpg"
           alt="Comunidad Activa"
           className="w-full h-full object-cover"
         />
@@ -32,10 +32,10 @@ const ComunidadActiva = () => {
 
             {/* Botón de información - NUEVO ESTILO ROJO */}
             <a
-              href="https://solucionesintegralesjb.com/comunidad2/#id-activa"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+  href="https://wa.me/51996720630"
+  target="_blank"
+  rel="noopener noreferrer"
+>
               <button className="cta-rojo">
                 <span className="span-rojo">Información</span>
                 <span className="second-rojo">
@@ -72,7 +72,7 @@ const ComunidadActiva = () => {
       
       <div>
          <section className="bg-[#111] text-white py-7 px-6 text-center">
-  <h1 className="text-4xl font-bold text-[#4f7fff] mb-4">
+  <h1 className="text-4xl font-bold text-cyan-500 mb-4">
     ¿Qué es una comunidad activa?
   </h1>
 <p className="max-w-2xl mx-auto mb-0 text-lg leading-relaxed">
@@ -115,7 +115,7 @@ const ComunidadActiva = () => {
     {/* Card 1 */}
     <div className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
       <img
-        src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/algo.jpg"
+        src="https://i.postimg.cc/kXS8cwDm/algo.jpg"
         alt="Comunidad 1"
         className="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
       />
@@ -134,7 +134,7 @@ const ComunidadActiva = () => {
     {/* Card 2 */}
     <div className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
       <img
-        src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/que.jpg"
+        src="https://i.postimg.cc/YSdm9syH/que.jpg"
         alt="Comunidad 2"
         className="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-1"
       />
@@ -153,7 +153,7 @@ const ComunidadActiva = () => {
     {/* Card 3 */}
     <div className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
       <img
-        src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/chamba.jpg"
+        src="https://i.postimg.cc/C1WHNKT4/chamba.jpg"
         alt="Comunidad 3"
         className="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
       />
@@ -172,7 +172,7 @@ const ComunidadActiva = () => {
     {/* Card 4 */}
     <div className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
       <img
-        src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/sera.jpg"
+        src="https://i.postimg.cc/Jz13Kggg/sera.jpg"
         alt="Comunidad 4"
         className="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2"
       />
@@ -203,7 +203,7 @@ const ComunidadActiva = () => {
     
     {/* Texto */}
     <div>
-      <h2 className="text-3xl font-bold text-blue-500 mb-4">
+      <h2 className="text-3xl font-bold text-cyan-500 mb-4">
         F.C Soledad 2016
       </h2>
       <hr className="border-gray-600 w-32 mb-6" />
@@ -222,9 +222,9 @@ const ComunidadActiva = () => {
           controls
         >
           <source
-            src="https://solucionesintegralesjb.com/wp-content/uploads/2024/11/Grabacion-de-pantalla-2024-11-24-181258-1.mp4"
-            type="video/mp4"
-          />
+  src={videoSoledad}
+  type="video/mp4"
+/>
           Tu navegador no soporta videos en HTML5.
         </video>
       </div>

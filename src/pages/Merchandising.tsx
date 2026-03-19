@@ -38,12 +38,12 @@ const Merchandising = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/merchandising-2.jpg"
+              src="https://i.postimg.cc/kGyxQvn6/merchandising-2.jpg"
               alt="Merchandising"
               className="w-full max-w-md h-[250px] object-cover rounded-lg shadow-lg"
             />
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/SERIGRAFIA-2.jpg"
+              src="https://i.postimg.cc/gkNVrsST/SERIGRAFIA-2.jpg"
               alt="Serigrafía"
               className="w-full max-w-md h-[250px] object-cover rounded-lg shadow-lg"
             />

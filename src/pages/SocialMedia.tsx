@@ -42,7 +42,7 @@ const SocialMedia = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/gestionar-redes-sociales-desde-computadora-o-celular.png"
+              src="https://i.postimg.cc/wxkJbFpK/gestionar-redes-sociales-desde-computadora-o-celular.png"
               alt="Social Media"
               className="w-full max-w-md h-[250px] object-cover rounded-lg shadow-lg"
             />
