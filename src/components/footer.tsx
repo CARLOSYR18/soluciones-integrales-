@@ -103,15 +103,24 @@ function Footer() {
             </li>
 
             <li>
-              <Link to="/Organigrama" className={linkStyle}>
-                Organigrama
+              <Link to="/Convenios" className={linkStyle}>
+                Convenios
+              </Link>
+            </li>
+            {/* Nuevo */}
+            <li>
+              <Link to="/PoliticadePrivacidad" className={linkStyle}>
+                Política de Privacidad
               </Link>
             </li>
 
             <li>
-              <Link to="/Convenios" className={linkStyle}>
-                Convenios
-              </Link>
+              <a
+                href="https://solucionesintegralesjb.com/zona.cliente/index.php"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkStyle}
+              > Zona Cliente </a>
             </li>
           </ul>
         </div>

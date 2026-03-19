@@ -68,7 +68,7 @@ const grupoApoyo: Miembro[] = [
   },
   {
     id: 102,
-    nombre: "Jared Arroyo Alarco" ,
+    nombre: "Jared Arroyo Alarcon" ,
     cargo: "Equipo de apoyo",
     imagen: "https://i.postimg.cc/85VjPrZ7/jared1024.png" ,
     bio: "Apoya en tareas operativas y coordinación de actividades.",

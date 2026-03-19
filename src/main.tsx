@@ -15,6 +15,7 @@ import QuienesSomos from './pages/QuienesSomos';
 import NuestraHistoria from './pages/NuestraHistoria';
 import NuestroEquipo from './pages/NuestroEquipo';
 import ConsultoriaTI from './pages/ConsultoriaTI';
+import PoliticadePrivacidad from './pages/PoliticadePrivacidad';
 import ConsultoriaEmpresarial from './pages/ConsultoriaEmpresarial';
 import ComunidadActiva from './pages/ComunidadActiva';
 import Convenios from './pages/Convevios';
@@ -70,6 +71,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/ConsultoriaEmpresarial" element={<Layout><ConsultoriaEmpresarial /></Layout>} />
 
         <Route path="/ConsultoriaTI" element={<Layout><ConsultoriaTI /></Layout>} />
+        
+        <Route path="/PoliticadePrivacidad" element={<Layout><PoliticadePrivacidad /></Layout>} />
 
         <Route path="/Convenios" element={<Layout><Convenios /></Layout>} />
 
