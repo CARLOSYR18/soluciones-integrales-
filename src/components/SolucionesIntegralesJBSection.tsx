@@ -65,13 +65,13 @@ interface Props {
 
 // ---- Data ----
 const heroSlides: HeroSlide[] = [
-    { image: "https://i.postimg.cc/d1QtZqkW/Diseño_sin_título_(21).png", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
-    { image: "https://i.postimg.cc/ZKXRst2h/Diseño_sin_título_(15).png", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
-    { image: "https://i.postimg.cc/nh7L6Sf2/Diseño_sin_título_(17).png", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
-    { image: "https://i.postimg.cc/8zWCqXgJ/Diseño_sin_título_(16).png", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
-    { image: "https://i.postimg.cc/vmsmM7G3/Diseño_sin_título_(18).png", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
-    { image: "https://i.postimg.cc/Zqx5q9qg/Diseño_sin_título_(19).png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
-    { image: "https://i.postimg.cc/vB8HxQgm/Diseño_sin_título_(20).png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
+    { image: "https://i.postimg.cc/529YHB9F/Diseno-sin-titulo-(28).png", title: "Conectividad Superior", subtitle: "Routers de alta velocidad para tu hogar y oficina", href: "#" },
+    { image: "https://i.postimg.cc/43d90zjq/Diseno-sin-titulo-(22).png", title: "Soluciones Tecnológicas", subtitle: "Innovación y soporte a tu alcance", href: "#" },
+    { image: "https://i.postimg.cc/Y0cLjT03/Diseno-sin-titulo-(24).png", imageAlt: "Banner de tecnología", title: "Tu Socio Estratégico", subtitle: "Impulsamos tu crecimiento digital", href: "#" },
+    { image: "https://i.postimg.cc/7LW2r5kf/Diseno-sin-titulo-(23).png", imageAlt: "Fondo abstracto azul", title: "Diseño y Desarrollo", subtitle: "Creamos experiencias únicas para tus usuarios", href: "#" },
+    { image: "https://i.postimg.cc/gjvXh468/Diseno-sin-titulo-(25).png", imageAlt: "Redes y seguridad", title: "Seguridad Garantizada", subtitle: "Protegemos lo que más importa", href: "#" },
+    { image: "https://i.postimg.cc/G3Ys63SL/Diseno-sin-titulo-(26).png", imageAlt: "Soporte técnico", title: "Soporte 24/7", subtitle: "Estamos aquí para ayudarte cuando nos necesites", href: "#" },
+    { image: "https://i.postimg.cc/c4S8WqVB/Diseno-sin-titulo-(27).png", imageAlt: "Integración de sistemas", title: "Integración Sin Esfuerzo", subtitle: "Conectamos tus sistemas para una operación fluida", href: "#" },
 ];
 
 const responsiveServices = {
