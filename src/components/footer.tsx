@@ -178,17 +178,17 @@ function Footer() {
 
             <li className="flex items-center gap-2">
               <FaMapMarkerAlt />
-              Lima, Perú
+              Chancay, Lima, Perú
             </li>
 
             <li className="flex items-center gap-2">
               <FaPhoneAlt />
-              +51 900 000 000
+              +51 996720630
             </li>
 
             <li className="flex items-center gap-2">
               <FaEnvelope />
-              contacto@solucionesjb.com
+              consultas@solucionesintegralesjb.com
             </li>
 
             <li>
