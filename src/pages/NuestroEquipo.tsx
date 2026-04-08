@@ -30,7 +30,7 @@ const miembros: Miembro[] = [
     nombre: "Victor Galarza",
     cargo: "Programador",
     imagen: "https://i.postimg.cc/50GvM68v/unnamed_(2).jpg",
-    bio: ".",
+    bio: "Planificar, organizar, dirigir y supervisar eficientemente el desarrollo de proyectos, asegurando el cumplimiento de objetivos, plazos y estándares de calidad..",
     skills: ["Planear", "Organizar", "Dirigir ", "Controlar"],
     linkedin: "#",
     twitter: "#",
