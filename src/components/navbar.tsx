@@ -88,7 +88,7 @@ function Navbar() {
 
   const dropdownStyle = (menu: string): React.CSSProperties => ({
     position: "fixed",
-    top: "0px",
+    top: "100%",
     left: "50%",
     transform: activeMenu === menu ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(-12px)",
     width: "92vw",
@@ -213,7 +213,7 @@ function Navbar() {
         @keyframes dropdownItemFadeIn {
           from {
             opacity: 0;
-            transform: translateY(8px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -224,7 +224,7 @@ function Navbar() {
         @keyframes dropdownTitleSlide {
           from {
             opacity: 0;
-            transform: translateX(-10px);
+            transform: translateX(-20px);
           }
           to {
             opacity: 1;
