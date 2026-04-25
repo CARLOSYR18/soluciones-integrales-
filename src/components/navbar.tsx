@@ -43,7 +43,7 @@ const menuLinkBase: React.CSSProperties = {
   fontSize: "14px",
   letterSpacing: "0.3px",
   cursor: "pointer",
-  padding: "20px 0 4px 0",
+  padding: "0px 0 0px 0",
   display: "inline-block",
   transition: "color 0.25s ease, border-color 0.25s ease",
   textDecoration: "none",
@@ -58,7 +58,7 @@ const socialBtnStyle: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  background: "rgba(255,255,255,0.08)",
+  background: "rgba(206, 57, 57, 0.08)",
   color: "#94a3b8",
   fontSize: "13px",
   transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
@@ -88,7 +88,7 @@ function Navbar() {
 
   const dropdownStyle = (menu: string): React.CSSProperties => ({
     position: "fixed",
-    top: "auto",
+    top: "0px",
     left: "50%",
     transform: activeMenu === menu ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(-12px)",
     width: "92vw",
@@ -107,7 +107,7 @@ function Navbar() {
     boxShadow:
       "0 20px 60px rgba(0, 0, 0, 0.10), 0 4px 16px rgba(0, 0, 0, 0.04)",
     padding: "32px 32px",
-    border: "1px solid #f1f5f9",
+    border: "1px solid #e5e8ec",
     overflow: "hidden",
   };
 
@@ -149,7 +149,7 @@ function Navbar() {
           e.currentTarget.style.background = "transparent";
           const iconEl = e.currentTarget.querySelector("[data-icon]") as HTMLElement;
           if (iconEl) {
-            iconEl.style.background = "#f1f5f9";
+            iconEl.style.background = "#e5e8ec";
             iconEl.style.color = "#64748b";
           }
         }}
@@ -162,7 +162,7 @@ function Navbar() {
             width: "44px",
             height: "44px",
             borderRadius: "50%",
-            background: "#f1f5f9",
+            background: "#e5e8ec",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -270,7 +270,6 @@ function Navbar() {
             border-radius: 16px !important;
             margin: 0 24px !important;
             margin-top: -74px !important;
-            top: 10px !important;
             padding: 0 32px !important;
             border: 1px solid rgba(255,255,255,0.08) !important;
             box-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.06) !important;
@@ -605,7 +604,7 @@ function Navbar() {
                       borderRadius: "10px",
                       fontWeight: 600,
                       color: "#1e293b",
-                      background: openDropdown === "nosotros" ? "#f1f5f9" : "transparent",
+                      background: openDropdown === "nosotros" ? "#e5e8ec" : "transparent",
                       border: "none",
                       cursor: "pointer",
                       fontSize: "15px",
@@ -657,7 +656,7 @@ function Navbar() {
                       borderRadius: "10px",
                       fontWeight: 600,
                       color: "#1e293b",
-                      background: openDropdown === "servicios" ? "#f1f5f9" : "transparent",
+                      background: openDropdown === "servicios" ? "#e5e8ec" : "transparent",
                       border: "none",
                       cursor: "pointer",
                       fontSize: "15px",

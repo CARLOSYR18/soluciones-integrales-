@@ -183,7 +183,7 @@ function Footer() {
 
             <li className="flex items-center gap-2">
               <FaPhoneAlt />
-              +51 996720630
+              +51 996 720 630
             </li>
 
             <li className="flex items-center gap-2">

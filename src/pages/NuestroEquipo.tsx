@@ -22,7 +22,7 @@ const miembros: Miembro[] = [
     imagen: "https://i.postimg.cc/0y0wMnJ6/wilder1024-(2).png",
     bio: "Lidera la gestión de servicios, asegurando calidad, cumplimiento y mejora continua en cada proyecto.",
     skills: ["Gestión", "Operaciones", "Calidad", "Atención al cliente"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/wilder-julca-61783043/",
     correo: "wilder@empresa.com",
   },
   {
@@ -44,8 +44,19 @@ const miembros: Miembro[] = [
     skills: ["React", "Node.js", "SQL", "Arquitectura"],
     linkedin: "#",
   },
+  
   {
     id: 4,
+    nombre: "Diego Uriarte",
+    cargo: "Desarrollador Mobil",
+    imagen:"https://i.postimg.cc/5t4Pyr0g/Diego.jpg",
+    bio: "Desarrollador de aplicaciones móviles en plataformas Android & iOS, especializado en Kotlin, Java y Swift",
+    skills: ["Desarrollo ", "Manejo de frameworks", "Gestión ", "Integración "],
+    linkedin: "https://www.linkedin.com/in/diego-ronaldo-uriarte-chancafe-637297182/",
+    twitter: "#",
+  },
+  {
+    id: 5,
     nombre: "Adixon Julca Ramirez",
     cargo: "Programador Web",
     imagen:"https://i.postimg.cc/m2rq6pTW/Gemini-Generated-Image-4ayvix4ayvix4ayv.png",
@@ -54,7 +65,6 @@ const miembros: Miembro[] = [
     linkedin: "#",
     twitter: "#",
   },
-  
  
 ];
 const grupoApoyo: Miembro[] = [
@@ -68,7 +78,7 @@ const grupoApoyo: Miembro[] = [
   },
   {
     id: 102,
-    nombre: "Jared Arroyo Alarcon" ,
+    nombre: "Jared Alonso Arroyo Alarcon" ,
     cargo: "Equipo de apoyo",
     imagen: "https://i.postimg.cc/85VjPrZ7/jared1024.png" ,
     bio: "Apoya en tareas operativas y coordinación de actividades.",
@@ -76,7 +86,7 @@ const grupoApoyo: Miembro[] = [
   },
   {
     id: 103,
-    nombre: "Gabriel Sedano" ,
+    nombre: "Gabriel Sedano Ramirez" ,
     cargo: "Equipo de apoyo",
     imagen: "https://i.postimg.cc/8cYqbLJR/Gemini-Generated-Image-5rt2635rt2635rt2.png" ,
     bio: "Gestiona procesos administrativos y apoyo organizacional.",
@@ -102,7 +112,7 @@ const NuestroEquipo: React.FC = () => {
   const [selected, setSelected] = useState<Miembro | null>(null);
 
   const items = useMemo(() => {
-    if (miembros.length <= 4) return miembros;
+    if (miembros.length <= 5) return miembros;
     return [...miembros, ...miembros];
   }, []);
 const itemsApoyo = useMemo(() => {
