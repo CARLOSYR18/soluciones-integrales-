@@ -866,7 +866,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
             }}
             viewport={{ once: true, amount: 0.3 }}
-            className="space-y-8 text-right md:text-left lg:text-right"
+            className="space-y-8 "
           >
             {features.slice(0, 3).map((f, idx) => (
               <motion.div

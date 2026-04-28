@@ -25,14 +25,14 @@ const Convenios = () => {
     {
       nombre: "INSTITUTO NACIONAL SENATI",
       descripcion:
-        "La colaboración entre SENATI y Soluciones Integrales JB tiene como objetivo crear una sinergia que beneficie a ambas partes. SENATI proporcionará formación técnica actualizada y alineada con las necesidades del mercado laboral, mientras que Soluciones Integrales JB ofrecerá oportunidades de prácticas profesionales.",
+        "La colaboración entre SENATI y nuestra empresa tiene como objetivo generar una sinergia estratégica que beneficie a ambas partes. Por un lado, SENATI brindará formación técnica actualizada y alineada con las demandas del mercado laboral; por otro, nuestra empresa ofrecerá oportunidades de prácticas profesionales en entornos reales de trabajo, bajo la modalidad de convenio de colaboración mutua. Esta alianza permitirá fortalecer las competencias de los estudiantes y contribuir al desarrollo de profesionales altamente capacitados.",
       images: [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShEt8LsudDua5jNDpRGb-rquvA14EMMUFIYgnO--wvcicRxcX86LX5wQVZNyVJCZ_4Gmg&usqp=CAU",
         "https://elcomercio.pe/resizer/tH65A-_HcP1OBN1QnDPzdRKr8Vs=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/FJSX7NXQS5GQ3J3MSKB7LXNKZA.jpg",
       ],
     },
     {
-      nombre: "INSTITUTO SUPERIOR HUANDO",
+      nombre: "I.E.S.P. HUANDO",
       descripcion:
         "La alianza entre el Instituto de Educación Superior Huando y Soluciones Integrales JB mejoraría la empleabilidad de los estudiantes mediante programas de capacitación especializada.",
       images: [
