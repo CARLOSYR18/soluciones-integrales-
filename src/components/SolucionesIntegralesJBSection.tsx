@@ -323,7 +323,7 @@ const HeroSlider: React.FC<{ slides: HeroSlide[] }> = ({ slides }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative w-full overflow-hidden bg-black"
+      className="relative w-full  h-80 md:h-96 overflow-hidden bg-black"
     >
       {/* Slides */}
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -334,7 +334,7 @@ const HeroSlider: React.FC<{ slides: HeroSlide[] }> = ({ slides }) => {
           initial="enter"
           animate="center"
           exit="exit"
-          className="w-full h-full"
+          className="w-full absolute inset-0 h-full"
         >
           <motion.img
             src={slides[current].image}

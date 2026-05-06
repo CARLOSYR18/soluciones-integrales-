@@ -6,7 +6,7 @@ import {
   FaUsers, FaHistory, FaHandshake, FaPeopleCarry, FaLaptopCode, FaBuilding,
   FaChalkboardTeacher, FaClipboardCheck, FaShieldAlt, FaSitemap, FaUserTie,
   FaCode, FaFileInvoiceDollar, FaLock, FaNetworkWired, FaServer, FaTools,
-  FaSearch, FaPaintBrush, FaGift, FaShareAlt, FaBolt, FaSnowflake, FaPlug,
+  FaSearch, FaPaintBrush, FaGift, FaShareAlt, FaBolt, FaSnowflake, FaPlug,FaWhatsapp,
   FaHeadset,
 } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -493,6 +493,7 @@ function Navbar() {
             { icon: FaYoutube, url: "https://www.youtube.com/channel/UCwZllsxQMp2LwUSIDmldUeQ", color: "#FF0000" },
             { icon: FaLinkedinIn, url: "https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEnsF-ThdiG6wAAAZmCDWzwVJaTR1vjPPp6uv0JzfhdWh9HdUi2ruenocalO7aVtO01d1i-f6pdm2vsTla4cINdCtOMymMuBfBVhvrYXXNQFKhXmuFz-pD0IK6OTq1UICqMgpI=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fsoluciones-integrales-jb%2F%3ForiginalSubdomain%3Dpe", color: "#0A66C2" },
             { icon: FaTiktok, url: "https://www.tiktok.com/@solucionesintegralesjb?lang=es", color: "#000000" },
+            { icon: FaWhatsapp, url: "https://wa.me/51926392858", color: "#25D366" },
           ].map(({ icon: Icon, url, color }, idx) => (
             <a
               key={idx}
