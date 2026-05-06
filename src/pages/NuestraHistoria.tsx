@@ -273,7 +273,6 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
         backgroundImage: `url(${theme.background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
       }}
     >
       <div className="absolute inset-0 bg-[#020817]/72" />
@@ -449,17 +448,17 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
               <div className={`swiper-pagination-${sliderId} mt-6 flex justify-center gap-3`} />
             </div>
 
-            <div className="mx-auto mt-10 flex max-w-[1020px] items-center justify-between gap-4 rounded-[26px] border border-cyan-300/15 bg-[#020817]/70 px-5 py-4 backdrop-blur-xl shadow-[0_0_30px_rgba(14,165,233,0.08)]">
-              <div className="grid flex-1 grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="mx-auto mt-10 flex max-w-[1020px] items-center justify-between gap-2 rounded-[26px] border border-cyan-300/15 bg-[#020817]/70 px-3 py-4 backdrop-blur-xl shadow-[0_0_30px_rgba(14,165,233,0.08)] overflow-hidden">
+              <div className="grid flex-1 grid-cols-2 gap-2 md:grid-cols-4 min-w-0">
                 {theme.stats.map((item) => (
                   <div
                     key={item.label}
-                    className="flex items-center gap-3 rounded-2xl border border-white/8 px-3 py-2 text-white"
+                    className="flex items-center gap-2 rounded-2xl border border-white/8 px-2 py-2 text-white min-w-0 overflow-hidden"
                   >
-                    <div className="text-cyan-300">{item.icon}</div>
-                    <div>
-                      <div className="text-2xl font-black leading-none">{item.value}</div>
-                      <div className="text-sm text-slate-200">{item.label}</div>
+                    <div className="text-cyan-300 flex-shrink-0">{item.icon}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-base md:text-xl font-black leading-none truncate">{item.value}</div>
+                      <div className="text-xs text-slate-200 truncate">{item.label}</div>
                     </div>
                   </div>
                 ))}
@@ -560,7 +559,7 @@ const NuestraHistoria: React.FC = () => {
         />
 
         <motion.div
-          className="absolute top-1/2 right-6 md:right-20 -translate-y-1/2 z-20"
+          className="absolute top-1/2 left-1/2 md:left-auto md:right-20 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 z-20"
           initial={{ opacity: 0, x: 100, rotateY: 90 }}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
           transition={{
@@ -646,7 +645,7 @@ const NuestraHistoria: React.FC = () => {
       </div>
 
       <section className="bg-[#1a1a1a] py-20 px-6 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto border-4 border-white rounded-xl p-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto border-4 border-white rounded-xl p-4 sm:p-6 md:p-10 overflow-hidden">
           <div className="text-center">
             <motion.h3
               initial={{ opacity: 0, y: -30 }}
@@ -689,7 +688,7 @@ const NuestraHistoria: React.FC = () => {
                 {timelineItems.map((item, index) => (
                   <motion.div
                     key={index}
-                    className="flex flex-col items-center w-[260px] flex-shrink-0 text-center relative"
+                    className="flex flex-col items-center w-[220px] sm:w-[260px] flex-shrink-0 text-center relative"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -822,6 +821,16 @@ const NuestraHistoria: React.FC = () => {
           0% { fill: #fff; }
           50% { fill: #000; }
           100% { fill: #fff; }
+        }
+
+        @media (max-width: 640px) {
+          .cta.cta-large {
+            padding: 10px 24px;
+            font-size: 15px;
+            min-width: unset;
+            width: 100%;
+            max-width: 320px;
+          }
         }
       `}</style>
     </>

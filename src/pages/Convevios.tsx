@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Carousel from "react-multi-carousel";
+
+interface Service {
+  title: string;
+  label: string;
+  image: string;
+  imageAlt: string;
+  cta: string;
+  href?: string;
+}
 
 const Convenios = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,7 +23,7 @@ const Convenios = () => {
     },
     {
       src: "https://i.postimg.cc/SQtD5GkM/376237836-764535409042613-3847121157515574135-n-3.jpg",
-      title: "Instituto Superior Huando",
+      title: "I.E.S.P. HUANDO",
     },
     {
       src: "https://i.postimg.cc/Bbd5vMvf/991735-archivo.jpg",
@@ -25,19 +35,27 @@ const Convenios = () => {
     {
       nombre: "INSTITUTO NACIONAL SENATI",
       descripcion:
-        "La colaboración entre SENATI y Soluciones Integrales JB tiene como objetivo crear una sinergia que beneficie a ambas partes. SENATI proporcionará formación técnica actualizada y alineada con las necesidades del mercado laboral, mientras que Soluciones Integrales JB ofrecerá oportunidades de prácticas profesionales.",
+        "La colaboración entre SENATI y nuestra empresa tiene como objetivo generar una sinergia estratégica que beneficie a ambas partes.",
+      descripcion2:
+      "Por un lado, SENATI brindará formación técnica actualizada y alineada con las demandas del mercado laboral; por otro, nuestra empresa ofrecerá oportunidades de prácticas profesionales en entornos reales de trabajo, bajo la modalidad de convenio de colaboración mutua.",
+      descripcion3:
+      "Esta alianza permitirá fortalecer las competencias de los estudiantes y contribuir al desarrollo de profesionales altamente capacitados.",
       images: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShEt8LsudDua5jNDpRGb-rquvA14EMMUFIYgnO--wvcicRxcX86LX5wQVZNyVJCZ_4Gmg&usqp=CAU",
-        "https://elcomercio.pe/resizer/tH65A-_HcP1OBN1QnDPzdRKr8Vs=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/FJSX7NXQS5GQ3J3MSKB7LXNKZA.jpg",
+        "https://i.postimg.cc/kMwpV1K0/IMG-20260506-WA0006.jpghttps://i.postimg.cc/kMwpV1K0/IMG-20260506-WA0006.jpg",
+        "https://i.postimg.cc/tCTmF3z9/IMG-20260506-WA0004.jpg",
+        "https://i.postimg.cc/ZYjM97p1/IMG-20260506-WA0003.jpg",
+        "https://i.postimg.cc/FFGBfW05/IMG-20260506-WA0005.jpg",
       ],
     },
     {
-      nombre: "INSTITUTO SUPERIOR HUANDO",
+      nombre: "I.E.S.P. HUANDO",
       descripcion:
         "La alianza entre el Instituto de Educación Superior Huando y Soluciones Integrales JB mejoraría la empleabilidad de los estudiantes mediante programas de capacitación especializada.",
       images: [
-        "https://portal.isthuando.edu.pe/wp-content/uploads/2024/07/admin-ajax.php-1.jpg",
-        "https://cdn.www.gob.pe/uploads/document/file/5115620/376237836_764535409042613_3847121157515574135_n.jpg",
+        "https://i.postimg.cc/02QH7YCR/IMG-20260506-WA0010.jpg",
+        "https://i.postimg.cc/4NdFp61C/IMG-20260506-WA0009.jpg",
+        "https://i.postimg.cc/3r9cyS2M/IMG-20260506-WA0007.jpg",
+        "https://i.postimg.cc/PrxF1WQ0/IMG-20260506-WA0008.jpg",
       ],
     },
     {
@@ -45,19 +63,30 @@ const Convenios = () => {
       descripcion:
         "La colaboración entre el Instituto Superior Chancay y Soluciones Integrales JB permitirá a los estudiantes acceder a programas de formación práctica en ambientes profesionales.",
       images: [
-        "https://cdn.www.gob.pe/uploads/document/file/6678958/991735-archivo.jpeg",
-        "https://elperuano.pe/fotografia/thumbnail/2024/07/30/000305023M.jpg",
+        "https://i.postimg.cc/kX4hWQvZ/IMG-20260506-WA0013.jpg",
+        "https://i.postimg.cc/yYdr0myG/IMG-20260506-WA0014.jpg",
+        "https://i.postimg.cc/kX4hWQvp/IMG-20260506-WA0012.jpg",
+        "https://i.postimg.cc/fTLgYcvz/IMG-20260506-WA0011.jpg",
       ],
     },
     {
       nombre: "UNIVERSIDAD NACIONAL JOSÉ FAUSTINO SÁNCHEZ",
       descripcion:
         "La colaboración entre la Universidad Nacional José Faustino Sánchez y Soluciones Integrales JB ofrecería a los estudiantes prácticas profesionales para aplicar sus conocimientos.",
-      images: [
+        images: [
         "https://unjfsc.edu.pe/wp-content/uploads/2020/04/NUESTRA-HISTORIA2.jpg",
         "https://pbs.twimg.com/media/FTs9qv7XsAgJ0if?format=jpg&name=large",
+        "https://i.postimg.cc/sDX05Y4t/IMG-20260506-WA0015.jpg",
+        "https://i.postimg.cc/9FMNydYx/IMG-20260506-WA0016.jpg",
       ],
     },
+  ];
+
+    const strategicServices: Service[] = [
+    { label: "Convenio", title: "INSTITUTO NACIONAL SENATI", image: "https://i.postimg.cc/4y8MFCw0/Inauguracion-Ilo-03-scaled-1-1536x1024.jpg", imageAlt: "Herramientas de desarrollo de software", cta: "INFORMACIÓN" },
+    { label: "Convenio", title: "I.E.S.P. HUANDO", image: "https://cdn.www.gob.pe/uploads/document/file/5115620/376237836_764535409042613_3847121157515574135_n.jpg", imageAlt: "Facturación electrónica", cta: "INFORMACIÓN" },
+    { label: "Convenio", title: "INSTITUTO SUPERIOR CHANCAY", image: "https://elperuano.pe/fotografia/thumbnail/2024/07/30/000305023M.jpg", imageAlt: "Soporte en sitio", cta: "INFORMACIÓN" },
+    { label: "Convenio", title: "UNIVERSIDAD NACIONAL JOSÉ FAUSTINO SÁNCHEZ", image: "https://unjfsc.edu.pe/wp-content/uploads/2020/04/NUESTRA-HISTORIA2.jpg", imageAlt: "Tecnología y seguridad", cta: "INFORMACIÓN" }
   ];
 
   const handleNextInstituto = (idx) => {
@@ -381,8 +410,10 @@ const Convenios = () => {
 
   <div className="relative max-w-7xl mx-auto">
 
+
     {/* TÍTULO */}
-    <motion.h2
+
+        <motion.h2
       initial={{ opacity: 0, y: -30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
@@ -392,70 +423,130 @@ const Convenios = () => {
       "Alianzas Estratégicas para Tu Futuro Profesional"
     </motion.h2>
 
-    {/* CARDS */}
-    <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-
-      {sliderImages.slice(0, 2).map((img, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: idx * 0.15 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="group relative overflow-hidden rounded-3xl shadow-[0_30px_80px_rgba(0,0,0,0.4)] cursor-pointer"
-        >
-
-          <div className="relative h-[300px] md:h-[420px]">
-
-            {/* IMAGEN */}
-            <img
-              src={img.src}
-              alt={img.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-
-            {/* OVERLAY OSCURO INTENSO */}
-            <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/75" />
-
-            {/* CONTENIDO */}
-            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
+    <div className="apple-services-scope">
+          <Carousel
+            responsive={{
+              desktop: { breakpoint: { max: 3000, min: 1024 }, items: 2, slidesToSlide: 1 },
+              tablet: { breakpoint: { max: 1024, min: 640 }, items: 2, slidesToSlide: 1 },
+              mobile: { breakpoint: { max: 640, min: 0 }, items: 1, slidesToSlide: 1 },
+            }}
+            infinite
+            autoPlay
+            autoPlaySpeed={4000}
+            keyBoardControl
+            showDots={false}
+            arrows
+            containerClass="apple-services-container"
+            itemClass="px-3 md:px-4"
+            customLeftArrow={
+              <button className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30
+                                 w-11 h-11 rounded-full bg-neutral-800/80 border border-neutral-700
+                                 flex items-center justify-center
+                                 hover:bg-neutral-700 hover:border-neutral-500 
+                                 active:scale-90
+                                 transition-all duration-200 cursor-pointer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+            }
+            customRightArrow={
+              <button className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30
+                                 w-11 h-11 rounded-full bg-neutral-800/80 border border-neutral-700
+                                 flex items-center justify-center
+                                 hover:bg-neutral-700 hover:border-neutral-500
+                                 active:scale-90
+                                 transition-all duration-200 cursor-pointer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            }
+          >
+            {strategicServices.map((s, idx) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg"
+                transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="group cursor-pointer"
               >
-                {img.title}
-              </motion.h3>
-
-              {/* BOTÓN APARECE EN HOVER */}
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="mt-6 w-fit px-8 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg
-                           opacity-0 translate-y-4
-                           group-hover:opacity-100 group-hover:translate-y-0
-                           transition-all duration-500 hover:bg-blue-500"
-              >
-                INFORMACIÓN
-              </motion.button>
-
-            </div>
-
-            {/* Efecto brillo lateral */}
-            <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="absolute -right-24 top-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl" />
-            </div>
-
-          </div>
-        </motion.div>
-      ))}
-
-    </div>
+                {/* Card container — horizontal */}
+                <div className="relative rounded-2xl overflow-hidden h-64 md:h-80 bg-neutral-900
+                                border border-white/[0.06] group-hover:border-white/[0.12]
+                                transition-all duration-500">
+                  {/* Image with zoom */}
+                  <img
+                    src={s.image}
+                    alt={s.imageAlt}
+                    className="absolute inset-0 w-full h-full object-cover 
+                               transition-transform duration-[1.2s] ease-out 
+                               group-hover:scale-110"
+                  />
+    
+                  {/* Gradient overlay permanente */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+    
+                  {/* Hover overlay extra */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500" />
+    
+                  {/* Badge superior */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="text-[10px] font-bold text-white tracking-[0.2em] uppercase
+                                     bg-white/10 px-3 py-1.5 rounded-full border border-white/10
+                                     group-hover:bg-cyan-500/20 group-hover:text-cyan-300 group-hover:border-cyan-500/20
+                                     transition-all duration-400">
+                      {s.label}
+                    </span>
+                  </div>
+    
+                  {/* Título sobre la imagen, abajo */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                      {s.title}
+                    </h3>
+    
+                    {/* CTA que aparece al hover */}
+                    <div className="flex items-center gap-2 mt-3
+                                    opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0
+                                    transition-all duration-500 delay-75">
+                      <span className="text-cyan-400 text-sm font-semibold flex items-center gap-1.5">
+                        Explorar
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                             className="group-hover:translate-x-1 transition-transform duration-300">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </span>
+                    </div>
+    
+                    {/* Línea cyan inferior animada */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[2px] 
+                                    bg-gradient-to-r from-cyan-400 to-blue-500 
+                                    scale-x-0 group-hover:scale-x-100 origin-left
+                                    transition-transform duration-700" />
+                  </div>
+                </div>
+    
+                {/* Info debajo de la card */}
+                <div className="mt-4 px-1">
+                  <h4 className="text-lg font-bold text-white">{s.title}</h4>
+                </div>
+              </motion.div>
+            ))}
+          </Carousel>
+    
+          <style>{`
+            .apple-services-scope .apple-services-container {
+              padding: 0 2rem;
+              overflow: visible;
+            }
+            .apple-services-scope .react-multi-carousel-track {
+              padding: 1rem 0 2rem;
+            }
+          `}</style>
+        </div>
   </div>
 </section>
     {/* ====================== CARRUSEL INSTITUCIONES (REDISEÑO PRO) ====================== */}
@@ -527,6 +618,12 @@ const Convenios = () => {
 
                 <p className="mt-4 text-slate-700 leading-7 text-justify">
                   {institucion.descripcion}
+                </p>
+                <p className="mt-4 text-slate-700 leading-7 text-justify">
+                  {institucion.descripcion2}
+                </p>
+                 <p className="mt-4 text-slate-700 leading-7 text-justify">
+                  {institucion.descripcion3}
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2">

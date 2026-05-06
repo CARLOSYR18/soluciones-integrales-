@@ -323,7 +323,7 @@ const HeroSlider: React.FC<{ slides: HeroSlide[] }> = ({ slides }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative w-full h-80 md:h-96 overflow-hidden bg-black"
+      className="relative w-full  h-80 md:h-96 overflow-hidden bg-black"
     >
       {/* Slides */}
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -334,7 +334,7 @@ const HeroSlider: React.FC<{ slides: HeroSlide[] }> = ({ slides }) => {
           initial="enter"
           animate="center"
           exit="exit"
-          className="absolute inset-0 w-full h-full"
+          className="w-full absolute inset-0 h-full"
         >
           <motion.img
             src={slides[current].image}
@@ -866,7 +866,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
             }}
             viewport={{ once: true, amount: 0.3 }}
-            className="space-y-8 text-right md:text-left lg:text-right"
+            className="space-y-8 "
           >
             {features.slice(0, 3).map((f, idx) => (
               <motion.div
@@ -1270,8 +1270,8 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
     >
       {[
         { number: "100+", label: "Clientes" },
-        { number: "15+", label: "Años" },
-        { number: "98%", label: "Satisfacción" },
+        { number: "16+", label: "Años" },
+        { number: "99%", label: "Satisfacción" },
       ].map((stat, idx) => (
         <motion.div
           key={idx}
@@ -1303,7 +1303,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-5 overflow-hidden"
+        className="mb-5 overflow-hidden py-4"
       >
         <motion.div
           className="flex items-center gap-6 md:gap-8"
@@ -1329,7 +1329,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="overflow-hidden"
+        className="overflow-hidden py-4"
       >
         <motion.div
           className="flex items-center gap-6 md:gap-8"

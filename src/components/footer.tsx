@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 import logo from "../assets/logo.svg";
@@ -33,6 +34,15 @@ function Footer() {
           {/* redes */}
           <div className="flex gap-3 mt-5">
             <a
+              href="https://wa.me/51926392858"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 p-2 rounded-full hover:bg-cyan-500"
+            >
+              <FaWhatsapp />
+            </a>
+
+               <a
               href="https://www.facebook.com/solucionesintegralesJB/"
               target="_blank"
               rel="noopener noreferrer"
@@ -182,8 +192,10 @@ function Footer() {
             </li>
 
             <li className="flex items-center gap-2">
-              <FaPhoneAlt />
-              +51 996720630
+              <FaWhatsapp />
+              <a target="_blank" href="https://wa.me/51926392858" className="text-cyan-400 hover:underline">
+                +51 926 392 858
+              </a>
             </li>
 
             <li className="flex items-center gap-2">
