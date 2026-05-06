@@ -1270,8 +1270,8 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
     >
       {[
         { number: "100+", label: "Clientes" },
-        { number: "15+", label: "Años" },
-        { number: "98%", label: "Satisfacción" },
+        { number: "16+", label: "Años" },
+        { number: "99%", label: "Satisfacción" },
       ].map((stat, idx) => (
         <motion.div
           key={idx}
