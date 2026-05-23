@@ -818,7 +818,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       viewport={{ once: true }}
       className="max-w-5xl mx-auto px-6 mt-16 md:mt-24"
     >
-      <a href="/servicios" className="inline-flex items-center gap-2 text-cyan-400 text-lg md:text-xl font-semibold 
+      <a href="/DesarrolloDeSoftware" className="inline-flex items-center gap-2 text-cyan-400 text-lg md:text-xl font-semibold 
                                        hover:text-cyan-300 transition-colors duration-300 group">
         <span>Explorar todos los servicios</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -973,7 +973,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         {
           icon: <FaMedal size={32} color="#3b82f6" />,
           title: "Experiencia Probada",
-          desc: "Más de 15 años impulsando el éxito de nuestros clientes con resultados reales y medibles.",
+          desc: "Más de 16 años impulsando el éxito de nuestros clientes con resultados reales y medibles.",
           color: "blue",
           borderColor: "border-blue-500/30",
           glowColor: "group-hover:shadow-blue-500/20",
