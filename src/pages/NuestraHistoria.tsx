@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
 import ScrollButton from "../components/ScrollButton";
 import { Link } from "react-router-dom";
 import {
@@ -22,7 +22,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import fondoElectricos from "../assets/fondo-electricos.png";
-import fondoRedes from "../assets/fondo-redes.png";
+import fondoRedes from "../assets/fondo-redesv1.jpeg";
 import fondoCamaras from "../assets/fondo-camaras.png";
 
 const timelineItems = [
@@ -51,7 +51,7 @@ const timelineItems = [
     text: "Lanzamiento de nuevos servicios tecnológicos innovadores para seguir creciendo.",
   },
 ];
-
+ 
 type Project = {
   date: string;
   image: string;
@@ -62,7 +62,7 @@ type Project = {
   tags?: string[];
   overlay?: "normal" | "dark" | "extra-dark";
 };
-
+ 
 const electricalProjects: Project[] = [
   {
     date: "MARZO DEL 2010",
@@ -115,7 +115,7 @@ const electricalProjects: Project[] = [
     tags: ["Cobertura", "Potencia", "Mantenimiento"],
   },
 ];
-
+ 
 const securityProjects: Project[] = [
   {
     date: "SEPTIEMBRE DEL 2015",
@@ -159,7 +159,7 @@ const securityProjects: Project[] = [
     tags: ["Seguridad", "Torre", "Conectividad"],
   },
 ];
-
+ 
 const cameraProjects: Project[] = [
   {
     date: "ENERO DEL 2016",
@@ -213,12 +213,12 @@ const cameraProjects: Project[] = [
     tags: ["Cámaras", "Educación", "Protección"],
   },
 ];
-
+ 
 type SliderTheme = {
   background: string;
   stats: { icon: React.ReactNode; label: string; value: string }[];
 };
-
+ 
 const sliderThemes: Record<string, SliderTheme> = {
   electricos: {
     background: fondoElectricos,
@@ -248,14 +248,14 @@ const sliderThemes: Record<string, SliderTheme> = {
     ],
   },
 };
-
+ 
 interface ProjectSliderProps {
   title: string;
   projects: Project[];
   theme: SliderTheme;
   sliderId: string;
 }
-
+ 
 const ProjectSlider: React.FC<ProjectSliderProps> = ({
   title,
   projects,
@@ -263,9 +263,9 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
   sliderId,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+ 
   const current = projects[activeIndex] ?? projects[0];
-
+ 
   return (
     <section
       className="relative overflow-hidden py-20 md:py-28"
@@ -278,20 +278,20 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
       <div className="absolute inset-0 bg-[#020817]/72" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#031022]/35 via-[#020817]/65 to-[#020617]/90" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_38%),radial-gradient(circle_at_bottom,rgba(14,165,233,0.10),transparent_35%)]" />
-
+ 
       <div className="relative z-10 mx-auto max-w-[1450px] px-4 md:px-8">
         <div className="text-center">
           <p className="text-cyan-300 tracking-[0.35em] uppercase text-xs md:text-sm font-medium mb-5">
             Trayectoria y proyectos
           </p>
-
+ 
           <h2 className="mx-auto max-w-5xl text-white uppercase font-black leading-[1.04] text-3xl sm:text-4xl md:text-5xl xl:text-6xl">
             {title}
           </h2>
-
+ 
           <div className="mx-auto mt-5 h-[3px] w-44 rounded-full bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_25px_rgba(34,211,238,0.7)]" />
         </div>
-
+ 
         <div className="relative mt-14">
           <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 xl:flex xl:flex-col xl:items-center xl:pl-2">
             <div className="relative h-72 w-[2px] rounded-full bg-white/15">
@@ -299,7 +299,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
               <div className="absolute left-1/2 top-[45%] h-3 w-3 -translate-x-1/2 rounded-full bg-cyan-200/70" />
               <div className="absolute left-1/2 top-[76%] h-3 w-3 -translate-x-1/2 rounded-full bg-cyan-200/45" />
             </div>
-
+ 
             <div className="mt-5 flex flex-col gap-4">
               {projects.slice(0, 4).map((_, idx) => (
                 <div
@@ -316,7 +316,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
               ))}
             </div>
           </div>
-
+ 
           <div className="mx-auto max-w-[1180px]">
             <div className="relative">
               <button
@@ -325,14 +325,14 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
               >
                 <ChevronLeft size={34} />
               </button>
-
+ 
               <button
                 className={`swiper-button-next-${sliderId} absolute right-0 top-1/2 z-20 hidden h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/8 text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.28)] transition hover:scale-105 hover:bg-white/12 md:flex`}
                 aria-label="Siguiente"
               >
                 <ChevronRight size={34} />
               </button>
-
+ 
               <Swiper
                 modules={[EffectCoverflow, Autoplay, Navigation, Pagination]}
                 effect="coverflow"
@@ -378,7 +378,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
                       : project.overlay === "dark"
                       ? "bg-black/18"
                       : "bg-transparent";
-
+ 
                   return (
                     <SwiperSlide key={`${project.date}-${index}`}>
                       {({ isActive }) => (
@@ -398,26 +398,26 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
                               alt={project.date}
                               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                             />
-
+ 
                             <div className={`absolute inset-0 ${extraOverlay}`} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-white/5" />
-
+ 
                             <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
                               <div className="rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-white backdrop-blur-md">
                                 {project.date}
                               </div>
-
+ 
                               <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/80 shadow-[0_8px_25px_rgba(255,255,255,0.15)]">
                                 <span className="h-2.5 w-2.5 rounded-full bg-slate-900" />
                               </div>
                             </div>
                           </div>
-
+ 
                           <div className="rounded-b-[34px] border-t border-white/10 bg-[#07111d]/95 px-5 py-5 md:px-6 md:py-6">
                             <p className="text-center text-sm md:text-[15px] font-medium leading-7 text-slate-100 min-h-[88px]">
                               {project.description}
                             </p>
-
+ 
                             {project.tags && (
                               <div className="mt-4 flex flex-wrap justify-center gap-2">
                                 {project.tags.map((tag) => (
@@ -435,7 +435,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
                                 ))}
                               </div>
                             )}
-
+ 
                             <div className="mx-auto mt-4 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
                           </div>
                         </motion.article>
@@ -444,10 +444,10 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
                   );
                 })}
               </Swiper>
-
+ 
               <div className={`swiper-pagination-${sliderId} mt-6 flex justify-center gap-3`} />
             </div>
-
+ 
             <div className="mx-auto mt-10 flex max-w-[1020px] items-center justify-between gap-2 rounded-[26px] border border-cyan-300/15 bg-[#020817]/70 px-3 py-4 backdrop-blur-xl shadow-[0_0_30px_rgba(14,165,233,0.08)] overflow-hidden">
               <div className="grid flex-1 grid-cols-2 gap-2 md:grid-cols-4 min-w-0">
                 {theme.stats.map((item) => (
@@ -464,7 +464,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
                 ))}
               </div>
             </div>
-
+ 
             <div className="mx-auto mt-6 grid max-w-[1020px] grid-cols-2 gap-4 rounded-[24px] border border-white/8 bg-[#020817]/45 px-5 py-4 backdrop-blur-lg md:grid-cols-4">
               <InfoMini
                 label="Tipo de proyecto"
@@ -490,7 +490,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
           </div>
         </div>
       </div>
-
+ 
       <style>{`
         .swiper-pagination-${sliderId} .swiper-pagination-bullet {
           width: 14px;
@@ -498,7 +498,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
           background: rgba(255,255,255,0.35);
           opacity: 1;
         }
-
+ 
         .swiper-pagination-${sliderId} .swiper-pagination-bullet-active {
           background: #67e8f9;
           box-shadow: 0 0 18px rgba(34,211,238,0.85);
@@ -507,7 +507,7 @@ const ProjectSlider: React.FC<ProjectSliderProps> = ({
     </section>
   );
 };
-
+ 
 const InfoMini = ({
   label,
   value,
@@ -525,11 +525,14 @@ const InfoMini = ({
     </div>
   </div>
 );
-
+ 
 const NuestraHistoria: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [carouselWidth, setCarouselWidth] = useState(0);
-
+ 
+  // ── NUEVO: motion value para controlar la posición X del carrusel ──
+  const x = useMotionValue(0);
+ 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (carouselRef.current) {
@@ -538,10 +541,19 @@ const NuestraHistoria: React.FC = () => {
         setCarouselWidth(-(totalWidth - containerWidth));
       }
     }, 100);
-
+ 
     return () => window.clearTimeout(timer);
   }, []);
-
+ 
+  // ── NUEVO: función que mueve la línea del tiempo al hacer clic en los botones ──
+  const scrollTimeline = (direction: "left" | "right") => {
+    const amount = 300;
+    const current = x.get();
+    const next = direction === "right" ? current - amount : current + amount;
+    const clamped = Math.max(carouselWidth, Math.min(0, next));
+    animate(x, clamped, { type: "spring", stiffness: 80, damping: 20 });
+  };
+ 
   return (
     <>
       <div
@@ -550,14 +562,14 @@ const NuestraHistoria: React.FC = () => {
       >
         <p className="text-center font-bold text-gray-800">Menú de Navegación</p>
       </div>
-
+ 
       <div className="relative w-screen h-screen bg-gray-900 overflow-hidden">
         <img
-          src="https://i.postimg.cc/HL0K6p6C/nhhh.png"
+          src="https://i.postimg.cc/xj6stj66/fondo-Vm.jpg"
           alt="Fondo de la historia"
           className="absolute inset-0 w-full h-full object-cover"
         />
-
+ 
         <motion.div
           className="absolute top-1/2 left-1/2 md:left-auto md:right-20 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 z-20"
           initial={{ opacity: 0, x: 100, rotateY: 90 }}
@@ -579,7 +591,7 @@ const NuestraHistoria: React.FC = () => {
               animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
               transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
             />
-
+ 
             <div className="relative z-10">
               <motion.h2
                 initial={{ opacity: 0, y: -20 }}
@@ -590,7 +602,7 @@ const NuestraHistoria: React.FC = () => {
               >
                 Nuestra <span className="text-cyan-400 drop-shadow-lg">historia</span>
               </motion.h2>
-
+ 
               <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -599,7 +611,7 @@ const NuestraHistoria: React.FC = () => {
               >
                 ¡Conoce nuestra trayectoria!
               </motion.p>
-
+ 
               <Link to="/facturacion-electronica">
                 <motion.button
                   whileHover={{
@@ -610,7 +622,7 @@ const NuestraHistoria: React.FC = () => {
                   className="cta cta-large transition-all duration-300"
                 >
                   <span className="span">Descubre nuestros servicios</span>
-
+ 
                   <span className="second">
                     <svg
                       width="50px"
@@ -643,7 +655,7 @@ const NuestraHistoria: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
-
+ 
       <section className="bg-[#1a1a1a] py-20 px-6 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto border-4 border-white rounded-xl p-4 sm:p-6 md:p-10 overflow-hidden">
           <div className="text-center">
@@ -655,7 +667,7 @@ const NuestraHistoria: React.FC = () => {
             >
               Un viaje de innovación y crecimiento
             </motion.h3>
-
+ 
             <motion.h2
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -664,7 +676,7 @@ const NuestraHistoria: React.FC = () => {
             >
               Nuestra Historia
             </motion.h2>
-
+ 
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -674,15 +686,44 @@ const NuestraHistoria: React.FC = () => {
               Desde nuestros inicios, nos hemos dedicado a brindar soluciones tecnológicas innovadoras...
             </motion.p>
           </div>
-
+ 
+          {/* ────────────────────────────────────────────────────────────
+              SECCIÓN MODIFICADA: se agregaron los botones ← y →
+              y las props x / onDragEnd en motion.div
+          ──────────────────────────────────────────────────────────── */}
           <div className="relative">
+            {/* Línea horizontal (sin cambios) */}
             <div className="absolute left-0 right-0 top-12 h-1 bg-cyan-400 z-0" />
-
+ 
+            {/* ── BOTÓN NUEVO: retroceder ◄ ── */}
+            <button
+              onClick={() => scrollTimeline("left")}
+              className="absolute -left-5 top-12 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 text-black shadow-lg hover:bg-cyan-300 transition -translate-y-1/2"
+              aria-label="Anterior"
+            >
+              <ChevronLeft size={22} />
+            </button>
+ 
+            {/* ── BOTÓN NUEVO: avanzar ► ── */}
+            <button
+              onClick={() => scrollTimeline("right")}
+              className="absolute -right-5 top-12 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 text-black shadow-lg hover:bg-cyan-300 transition -translate-y-1/2"
+              aria-label="Siguiente"
+            >
+              <ChevronRight size={22} />
+            </button>
+ 
             <div className="overflow-hidden" ref={carouselRef}>
               <motion.div
                 className="flex gap-10 cursor-grab active:cursor-grabbing pb-8"
                 drag="x"
                 dragConstraints={{ right: 0, left: carouselWidth }}
+                style={{ x }}
+                onDragEnd={() => {
+                  const current = x.get();
+                  const clamped = Math.max(carouselWidth, Math.min(0, current));
+                  animate(x, clamped, { type: "spring", stiffness: 80, damping: 20 });
+                }}
                 transition={{ type: "spring", stiffness: 80, damping: 20 }}
               >
                 {timelineItems.map((item, index) => (
@@ -694,7 +735,7 @@ const NuestraHistoria: React.FC = () => {
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
                     <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-cyan-400 rounded-full z-10 border-4 border-[#1a1a1a]" />
-
+ 
                     <div className="w-24 h-24 mb-4 z-10 bg-[#1a1a1a] p-2 flex items-center justify-center">
                       <img
                         src="https://i.postimg.cc/Gp3tf0Lj/cropped-Frame-937.png"
@@ -702,11 +743,11 @@ const NuestraHistoria: React.FC = () => {
                         className="w-full h-full"
                       />
                     </div>
-
+ 
                     <h4 className="text-cyan-400 font-semibold text-lg mb-2">
                       {item.year}
                     </h4>
-
+ 
                     <p className="text-sm text-gray-300 leading-relaxed text-center max-w-[240px]">
                       {item.text}
                     </p>
@@ -715,32 +756,34 @@ const NuestraHistoria: React.FC = () => {
               </motion.div>
             </div>
           </div>
+          {/* ── FIN SECCIÓN MODIFICADA ── */}
+ 
         </div>
       </section>
-
+ 
       <ProjectSlider
         title="PROYECTOS ELÉCTRICOS"
         projects={electricalProjects}
         theme={sliderThemes.electricos}
         sliderId="electricos"
       />
-
+ 
       <ProjectSlider
         title="PROYECTOS EN REDES Y EN TECNOLOGÍAS DE SEGURIDAD"
         projects={securityProjects}
         theme={sliderThemes.redes}
         sliderId="redes"
       />
-
+ 
       <ProjectSlider
         title="PROYECTOS DE CÁMARAS DE SEGURIDAD"
         projects={cameraProjects}
         theme={sliderThemes.camaras}
         sliderId="camaras"
       />
-
+ 
       <ScrollButton />
-
+ 
       <style>{`
         .cta {
           display: flex;
@@ -755,74 +798,74 @@ const NuestraHistoria: React.FC = () => {
           border: none;
           cursor: pointer;
         }
-
+ 
         .cta.cta-large {
           padding: 12px 40px;
           font-size: 18px;
           min-width: 280px;
         }
-
+ 
         .cta:focus {
           outline: none;
         }
-
+ 
         .cta:hover {
           transition: 0.5s;
           box-shadow: 10px 10px 0 #ffffff;
         }
-
+ 
         .cta .second {
           transition: 0.5s;
           margin-right: 0px;
         }
-
+ 
         .cta:hover .second {
           transition: 0.5s;
           margin-right: 45px;
         }
-
+ 
         .span {
           transform: skewX(15deg);
           font-weight: 600;
         }
-
+ 
         .second {
           width: 20px;
           margin-left: 30px;
           position: relative;
           top: 12%;
         }
-
+ 
         .one {
           transition: 0.4s;
           transform: translateX(-60%);
         }
-
+ 
         .two {
           transition: 0.5s;
           transform: translateX(-30%);
         }
-
+ 
         .cta:hover .three {
           animation: color_anim 1s infinite 0.2s;
         }
-
+ 
         .cta:hover .one {
           transform: translateX(0%);
           animation: color_anim 1s infinite 0.6s;
         }
-
+ 
         .cta:hover .two {
           transform: translateX(0%);
           animation: color_anim 1s infinite 0.4s;
         }
-
+ 
         @keyframes color_anim {
           0% { fill: #fff; }
           50% { fill: #000; }
           100% { fill: #fff; }
         }
-
+ 
         @media (max-width: 640px) {
           .cta.cta-large {
             padding: 10px 24px;
@@ -836,5 +879,5 @@ const NuestraHistoria: React.FC = () => {
     </>
   );
 };
-
+ 
 export default NuestraHistoria;
