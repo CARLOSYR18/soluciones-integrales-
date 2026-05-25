@@ -9,6 +9,7 @@ import App from './App';
 
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import VoiceflowChat from './components/VoiceflowChat';
 
 import Contacto from './pages/Contacto';
 import QuienesSomos from './pages/QuienesSomos';
@@ -47,6 +48,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
     <Navbar />
     <main className="flex-grow">{children}</main>
     <Footer />
+    <VoiceflowChat />
   </div>
 );
 
