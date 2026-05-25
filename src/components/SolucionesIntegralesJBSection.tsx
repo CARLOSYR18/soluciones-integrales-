@@ -827,34 +827,41 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
     </div>
 
     {/* ── Enlace Inferior CTA ── */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      viewport={{ once: true }}
-      className="max-w-5xl mx-auto px-6 mt-16 md:mt-20 flex justify-center"
-    >
-<<<<<<< HEAD
-      <a href="/DesarrolloDeSoftware" className="inline-flex items-center gap-2 text-cyan-400 text-lg md:text-xl font-semibold 
-                                       hover:text-cyan-300 transition-colors duration-300 group">
-=======
-      <a 
-        href="/servicios" 
-        className="group relative inline-flex items-center gap-3 text-white/80 hover:text-white text-lg font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-8 focus-visible:ring-offset-black rounded-full"
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  viewport={{ once: true }}
+  className="max-w-5xl mx-auto px-6 mt-16 md:mt-20 flex justify-center"
+>
+  <a
+    href="/servicios"
+    className="group relative inline-flex items-center gap-3 text-white/80 hover:text-white text-lg font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-8 focus-visible:ring-offset-black rounded-full"
+  >
+    <span>Explorar todos los servicios</span>
+
+    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-lg">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:translate-x-0.5 transition-transform duration-300"
       >
->>>>>>> c2c2e79 (Guardando cambios pendientes)
-        <span>Explorar todos los servicios</span>
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-lg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-0.5 transition-transform duration-300">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </div>
-        <div 
-          aria-hidden="true" 
-          className="absolute -inset-2 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
-        />
-      </a>
-    </motion.div>
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </div>
+
+    <div
+      aria-hidden="true"
+      className="absolute -inset-2 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+    />
+  </a>
+</motion.div>
   </div>
 </section>
 
