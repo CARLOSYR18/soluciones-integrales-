@@ -1,13 +1,3 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const mysql = require("mysql2");
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-const PORT = process.env.PORT || 3006;
 const OLLAMA_BASE_URL = (process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434").replace(/\/$/, "");
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "llama3.2:1b";
 const OLLAMA_TIMEOUT_MS = Number(process.env.OLLAMA_TIMEOUT_MS || 6000);
@@ -205,41 +195,42 @@ const createFastReply = (messages = []) => {
   return hasAny(text, fastTerms) ? createLocalReply(messages) : null;
 };
 
-// Conexion MySQL
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-// Verificar conexión
-db.connect((err) => {
-  if (err) {
-    console.error("Error al conectar a MySQL:", err);
-    return;
+const getBody = (req) => {
+  if (!req.body) return {};
+  if (typeof req.body === "string") {
+    try {
+      return JSON.parse(req.body);
+    } catch {
+      return {};
+    }
   }
-  console.log("Conexión MySQL exitosa 🎉");
-});
+  return req.body;
+};
 
-// Ruta principal
-app.get("/", (req, res) => {
-  res.send("Backend funcionando correctamente 🚀");
-});
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-// 👉 Ruta para obtener la tabla productos
-app.post("/api/chat", async (req, res) => {
-  const messages = Array.isArray(req.body?.messages) ? req.body.messages : [];
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Metodo no permitido" });
+  }
+
+  const body = getBody(req);
+  const messages = Array.isArray(body?.messages) ? body.messages : [];
   const knownFactReply = createKnownFactReply(messages);
 
   if (knownFactReply) {
-    return res.json({ reply: knownFactReply, source: "known_fact" });
+    return res.status(200).json({ reply: knownFactReply, source: "known_fact" });
   }
 
   const fastReply = createFastReply(messages);
 
   if (fastReply) {
-    return res.json({ reply: fastReply, source: "fast" });
+    return res.status(200).json({ reply: fastReply, source: "fast" });
   }
 
   try {
@@ -287,7 +278,7 @@ app.post("/api/chat", async (req, res) => {
       return res.status(502).json({ error: "Ollama no devolvio texto" });
     }
 
-    res.json({ reply });
+    return res.status(200).json({ reply });
   } catch (error) {
     console.error("Error en /api/chat:", error);
     if (messages.length) {
@@ -298,25 +289,6 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    res.status(500).json({ error: "Error interno del chatbot" });
+    return res.status(500).json({ error: "Error interno del chatbot" });
   }
-});
-
-app.get("/productos", (req, res) => {
-  const query = "SELECT * FROM products";
-
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error("Error al obtener productos:", err);
-      return res.status(500).json({ error: "Error al obtener productos" });
-    }
-
-    res.json(results);
-  });
-});
-
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-
-});
+}

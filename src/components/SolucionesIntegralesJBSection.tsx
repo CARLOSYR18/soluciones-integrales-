@@ -6,7 +6,6 @@ import "react-multi-carousel/lib/styles.css";
 import ScrollButton from "../components/ScrollButton";
 import '../App.css'
 import LogoLoop from "./LogoLoop";
-import VoiceflowChat from "./VoiceflowChat";
 import LogoKeyed from "../components/LogoKeyed";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { FaMedal, FaClock, FaHandshake, FaShieldAlt } from 'react-icons/fa';
@@ -18,6 +17,7 @@ interface Service {
   image: string;
   imageAlt: string;
   cta: string;
+  description?: string;
   href?: string;
 }
 
@@ -94,6 +94,13 @@ const strategicServices: Service[] = [
   { label: "Servicios", title: "Facturación Electrónica", image: "https://i.postimg.cc/pLZhhTpW/s3-blog-facturacion-electronica-min-400x256.png", imageAlt: "Facturación electrónica", cta: "INFORMACIÓN" },
   { label: "Servicios", title: "Soporte Técnico", image: "https://i.postimg.cc/Gmqt355h/image.png", imageAlt: "Soporte en sitio", cta: "INFORMACIÓN" },
   { label: "Servicios", title: "Tecnología en Seguridad", image: "https://i.postimg.cc/k4tgcXMk/tecnologia-seguridad-1-768x512.jpg", imageAlt: "Tecnología y seguridad", cta: "INFORMACIÓN" }
+];
+
+const strategicServiceDescriptions = [
+  "Creamos sistemas a medida para automatizar procesos, ordenar tu operaci\u00f3n y escalar tu negocio.",
+  "Implementamos soluciones conectadas a SUNAT para emitir, controlar y gestionar comprobantes sin complicaciones.",
+  "Atendemos incidencias, mantenimiento y optimizaci\u00f3n de equipos para mantener tu empresa operativa.",
+  "Instalamos c\u00e1maras, redes y sistemas de vigilancia pensados para proteger tus espacios clave.",
 ];
 
 const features: Feature[] = [
@@ -466,6 +473,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   const [cart, setCart] = useState<any[]>([]);
   const [heroVideoEnded, setHeroVideoEnded] = useState(false);
   const [videoIsMuted, setVideoIsMuted] = useState(true);
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   const handleSkipVideo = () => {
@@ -654,184 +662,201 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         </AnimatePresence>
       </div>
       
-    {/* ====================== SERVICIOS — APPLE STYLE ====================== */}
-<section className="relative w-full bg-black overflow-hidden">
-  <div className="relative z-10 py-16 md:py-24">
+    {/* ====================== SERVICIOS — ELITE 3D & TEXT ANIMATION ====================== */}
+<section className="relative w-full bg-[#050505] overflow-hidden selection:bg-cyan-500/30">
+  {/* ── Ambient Glow (Optimizado) ── */}
+  <div 
+    aria-hidden="true"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] max-w-[900px] h-[600px] bg-cyan-900/15 blur-[120px] rounded-full pointer-events-none opacity-60 mix-blend-screen will-change-transform" 
+  />
 
-    {/* ── Header: Apple-style giant text ── */}
-    <div className="max-w-5xl mx-auto px-6 mb-12 md:mb-16">
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="text-cyan-400 text-sm md:text-base font-semibold tracking-[0.25em] uppercase mb-6"
+  <div className="relative z-10 py-20 md:py-32">
+    {/* ── Header Animado Premium ── */}
+    <header className="max-w-6xl mx-auto px-6 mb-16 md:mb-24 flex flex-col items-center text-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="mb-8 inline-flex items-center justify-center px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-md"
       >
-        Servicios
-      </motion.p>
+        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-xs md:text-sm font-bold tracking-[0.3em] uppercase">
+          Nuestros Servicios
+        </span>
+      </motion.div>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        viewport={{ once: true }}
-        className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight"
-      >
-        Lo que hacemos. Soluciones diseñadas para llevar tu negocio al siguiente nivel.
-      </motion.h2>
-    </div>
+      {/* Animación de texto tipo máscara (Apple Style Reveal) */}
+      <div className="overflow-hidden pb-2">
+        <motion.h2
+          initial={{ y: "100%", opacity: 0, rotateX: 20 }}
+          whileInView={{ y: 0, opacity: 1, rotateX: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl text-4xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/40 leading-[1.1] tracking-tighter origin-bottom"
+        >
+          Soluciones diseñadas para <br className="hidden md:block" />
+          elevar tu visión.
+        </motion.h2>
+      </div>
+    </header>
 
-    {/* ── Carrusel Apple-style ── */}
-    <div className="apple-services-scope">
+    {/* ── Carousel 3D ── */}
+    <div className="relative max-w-[1400px] mx-auto">
       <Carousel
         responsive={{
-          desktop: { breakpoint: { max: 3000, min: 1024 }, items: 2, slidesToSlide: 1 },
-          tablet: { breakpoint: { max: 1024, min: 640 }, items: 2, slidesToSlide: 1 },
-          mobile: { breakpoint: { max: 640, min: 0 }, items: 1, slidesToSlide: 1 },
+          desktop: { breakpoint: { max: 3000, min: 1024 }, items: 2, slidesToSlide: 1, partialVisibilityGutter: 40 },
+          tablet: { breakpoint: { max: 1024, min: 640 }, items: 2, slidesToSlide: 1, partialVisibilityGutter: 30 },
+          mobile: { breakpoint: { max: 640, min: 0 }, items: 1, slidesToSlide: 1, partialVisibilityGutter: 20 },
         }}
         infinite
         autoPlay
-        autoPlaySpeed={4000}
+        autoPlaySpeed={5000}
         keyBoardControl
         showDots={false}
         arrows
-        containerClass="apple-services-container"
-        itemClass="px-3 md:px-4"
+        containerClass="py-10 !overflow-visible"
+        itemClass="px-4 md:px-6"
         customLeftArrow={
-          <button className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30
-                             w-11 h-11 rounded-full bg-neutral-800/80 border border-neutral-700
-                             flex items-center justify-center
-                             hover:bg-neutral-700 hover:border-neutral-500 
-                             active:scale-90
-                             transition-all duration-200 cursor-pointer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button 
+            aria-label="Slide anterior"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full backdrop-blur-xl bg-black/40 border border-white/10 flex items-center justify-center group hover:bg-white/10 hover:border-white/30 hover:scale-110 active:scale-95 shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-400 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/60 group-hover:text-white transition-colors duration-300">
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
         }
         customRightArrow={
-          <button className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30
-                             w-11 h-11 rounded-full bg-neutral-800/80 border border-neutral-700
-                             flex items-center justify-center
-                             hover:bg-neutral-700 hover:border-neutral-500
-                             active:scale-90
-                             transition-all duration-200 cursor-pointer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button 
+            aria-label="Siguiente slide"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full backdrop-blur-xl bg-black/40 border border-white/10 flex items-center justify-center group hover:bg-white/10 hover:border-white/30 hover:scale-110 active:scale-95 shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-400 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/60 group-hover:text-white transition-colors duration-300">
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
         }
       >
-        {strategicServices.map((s, idx) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="group cursor-pointer"
+        {strategicServices.map((service, idx) => {
+          const isServiceHovered = hoveredService === idx;
+
+          return (
+          <motion.article
+            key={service.title}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="group cursor-pointer w-full [perspective:1200px]"
+            onMouseEnter={() => setHoveredService(idx)}
+            onMouseLeave={() => setHoveredService(null)}
+            onFocus={() => setHoveredService(idx)}
+            onBlur={() => setHoveredService(null)}
+            tabIndex={0}
           >
-            {/* Card container — horizontal */}
-            <div className="relative rounded-2xl overflow-hidden h-64 md:h-80 bg-neutral-900
-                            border border-white/[0.06] group-hover:border-white/[0.12]
-                            transition-all duration-500">
-              {/* Image with zoom */}
+            {/* ── Contenedor 3D de la Tarjeta ── */}
+            <motion.div 
+              whileHover={{ rotateX: 4, rotateY: -4, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
+              className="service-card-3d relative rounded-[2rem] overflow-hidden h-[26rem] md:h-[34rem] bg-neutral-900 border border-white/10 shadow-2xl group-hover:border-white/20 group-hover:shadow-[0_40px_80px_rgba(6,182,212,0.2)] [transform-style:preserve-3d]"
+            >
+              {/* Imagen con zoom suave */}
               <img
-                src={s.image}
-                alt={s.imageAlt}
-                className="absolute inset-0 w-full h-full object-cover 
-                           transition-transform duration-[1.2s] ease-out 
-                           group-hover:scale-110"
+                src={service.image}
+                alt={service.imageAlt || service.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                loading="lazy"
               />
 
-              {/* Gradient overlay permanente */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              {/* Capas de Gradiente para Contraste y Profundidad */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/90 pointer-events-none" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-700 pointer-events-none" aria-hidden="true" />
 
-              {/* Hover overlay extra */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500" />
-
-              {/* Badge superior */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="text-[10px] font-bold text-white tracking-[0.2em] uppercase
-                                 bg-white/10 px-3 py-1.5 rounded-full border border-white/10
-                                 group-hover:bg-cyan-500/20 group-hover:text-cyan-300 group-hover:border-cyan-500/20
-                                 transition-all duration-400">
-                  {s.label}
+              {/* Badge Superior (Traducción Z para efecto 3D) */}
+              <div className="absolute top-6 left-6 z-20 transition-transform duration-500 [transform:translateZ(40px)]">
+                <span className="backdrop-blur-md bg-white/10 text-[10px] font-bold text-white/90 tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/20 shadow-lg group-hover:bg-cyan-500/20 group-hover:text-cyan-300 group-hover:border-cyan-400/40 transition-all duration-500">
+                  {service.label}
                 </span>
               </div>
 
-              {/* Título sobre la imagen, abajo */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                  {s.title}
-                </h3>
+              {/* Contenido Inferior (Textos Animados) */}
+              <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10 z-20 [transform:translateZ(60px)] flex min-h-[13rem] flex-col justify-end">
+                <div className={`transition-transform duration-500 ease-out ${isServiceHovered ? "-translate-y-12 md:-translate-y-16" : "translate-y-0"}`}>
+                  {/* Título: se eleva al hacer hover */}
+                  <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight drop-shadow-2xl">
+                    {service.title}
+                  </h3>
+                  
+                  {/* ── Descripción: solo aparece debajo del título al hacer hover ── */}
+                  <AnimatePresence>
+                    {isServiceHovered && (
+                      <motion.p
+                        key="service-description"
+                        data-service-hover-text
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="mt-3 max-w-[95%] text-sm leading-relaxed text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-base"
+                      >
+                        {service.description || strategicServiceDescriptions[idx] || "Tu solución tecnológica personalizada para escalar resultados y transformar tu presencia digital con innovación constante."}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
 
-                {/* CTA que aparece al hover */}
-                <div className="flex items-center gap-2 mt-3
-                                opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0
-                                transition-all duration-500 delay-75">
-                  <span className="text-cyan-400 text-sm font-semibold flex items-center gap-1.5">
+                {/* CTA (Aparece en Hover) */}
+                <div className="flex items-center gap-2 mt-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-150 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                  <span className="text-cyan-400 text-sm font-semibold uppercase tracking-wider flex items-center gap-1.5">
                     Explorar
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                         className="group-hover:translate-x-1 transition-transform duration-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1.5 transition-transform duration-300">
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <polyline points="12 5 19 12 12 19" />
                     </svg>
                   </span>
                 </div>
-
-                {/* Línea cyan inferior animada */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] 
-                                bg-gradient-to-r from-cyan-400 to-blue-500 
-                                scale-x-0 group-hover:scale-x-100 origin-left
-                                transition-transform duration-700" />
               </div>
-            </div>
 
-            {/* Info debajo de la card */}
-            <div className="mt-4 px-1">
-              <h4 className="text-lg font-bold text-white">{s.title}</h4>
-              <p className="mt-1 text-sm text-white/50 leading-relaxed">
-                Descubre cómo potenciamos tu negocio con esta solución integral.
-              </p>
-            </div>
-          </motion.div>
-        ))}
+              {/* ── Línea Animada (Efecto Láser) ── */}
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-30" />
+            </motion.div>
+          </motion.article>
+          );
+        })}
       </Carousel>
-
-      <style>{`
-        .apple-services-scope .apple-services-container {
-          padding: 0 2rem;
-          overflow: visible;
-        }
-        .apple-services-scope .react-multi-carousel-track {
-          padding: 1rem 0 2rem;
-        }
-      `}</style>
     </div>
 
-    {/* ── Link final tipo Apple ── */}
+    {/* ── Enlace Inferior CTA ── */}
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
       viewport={{ once: true }}
-      className="max-w-5xl mx-auto px-6 mt-16 md:mt-24"
+      className="max-w-5xl mx-auto px-6 mt-16 md:mt-20 flex justify-center"
     >
+<<<<<<< HEAD
       <a href="/DesarrolloDeSoftware" className="inline-flex items-center gap-2 text-cyan-400 text-lg md:text-xl font-semibold 
                                        hover:text-cyan-300 transition-colors duration-300 group">
+=======
+      <a 
+        href="/servicios" 
+        className="group relative inline-flex items-center gap-3 text-white/80 hover:text-white text-lg font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-8 focus-visible:ring-offset-black rounded-full"
+      >
+>>>>>>> c2c2e79 (Guardando cambios pendientes)
         <span>Explorar todos los servicios</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-             className="group-hover:translate-x-1.5 transition-transform duration-300">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
+        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-0.5 transition-transform duration-300">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </div>
+        <div 
+          aria-hidden="true" 
+          className="absolute -inset-2 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
+        />
       </a>
     </motion.div>
-
   </div>
 </section>
-
-<div></div>
 
       {/* ====================== CARACTERÍSTICAS CON ANIMACIÓN 3D ====================== */}
       <div className="mx-auto max-w-6xl px-4 py-10">
@@ -1353,7 +1378,6 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   </div>
 
   <div className="max-w-3xl mx-auto mt-10 text-center">
-    <VoiceflowChat />
     <ScrollButton />
   </div>
 </section>

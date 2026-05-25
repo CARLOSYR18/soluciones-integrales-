@@ -20,9 +20,9 @@ const miembros: Miembro[] = [
     nombre: "Wilder Julca",
     cargo: "Gerente de Servicios",
     imagen: "https://i.postimg.cc/0y0wMnJ6/wilder1024-(2).png",
-    bio: "Lidera la gestión de servicios, asegurando calidad, cumplimiento y mejora continua en cada proyecto.",
+    bio: "Analista QA, responsable de garantizar la calidad del software mediante la planificación, diseño y ejecución de pruebas, asegurando que los productos cumplan con los requisitos funcionales y estándares establecidos antes de su implementación..",
     skills: ["Gestión", "Operaciones", "Calidad", "Atención al cliente"],
-    linkedin: "https://www.linkedin.com/in/wilder-julca-61783043/",
+    linkedin: "#",
     correo: "wilder@empresa.com",
   },
   {
@@ -44,19 +44,8 @@ const miembros: Miembro[] = [
     skills: ["React", "Node.js", "SQL", "Arquitectura"],
     linkedin: "#",
   },
-  
   {
     id: 4,
-    nombre: "Diego Uriarte",
-    cargo: "Desarrollador Mobil",
-    imagen:"https://i.postimg.cc/5t4Pyr0g/Diego.jpg",
-    bio: "Desarrollador de aplicaciones móviles en plataformas Android & iOS, especializado en Kotlin, Java y Swift",
-    skills: ["Desarrollo ", "Manejo de frameworks", "Gestión ", "Integración "],
-    linkedin: "https://www.linkedin.com/in/diego-ronaldo-uriarte-chancafe-637297182/",
-    twitter: "#",
-  },
-  {
-    id: 5,
     nombre: "Adixon Julca Ramirez",
     cargo: "Programador Web",
     imagen:"https://i.postimg.cc/m2rq6pTW/Gemini-Generated-Image-4ayvix4ayvix4ayv.png",
@@ -65,12 +54,13 @@ const miembros: Miembro[] = [
     linkedin: "#",
     twitter: "#",
   },
+  
  
 ];
 const grupoApoyo: Miembro[] = [
   {
     id: 101,
-    nombre: "Carlos Yamacacho Rocca",
+    nombre: "Daniel Yamacacho ",
     cargo: "Equipo de apoyo" ,
     imagen: "https://i.postimg.cc/nVmYVvTm/yamac1024.png",
     bio: "Brinda soporte técnico y asistencia en los proyectos.",
@@ -78,7 +68,7 @@ const grupoApoyo: Miembro[] = [
   },
   {
     id: 102,
-    nombre: "Jared Alonso Arroyo Alarcon" ,
+    nombre: "Jared Arroyo Alarcon" ,
     cargo: "Equipo de apoyo",
     imagen: "https://i.postimg.cc/85VjPrZ7/jared1024.png" ,
     bio: "Apoya en tareas operativas y coordinación de actividades.",
@@ -86,7 +76,7 @@ const grupoApoyo: Miembro[] = [
   },
   {
     id: 103,
-    nombre: "Gabriel Sedano Ramirez" ,
+    nombre: "Gabriel Sedano" ,
     cargo: "Equipo de apoyo",
     imagen: "https://i.postimg.cc/8cYqbLJR/Gemini-Generated-Image-5rt2635rt2635rt2.png" ,
     bio: "Gestiona procesos administrativos y apoyo organizacional.",
@@ -112,7 +102,7 @@ const NuestroEquipo: React.FC = () => {
   const [selected, setSelected] = useState<Miembro | null>(null);
 
   const items = useMemo(() => {
-    if (miembros.length <= 5) return miembros;
+    if (miembros.length <= 4) return miembros;
     return [...miembros, ...miembros];
   }, []);
 const itemsApoyo = useMemo(() => {
