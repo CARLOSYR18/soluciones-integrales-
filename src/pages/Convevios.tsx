@@ -50,7 +50,11 @@ const Convenios = () => {
     {
       nombre: "I.E.S.P. HUANDO",
       descripcion:
-        "La alianza entre el Instituto de Educación Superior Huando y Soluciones Integrales JB mejoraría la empleabilidad de los estudiantes mediante programas de capacitación especializada.",
+        "La colaboración entre I.E.S.P. HUANDO y nuestra empresa tiene como objetivo generar una sinergia estratégica que beneficie a ambas partes.",
+        descripcion2:
+      "Por un lado, I.E.S.P. HUANDO brindará formación técnica actualizada y alineada con las demandas del mercado laboral; por otro, nuestra empresa ofrecerá oportunidades de prácticas profesionales en entornos reales de trabajo, bajo la modalidad de convenio de colaboración mutua.",
+      descripcion3:
+      "Esta alianza permitirá fortalecer las competencias de los estudiantes y contribuir al desarrollo de profesionales altamente capacitados.",
       images: [
         "https://i.postimg.cc/02QH7YCR/IMG-20260506-WA0010.jpg",
         "https://i.postimg.cc/4NdFp61C/IMG-20260506-WA0009.jpg",
@@ -61,7 +65,11 @@ const Convenios = () => {
     {
       nombre: "INSTITUTO SUPERIOR CHANCAY",
       descripcion:
-        "La colaboración entre el Instituto Superior Chancay y Soluciones Integrales JB permitirá a los estudiantes acceder a programas de formación práctica en ambientes profesionales.",
+        "La colaboración entre el INSTITUTO SUPERIOR CHANCAY y nuestra empresa tiene como objetivo generar una sinergia estratégica que beneficie a ambas partes..",
+        descripcion2:
+      "Por un lado, este instituto brindará formación técnica actualizada y alineada con las demandas del mercado laboral; por otro, nuestra empresa ofrecerá oportunidades de prácticas profesionales en entornos reales de trabajo, bajo la modalidad de convenio de colaboración mutua..",
+      descripcion3:
+      "Esta alianza permitirá fortalecer las competencias de los estudiantes y contribuir al desarrollo de profesionales altamente capacitados.",
       images: [
         "https://i.postimg.cc/kX4hWQvZ/IMG-20260506-WA0013.jpg",
         "https://i.postimg.cc/yYdr0myG/IMG-20260506-WA0014.jpg",
@@ -72,7 +80,11 @@ const Convenios = () => {
     {
       nombre: "UNIVERSIDAD NACIONAL JOSÉ FAUSTINO SÁNCHEZ",
       descripcion:
-        "La colaboración entre la Universidad Nacional José Faustino Sánchez y Soluciones Integrales JB ofrecería a los estudiantes prácticas profesionales para aplicar sus conocimientos.",
+        "La colaboración entre la UNIVERSIDAD NACIONAL JOSÉ FAUSTINO SÁNCHEZ y nuestra empresa tiene como objetivo generar una sinergia estratégica que beneficie a ambas partes.",
+        descripcion2:
+      "Por un lado, la universidad brindará formación técnica actualizada y alineada con las demandas del mercado laboral; por otro, nuestra empresa ofrecerá oportunidades de prácticas profesionales en entornos reales de trabajo, bajo la modalidad de convenio de colaboración mutua.",
+      descripcion3:
+      "Esta alianza permitirá fortalecer las competencias de los estudiantes y contribuir al desarrollo de profesionales altamente capacitados.",
         images: [
         "https://unjfsc.edu.pe/wp-content/uploads/2020/04/NUESTRA-HISTORIA2.jpg",
         "https://pbs.twimg.com/media/FTs9qv7XsAgJ0if?format=jpg&name=large",
@@ -110,7 +122,9 @@ const Convenios = () => {
     const styles = `
       .cta {
         display: flex;
-        padding: 16px 50px;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 42px;
         text-decoration: none;
         font-size: 24px;
         color: #ffffff;
@@ -120,52 +134,94 @@ const Convenios = () => {
         transform: skewX(-15deg);
         border: none;
         cursor: pointer;
+        margin: 0 auto;
       }
+
+      .cta.cta-large {
+        width: 330px;
+        max-width: calc(100vw - 80px);
+      }
+
       .cta:hover {
         transition: 0.5s;
         box-shadow: 10px 10px 0 #ffffff;
       }
+
       .cta .second {
         transition: 0.5s;
         margin-right: 0px;
       }
+
       .cta:hover .second {
         transition: 0.5s;
-        margin-right: 45px;
+        margin-right: 28px;
       }
+
       .span {
         transform: skewX(15deg);
-        font-weight: 600;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
       }
+
       .second {
         width: 20px;
-        margin-left: 30px;
+        margin-left: 26px;
         position: relative;
         top: 12%;
+        transform: skewX(15deg);
       }
+
       .one {
         transition: 0.4s;
         transform: translateX(-60%);
       }
+
       .two {
         transition: 0.5s;
         transform: translateX(-30%);
       }
+
+      .three {
+        transition: 0.5s;
+      }
+
       .cta:hover .three {
         animation: color_anim 1s infinite 0.2s;
       }
+
       .cta:hover .one {
         transform: translateX(0%);
         animation: color_anim 1s infinite 0.6s;
       }
+
       .cta:hover .two {
         transform: translateX(0%);
         animation: color_anim 1s infinite 0.4s;
       }
+
       @keyframes color_anim {
         0% { fill: #fff; }
         50% { fill: #000; }
         100% { fill: #fff; }
+      }
+
+      @media (max-width: 640px) {
+        .cta {
+          width: 100%;
+          padding: 14px 28px;
+          font-size: 17px;
+        }
+
+        .cta.cta-large {
+          min-width: 0;
+          width: 260px;
+          max-width: calc(100vw - 70px);
+        }
+
+        .second {
+          margin-left: 18px;
+        }
       }
     `;
     const styleSheet = document.createElement("style");
@@ -234,49 +290,53 @@ const Convenios = () => {
           Prácticas - Profesionales
         </motion.p>
 
-       <motion.a
-  href="https://wa.me/51996720630"
-  target="_blank"
-  rel="noopener noreferrer"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  whileHover={{ y: -5 }}
->
+        <motion.a
+          href="https://api.whatsapp.com/send/?phone=51926392858&text&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          whileHover={{ y: -5 }}
+          className="flex justify-center w-full px-8"
+        >
           <motion.button
             whileHover={{
               scale: 1.08,
-              boxShadow: "0 0 40px rgba(239, 68, 68, 0.9), 0 10px 25px rgba(0, 0, 0, 0.8)",
-              transition: { duration: 0.3 },
+              boxShadow: "0 0 30px rgba(239, 68, 68, 0.8)",
             }}
             whileTap={{ scale: 0.92 }}
-            className="cta group/button relative overflow-hidden text-sm sm:text-base md:text-lg"
+            className="cta cta-large transition-all duration-300"
+            type="button"
           >
-            {/* Fondo animado del botón */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 
-                         opacity-0 group-hover/button:opacity-100"
-              animate={{ backgroundPosition: ["0% 0%", "100% 0%"] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <span className="span relative z-10 flex items-center justify-center gap-2">
-              Información
-            </span>
-            <motion.span
-              className="second relative z-10"
-              animate={{ x: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <svg width="40px" height="16px" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
+            <span className="span">Información</span>
+
+            <span className="second">
+              <svg
+                width="50px"
+                height="20px"
+                viewBox="0 0 66 43"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g id="arrow" fill="none" fillRule="evenodd">
                   <path
                     className="one"
                     d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
                     fill="#fff"
                   />
+                  <path
+                    className="two"
+                    d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+                    fill="#fff"
+                  />
+                  <path
+                    className="three"
+                    d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
+                    fill="#fff"
+                  />
                 </g>
               </svg>
-            </motion.span>
+            </span>
           </motion.button>
         </motion.a>
       </div>
@@ -286,72 +346,51 @@ const Convenios = () => {
 
 
     {/* ====================== SECCIÓN IMPORTANCIA CONVENIOS ====================== */}
-<section className="relative w-full overflow-hidden">
-  {/* Fondo */}
-  <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white" />
-  <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-200/30 blur-3xl" />
-  <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />
+<section className="relative w-full overflow-hidden bg-white">
+  {/* Fondo compacto */}
+  <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50/70 to-white" />
+  <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+  <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
 
-  <div className="relative mx-auto max-w-7xl px-6 md:px-16 py-16 md:py-24">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-      {/* ================= IMAGEN ================= */}
-      <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="w-full"
-      >
-        <div className="relative rounded-3xl bg-white shadow-xl border border-slate-200 p-4">
-          <div className="absolute -top-10 -left-10 h-44 w-44 rounded-full bg-cyan-300/20 blur-3xl" />
-          <div className="absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-blue-300/20 blur-3xl" />
-
-          <div className="relative overflow-hidden rounded-2xl shadow-lg">
-            <img
-              src="https://i.postimg.cc/0QG1nHLt/image.png"
-              alt="Convenios"
-              className="w-full h-[320px] sm:h-[380px] lg:h-[430px] object-cover"
-            />
-          </div>
-        </div>
-      </motion.div>
-
+  <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-10 md:py-14">
+    <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center">
       {/* ================= TEXTO ================= */}
-      <div className="flex flex-col">
+      <div className="order-1 flex flex-col">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex justify-center lg:justify-start"
+          className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-cyan-500" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
             CONVENIOS
           </div>
         </motion.div>
 
-        {/* TITULO EN UNA SOLA LÍNEA */}
-       <motion.h3
-  initial={{ opacity: 0, y: 25 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, delay: 0.1 }}
-  viewport={{ once: true }}
-  className="mt-6 text-[28px] md:text-[38px] lg:text-[44px] font-extrabold text-cyan-500 leading-tight text-center lg:text-left max-w-[720px] mx-auto lg:mx-0"
->
-  ¿Por qué es importante el convenio?
-</motion.h3>
-
-        {/* TEXTO JUSTIFICADO */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+        {/* TÍTULO */}
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-lg p-8"
+          className="mt-5 text-center text-[27px] sm:text-[32px] md:text-[38px] lg:text-[41px] font-extrabold text-cyan-500 leading-[1.15] tracking-wide"
         >
-          <p className="text-base md:text-lg text-slate-700 leading-8 text-justify">
+          ¿Por qué es importante <br className="hidden sm:block" />
+          el convenio?
+        </motion.h3>
+
+        {/* TEXTO */}
+        <motion.div
+          initial={{ opacity: 0, x: -35 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 md:p-7 shadow-[0_14px_45px_rgba(15,23,42,0.08)]"
+        >
+          <p className="text-[14px] sm:text-[15px] md:text-base text-slate-700 leading-7 text-justify">
             Nuestra empresa tiene convenios con diversas instituciones públicas y
             privadas para la formación de nuevos profesionales. Nuestra propuesta
             de trabajo estratégico e integrado es ofrecer a través de diferentes
@@ -362,16 +401,16 @@ const Convenios = () => {
           </p>
 
           {/* Píldoras */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            {["Prácticas profesionales", "Formación aplicada", "Vinculación laboral"].map(
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {["Prácticas profesionales", "Formación aplicada", "Vinculación laboral", "Formación aplicada"].map(
               (t, i) => (
                 <motion.span
-                  key={t}
+                  key={`${t}-${i}`}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.08 * i }}
+                  transition={{ duration: 0.45, delay: 0.07 * i }}
                   viewport={{ once: true }}
-                  className="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium border border-slate-200"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700"
                 >
                   {t}
                 </motion.span>
@@ -382,22 +421,44 @@ const Convenios = () => {
 
         {/* RECUADRO AZUL */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.75 }}
           viewport={{ once: true }}
-          className="mt-10 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
+          className="mt-5 rounded-2xl bg-cyan-500 px-5 sm:px-6 py-5 text-white shadow-[0_16px_45px_rgba(6,182,212,0.25)]"
         >
-          <h4 className="text-lg font-semibold">
+          <h4 className="text-base sm:text-lg font-extrabold">
             Conectamos talento con experiencia real
           </h4>
 
-          <p className="text-sm mt-2 opacity-90">
+          <p className="mt-2 text-sm leading-6 text-white/95">
             Impulsamos la empleabilidad con oportunidades, mentoría y formación
             en entornos profesionales.
           </p>
         </motion.div>
       </div>
+
+      {/* ================= IMAGEN ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: 45 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.85, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="order-2 w-full"
+      >
+        <div className="relative rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)]">
+          <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl" />
+          <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-blue-300/20 blur-3xl" />
+
+          <div className="relative overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="https://i.postimg.cc/0QG1nHLt/image.png"
+              alt="Convenios"
+              className="h-[300px] sm:h-[360px] lg:h-[390px] w-full object-cover"
+            />
+          </div>
+        </div>
+      </motion.div>
     </div>
   </div>
 </section>
