@@ -50,8 +50,16 @@ const timelineItems = [
     year: "2023",
     text: "Lanzamiento de nuevos servicios tecnológicos innovadores para seguir creciendo.",
   },
+  {
+    year: "2024",
+    text: "Fortalecimos nuestras soluciones digitales con desarrollo web, SEO y marketing digital para mejorar la presencia online de nuestros clientes.",
+  },
+  {
+    year: "2025",
+    text: "Consolidamos servicios en tecnología, consultoría e ingeniería, implementando soluciones seguras para la transformación digital empresarial.",
+  },
 ];
- 
+
 type Project = {
   date: string;
   image: string;
@@ -612,7 +620,7 @@ const NuestraHistoria: React.FC = () => {
                 ¡Conoce nuestra trayectoria!
               </motion.p>
  
-              <Link to="/facturacion-electronica">
+              <Link to="/FacturacionElectronica">
                 <motion.button
                   whileHover={{
                     scale: 1.08,
