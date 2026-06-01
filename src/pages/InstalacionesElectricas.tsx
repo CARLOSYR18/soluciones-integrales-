@@ -34,14 +34,13 @@ const InstalacionesElectricas: React.FC = () => {
         style={{ backgroundImage: `url(${fondoN})` }}
       >
         <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-6xl font-bold text-sky-400 text-center z-10">
+        <h1 className="relative text-4xl md:text-6xl font-bold text-cyan-500 text-center z-10">
           <TextType
             text={['Instalaciones Eléctricas']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={['#38bdf8']}
           />
         </h1>
       </motion.div>
@@ -58,7 +57,7 @@ const InstalacionesElectricas: React.FC = () => {
           
           {/* Texto */}
           <div className="md:w-1/2 text-gray-800">
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">   
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">   
               Diseño y Ejecución de Instalaciones Eléctricas
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -109,7 +108,7 @@ const InstalacionesElectricas: React.FC = () => {
 
           {/* Texto a la derecha */}
           <div className="md:w-1/2 text-white">
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Soluciones Personalizadas y Eficientes
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -135,7 +134,7 @@ const InstalacionesElectricas: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Texto */}
           <div className="md:w-1/2 text-gray-800">
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Mantenimiento Preventivo y Correctivo
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -186,7 +185,7 @@ const InstalacionesElectricas: React.FC = () => {
 
           {/* Texto a la derecha */}
           <div className="md:w-1/2 text-gray-800">
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Cumplimiento Normativo y Seguridad
             </h2>
             <p className="mb-4 leading-relaxed text-justify">

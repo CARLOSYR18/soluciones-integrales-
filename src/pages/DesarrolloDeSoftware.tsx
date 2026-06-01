@@ -6,9 +6,9 @@
   import "react-multi-carousel/lib/styles.css";
   import Magnet from '../components/magnet';
   import { Link } from "react-router-dom";
-import ClientesCarousel from "../components/ClientesCarousel";
-import TestimoniosCarousel from "../components/TestimoniosCarousel";
-import fondoN from "../assets/fondoN.jpg";
+  import ClientesCarousel from "../components/ClientesCarousel";
+  import TestimoniosCarousel from "../components/TestimoniosCarousel";
+  import fondoN from "../assets/fondoN.jpg";
   const DesarrolloWebBanner: React.FC = () => {
     // Datos para el carrusel de testimonios (ahora con 4 comentarios)
     const testimonials = [
@@ -72,13 +72,8 @@ import fondoN from "../assets/fondoN.jpg";
         pauseDuration={2000}
         loop={false}
         showCursor={false}
-        textColors={["#38bdf8"]}
       />
     </h1>
-
-    <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-    
-    </span>
 
   </div>
 
@@ -93,7 +88,7 @@ import fondoN from "../assets/fondoN.jpg";
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-sky-400 mb-6 text-center"
+          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
         >
           Desarrollo Web Personalizado
         </motion.h2>
@@ -166,7 +161,7 @@ import fondoN from "../assets/fondoN.jpg";
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-sky-400 mb-6 text-center"
+          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
         >
           Mantenimiento y Soporte
         </motion.h2>
@@ -230,7 +225,7 @@ CONTÁCTANOS
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-sky-400 mb-6 text-center"
+          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
         >
           Diseño UX/UI
         </motion.h2>
@@ -309,7 +304,7 @@ CONTÁCTANOS
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-sky-400 mb-6 text-center"
+          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
         >
           Integración de Funcionalidades
         </motion.h2>

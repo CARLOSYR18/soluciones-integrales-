@@ -34,14 +34,13 @@ const HostingYDominio: React.FC = () => {
         style={{ backgroundImage: `url(${fondoN})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10">
+        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
           <TextType
             text={['Hosting y Dominio']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={['#38bdf8']}
           />
         </h1>
       </div>
@@ -57,7 +56,7 @@ const HostingYDominio: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Hosting Seguro y Confiable
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -106,7 +105,7 @@ const HostingYDominio: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Registro de Dominios Personalizados
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -132,7 +131,7 @@ const HostingYDominio: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Planes de Hosting Escalables
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -184,7 +183,7 @@ const HostingYDominio: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Soporte Técnico 24/7
             </h2>
             <p className="mb-4 leading-relaxed text-justify">

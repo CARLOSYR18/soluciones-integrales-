@@ -46,14 +46,13 @@ const RedesEinfroestructura: React.FC = () => {
         style={{ backgroundImage: `url(${fondoN})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10">
+        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
           <TextType
             text={["Redes e Infraestructura"]}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={["#38bdf8"]}
           />
         </h1>
       </motion.div>
@@ -70,7 +69,7 @@ const RedesEinfroestructura: React.FC = () => {
             variants={fadeInUp}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Diseño e Implementación de Redes
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -143,7 +142,7 @@ const RedesEinfroestructura: React.FC = () => {
             variants={fadeInUp}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Optimización y Mantenimiento de Redes
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -176,7 +175,7 @@ rel="noopener noreferrer"
             variants={fadeInUp}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Seguridad en Redes
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -224,7 +223,7 @@ rel="noopener noreferrer"
             variants={fadeInUp}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Consultoría en Infraestructura
             </h2>
             <p className="mb-4 leading-relaxed text-justify">

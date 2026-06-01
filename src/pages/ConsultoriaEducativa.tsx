@@ -15,7 +15,7 @@ const ConsultoriaEducativa = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <motion.h1
           
-          className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10"
+          className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10"
         >
           <TextType
             text={["Consultoría Educativa"]}
@@ -23,7 +23,6 @@ const ConsultoriaEducativa = () => {
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={["#38bdf8"]}
           />
         </motion.h1>
       </div>
@@ -61,7 +60,7 @@ const ConsultoriaEducativa = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                <span className="text-[#3498db]">Consultoría Educativa</span>
+                <span className="text-cyan-500">Consultoría Educativa</span>
               </motion.h2>
 
               <motion.p

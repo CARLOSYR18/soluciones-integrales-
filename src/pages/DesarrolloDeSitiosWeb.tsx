@@ -45,14 +45,14 @@ const DesarrolloWebBanner: React.FC = () => {
 
   <div className="relative z-20 text-center">
 
-          <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
+          <h1 className="text-4xl md:text-6xl font-bold text-cyan-500">
           <TextType
             text={['Desarrollo de Sitio Web']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={['#38bdf8']}
+
           />
           </h1>
 
@@ -73,7 +73,7 @@ const DesarrolloWebBanner: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="text-3xl md:text-4xl font-bold text-sky-400 mb-6"
+              className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6"
             >
               Desarrollo Web Personalizado
             </motion.h2>
@@ -146,7 +146,7 @@ const DesarrolloWebBanner: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="text-3xl md:text-4xl font-bold text-sky-400 mb-6"
+              className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6"
             >
               Mantenimiento y Soporte
             </motion.h2>
@@ -205,7 +205,7 @@ const DesarrolloWebBanner: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="text-3xl md:text-4xl font-bold text-sky-400 mb-6"
+              className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6"
             >
               Diseño UX/UI
             </motion.h2>
@@ -283,7 +283,7 @@ const DesarrolloWebBanner: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="text-3xl md:text-4xl font-bold text-sky-400 mb-6"
+              className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6"
             >
               Integración de Funcionalidades
             </motion.h2>

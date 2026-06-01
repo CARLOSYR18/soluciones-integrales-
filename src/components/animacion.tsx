@@ -63,7 +63,7 @@ const TextType = ({
   }, [variableSpeed, typingSpeed]);
 
   const getCurrentTextColor = () => {
-    if (textColors.length === 0) return '#ffffff';
+    if (textColors.length === 0) return 'rgb(6 182 212 / var(--tw-text-opacity, 1))';
     return textColors[currentTextIndex % textColors.length];
   };
 

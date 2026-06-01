@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import fondoN from '../assets/fondoN.jpg';
 import '../tecnologia.css';
 import { motion } from "framer-motion";
 import ScrollButton from "../components/ScrollButton";
@@ -33,166 +34,336 @@ const TecnologiaEnSeguridad: React.FC = () => {
 
   return (
     <div className="tecnologia-seguridad-page">
-      <section className="page-header">
-        <div className="rrelative z-20 flex flex-col items-center justify-center text-center px-4">
-                
-                  <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
-                  <TextType
-                    text={['Tecnología en Seguridad']}
-                    typingSpeed={70}
-                    pauseDuration={2000}
-                    loop={false}
-                    showCursor={false}
-                    textColors={['#38bdf8']}
-                  />
-                  </h1>
-                
-                
-                 <span className="mt-2 text-sm md:text-base font-semibold tracking-wider text-gray-300">
-                           
-                          </span>
-                </div>
+      <div
+        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${fondoN})` }}
+      >
+          <div className="absolute inset-0 bg-black/60"></div>
+        <h1 className="relative text-4xl md:text-5xl font-bold text-center z-10">
+          <TextType
+            text={['Tecnología en Seguridad']}
+            typingSpeed={70}
+            pauseDuration={2000}
+            loop={false}
+            showCursor={false}
+          />
+        </h1>
+      </div>
+
+      {/* ====================== SECCIÓN DE CONTENIDO - DESARROLLO WEB ====================== */}
+        <section className="bg-white py-16 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Texto descriptivo */}
+            <div className="text-gray-800 max-w-3xl mx-auto text-justify">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
+              >
+                Protección Total para tu Hogar y Negocio
+              </motion.h2>
+      
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                En nuestro servicio de <strong>Tecnología en Seguridad</strong>, ofrecemos 
+                <strong>soluciones integrales</strong> para proteger lo que más te importa. 
+                Contamos con una amplia gama de productos de última generación, que incluyen:
+
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                <strong>Cámaras de vigilancia de alta definición</strong>: Para una supervisión 
+                detallada de cada rincón de tu propiedad. <strong>Sistemas avanzados de monitoreo</strong>
+                : Diseñados para ofrecer seguridad constante y cobertura total, las 24 horas del día, 
+                los 7 días de la semana.
+
+
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                Confía en nosotros para mantener lo que más valoras seguro.
+
+
+
+              </motion.p>
+            </div>
+      
+            {/* Imagen descriptiva */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <img
+                src="https://i.postimg.cc/jj5zw3TN/primera.jpg"
+                alt="Desarrollo Web Personalizado"
+                className="rounded-lg shadow-xl max-w-full h-auto"
+              />
+            </motion.div>
+          </div>
+        </section>
+
+
+           {/* ====================== SECCIÓN DE Soluciones Personalizadas para Cada Cliente ====================== */}
+        <section className="bg-neutral-800 text-white py-16 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Imagen de Soluciones Personalizadas para Cada Cliente */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-center lg:justify-start"
+            >
+              <img
+                src="https://i.postimg.cc/sD6JsGbw/image2.jpg"
+                alt="Mantenimiento y Soporte"
+                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
+              />
+            </motion.div>
+      
+            {/* Texto de Mantenimiento y Soporte */}
+            <div className="text-gray-300 max-w-3xl mx-auto text-justify">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
+              >
+                Soluciones Personalizadas para Cada Cliente
+              </motion.h2>
+      
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                Entendemos que cada cliente tiene necesidades de seguridad únicas. 
+                Por eso, ofrecemos soluciones personalizadas que se adaptan a tus 
+                requisitos específicos. Ya sea que necesites un sistema de vigilancia 
+                para tu hogar, una solución integral para tu negocio o seguridad para 
+                un evento especial, estamos aquí para diseñar y entregar la mejor opción para ti.  
+                Nuestro equipo de expertos trabajará contigo para evaluar tus necesidades 
+                y proporcionarte un sistema de seguridad que te brinde tranquilidad y protección efectiva.
+              </motion.p>
+      
+              {/* BOTÓN ACTUALIZADO */}
+           <a
+      href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+      
+      <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
+      
+      CONTÁCTANOS
+      
+      </button>
+      
+      </a>
+      
+      </div>
+      
+      </div>
       </section>
 
-      <section className="protection-section">
-        <div className="container">
-          <div className="protection-content">
-            <div className="protection-text-container">
-              <div className="protection-text">
-                <h2 className="protection-title" style={{ color: '#38bdf8' }}>Protección Total para tu Hogar y Negocio</h2>
-                <p className="protection-description">
-                  En nuestro servicio de <strong>Tecnología en Seguridad</strong>, ofrecemos <strong>soluciones integrales</strong> para proteger lo que más te importa. Contamos con una amplia gama de productos de última generación, que incluyen:
-                </p>
-                
-                <p className="protection-features">
-                  <strong>Cámaras de vigilancia de alta definición</strong>: Para una supervisión detallada de cada rincón de tu propiedad. <strong>Sistemas avanzados de monitoreo</strong>: Diseñados para ofrecer seguridad constante y cobertura total, las 24 horas del día, los 7 días de la semana.
-                </p>
-                
-                <p className="protection-trust">
-                  Confía en nosotros para mantener lo que más valoras seguro.
-                </p>
-              </div>
+      <section className="bg-white py-16 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Texto descriptivo */}
+            <div className="text-gray-800 max-w-3xl mx-auto text-justify">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
+              >
+                Tecnología de Vanguardia en Seguridad
+              </motion.h2>
+      
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                Nos mantenemos a la vanguardia en tecnología de seguridad para ofrecerte las 
+                soluciones más avanzadas del mercado. Contamos con una amplia gama de productos 
+                de última generación, como las <strong>cámaras Hikvision ColorVu Bullet FULL HD</strong>, 
+                que proporcionan una vigilancia de alta calidad con características avanzadas, incluyendo:
+
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                <strong>Tipo de tarjeta:</strong> Asegúrate de que tu 
+                tarjeta BCCP sea una tarjeta de crédito o débito internacional 
+                (Visa o Mastercard), ya que Discord generalmente acepta estas tarjetas.
+
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                <strong>Restricciones del banco:</strong> Algunos bancos tienen restricciones 
+                para transacciones internacionales o en línea. Puedes verificar con el BCCP si 
+                tu tarjeta está habilitada para compras internacionales y en línea.
+
+              </motion.p>
             </div>
-            
-            <div className="protection-image">
-              <img 
-                src="https://i.postimg.cc/jj5zw3TN/primera.jpg" 
-                alt="Profesional de seguridad trabajando" 
-                className="person-image"
+      
+            {/* Imagen descriptiva */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <img
+                src="https://i.postimg.cc/HLrqm73g/image3.jpg"
+                alt="Desarrollo Web Personalizado"
+                className="rounded-lg shadow-xl max-w-full h-auto"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="solutions-section">
-        <div className="container">
-          <div className="solutions-content">
-            <div className="solutions-image">
-              <img 
-                src="https://i.postimg.cc/sD6JsGbw/image2.jpg" 
-                alt="Soluciones personalizadas de seguridad" 
-                className="solutions-img"
+       {/* ====================== SECCIÓN DE Soluciones Personalizadas para Cada Cliente ====================== */}
+        <section className="bg-neutral-800 text-white py-16 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Imagen de Soluciones Personalizadas para Cada Cliente */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-center lg:justify-start flex-col gap-6"
+            >
+              <img
+                src="https://i.postimg.cc/d18SQRyz/image4.jpg"
+                alt="Servicio técnico especializado"
+                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
               />
-            </div>
+              <img
+                src="https://i.postimg.cc/Wbt6X64T/image5.jpg"
+                alt="Soporte técnico 24/7"
+                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
+              />
+            </motion.div>
             
-            <div className="solutions-text-container">
-              <div className="solutions-text">
-                <h2 className="solutions-title" style={{ color: '#38bdf8' }}>Soluciones Personalizadas para Cada Cliente</h2>
-                <p className="solutions-description">
-                  Entendemos que cada cliente tiene necesidades de seguridad únicas. Por eso, ofrecemos soluciones personalizadas que se adaptan a tus requisitos específicos. Ya sea que necesites un sistema de vigilancia para tu hogar, una solución integral para tu negocio o seguridad para un evento especial, estamos aquí para diseñar y entregar la mejor opción para ti.  
-                  Nuestro equipo de expertos trabajará contigo para evaluar tus necesidades y proporcionarte un sistema de seguridad que te brinde tranquilidad y protección efectiva.
-                </p>
-                
-                <div className="separator"></div>
-                
-                <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Tecnología%20en%20Seguridad"
-target="_blank"
-rel="noopener noreferrer"
->
+      
+            {/* Texto de Mantenimiento y Soporte */}
+            <div className="text-gray-300 max-w-3xl mx-auto text-justify">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
+              >
+                Servicio y Soporte Técnico Impecables
+              </motion.h2>
+      
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                No solo vendemos equipos de seguridad; ofrecemos un servicio integral que 
+                cubre todas tus necesidades de protección. Desde cámaras de vigilancia de 
+                alta definición con visión nocturna hasta sistemas de monitoreo avanzados 
+                con alertas en tiempo real, nuestros productos están diseñados para ofrecer 
+                una cobertura total y una vigilancia constante.
 
-<button className="solutions-contact-btn">
-CONTACTANOS
-</button>
+              </motion.p>
 
-</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                Lo que realmente nos distingue es nuestro compromiso con el 
+                servicio y el soporte técnico. Nuestro equipo de expertos se 
+                encarga de cada detalle, desde la instalación inicial hasta el 
+                mantenimiento regular y las actualizaciones necesarias para mantener 
+                tu sistema al día con las últimas tecnologías. Ofrecemos asistencia 
+                técnica 24/7, siempre disponibles para resolver cualquier problema o 
+                realizar ajustes para asegurar que tu sistema funcione de manera óptima.
 
-      <section className="technology-section">
-        <div className="container">
-          <div className="technology-content">
-            <div className="technology-text">
-              <h2 style={{ color: '#38bdf8' }}>Tecnología de Vanguardia en Seguridad</h2>
-              <p className="technology-description">
-                Nos mantenemos a la vanguardia en tecnología de seguridad para ofrecerte las soluciones más avanzadas del mercado. Contamos con una amplia gama de productos de última generación, como las <strong>cámaras Hikvision ColorVu Bullet FULL HD</strong>, que proporcionan una vigilancia de alta calidad con características avanzadas, incluyendo:
-              </p>
-              
-              <p className="technology-feature">
-                <strong>Tipo de tarjeta:</strong> Asegúrate de que tu tarjeta BCCP sea una tarjeta de crédito o débito internacional (Visa o Mastercard), ya que Discord generalmente acepta estas tarjetas.
-              </p>
-              
-              <p className="technology-feature">
-                <strong>Restricciones del banco:</strong> Algunos bancos tienen restricciones para transacciones internacionales o en línea. Puedes verificar con el BCCP si tu tarjeta está habilitada para compras internacionales y en línea.
-              </p>
-            </div>
-            
-            <div className="technology-image">
-              <img 
-                src="https://i.postimg.cc/HLrqm73g/image3.jpg" 
-                alt="Cámara de seguridad de vanguardia" 
-                className="camera-image"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="service-section">
-        <div className="container">
-          <div className="service-content">
-            <div className="service-images">
-              <img 
-                src="https://i.postimg.cc/d18SQRyz/image4.jpg" 
-                alt="Servicio técnico especializado" 
-                className="service-image-top"
-              />
-              <img 
-                src="https://i.postimg.cc/Wbt6X64T/image5.jpg" 
-                alt="Soporte técnico 24/7" 
-                className="service-image-bottom"
-              />
-            </div>
-            
-            <div className="service-text">
-              <h2 style={{ color: '#38bdf8' }}>Servicio y Soporte Técnico Impecables</h2>
-              <p className="service-description">
-                No solo vendemos equipos de seguridad; ofrecemos un servicio integral que cubre todas tus necesidades de protección. Desde cámaras de vigilancia de alta definición con visión nocturna hasta sistemas de monitoreo avanzados con alertas en tiempo real, nuestros productos están diseñados para ofrecer una cobertura total y una vigilancia constante.
-              </p>
-              <p className="service-description">
-                Lo que realmente nos distingue es nuestro compromiso con el servicio y el soporte técnico. Nuestro equipo de expertos se encarga de cada detalle, desde la instalación inicial hasta el mantenimiento regular y las actualizaciones necesarias para mantener tu sistema al día con las últimas tecnologías. Ofrecemos asistencia técnica 24/7, siempre disponibles para resolver cualquier problema o realizar ajustes para asegurar que tu sistema funcione de manera óptima.
-              </p>
-              <p className="service-description">
-                Tu seguridad es nuestra máxima prioridad, y estamos comprometidos a brindar un servicio excepcional que garantice la protección continua de tus propiedades. Con nosotros, obtienes más que equipos de seguridad; obtienes tranquilidad y la confianza de saber que estás protegido en todo momento.
-              </p>
-            <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Tecnología%20en%20Seguridad"
-target="_blank"
-rel="noopener noreferrer"
->
+              </motion.p>
 
-<button className="solutions-contact-btn">
-CONTACTAR
-</button>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
+              >
+                Tu seguridad es nuestra máxima prioridad, y estamos 
+                comprometidos a brindar un servicio excepcional que 
+                garantice la protección continua de tus propiedades. 
+                Con nosotros, obtienes más que equipos de seguridad; 
+                obtienes tranquilidad y la confianza de saber que estás 
+                protegido en todo momento.
 
-</a>
-            </div>
-          </div>
-        </div>
+              </motion.p>
+      
+              {/* BOTÓN ACTUALIZADO */}
+           <a
+      href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+      
+      <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
+      
+      CONTÁCTANOS
+      
+      </button>
+      
+      </a>
+      
+      </div>
+      
+      </div>
       </section>
 
       {/* Sección Testimonios - CARRUSEL MEJORADO */}

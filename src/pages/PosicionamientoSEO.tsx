@@ -34,16 +34,15 @@ const PosicionamientoSEO: React.FC = () => {
         style={{ backgroundImage: `url(${fondoN})` }}
       >
         <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10">
-                                 <TextType
-                                                                     text={['Posicionamiento SEO']}
-                                                                     typingSpeed={70}
-                                                                     pauseDuration={2000}
-                                                                     loop={false}
-                                                                     showCursor={false}
-                                                                     textColors={['#38bdf8']}
-                                                                   />
-                                </h1>
+        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
+          <TextType
+            text={['Posicionamiento SEO']}
+            typingSpeed={70}
+            pauseDuration={2000}
+            loop={false}
+            showCursor={false}
+          />
+        </h1>
       </div>
 
       {/* Sección de Optimización SEO Fundamental */}
@@ -58,7 +57,7 @@ const PosicionamientoSEO: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">   
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">   
               Optimización SEO Fundamental
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -110,7 +109,7 @@ const PosicionamientoSEO: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="md:w-1/2 text-white"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Mejora de la Estructura del Sitio
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -142,7 +141,7 @@ const PosicionamientoSEO: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Contenido Optimizado
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -194,7 +193,7 @@ const PosicionamientoSEO: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Reportes y Seguimiento de Resultados
             </h2>
             <p className="mb-4 leading-relaxed text-justify">

@@ -18,15 +18,14 @@ const SocialMedia = () => {
         {/* Overlay oscuro */}
         <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
         {/* Texto centrado encima del fondo */}
-         <h1 className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10">
+         <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
             <TextType
-                    text={['Social Media'] }
-                    typingSpeed={70}
-                    pauseDuration={2000}
-                    loop={false}
-                     showCursor={false}
-                     textColors={['#38bdf8']}
-                        />
+            text={['Social Media'] }
+            typingSpeed={70}
+            pauseDuration={2000}
+            loop={false}
+              showCursor={false}
+                />
           </h1>
       </div>
 
@@ -56,8 +55,8 @@ const SocialMedia = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <div className="text-center p-6 bg-[#f4f9ff] rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-5 text-sky-400">
+            <div className="text-center p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-5 text-cyan-500">
                 Potencia Tu Presencia en Redes Sociales
               </h2>
 

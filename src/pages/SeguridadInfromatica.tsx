@@ -16,7 +16,7 @@ const SeguridadInformatica = () => {
 
         {/* Título animado */}
         <motion.h1
-          className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10"
+          className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10"
         
         >
           <TextType
@@ -25,7 +25,6 @@ const SeguridadInformatica = () => {
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={["#38bdf8"]}
           />
         </motion.h1>
       </div>
@@ -56,9 +55,9 @@ const SeguridadInformatica = () => {
             transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="text-center p-6 bg-[#f4f9ff] rounded-lg shadow-md">
+            <div className="text-center p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-5 text-[#2c3e50]">
-                <span className="text-[#3498db]">
+                <span className="text-cyan-500">
                   Consultoría en Seguridad Informática
                 </span>
               </h2>

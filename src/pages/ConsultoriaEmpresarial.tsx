@@ -20,7 +20,7 @@ const ConsultoriaEmpresarial = () => {
 
         {/* Texto animado */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-sky-400 relative z-10"
+          className="text-4xl md:text-6xl font-bold text-cyan-500 relative z-10"
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -31,7 +31,6 @@ const ConsultoriaEmpresarial = () => {
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={["#38bdf8"]}
           />
         </motion.h1>
       </div>
@@ -69,7 +68,7 @@ const ConsultoriaEmpresarial = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-sky-400">Consultoría Empresarial</span>
+                <span className="text-cyan-500">Consultoría Empresarial</span>
               </motion.h2>
 
               <motion.p

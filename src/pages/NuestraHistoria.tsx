@@ -583,8 +583,8 @@ const NuestraHistoria: React.FC = () => {
           }}
         >
           <motion.div
-            className="bg-gradient-to-br from-black/75 to-black/90 px-6 md:px-12 py-8 md:py-10 rounded-2xl border-2 border-cyan-500 text-center w-[92vw] max-w-[480px] shadow-2xl hover:shadow-cyan-500/60 transition-all duration-300 group relative overflow-hidden"
-            whileHover={{ scale: 1.03, borderColor: "rgb(34, 211, 238)" }}
+            className="bg-gradient-to-br from-black/75 to-black/90 px-6 md:px-12 py-8 md:py-10 rounded-2xl border-2 border-white text-center w-[92vw] max-w-[480px] shadow-2xl hover:shadow-cyan-500/60 transition-all duration-300 group relative overflow-hidden"
+            whileHover={{ scale: 1.03, borderColor: "white" }}
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -600,14 +600,14 @@ const NuestraHistoria: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight"
               >
-                Nuestra <span className="text-cyan-400 drop-shadow-lg">historia</span>
+                Nuestra historia  
               </motion.h2>
  
               <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-cyan-300 text-base md:text-lg font-semibold mb-6"
+                className="text-white text-base md:text-lg font-semibold mb-6"
               >
                 ¡Conoce nuestra trayectoria!
               </motion.p>

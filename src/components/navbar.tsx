@@ -124,8 +124,8 @@ function Navbar() {
     desc?: string;
   }) => (
     <li style={{ listStyle: "none" }} className="dropdown-item">
-      <a
-        href={href}
+      <Link
+        to={href}
         style={{
           display: "flex",
           alignItems: "center",
@@ -182,7 +182,7 @@ function Navbar() {
             </div>
           )}
         </div>
-      </a>
+      </Link>
     </li>
   );
 

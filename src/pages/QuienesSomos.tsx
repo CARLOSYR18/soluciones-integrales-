@@ -151,7 +151,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         ¿Quiénes Somos?
       </h2>
       <p className="text-white text-sm sm:text-base mb-6">
-        Quiénes Somos y Hacia Dónde Vamos
+        Destino e Innovación
       </p>
       <Link to="/DesarrolloDeSitiosWeb">
   <button className="cta cta-large">
@@ -255,7 +255,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         </div>
 
         {/* Título */}
-        <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-cyan-500">
+        <h2 className="mt-5 text-3xl md:text-4xl font-bold text-cyan-500">
           Quiénes Somos
         </h2>
 
@@ -321,7 +321,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               <div className="front-icon">
                 <FaChartLine />
               </div>
-              <p className="front-title">MISIÓN</p>
+              <p className="front-title text-center">MISIÓN</p>
               <p className="front-subtitle">Pasa el mouse para ver más</p>
             </div>
           </div>
@@ -382,7 +382,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               <div className="front-icon">
                 <FaEye />
               </div>
-              <p className="front-title">VISIÓN</p>
+              <p className="front-title text-center">VISIÓN</p>
               <p className="front-subtitle">Pasa el mouse para ver más</p>
             </div>
           </div>
@@ -398,7 +398,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
                   <FaEye />
                 </div>
                 <div>
-                  <p className="back-kicker">VISIÓN</p>
+                  <p className="back-kicker ">VISIÓN</p>
                   <p className="back-mini">Innovación continua y liderazgo</p>
                 </div>
               </div>
@@ -616,7 +616,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
 </section>
 
       {/* ====================== OBJETIVOS ====================== */}
-<section className="w-full bg-[#007BFF] py-16 flex justify-center items-center">
+<section className="w-full bg-black py-16 flex justify-center items-center">
   <div className="max-w-3xl w-full text-center px-4">
     <h2 className="text-white text-3xl font-bold mb-6">OBJETIVOS</h2>
 
@@ -685,7 +685,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
                 <div className="front-icon">
                   {valor.icon}
                 </div>
-                <p className="front-title">{valor.titulo}</p>
+                <p className="front-title text-center">{valor.titulo}</p>
                 <p className="front-subtitle">Pasa el mouse para ver más</p>
               </div>
             </div>
@@ -952,7 +952,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
                 <div className="front-icon">
                   {valor.icon}
                 </div>
-                <p className="front-title">{valor.titulo}</p>
+                <p className="front-title text-center">{valor.titulo}</p>
                 <p className="front-subtitle">Pasa el mouse para ver más</p>
               </div>
             </div>

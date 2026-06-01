@@ -259,7 +259,7 @@ const FeatureBlock: React.FC<{ feature: Feature }> = ({ feature }) => {
   return (
     <div>
       <Tag className="text-lg font-bold text-blue-600">{feature.title}</Tag>
-      <p className="text-sm text-gray-600 leading-relaxed mt-2">{feature.text}</p>
+      <p className="text-sm text-black leading-relaxed mt-2">{feature.text}</p>
     </div>
   );
 };
@@ -692,7 +692,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
           whileInView={{ y: 0, opacity: 1, rotateX: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           viewport={{ once: true }}
-          className="max-w-4xl text-4xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/40 leading-[1.1] tracking-tighter origin-bottom"
+          className="max-w-4xl text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/40 leading-[1.1] tracking-tighter origin-bottom"
         >
           Soluciones diseñadas para <br className="hidden md:block" />
           elevar tu visión.
@@ -873,7 +873,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
           style={{ transformStyle: "preserve-3d", perspective: "1200px" }}
-          className="italic font-semibold text-center text-cyan-400"
+          className="italic font-semibold text-center text-cyan-400 md:text-2xl"
         >
           Lo que te ofrecemos para potenciar tu éxito digital
         </motion.p>
@@ -912,7 +912,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               >
                 <div>
                   <h3 className="text-lg font-bold text-cyan-400">{f.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mt-2">{f.text}</p>
+                  <p className="text-sm text-black leading-relaxed mt-2">{f.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -956,7 +956,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
               >
                 <div>
                   <h3 className="text-lg font-bold text-cyan-400">{f.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mt-2">{f.text}</p>
+                  <p className="text-sm text-black leading-relaxed mt-2">{f.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -990,10 +990,10 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       viewport={{ once: true }}
       className="mb-8 md:mb-12 max-w-2xl mx-auto text-center"
     >
-      <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-white leading-[0.95] tracking-tight" style={{ fontStyle: "italic" }}>
+      <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-white leading-[0.95] tracking-tight">
         POR QUÉ ELEGIRNOS
       </h2>
-      <p className="mt-3 text-sm md:text-[15px] text-white/60 leading-relaxed max-w-md mx-auto">
+      <p className="mt-3 text-sm md:text-[15px] text-white leading-relaxed max-w-md mx-auto">
         Descubre las razones por las que somos tu mejor opción para crecer y alcanzar tus metas con excelencia y confianza.
       </p>
     </motion.div>
@@ -1099,7 +1099,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
             <div className={`w-8 h-[1px] bg-gradient-to-r ${card.lineColor} opacity-30 group-hover:opacity-70 group-hover:w-14 mb-4 transition-all duration-500`} />
 
             {/* Descripción */}
-            <p className="text-xs md:text-sm text-white/40 leading-relaxed group-hover:text-white/65 transition-colors duration-500 flex-1">
+            <p className="text-xs md:text-sm text-white leading-relaxed group-hover:text-white/65 transition-colors duration-500 flex-1">
               {card.desc}
             </p>
 
@@ -1161,7 +1161,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         <span className="text-slate-950">La voz de nuestros</span>{" "}
         <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">clientes</span>
       </h2>
-      <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">Descubre cómo hemos transformado negocios y generado resultados tangibles.</p>
+      <p className="mt-4 text-base md:text-lg text-black max-w-2xl mx-auto">Descubre cómo hemos transformado negocios y generado resultados tangibles.</p>
     </motion.div>
 
     <Carousel
@@ -1228,7 +1228,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
       viewport={{ once: true }}
-      className="mt-4 text-white/50 text-sm md:text-base leading-relaxed max-w-xl mx-auto"
+      className="mt-4 text-white text-sm md:text-base leading-relaxed max-w-xl mx-auto"
     >
       Contáctanos hoy y descubre cómo nuestras soluciones tecnológicas pueden transformar tu empresa con resultados reales y medibles.
     </motion.p>
@@ -1286,7 +1286,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       viewport={{ once: true }}
       className="text-center mb-6"
     >
-      <p className="text-base md:text-lg text-gray-600 font-semibold tracking-wide text-center mx-auto">
+      <p className="text-base md:text-3xl text-black font-semibold tracking-wide text-center mx-auto">
         Las marcas que confían en{" "}
         <span className="text-cyan-500">Soluciones Integrales JB</span>
       </p>
@@ -1317,7 +1317,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
           <p className="text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent leading-none">
             {stat.number}
           </p>
-          <p className="mt-2 text-gray-500 text-sm md:text-base font-semibold group-hover:text-cyan-600 transition-colors">
+          <p className="mt-2 text-black-600 text-sm md:text-base font-semibold group-hover:text-cyan-600 transition-colors">
             {stat.label}
           </p>
         </motion.div>

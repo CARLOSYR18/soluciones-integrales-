@@ -17,7 +17,7 @@ const ConsultoriaTI = () => {
 
         {/* Texto animado */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-sky-400 relative z-10"
+          className="text-4xl md:text-6xl font-bold text-cyan-500 relative z-10"
           
         >
           <TextType
@@ -26,7 +26,6 @@ const ConsultoriaTI = () => {
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={["#38bdf8"]}
           />
         </motion.h1>
       </div>
@@ -59,7 +58,7 @@ const ConsultoriaTI = () => {
           >
             <div className="text-justify p-6 bg-white rounded-lg shadow-md">
               <motion.h2
-                className="text-sky-400 mb-5 text-2xl font-semibold"
+                className="text-cyan-500 mb-5 text-2xl font-semibold"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}

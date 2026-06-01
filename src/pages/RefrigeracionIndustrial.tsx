@@ -35,16 +35,15 @@ const RefrigeracionIndustrial: React.FC = () => {
         style={{ backgroundImage: `url(${fondoN})` }}
       >   
         <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
-         <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
-                          <TextType
-                            text={['Refrigeración Industrial']}
-                            typingSpeed={70}
-                            pauseDuration={2000}
-                            loop={false}
-                            showCursor={false}
-                            textColors={['#38bdf8']}
-                          />
-                          </h1>
+         <h1 className="text-4xl md:text-6xl font-bold text-cyan-500">
+          <TextType
+            text={['Refrigeración Industrial']}
+            typingSpeed={70}
+            pauseDuration={2000}
+            loop={false}
+            showCursor={false}
+          />
+        </h1>
                         
       </motion.div>
 
@@ -60,7 +59,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             viewport={{ once: true }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">   
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">   
               Soluciones Personalizadas de Refrigeración Industrial
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -112,7 +111,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             viewport={{ once: true }}
             className="md:w-1/2 text-white"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Instalación Avanzada y Mantenimiento Proactivo
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -139,7 +138,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             viewport={{ once: true }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Cumplimiento Normativo y Seguridad
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
@@ -190,7 +189,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             viewport={{ once: true }}
             className="md:w-1/2 text-gray-800"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
               Asesoramiento en Eficiencia Energética y Sostenibilidad
             </h2>
             <p className="mb-4 leading-relaxed text-justify">
