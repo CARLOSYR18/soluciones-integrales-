@@ -1,40 +1,78 @@
+
 import React from 'react';
 import fondoN from '../assets/fondoN.jpg';
-import { motion } from "framer-motion";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ScrollButton from "../components/ScrollButton";
-import TextType from "../components/animacion";
+import { motion } from 'framer-motion';
+import ScrollButton from '../components/ScrollButton';
+import TextType from '../components/animacion';
+import TestimoniosCarousel from '../components/TestimoniosCarousel';
 
-const testimonios = [
+
+const hostingSections = [
   {
-    nombre: 'Maria Torres',
-    imagen: 'https://randomuser.me/api/portraits/women/44.jpg',
-    opinion: 'Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.',
+    titulo: 'Hosting Seguro y Confiable',
+    imagen: 'https://i.postimg.cc/T3ddwqLr/Cloud-hosting-amico.jpg',
+    alt: 'Hosting seguro y confiable',
+    fondo: 'white',
+    invertido: false,
+    parrafos: [
+      'En Soluciones Integrales JB ofrecemos servicios de hosting seguros, estables y confiables para mantener tu sitio web siempre disponible. Trabajamos con servidores de alto rendimiento, infraestructura optimizada y medidas de protección orientadas a cuidar la continuidad de tu presencia digital.',
+      'Nuestro servicio está diseñado para que tu página cargue con rapidez, funcione correctamente y brinde una experiencia sólida a tus usuarios. Nos enfocamos en rendimiento, seguridad y estabilidad para que puedas concentrarte en el crecimiento de tu negocio.',
+    ],
+    etiquetas: ['Alta disponibilidad', 'Seguridad web', 'Rendimiento estable'],
   },
   {
-    nombre: 'Carlos Gómez',
-    imagen: 'https://randomuser.me/api/portraits/men/32.jpg',
-    opinion: 'La integración fue muy sencilla. En pocos días ya estábamos facturando sin problemas.',
+    titulo: 'Registro de Dominios Personalizados',
+    imagen: 'https://i.postimg.cc/3xxh78VD/Frame-940.jpg',
+    alt: 'Registro de dominios personalizados',
+    fondo: 'black',
+    invertido: true,
+    parrafos: [
+      'Registramos y gestionamos dominios personalizados para que tu empresa cuente con una identidad clara, profesional y fácil de recordar en internet. Te ayudamos a elegir un nombre adecuado que represente tu marca y fortalezca tu presencia digital.',
+      'Además, brindamos acompañamiento en la administración del dominio para que mantengas el control de tu sitio, correos corporativos y configuración principal. Nuestro objetivo es que tu negocio tenga una base digital ordenada, segura y lista para crecer.',
+    ],
+    etiquetas: ['Identidad digital', 'Gestión de dominio', 'Marca profesional'],
   },
   {
-    nombre: 'Laura Ramírez',
-    imagen: 'https://randomuser.me/api/portraits/women/55.jpg',
-    opinion: 'El soporte técnico es excelente. Siempre disponibles para ayudarnos cuando lo necesitamos.',
+    titulo: 'Planes de Hosting Escalables',
+    imagen: 'https://i.postimg.cc/WbXR9Rz3/Server-amico.jpg',
+    alt: 'Planes de hosting escalables',
+    fondo: 'white',
+    invertido: false,
+    parrafos: [
+      'Ofrecemos planes de hosting escalables que se adaptan al tamaño y crecimiento de tu proyecto. Ya sea que necesites una solución inicial para una página informativa o un entorno con mayores recursos para un sitio con más tráfico, te orientamos hacia la alternativa más conveniente.',
+      'A medida que tu empresa crece, nuestros servicios pueden ampliarse para responder a nuevas necesidades de almacenamiento, velocidad y capacidad. De esta manera, tu plataforma digital evoluciona contigo sin limitar tus operaciones.',
+    ],
+    etiquetas: ['Escalabilidad', 'Recursos flexibles', 'Crecimiento digital'],
+  },
+  {
+    titulo: 'Soporte Técnico 24/7',
+    imagen: 'https://i.postimg.cc/mDxKcBXF/Frame-941.jpg',
+    alt: 'Soporte técnico para hosting y dominio',
+    fondo: 'black',
+    invertido: true,
+    parrafos: [
+      'Brindamos soporte técnico para ayudarte con la administración de tu hosting, dominio y servicios relacionados. Nuestro acompañamiento busca resolver incidencias, orientar configuraciones y mantener tu plataforma operativa con la mayor continuidad posible.',
+      'También implementamos certificados SSL y configuraciones de seguridad para proteger la navegación de tus usuarios y reforzar la confianza en tu sitio web. La seguridad y el soporte son parte esencial de una presencia digital profesional.',
+    ],
+    etiquetas: ['Soporte continuo', 'Certificado SSL', 'Asistencia técnica'],
   },
 ];
 
 const HostingYDominio: React.FC = () => {
   return (
     <div className="px-0 py-0 max-w-full font-sans">
-
       {/* Banner Superior */}
       <div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
+        <div className="absolute inset-0 bg-black/60" />
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10 px-4"
+        >
           <TextType
             text={['Hosting y Dominio']}
             typingSpeed={70}
@@ -42,166 +80,126 @@ const HostingYDominio: React.FC = () => {
             loop={false}
             showCursor={false}
           />
-        </h1>
+        </motion.h1>
       </div>
 
-      {/* Sección Hosting */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      {hostingSections.map((item, index) => {
+        const isDark = item.fondo === 'black';
 
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+        return (
+          <section
+            key={item.titulo}
+            className={`${isDark ? 'bg-black text-white' : 'bg-white text-slate-900'} py-16 md:py-20 px-5 md:px-10 lg:px-16 overflow-hidden`}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Hosting Seguro y Confiable
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos servicios de hosting seguro y confiable para tu sitio web. Nuestros servidores de alta velocidad garantizan que tu página esté siempre accesible y funcione sin problemas. Con una infraestructura robusta y medidas avanzadas de seguridad, protegemos tus datos y aseguramos el rendimiento óptimo de tu sitio. Confía en nosotros para mantener tu presencia en línea activa y segura.
-            </p>
-          </motion.div>
+            <div className="max-w-7xl mx-auto">
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch ${
+                  item.invertido ? 'lg:[&>div:first-child]:order-2' : ''
+                }`}
+              >
+                {/* Card de texto */}
+                <motion.div
+                  initial={{ opacity: 0, x: item.invertido ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.75, ease: 'easeOut' }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  className="h-full"
+                >
+                  <div
+                    className={`group h-full rounded-3xl border p-6 md:p-8 shadow-[0_18px_60px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-2 ${
+                      isDark
+                        ? 'border-white/10 bg-white/[0.06] hover:border-cyan-500/40 hover:shadow-cyan-500/10'
+                        : 'border-slate-200 bg-white hover:border-cyan-500/40 hover:shadow-cyan-500/10'
+                    }`}
+                  >
+                    <span
+                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-300 ${
+                        isDark
+                          ? 'border-white/10 bg-white/5 text-slate-200 group-hover:border-cyan-500/40 group-hover:text-cyan-300'
+                          : 'border-slate-200 bg-slate-50 text-slate-600 group-hover:border-cyan-500/40 group-hover:text-cyan-600'
+                      }`}
+                    >
+                      <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                      Hosting y Dominio
+                    </span>
 
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2 flex justify-center"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="https://i.postimg.cc/T3ddwqLr/Cloud-hosting-amico.jpg"
-              alt="Hosting seguro"
-              className="w-full max-w-md h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
+                    <h2 className="mt-5 text-2xl md:text-3xl font-extrabold text-cyan-500 leading-tight">
+                      {item.titulo}
+                    </h2>
 
-      {/* Sección Dominios */}
-      <section className="bg-neutral-800 py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div className="mt-5 space-y-4">
+                      {item.parrafos.map((parrafo) => (
+                        <p
+                          key={parrafo}
+                          className={`text-[15px] md:text-base leading-7 text-justify ${
+                            isDark ? 'text-slate-200' : 'text-slate-700'
+                          }`}
+                        >
+                          {parrafo}
+                        </p>
+                      ))}
+                    </div>
 
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2 flex justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="https://i.postimg.cc/3xxh78VD/Frame-940.jpg"
-              alt="Registro de dominios"
-              className="rounded-lg shadow-md w-full max-w-md"
-            />
-          </motion.div>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {item.etiquetas.map((etiqueta) => (
+                        <span
+                          key={etiqueta}
+                          className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-500 hover:text-white hover:border-cyan-500 ${
+                            isDark
+                              ? 'border-white/10 bg-white/5 text-slate-200'
+                              : 'border-slate-200 bg-slate-50 text-slate-700'
+                          }`}
+                        >
+                          {etiqueta}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
 
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-white"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Registro de Dominios Personalizados
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Registra tu dominio con Soluciones Integrales JB y dale a tu negocio una identidad única en internet. Te ayudamos a encontrar y registrar el nombre de dominio perfecto que represente tu marca de manera efectiva. Además, ofrecemos servicios de gestión de dominios para que tengas control total sobre tu presencia en línea. Con nosotros, asegurar tu nombre de dominio es fácil y rápido.
-            </p>
-            <a href="/contacto">
-              <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-                CONTÁCTANOS
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
+                {/* Card de imagen */}
+                <motion.div
+                  initial={{ opacity: 0, x: item.invertido ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.75, ease: 'easeOut' }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  className="h-full"
+                >
+                  <div
+                    className={`group relative h-full min-h-[360px] rounded-3xl border p-3 md:p-4 shadow-[0_18px_60px_rgba(15,23,42,0.12)] transition-all duration-500 hover:-translate-y-2 ${
+                      isDark
+                        ? 'border-white/10 bg-white/[0.06] hover:border-cyan-500/40 hover:shadow-cyan-500/10'
+                        : 'border-slate-200 bg-white hover:border-cyan-500/40 hover:shadow-cyan-500/10'
+                    }`}
+                  >
+                    <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
+                    <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-blue-400/20 blur-3xl" />
 
-      {/* Sección Hosting Escalable */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div className="relative h-full overflow-hidden rounded-2xl bg-slate-100">
+                      <img
+                        src={item.imagen}
+                        alt={item.alt}
+                        className="h-full min-h-[330px] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+                      <div className="absolute bottom-5 left-5 right-5">
+                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                          Soluciones Integrales JB
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
 
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Planes de Hosting Escalables
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos una amplia gama de planes de hosting escalables, diseñados para ajustarse a las necesidades específicas de tu negocio. Ya sea que estés iniciando con una solución básica para pequeñas empresas o necesites un plan avanzado para gestionar sitios web de alto tráfico, tenemos la opción ideal para ti.
-            </p>
-            <p className="leading-relaxed text-justify">
-              A medida que tu negocio crece, nuestros servicios se adaptan, garantizando el espacio, rendimiento y recursos necesarios para acompañar tu expansión en línea, permitiéndote enfocarte en tu éxito sin preocuparte por limitaciones tecnológicas.
-            </p>
-          </motion.div>
+      {/* ====================== TESTIMONIOS / OPINIONES REUTILIZABLE ====================== */}
+      <TestimoniosCarousel />
 
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2 flex justify-center"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="https://i.postimg.cc/WbXR9Rz3/Server-amico.jpg"
-              alt="Planes de hosting"
-              className="w-full max-w-md h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sección Soporte */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2 flex justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="https://i.postimg.cc/mDxKcBXF/Frame-941.jpg"
-              alt="Soporte técnico"
-              className="rounded-lg shadow-md w-full max-w-md"
-            />
-          </motion.div>
-
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Soporte Técnico 24/7
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos un soporte técnico disponible las 24 horas, los 7 días de la semana, para asistirte con cualquier aspecto relacionado con tu hosting y dominio.
-            </p>
-            <p className="leading-relaxed text-justify mb-6">
-              Además, implementamos certificados digitales SSL para proteger tu página web, y certificados digitales para correo electrónico, garantizando la seguridad en todas tus comunicaciones.
-            </p>
-            <a href="/contacto">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-                CONTACTAR
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-     
+      <ScrollButton />
     </div>
   );
 };

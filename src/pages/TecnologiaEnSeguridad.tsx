@@ -1,45 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect } from 'react';
 import fondoN from '../assets/fondoN.jpg';
+import { motion } from 'framer-motion';
+import ScrollButton from '../components/ScrollButton';
+import TextType from '../components/animacion';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import '../tecnologia.css';
-import { motion } from "framer-motion";
-import ScrollButton from "../components/ScrollButton";
-import TextType from "../components/animacion";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 const testimonios = [
   {
     nombre: 'Maria Torres',
     imagen: 'https://randomuser.me/api/portraits/women/44.jpg',
-    opinion: 'Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.',
+    opinion: 'El equipo trabajó con gran profesionalismo y rapidez. La implementación mejoró la seguridad de nuestro negocio.',
   },
   {
     nombre: 'Carlos Gómez',
     imagen: 'https://randomuser.me/api/portraits/men/32.jpg',
-    opinion: 'La integración fue muy sencilla. En pocos días ya estábamos facturando sin problemas.',
+    opinion: 'La instalación fue ordenada y clara. En pocos días ya contábamos con un sistema funcional y confiable.',
   },
   {
     nombre: 'Laura Ramírez',
     imagen: 'https://randomuser.me/api/portraits/women/55.jpg',
-    opinion: 'El soporte técnico es excelente. Siempre disponibles para ayudarnos cuando lo necesitamos.',
+    opinion: 'El soporte técnico fue excelente. Siempre estuvieron disponibles para resolver nuestras consultas.',
   },
 ];
 
-const TecnologiaEnSeguridad: React.FC = () => {
-  
+const FacturacionElectronica: React.FC = () => {
   useEffect(() => {
     // Cleanup effect if needed
   }, [testimonios.length]);
 
   return (
-    <div className="tecnologia-seguridad-page">
+    <div className="tecnologia-seguridad-page font-sans">
+      {/* ====================== BANNER PRINCIPAL ====================== */}
       <div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-          <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-center z-10">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <h1 className="relative z-10 text-4xl md:text-5xl font-extrabold text-center text-cyan-500 tracking-tight">
           <TextType
             text={['Tecnología en Seguridad']}
             typingSpeed={70}
@@ -50,323 +51,217 @@ const TecnologiaEnSeguridad: React.FC = () => {
         </h1>
       </div>
 
-      {/* ====================== SECCIÓN DE CONTENIDO - DESARROLLO WEB ====================== */}
-        <section className="bg-white py-16 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Texto descriptivo */}
-            <div className="text-gray-800 max-w-3xl mx-auto text-justify">
+      {/* ====================== PROTECCIÓN TOTAL ====================== */}
+      <section className="relative overflow-hidden bg-white py-16 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          {/* Card de texto */}
+          <motion.div
+            initial={{ opacity: 0, x: -45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
+                className="text-3xl md:text-4xl font-extrabold text-cyan-500 mb-5 text-center leading-tight"
               >
                 Protección Total para tu Hogar y Negocio
               </motion.h2>
-      
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                En nuestro servicio de <strong>Tecnología en Seguridad</strong>, ofrecemos 
-                <strong>soluciones integrales</strong> para proteger lo que más te importa. 
-                Contamos con una amplia gama de productos de última generación, que incluyen:
 
-              </motion.p>
+              <div className="space-y-4 text-slate-700 text-[15px] md:text-base leading-7 text-left">
+                <p>
+                  Brindamos soluciones integrales de tecnología en seguridad para proteger hogares, empresas y espacios de trabajo. Nuestro servicio combina equipos modernos, instalación profesional y asesoría especializada para cuidar lo que más valoras.
+                </p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                <strong>Cámaras de vigilancia de alta definición</strong>: Para una supervisión 
-                detallada de cada rincón de tu propiedad. <strong>Sistemas avanzados de monitoreo</strong>
-                : Diseñados para ofrecer seguridad constante y cobertura total, las 24 horas del día, 
-                los 7 días de la semana.
+                <p>
+                  Implementamos cámaras de vigilancia de alta definición y sistemas de monitoreo diseñados para ofrecer supervisión constante, cobertura eficiente y mayor tranquilidad durante todo el día.
+                </p>
+              </div>
 
-
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                Confía en nosotros para mantener lo que más valoras seguro.
-
-
-
-              </motion.p>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {['Videovigilancia HD', 'Monitoreo continuo', 'Seguridad preventiva', 'Protección integral'].map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 transition-all duration-300 hover:bg-cyan-500 hover:text-white hover:border-cyan-500 hover:-translate-y-1"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-      
-            {/* Imagen descriptiva */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <img
-                src="https://i.postimg.cc/jj5zw3TN/primera.jpg"
-                alt="Desarrollo Web Personalizado"
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
-            </motion.div>
-          </div>
-        </section>
+          </motion.div>
 
+          {/* Card de imagen */}
+          <motion.div
+            initial={{ opacity: 0, x: 45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-slate-200 bg-white p-3 md:p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
+              <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/jj5zw3TN/primera.jpg"
+                  alt="Tecnología en seguridad para hogar y negocio"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent opacity-80" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-           {/* ====================== SECCIÓN DE Soluciones Personalizadas para Cada Cliente ====================== */}
-        <section className="bg-neutral-800 text-white py-16 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Imagen de Soluciones Personalizadas para Cada Cliente */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="flex justify-center lg:justify-start"
-            >
-              <img
-                src="https://i.postimg.cc/sD6JsGbw/image2.jpg"
-                alt="Mantenimiento y Soporte"
-                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-              />
-            </motion.div>
-      
-            {/* Texto de Mantenimiento y Soporte */}
-            <div className="text-gray-300 max-w-3xl mx-auto text-justify">
+      {/* ====================== SOLUCIONES PERSONALIZADAS ====================== */}
+      <section className="relative overflow-hidden bg-black text-white py-16 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-400/15 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          {/* Card de imagen */}
+          <motion.div
+            initial={{ opacity: 0, x: -45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-white/10 bg-neutral-950 p-3 md:p-4 shadow-[0_18px_55px_rgba(0,0,0,0.45)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-500/50 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
+              <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/sD6JsGbw/image2.jpg"
+                  alt="Soluciones personalizadas de seguridad"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card de texto */}
+          <motion.div
+            initial={{ opacity: 0, x: 45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-white/10 bg-neutral-950 p-6 md:p-8 shadow-[0_18px_55px_rgba(0,0,0,0.45)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-500/50 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
+                className="text-3xl md:text-4xl font-extrabold text-cyan-500 mb-5 text-center leading-tight"
               >
                 Soluciones Personalizadas para Cada Cliente
               </motion.h2>
-      
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                Entendemos que cada cliente tiene necesidades de seguridad únicas. 
-                Por eso, ofrecemos soluciones personalizadas que se adaptan a tus 
-                requisitos específicos. Ya sea que necesites un sistema de vigilancia 
-                para tu hogar, una solución integral para tu negocio o seguridad para 
-                un evento especial, estamos aquí para diseñar y entregar la mejor opción para ti.  
-                Nuestro equipo de expertos trabajará contigo para evaluar tus necesidades 
-                y proporcionarte un sistema de seguridad que te brinde tranquilidad y protección efectiva.
-              </motion.p>
-      
-              {/* BOTÓN ACTUALIZADO */}
-           <a
-      href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
-      target="_blank"
-      rel="noopener noreferrer"
-      >
-      
-      <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
-      
-      CONTÁCTANOS
-      
-      </button>
-      
-      </a>
-      
-      </div>
-      
-      </div>
+
+              <div className="space-y-4 text-white/85 text-[15px] md:text-base leading-7 text-left">
+                <p>
+                  Sabemos que cada cliente tiene necesidades distintas. Por ello, diseñamos sistemas de seguridad a medida para hogares, negocios, oficinas y eventos, priorizando cobertura, control y facilidad de uso.
+                </p>
+
+                <p>
+                  Nuestro equipo evalúa cada entorno, identifica los puntos críticos y propone una solución eficiente, confiable y alineada con el nivel de protección que requiere cada proyecto.
+                </p>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {['Diagnóstico técnico', 'Diseño a medida', 'Implementación segura', 'Soporte especializado'].map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs sm:text-sm font-semibold text-white/85 transition-all duration-300 hover:bg-cyan-500 hover:text-white hover:border-cyan-500 hover:-translate-y-1"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      <section className="bg-white py-16 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Texto descriptivo */}
-            <div className="text-gray-800 max-w-3xl mx-auto text-justify">
+      {/* ====================== TECNOLOGÍA DE VANGUARDIA ====================== */}
+      <section className="relative overflow-hidden bg-white py-16 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          {/* Card de texto */}
+          <motion.div
+            initial={{ opacity: 0, x: -45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
+                className="text-3xl md:text-4xl font-extrabold text-cyan-500 mb-5 text-center leading-tight"
               >
                 Tecnología de Vanguardia en Seguridad
               </motion.h2>
-      
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                Nos mantenemos a la vanguardia en tecnología de seguridad para ofrecerte las 
-                soluciones más avanzadas del mercado. Contamos con una amplia gama de productos 
-                de última generación, como las <strong>cámaras Hikvision ColorVu Bullet FULL HD</strong>, 
-                que proporcionan una vigilancia de alta calidad con características avanzadas, incluyendo:
 
-              </motion.p>
+              <div className="space-y-4 text-slate-700 text-[15px] md:text-base leading-7 text-left">
+                <p>
+                  Trabajamos con soluciones modernas de videovigilancia y monitoreo para ofrecer sistemas estables, nítidos y preparados para responder a las exigencias actuales de seguridad.
+                </p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                <strong>Tipo de tarjeta:</strong> Asegúrate de que tu 
-                tarjeta BCCP sea una tarjeta de crédito o débito internacional 
-                (Visa o Mastercard), ya que Discord generalmente acepta estas tarjetas.
+                <p>
+                  Integramos equipos de alta definición, configuración profesional y criterios técnicos que permiten mejorar la supervisión, optimizar el control de accesos y fortalecer la protección de cada espacio.
+                </p>
+              </div>
 
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                <strong>Restricciones del banco:</strong> Algunos bancos tienen restricciones 
-                para transacciones internacionales o en línea. Puedes verificar con el BCCP si 
-                tu tarjeta está habilitada para compras internacionales y en línea.
-
-              </motion.p>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {['Alta definición', 'Control inteligente', 'Monitoreo remoto', 'Equipos modernos'].map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 transition-all duration-300 hover:bg-cyan-500 hover:text-white hover:border-cyan-500 hover:-translate-y-1"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-      
-            {/* Imagen descriptiva */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <img
-                src="https://i.postimg.cc/HLrqm73g/image3.jpg"
-                alt="Desarrollo Web Personalizado"
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
-            </motion.div>
-          </div>
-        </section>
+          </motion.div>
 
-       {/* ====================== SECCIÓN DE Soluciones Personalizadas para Cada Cliente ====================== */}
-        <section className="bg-neutral-800 text-white py-16 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Imagen de Soluciones Personalizadas para Cada Cliente */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="flex justify-center lg:justify-start flex-col gap-6"
-            >
-              <img
-                src="https://i.postimg.cc/d18SQRyz/image4.jpg"
-                alt="Servicio técnico especializado"
-                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-              />
-              <img
-                src="https://i.postimg.cc/Wbt6X64T/image5.jpg"
-                alt="Soporte técnico 24/7"
-                className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-              />
-            </motion.div>
-            
-      
-            {/* Texto de Mantenimiento y Soporte */}
-            <div className="text-gray-300 max-w-3xl mx-auto text-justify">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
-              >
-                Servicio y Soporte Técnico Impecables
-              </motion.h2>
-      
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                No solo vendemos equipos de seguridad; ofrecemos un servicio integral que 
-                cubre todas tus necesidades de protección. Desde cámaras de vigilancia de 
-                alta definición con visión nocturna hasta sistemas de monitoreo avanzados 
-                con alertas en tiempo real, nuestros productos están diseñados para ofrecer 
-                una cobertura total y una vigilancia constante.
-
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                Lo que realmente nos distingue es nuestro compromiso con el 
-                servicio y el soporte técnico. Nuestro equipo de expertos se 
-                encarga de cada detalle, desde la instalación inicial hasta el 
-                mantenimiento regular y las actualizaciones necesarias para mantener 
-                tu sistema al día con las últimas tecnologías. Ofrecemos asistencia 
-                técnica 24/7, siempre disponibles para resolver cualquier problema o 
-                realizar ajustes para asegurar que tu sistema funcione de manera óptima.
-
-
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-              >
-                Tu seguridad es nuestra máxima prioridad, y estamos 
-                comprometidos a brindar un servicio excepcional que 
-                garantice la protección continua de tus propiedades. 
-                Con nosotros, obtienes más que equipos de seguridad; 
-                obtienes tranquilidad y la confianza de saber que estás 
-                protegido en todo momento.
-
-              </motion.p>
-      
-              {/* BOTÓN ACTUALIZADO */}
-           <a
-      href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
-      target="_blank"
-      rel="noopener noreferrer"
-      >
-      
-      <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
-      
-      CONTÁCTANOS
-      
-      </button>
-      
-      </a>
-      
-      </div>
-      
-      </div>
+          {/* Card de imagen */}
+          <motion.div
+            initial={{ opacity: 0, x: 45 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="group h-full"
+          >
+            <div className="h-full rounded-3xl border border-slate-200 bg-white p-3 md:p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
+              <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/HLrqm73g/image3.jpg"
+                  alt="Tecnología avanzada en seguridad"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent opacity-80" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Sección Testimonios - CARRUSEL MEJORADO */}
+      {/* ====================== TESTIMONIOS ====================== */}
       <section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
         {/* Decorativos de fondo */}
         <div className="absolute inset-0 opacity-10">
@@ -379,7 +274,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.3 }}
             className="mb-12 text-center"
           >
@@ -392,7 +287,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
             >
               Testimonios
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -400,7 +295,8 @@ const TecnologiaEnSeguridad: React.FC = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-black text-slate-900 mt-4 leading-tight"
             >
-              Opiniones de Nuestro <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Servicio Digital</span>
+              Opiniones de Nuestros{' '}
+              <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Clientes</span>
             </motion.h2>
 
             <motion.p
@@ -410,7 +306,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
               viewport={{ once: true }}
               className="text-base text-slate-600 mt-4 max-w-2xl mx-auto"
             >
-              Descubre cómo nuestros servicios de seguridad han brindado protección y tranquilidad
+              Conoce la experiencia de clientes que confiaron en nuestras soluciones de seguridad.
             </motion.p>
           </motion.div>
 
@@ -440,7 +336,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
               {testimonios.map((testimonio, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200 hover:-translate-y-3"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200 hover:-translate-y-3"
                 >
                   {/* Estrellas animadas */}
                   <div className="flex gap-2 mb-5">
@@ -449,13 +345,13 @@ const TecnologiaEnSeguridad: React.FC = () => {
                         key={i}
                         initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
                         whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: "easeOut" }}
+                        transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: 'easeOut' }}
                         viewport={{ once: true }}
-                        whileHover={{ 
-                          scale: 1.4, 
+                        whileHover={{
+                          scale: 1.4,
                           rotateZ: 360,
                           y: -10,
-                          transition: { duration: 0.5 } 
+                          transition: { duration: 0.5 },
                         }}
                         className="w-6 h-6 fill-yellow-400 cursor-pointer"
                         viewBox="0 0 20 20"
@@ -466,9 +362,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
                   </div>
 
                   {/* Icono de comilla */}
-                  <div className="text-5xl text-cyan-400/20 mb-3 leading-none">
-                    "
-                  </div>
+                  <div className="text-5xl text-cyan-400/20 mb-3 leading-none">"</div>
 
                   {/* Texto del testimonio */}
                   <p className="text-slate-700 text-base leading-relaxed mb-8 flex-grow font-medium">
@@ -489,9 +383,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
                       />
                     </div>
                     <div className="flex-1">
-                      <p className="font-bold text-slate-900 text-sm">
-                        {testimonio.nombre}
-                      </p>
+                      <p className="font-bold text-slate-900 text-sm">{testimonio.nombre}</p>
                       <p className="text-cyan-500 text-xs font-semibold">Cliente satisfecho</p>
                     </div>
                   </div>
@@ -501,7 +393,7 @@ const TecnologiaEnSeguridad: React.FC = () => {
           </motion.div>
 
           {/* Estilos personalizados */}
-          <style jsx>{`
+          <style>{`
             .custom-testimonial-dots {
               display: flex;
               justify-content: center;
@@ -537,9 +429,10 @@ const TecnologiaEnSeguridad: React.FC = () => {
           `}</style>
         </div>
       </section>
+
       <ScrollButton />
     </div>
   );
 };
 
-export default TecnologiaEnSeguridad;
+export default FacturacionElectronica;

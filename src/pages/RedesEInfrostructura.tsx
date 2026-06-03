@@ -1,52 +1,39 @@
+
 import React from "react";
 import fondoN from "../assets/fondoN.jpg";
 import { motion } from "framer-motion";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
 import TestimoniosCarousel from "../components/TestimoniosCarousel";
-// Variantes para animaciones
+
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 36 },
   visible: { opacity: 1, y: 0 },
 };
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -45 },
+  visible: { opacity: 1, x: 0 },
 };
 
-const testimonios = [
-  {
-    nombre: "Maria Torres",
-    imagen: "https://randomuser.me/api/portraits/women/44.jpg",
-    opinion:
-      "Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.",
-  },
-  {
-    nombre: "Carlos Gómez",
-    imagen: "https://randomuser.me/api/portraits/men/32.jpg",
-    opinion:
-      "La integración fue muy sencilla. En pocos días ya estábamos facturando sin problemas.",
-  },
-  {
-    nombre: "Laura Ramírez",
-    imagen: "https://randomuser.me/api/portraits/women/55.jpg",
-    opinion:
-      "El soporte técnico es excelente. Siempre disponibles para ayudarnos cuando lo necesitamos.",
-  },
-];
+const fadeInRight = {
+  hidden: { opacity: 0, x: 45 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const pillBase =
+  "inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-default";
 
 const RedesEinfroestructura: React.FC = () => {
   return (
-    <div className="px-0 py-0 max-w-full font-sans">
-      {/* Banner Superior */}
-      <motion.div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+    <div className="px-0 py-0 max-w-full font-sans text-slate-800">
+      {/* ====================== BANNER SUPERIOR ====================== */}
+      <motion.header
+        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
+        <div className="absolute inset-0 bg-black/60" />
+
+        <h1 className="relative z-10 text-center text-4xl md:text-5xl font-extrabold text-cyan-500 tracking-tight px-4">
           <TextType
             text={["Redes e Infraestructura"]}
             typingSpeed={70}
@@ -55,198 +42,340 @@ const RedesEinfroestructura: React.FC = () => {
             showCursor={false}
           />
         </h1>
-      </motion.div>
+      </motion.header>
 
-      {/* Sección de Hosting y Dominio */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      {/* ====================== DISEÑO E IMPLEMENTACIÓN DE REDES ====================== */}
+      <section className="relative bg-white py-16 md:py-20 px-5 md:px-10 overflow-hidden">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
           {/* Texto */}
           <motion.div
-            className="md:w-1/2 text-gray-800"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInLeft}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Diseño e Implementación de Redes
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, nos especializamos en el diseño e
-              implementación de redes que priorizan tanto la eficiencia como la
-              seguridad. Ya sea que necesites una red local para tu oficina o
-              una infraestructura avanzada que conecte múltiples ubicaciones,
-              nuestro equipo de expertos posee la experiencia y el conocimiento
-              para desarrollar soluciones personalizadas que se ajusten a tus
-              necesidades específicas.
-            </p>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nos enfocamos en cada detalle, desde la planificación y
-              configuración inicial hasta el mantenimiento continuo,
-              garantizando que tu red esté optimizada para ofrecer un
-              rendimiento máximo. Además, implementamos las mejores prácticas en
-              seguridad para proteger tus datos y mantener la integridad de la
-              comunicación dentro de tu organización.
-            </p>
+            <div className="group h-full rounded-3xl border border-slate-200 bg-white p-7 md:p-9 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(15,23,42,0.14)]">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-600">
+                <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                Infraestructura TI
+              </div>
+
+              <motion.h2
+                variants={fadeInUp}
+                transition={{ duration: 0.7 }}
+                className="text-2xl md:text-4xl font-extrabold text-cyan-500 mb-5 leading-tight"
+              >
+                Diseño e Implementación de Redes
+              </motion.h2>
+
+              <div className="space-y-4 text-[15px] md:text-base leading-7 text-slate-700 text-justify">
+                <p>
+                  En Soluciones Integrales JB diseñamos e implementamos redes
+                  seguras, eficientes y adaptadas a las necesidades operativas de
+                  cada empresa. Desarrollamos soluciones para oficinas, sedes
+                  conectadas e infraestructuras avanzadas, priorizando estabilidad,
+                  rendimiento y continuidad del servicio.
+                </p>
+
+                <p>
+                  Nuestro trabajo abarca desde la planificación técnica y la
+                  configuración inicial hasta la puesta en marcha y el mantenimiento
+                  preventivo. Aplicamos buenas prácticas de seguridad para proteger
+                  la información y asegurar una comunicación confiable dentro de la
+                  organización.
+                </p>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {["Redes seguras", "Alto rendimiento", "Escalabilidad"].map((item) => (
+                  <span
+                    key={item}
+                    className={`${pillBase} border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Imagen */}
           <motion.div
-            className="md:w-1/2"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInRight}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <img
-              src="https://i.postimg.cc/FsncgRjB/ingenieros-redes-tableta-tiro-medio-23-2148323447.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[600px] rounded-lg shadow-lg"
-            />
+            <div className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_75px_rgba(15,23,42,0.16)]">
+              <div className="relative h-full min-h-[330px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/FsncgRjB/ingenieros-redes-tableta-tiro-medio-23-2148323447.jpg"
+                  alt="Diseño e implementación de redes"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Optimización y Mantenimiento */}
-      <section className="bg-neutral-800 py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      {/* ====================== OPTIMIZACIÓN Y MANTENIMIENTO ====================== */}
+      <section className="relative bg-black py-16 md:py-20 px-5 md:px-10 overflow-hidden">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-blue-400/10 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
           {/* Imágenes */}
           <motion.div
-            className="md:w-1/2 flex flex-col gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInLeft}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <img
-              src="https://i.postimg.cc/TYh5w6zT/Mantenimiento-de-redes.jpg"
-              alt="Imagen 1"
-              className="rounded-lg shadow-md w-full"
-            />
-            <img
-              src="https://i.postimg.cc/C1mdhP79/joven-sosteniendo-interruptores-ethernet-cables-23-2148323476.jpg"
-              alt="Imagen 2"
-              className="rounded-lg shadow-md w-full"
-            />
+            <div className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-4 shadow-[0_18px_65px_rgba(0,0,0,0.45)] transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/45 hover:shadow-[0_25px_80px_rgba(6,182,212,0.18)]">
+              <div className="grid h-full grid-cols-1 gap-4">
+                <div className="relative min-h-[170px] overflow-hidden rounded-2xl">
+                  <img
+                    src="https://i.postimg.cc/TYh5w6zT/Mantenimiento-de-redes.jpg"
+                    alt="Mantenimiento de redes"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                </div>
+
+                <div className="relative min-h-[170px] overflow-hidden rounded-2xl">
+                  <img
+                    src="https://i.postimg.cc/C1mdhP79/joven-sosteniendo-interruptores-ethernet-cables-23-2148323476.jpg"
+                    alt="Optimización de infraestructura de red"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Texto */}
           <motion.div
-            className="md:w-1/2 text-white"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInRight}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Optimización y Mantenimiento de Redes
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos servicios de optimización y mantenimiento de redes diseñados para garantizar que tu infraestructura opere de manera eficiente en todo momento. Nuestro equipo de expertos realiza un monitoreo continuo de tu red, detectando y solucionando posibles problemas antes de que impacten en tus operaciones.
-            </p>
-            <p className="mb-4 leading-relaxed text-justify">
-              Implementamos un enfoque proactivo con mantenimiento preventivo y actualizaciones regulares, asegurando que tu red se mantenga en su mejor estado y funcione de manera óptima. De esta manera, puedes concentrarte en el crecimiento de tu negocio sin preocuparte por interrupciones o problemas técnicos. Con nuestra gestión integral, tu red estará siempre al máximo rendimiento, ofreciendo una experiencia fluida y confiable.
-            </p>
-          <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Redes%20e%20Infraestructura"
-target="_blank"
-rel="noopener noreferrer"
->
-  <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-    CONTÁCTANOS
-  </button>
-</a>
+            <div className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-7 md:p-9 shadow-[0_18px_65px_rgba(0,0,0,0.45)] transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/45 hover:shadow-[0_25px_80px_rgba(6,182,212,0.18)]">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">
+                <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                Soporte continuo
+              </div>
+
+              <motion.h2
+                variants={fadeInUp}
+                transition={{ duration: 0.7 }}
+                className="text-2xl md:text-4xl font-extrabold text-cyan-500 mb-5 leading-tight"
+              >
+                Optimización y Mantenimiento de Redes
+              </motion.h2>
+
+              <div className="space-y-4 text-[15px] md:text-base leading-7 text-white/80 text-justify">
+                <p>
+                  Brindamos optimización y mantenimiento de redes para mantener
+                  la infraestructura operativa, estable y segura. Realizamos
+                  monitoreo, revisión técnica y detección temprana de incidencias
+                  para reducir riesgos antes de que afecten la productividad.
+                </p>
+
+                <p>
+                  Aplicamos mantenimiento preventivo, actualizaciones y mejoras
+                  continuas que permiten sostener un rendimiento confiable. De
+                  esta manera, tu empresa puede trabajar con mayor continuidad y
+                  enfocarse en su crecimiento sin interrupciones innecesarias.
+                </p>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {["Monitoreo", "Prevención", "Continuidad"].map((item) => (
+                  <span
+                    key={item}
+                    className={`${pillBase} border-white/10 bg-white/5 text-white/80 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Seguridad en Redes */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      {/* ====================== SEGURIDAD EN REDES ====================== */}
+      <section className="relative bg-white py-16 md:py-20 px-5 md:px-10 overflow-hidden">
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Texto */}
           <motion.div
-            className="md:w-1/2 text-gray-800"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInLeft}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Seguridad en Redes
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, la seguridad de tu red es nuestra máxima prioridad. Implementamos las mejores prácticas y tecnologías avanzadas para proteger tu infraestructura contra amenazas externas e internas. Utilizamos firewalls de última generación, sistemas de detección de intrusos y soluciones de cifrado de datos para asegurar que tu red permanezca segura en todo momento. Nuestro enfoque integral te brinda tranquilidad al garantizar la integridad y confidencialidad de tu información. Confía en nosotros para mantener la protección continua de tus activos digitales.
-            </p>
+            <div className="group h-full rounded-3xl border border-slate-200 bg-white p-7 md:p-9 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(15,23,42,0.14)]">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-600">
+                <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                Protección digital
+              </div>
+
+              <motion.h2
+                variants={fadeInUp}
+                transition={{ duration: 0.7 }}
+                className="text-2xl md:text-4xl font-extrabold text-cyan-500 mb-5 leading-tight"
+              >
+                Seguridad en Redes
+              </motion.h2>
+
+              <div className="space-y-4 text-[15px] md:text-base leading-7 text-slate-700 text-justify">
+                <p>
+                  La seguridad de la red es un punto clave para proteger la
+                  información y la operación diaria de una empresa. Implementamos
+                  buenas prácticas, controles técnicos y herramientas de protección
+                  para reducir la exposición ante amenazas internas y externas.
+                </p>
+
+                <p>
+                  Trabajamos con firewalls, detección de intrusos, segmentación y
+                  medidas de cifrado para fortalecer la confidencialidad e
+                  integridad de los datos. Nuestro enfoque busca una protección
+                  continua, ordenada y alineada a las necesidades reales del negocio.
+                </p>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {["Firewall", "Cifrado", "Control de accesos"].map((item) => (
+                  <span
+                    key={item}
+                    className={`${pillBase} border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
+
+          {/* Imagen */}
           <motion.div
-            className="md:w-1/2"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInRight}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <img
-              src="https://i.postimg.cc/dV2sQNVv/images-2.jpg"
-              alt="Seguridad"
-              className="w-full max-w-[600px] rounded-lg shadow-lg"
-            />
+            <div className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_75px_rgba(15,23,42,0.16)]">
+              <div className="relative h-full min-h-[330px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/dV2sQNVv/images-2.jpg"
+                  alt="Seguridad en redes"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Consultoría */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      {/* ====================== CONSULTORÍA EN INFRAESTRUCTURA ====================== */}
+      <section className="relative bg-black py-16 md:py-20 px-5 md:px-10 overflow-hidden">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Imagen */}
           <motion.div
-            className="md:w-1/2 flex flex-col gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInLeft}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <img
-              src="https://i.postimg.cc/Y99M3pfw/diversos-ingenieros-hombres-mujeres-discutiendo-sobre-tableta-digital-sala-servidores-computadoras-c.jpg"
-              className="rounded-lg shadow-md w-full"
-            />
+            <div className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-4 shadow-[0_18px_65px_rgba(0,0,0,0.45)] transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/45 hover:shadow-[0_25px_80px_rgba(6,182,212,0.18)]">
+              <div className="relative h-full min-h-[330px] overflow-hidden rounded-2xl">
+                <img
+                  src="https://i.postimg.cc/Y99M3pfw/diversos-ingenieros-hombres-mujeres-discutiendo-sobre-tableta-digital-sala-servidores-computadoras-c.jpg"
+                  alt="Consultoría en infraestructura"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+              </div>
+            </div>
           </motion.div>
+
+          {/* Texto */}
           <motion.div
-            className="md:w-1/2 text-gray-800"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeInRight}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Consultoría en Infraestructura
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nuestro servicio de consultoría en infraestructura está diseñado para asistirte en la planificación y ejecución de proyectos de redes con la máxima eficiencia y efectividad.
-            </p>
-            <p className="mb-4 leading-relaxed text-justify">
-              Realizamos un análisis detallado de tus necesidades específicas y te ofrecemos soluciones personalizadas que optimizan tu infraestructura actual mientras preparan tu red para futuros crecimientos. Con Soluciones Integrales JB, contarás con una infraestructura robusta y escalable, capaz de soportar las demandas actuales y futuras de tu negocio, asegurando que estés siempre un paso adelante en el desarrollo tecnológico.
-            </p>
-            
-            <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Redes%20e%20Infraestructura"
-target="_blank"
-rel="noopener noreferrer"
->
-  <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-    CONTACTAR
-  </button>
-</a>
+            <div className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-7 md:p-9 shadow-[0_18px_65px_rgba(0,0,0,0.45)] transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/45 hover:shadow-[0_25px_80px_rgba(6,182,212,0.18)]">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">
+                <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                Planificación estratégica
+              </div>
+
+              <motion.h2
+                variants={fadeInUp}
+                transition={{ duration: 0.7 }}
+                className="text-2xl md:text-4xl font-extrabold text-cyan-500 mb-5 leading-tight"
+              >
+                Consultoría en Infraestructura
+              </motion.h2>
+
+              <div className="space-y-4 text-[15px] md:text-base leading-7 text-white/80 text-justify">
+                <p>
+                  Nuestro servicio de consultoría en infraestructura está orientado
+                  a planificar y ejecutar proyectos de redes con mayor orden,
+                  eficiencia y visión de crecimiento. Analizamos el estado actual
+                  de tu entorno tecnológico para identificar oportunidades de mejora.
+                </p>
+
+                <p>
+                  Proponemos soluciones personalizadas que optimizan la
+                  infraestructura existente y preparan la red para nuevas demandas.
+                  Con este enfoque, tu empresa cuenta con una base tecnológica
+                  robusta, escalable y alineada a sus objetivos operativos.
+                </p>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {["Diagnóstico", "Mejora continua", "Crecimiento"].map((item) => (
+                  <span
+                    key={item}
+                    className={`${pillBase} border-white/10 bg-white/5 text-white/80 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-     
       <TestimoniosCarousel />
     </div>
   );

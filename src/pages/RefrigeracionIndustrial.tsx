@@ -1,11 +1,11 @@
+
 import React from 'react';
-import fondoN from '../assets/fondoN.jpg'; // tu banner superior
+import fondoN from '../assets/fondoN.jpg';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
-
 
 const testimonios = [
   {
@@ -25,186 +25,234 @@ const testimonios = [
   },
 ];
 
+const CYAN = "#06b6d4";
+
+interface ServiceSectionProps {
+  title: string;
+  badge: string;
+  paragraphs: string[];
+  pills: string[];
+  image: {
+    src: string;
+    alt: string;
+  };
+  dark?: boolean;
+  reverse?: boolean;
+}
+
+const ServiceSection: React.FC<ServiceSectionProps> = ({
+  title,
+  badge,
+  paragraphs,
+  pills,
+  image,
+  dark = false,
+  reverse = false,
+}) => {
+  const sectionBg = dark ? "bg-black text-white" : "bg-white text-slate-900";
+
+  const textCard = dark
+    ? "border-white/10 bg-zinc-950 text-slate-200 shadow-[0_22px_70px_rgba(0,0,0,0.45)]"
+    : "border-slate-200 bg-white text-slate-700 shadow-[0_18px_55px_rgba(15,23,42,0.10)]";
+
+  const imageCard = dark
+    ? "border-white/10 bg-zinc-950 shadow-[0_22px_70px_rgba(0,0,0,0.45)]"
+    : "border-slate-200 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.10)]";
+
+  return (
+    <section className={`relative overflow-hidden px-5 py-16 md:px-10 lg:px-16 md:py-20 ${sectionBg}`}>
+      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+
+      <div
+        className={[
+          "relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12",
+          reverse ? "lg:[&>div:first-child]:order-2" : "",
+        ].join(" ")}
+      >
+        {/* Card de texto */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? 40 : -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -6 }}
+          className={`group flex h-full min-h-[420px] flex-col justify-center rounded-3xl border p-6 transition-all duration-500 md:p-8 ${textCard}`}
+        >
+          <div
+            className={[
+              "mb-5 inline-flex w-fit items-center gap-2 rounded-full border px-5 py-2 text-[11px] font-extrabold uppercase tracking-[0.22em] shadow-sm",
+              dark
+                ? "border-white/15 bg-white/5 text-cyan-500"
+                : "border-slate-200 bg-white text-cyan-500",
+            ].join(" ")}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            {badge}
+          </div>
+
+          <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide text-cyan-500 md:text-4xl">
+            {title}
+          </h2>
+
+          <div className="space-y-4 text-left text-[15px] leading-7 md:text-base">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index} className={dark ? "text-slate-200" : "text-slate-700"}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {pills.map((pill, index) => (
+              <span
+                key={`${pill}-${index}`}
+                className={[
+                  "inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs font-bold transition-all duration-300",
+                  dark
+                    ? "border-white/15 bg-white/5 text-slate-100 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]"
+                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]",
+                ].join(" ")}
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-7 h-[3px] w-14 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-24" />
+        </motion.div>
+
+        {/* Card de imagen */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? -40 : 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -6 }}
+          className={`group flex h-full min-h-[420px] items-center justify-center rounded-3xl border p-4 transition-all duration-500 ${imageCard}`}
+        >
+          <div className="relative h-full min-h-[340px] w-full overflow-hidden rounded-2xl md:min-h-[420px]">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                Soluciones Integrales JB
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const RefrigeracionIndustrial: React.FC = () => {
   return (
     <div className="px-0 py-0 max-w-full font-sans">
-
-      {/* Banner Superior */}
+      {/* ====================== BANNER SUPERIOR ====================== */}
       <motion.div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        className="relative flex h-[300px] w-full items-center justify-center overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
-      >   
-        <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
-         <h1 className="text-4xl md:text-6xl font-bold text-cyan-500">
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <h1 className="relative z-10 px-4 text-center text-4xl font-bold text-cyan-500 md:text-6xl">
           <TextType
             text={['Refrigeración Industrial']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
+            textColors={[CYAN]}
           />
         </h1>
-                        
       </motion.div>
 
-      {/* Sección de Hosting y Dominio */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-gray-800"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">   
-              Soluciones Personalizadas de Refrigeración Industrial
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos soluciones de refrigeración industrial adaptadas a las necesidades específicas de tu empresa. Nuestro enfoque personalizado incluye el diseño, instalación y mantenimiento de sistemas de refrigeración que garantizan la eficiencia energética y la seguridad operativa. Nos especializamos en optimizar el rendimiento de tus equipos, asegurando un ambiente de trabajo seguro y productivo para tu personal.
-            </p>
-          </motion.div>
+      <ServiceSection
+        title="Soluciones Personalizadas de Refrigeración Industrial"
+        badge="Refrigeración Industrial"
+        paragraphs={[
+          "En Soluciones Integrales JB ofrecemos soluciones de refrigeración industrial adaptadas a las necesidades operativas de cada empresa. Nuestro servicio incluye diseño, instalación y mantenimiento de sistemas orientados a garantizar eficiencia energética, seguridad y continuidad en los procesos productivos.",
+          "Nos enfocamos en optimizar el rendimiento de los equipos, reducir riesgos técnicos y mantener ambientes de trabajo seguros y productivos. Cada propuesta se desarrolla con criterio técnico, planificación y atención a los objetivos específicos del cliente.",
+        ]}
+        pills={[
+          "Diseño especializado",
+          "Instalación técnica",
+          "Eficiencia energética",
+          "Seguridad operativa",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/j2npCCK6/2148921408.jpg",
+          alt: "Soluciones personalizadas de refrigeración industrial",
+        }}
+      />
 
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2"
-          >
-            <img
-              src="https://i.postimg.cc/j2npCCK6/2148921408.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[3000px] h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <ServiceSection
+        dark
+        reverse
+        title="Instalación Avanzada y Mantenimiento Proactivo"
+        badge="Mantenimiento Proactivo"
+        paragraphs={[
+          "Contamos con un equipo técnico capacitado para instalar y mantener sistemas de refrigeración industrial con altos estándares de calidad. Realizamos inspecciones, ajustes preventivos y revisiones técnicas para maximizar la fiabilidad y durabilidad de los equipos.",
+          "Este enfoque permite reducir costos operativos, prevenir interrupciones no planificadas y asegurar la continuidad de los procesos productivos. Nuestro mantenimiento busca anticiparse a las fallas y conservar los sistemas en condiciones óptimas.",
+        ]}
+        pills={[
+          "Inspecciones regulares",
+          "Ajustes preventivos",
+          "Continuidad productiva",
+          "Mayor durabilidad",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/9Q2f5HtB/2149250244.jpg",
+          alt: "Instalación y mantenimiento de refrigeración industrial",
+        }}
+      />
 
-      {/* Segunda sección */}
-      <section className="bg-neutral-800 py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-    
-          {/* Imágenes a la izquierda */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 flex flex-col gap-6"
-          >
-            <img
-              src="https://i.postimg.cc/9Q2f5HtB/2149250244.jpg"
-              alt="Imagen 1"
-              className="rounded-lg shadow-md w-full"
-            />
-          </motion.div>
+      <ServiceSection
+        title="Cumplimiento Normativo y Seguridad"
+        badge="Seguridad y Normativa"
+        paragraphs={[
+          "Trabajamos bajo criterios de seguridad y cumplimiento normativo aplicables a los sistemas de refrigeración industrial. Cada servicio se ejecuta considerando buenas prácticas técnicas, protección del personal y cuidado de los equipos e instalaciones.",
+          "Este compromiso contribuye a fortalecer la reputación de tu empresa como una organización responsable y segura. Además, permite mantener operaciones confiables, reducir riesgos y responder adecuadamente a estándares legales y medioambientales.",
+        ]}
+        pills={[
+          "Normativa vigente",
+          "Protección ambiental",
+          "Operación segura",
+          "Buenas prácticas",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/DZSvdvn2/hombre-tiro-medio-que-trabaja-herramienta-23-2148921405.jpg",
+          alt: "Cumplimiento normativo y seguridad en refrigeración industrial",
+        }}
+      />
 
-          {/* Texto a la derecha */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-white"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Instalación Avanzada y Mantenimiento Proactivo
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Contamos con un equipo técnico altamente capacitado para la instalación avanzada y el mantenimiento proactivo de sistemas de refrigeración industrial. Realizamos inspecciones regulares y ajustes preventivos para maximizar la fiabilidad y durabilidad de tus equipos. Este enfoque no solo reduce costos operativos a largo plazo, sino que también minimiza el riesgo de interrupciones no planificadas, garantizando la continuidad en tus procesos productivos.
-            </p>
-            <a href="/contacto">
-        <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-          CONTÁCTANOS
-        </button>
-      </a>
-          </motion.div>
-        </div>
-      </section>
+      <ServiceSection
+        dark
+        reverse
+        title="Asesoramiento en Eficiencia Energética y Sostenibilidad"
+        badge="Sostenibilidad"
+        paragraphs={[
+          "Brindamos asesoramiento especializado para optimizar el consumo energético de los sistemas de refrigeración industrial. Analizamos el rendimiento de los equipos, identificamos oportunidades de mejora y recomendamos soluciones que ayuden a reducir costos operativos.",
+          "Nuestro enfoque promueve el uso eficiente de recursos y la reducción del impacto ambiental. De esta manera, tu empresa fortalece su compromiso con la innovación, la sostenibilidad y una gestión responsable de sus operaciones.",
+        ]}
+        pills={[
+          "Consumo eficiente",
+          "Reducción de costos",
+          "Gestión sostenible",
+          "Optimización energética",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/R0F44S3Y/gerente-empresa-tiene-planes-proyecto-mientras-habla-trabajador-manual-afroamericano-que-senala-algo.jpg",
+          alt: "Asesoramiento en eficiencia energética y sostenibilidad",
+        }}
+      />
 
-      {/* Tercera sección */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-gray-800"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Cumplimiento Normativo y Seguridad
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nos comprometemos a cumplir con las normativas de seguridad y medioambientales aplicables a los sistemas de refrigeración industrial. Nuestros servicios cumplen con los estándares más rigurosos, garantizando la seguridad de tus operaciones y la protección del medio ambiente. Este compromiso con el cumplimiento normativo fortalece la reputación de tu empresa como líder en prácticas responsables y seguras, atrayendo a clientes que valoran la conformidad legal y la gestión responsable.
-            </p>
-          </motion.div>
-
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2"
-          >
-            <img
-              src="https://i.postimg.cc/DZSvdvn2/hombre-tiro-medio-que-trabaja-herramienta-23-2148921405.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[3000px] h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Cuarta sección */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-    
-          {/* Imágenes a la izquierda */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 flex flex-col gap-6"
-          >
-            <img
-              src="https://i.postimg.cc/R0F44S3Y/gerente-empresa-tiene-planes-proyecto-mientras-habla-trabajador-manual-afroamericano-que-senala-algo.jpg"
-              className="rounded-lg shadow-md w-full"
-            />
-          </motion.div>
-
-          {/* Texto a la derecha */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-gray-800"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Asesoramiento en Eficiencia Energética y Sostenibilidad
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Ofrecemos asesoramiento especializado en eficiencia energética y sostenibilidad para optimizar el consumo de energía de tus sistemas de refrigeración industrial. Analizamos el rendimiento energético de tus equipos, identificamos áreas de mejora y recomendamos soluciones que reduzcan costos operativos y minimicen el impacto ambiental. Este enfoque no solo optimiza tus recursos, sino que también fortalece la imagen de tu empresa como un líder en innovación y responsabilidad ambiental.
-            </p>
-           <a href="/contacto">
-        <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-          CONTACTAR
-        </button>
-      </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Opiniones */}
+      {/* ====================== OPINIONES: CARRUSEL ORIGINAL CONSERVADO ====================== */}
       <section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
         {/* Decorativos de fondo */}
         <div className="absolute inset-0 opacity-10">
@@ -230,7 +278,7 @@ const RefrigeracionIndustrial: React.FC = () => {
             >
               Testimonios
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -248,7 +296,7 @@ const RefrigeracionIndustrial: React.FC = () => {
               viewport={{ once: true }}
               className="text-base text-slate-600 mt-4 max-w-2xl mx-auto text-justify"
             >
-                      Descubre cómo hemos transformado negocios y generado resultados tangibles
+              Descubre cómo hemos transformado negocios y generado resultados tangibles.
             </motion.p>
           </motion.div>
 
@@ -289,11 +337,11 @@ const RefrigeracionIndustrial: React.FC = () => {
                         whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: "easeOut" }}
                         viewport={{ once: true }}
-                        whileHover={{ 
-                          scale: 1.4, 
+                        whileHover={{
+                          scale: 1.4,
                           rotateZ: 360,
                           y: -10,
-                          transition: { duration: 0.5 } 
+                          transition: { duration: 0.5 }
                         }}
                         className="w-6 h-6 fill-yellow-400 cursor-pointer"
                         viewBox="0 0 20 20"
@@ -375,6 +423,7 @@ const RefrigeracionIndustrial: React.FC = () => {
           `}</style>
         </div>
       </section>
+
       <ScrollButton />
     </div>
   );

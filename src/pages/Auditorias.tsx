@@ -1,110 +1,123 @@
+
 import React from "react";
-import fondoN from "../assets/fondoN.jpg"; // 
+import fondoN from "../assets/fondoN.jpg";
 import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
+import TestimoniosCarousel from "../components/TestimoniosCarousel";
 import { motion } from "framer-motion";
 
-const Auditorias = () => {
+const CYAN = "#06b6d4";
+
+interface PillProps {
+  children: React.ReactNode;
+}
+
+const Pill: React.FC<PillProps> = ({ children }) => {
+  return (
+    <span className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-700 transition-all duration-300 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]">
+      {children}
+    </span>
+  );
+};
+
+const Auditorias: React.FC = () => {
   return (
     <div className="font-sans">
-      {/* Hero con fondoN */}
+      {/* ====================== HERO PRINCIPAL ====================== */}
       <div
-        className="relative h-[300px] bg-cover bg-center flex items-center justify-center"
+        className="relative flex h-[300px] items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        {/* Animación del título */}
-        <motion.h1
-          className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10"
-          
-        >
+        <motion.h1 className="relative z-10 text-center text-4xl font-bold text-cyan-500 md:text-5xl">
           <TextType
             text={["Auditorías Profesionales"]}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
+            textColors={[CYAN]}
           />
         </motion.h1>
       </div>
 
-      {/* Contenido principal */}
-      <div className="px-4 py-12 max-w-7xl mx-auto">
-        <div className="flex items-center flex-wrap mt-8">
-          {/* Imagen a la izquierda con animación */}
+      {/* ====================== CONTENIDO PRINCIPAL ====================== */}
+      <section className="relative overflow-hidden bg-white px-4 py-14 md:px-8 md:py-20">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/20 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+          {/* Card de imagen */}
           <motion.div
-            className="flex-1 pr-12 min-w-[300px]"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
           >
-            <img
-              src="https://i.postimg.cc/L5Fq0Yys/auditorias.jpg"
-              alt="Auditorías profesionales"
-              className="w-full max-w-[3000px] h-auto rounded-lg shadow-lg"
-            />
-          </motion.div>
-
-          {/* Información a la derecha con animación */}
-          <motion.div
-            className="flex-1 min-w-[300px]"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-5 ">
-                <span className="text-cyan-500">Consultoría en Auditorías</span>
-              </h2>
-
-              <p className="text-[#34495e] text-base leading-relaxed mb-5 text-justify">
-                Mi compromiso es ayudarte a garantizar la transparencia,
-                eficiencia y cumplimiento normativo en cada aspecto de tu
-                organización. Con amplia experiencia en auditorías, estoy aquí
-                para brindarte un servicio detallado y confiable.
-              </p>
-
-              <ul className="text-[#34495e] text-base leading-7 list-disc pl-6 text-left inline-block mb-5">
-                <li className="text-justify">
-                  <strong>Auditorías financieras:</strong> reviso tus registros
-                  contables para asegurar exactitud y cumplimiento.
-                </li>
-                <li className="text-justify">
-                  <strong>Auditorías internas:</strong> analizo tus procesos
-                  para detectar áreas de mejora.
-                </li>
-                <li className="text-justify">
-                  <strong>Auditorías de cumplimiento:</strong> verifico que tu
-                  organización cumpla con las normativas aplicables.
-                </li>
-                <li className="text-justify">
-                  <strong>Asesoría post-auditoría:</strong> te ofrezco soluciones
-                  claras y viables para optimizar tu operación.
-                </li>
-              </ul>
-
-              <p className="text-[#34495e] text-base leading-relaxed mb-6 text-justify">
-                Trabajo contigo de manera cercana y profesional, asegurándome de
-                que cada auditoría agregue valor a tu negocio y contribuya a tu
-                crecimiento.
-              </p>
-
-              <motion.a
-                href="/Contacto"
-                className="bg-[#3498db] text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-[#2980b9] transition duration-300 inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                ¡Hablemos!
-              </motion.a>
+            <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl md:min-h-[420px]">
+              <img
+                src="https://i.postimg.cc/L5Fq0Yys/auditorias.jpg"
+                alt="Auditorías profesionales"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95" />
             </div>
           </motion.div>
+
+          {/* Card de texto */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group flex h-full flex-col justify-center rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)] md:p-8"
+          >
+            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-[11px] font-extrabold uppercase tracking-[0.22em] text-cyan-500 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+              Auditoría
+            </div>
+
+            <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide text-cyan-500 md:text-4xl">
+              Consultoría en Auditorías
+            </h2>
+
+            <div className="space-y-4 text-left text-[15px] leading-7 text-slate-700 md:text-base">
+              <p>
+                Te ayudamos a fortalecer la transparencia, eficiencia y cumplimiento
+                normativo de tu organización mediante auditorías profesionales,
+                ordenadas y orientadas a resultados. Revisamos procesos, registros
+                y controles internos para identificar riesgos, oportunidades de
+                mejora y acciones correctivas claras.
+              </p>
+
+              <p>
+                Nuestro enfoque combina análisis técnico, asesoría especializada y
+                acompañamiento posterior a la auditoría, permitiendo que cada
+                evaluación aporte valor real a la gestión de tu negocio y contribuya
+                a una toma de decisiones más segura.
+              </p>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Pill>Auditorías financieras</Pill>
+              <Pill>Auditorías internas</Pill>
+              <Pill>Cumplimiento normativo</Pill>
+              <Pill>Asesoría post-auditoría</Pill>
+            </div>
+
+            <div className="mt-7 h-[3px] w-14 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-24" />
+          </motion.div>
         </div>
+
         <ScrollButton />
-      </div>
+      </section>
+
+      {/* ====================== TESTIMONIOS ====================== */}
+      <TestimoniosCarousel />
     </div>
   );
 };

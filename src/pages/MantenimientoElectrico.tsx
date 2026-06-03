@@ -1,3 +1,4 @@
+
 import React from 'react';
 import fondoN from '../assets/fondoN.jpg';
 import ScrollButton from "../components/ScrollButton";
@@ -24,146 +25,211 @@ const testimonios = [
   },
 ];
 
+const CYAN = "#06b6d4";
+
+interface ServiceSectionProps {
+  title: string;
+  badge: string;
+  paragraphs: string[];
+  pills: string[];
+  image: {
+    src: string;
+    alt: string;
+  };
+  dark?: boolean;
+  reverse?: boolean;
+}
+
+const ServiceSection: React.FC<ServiceSectionProps> = ({
+  title,
+  badge,
+  paragraphs,
+  pills,
+  image,
+  dark = false,
+  reverse = false,
+}) => {
+  const sectionBg = dark ? "bg-black text-white" : "bg-white text-slate-900";
+
+  const textCard = dark
+    ? "border-white/10 bg-zinc-950 text-slate-200 shadow-[0_22px_70px_rgba(0,0,0,0.45)]"
+    : "border-slate-200 bg-white text-slate-700 shadow-[0_18px_55px_rgba(15,23,42,0.10)]";
+
+  const imageCard = dark
+    ? "border-white/10 bg-zinc-950 shadow-[0_22px_70px_rgba(0,0,0,0.45)]"
+    : "border-slate-200 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.10)]";
+
+  return (
+    <section className={`relative overflow-hidden px-5 py-16 md:px-10 lg:px-16 md:py-20 ${sectionBg}`}>
+      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+
+      <div
+        className={[
+          "relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12",
+          reverse ? "lg:[&>div:first-child]:order-2" : "",
+        ].join(" ")}
+      >
+        {/* Card de texto */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? 40 : -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -6 }}
+          className={`group flex h-full min-h-[420px] flex-col justify-center rounded-3xl border p-6 transition-all duration-500 md:p-8 ${textCard}`}
+        >
+          <div
+            className={[
+              "mb-5 inline-flex w-fit items-center gap-2 rounded-full border px-5 py-2 text-[11px] font-extrabold uppercase tracking-[0.22em] shadow-sm",
+              dark
+                ? "border-white/15 bg-white/5 text-cyan-500"
+                : "border-slate-200 bg-white text-cyan-500",
+            ].join(" ")}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            {badge}
+          </div>
+
+          <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide text-cyan-500 md:text-4xl">
+            {title}
+          </h2>
+
+          <div className="space-y-4 text-left text-[15px] leading-7 md:text-base">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index} className={dark ? "text-slate-200" : "text-slate-700"}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {pills.map((pill, index) => (
+              <span
+                key={`${pill}-${index}`}
+                className={[
+                  "inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs font-bold transition-all duration-300",
+                  dark
+                    ? "border-white/15 bg-white/5 text-slate-100 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]"
+                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]",
+                ].join(" ")}
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-7 h-[3px] w-14 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-24" />
+        </motion.div>
+
+        {/* Card de imagen */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? -40 : 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileHover={{ y: -6 }}
+          className={`group flex h-full min-h-[420px] items-center justify-center rounded-3xl border p-4 transition-all duration-500 ${imageCard}`}
+        >
+          <div className="relative h-full min-h-[340px] w-full overflow-hidden rounded-2xl md:min-h-[420px]">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                Soluciones Integrales JB
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const MantenimientoElectrico: React.FC = () => {
   return (
     <div className="px-0 py-0 max-w-full font-sans">
-
-      {/* Banner Superior */}
+      {/* ====================== BANNER SUPERIOR ====================== */}
       <motion.div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        className="relative flex h-[300px] w-full items-center justify-center overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-cyan bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <h1 className="relative z-10 px-4 text-center text-4xl font-bold text-cyan-500 md:text-5xl">
           <TextType
             text={['Mantenimiento Eléctrico']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
+            textColors={[CYAN]}
           />
         </h1>
       </motion.div>
 
-      {/* Sección de Hosting y Dominio */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-gray-800"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">   
-              Servicios de Mantenimiento
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos servicios de mantenimiento eléctrico preventivo especializados para empresas que buscan asegurar la fiabilidad y eficiencia de sus sistemas. Nuestro enfoque se centra en la detección proactiva de problemas, mediante inspecciones regulares y pruebas de funcionamiento. Esto no solo minimiza riesgos de averías costosas, sino que también mejora la durabilidad de las instalaciones eléctricas, beneficiando así el rendimiento operativo y reduciendo tiempos de inactividad imprevistos.
-            </p>
-            <a href="/contacto">
-              <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-                CONTACTAR
-              </button>
-            </a>
-          </motion.div>
+      <ServiceSection
+        title="Servicios de Mantenimiento"
+        badge="Mantenimiento Preventivo"
+        paragraphs={[
+          "En Soluciones Integrales JB ofrecemos mantenimiento eléctrico preventivo para empresas que buscan asegurar la confiabilidad, eficiencia y continuidad de sus sistemas. Realizamos inspecciones técnicas, pruebas de funcionamiento y revisión de componentes para detectar posibles fallas antes de que afecten la operación.",
+          "Nuestro enfoque permite reducir riesgos, evitar averías costosas y prolongar la vida útil de las instalaciones eléctricas. Con una atención planificada y profesional, ayudamos a mantener entornos más seguros, estables y preparados para responder a las exigencias del negocio.",
+        ]}
+        pills={[
+          "Inspecciones técnicas",
+          "Prevención de fallas",
+          "Continuidad operativa",
+          "Mayor seguridad",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/rF3phtKt/15085.jpg",
+          alt: "Servicios de mantenimiento eléctrico",
+        }}
+      />
 
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2"
-          >
-            <img
-              src="https://i.postimg.cc/rF3phtKt/15085.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[3000px] h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <ServiceSection
+        dark
+        reverse
+        title="Reparaciones y Soluciones Rápidas"
+        badge="Atención Correctiva"
+        paragraphs={[
+          "Brindamos atención correctiva para resolver incidencias eléctricas de manera ordenada, segura y eficiente. Nuestro equipo identifica el origen del problema, evalúa el estado de la instalación y aplica soluciones técnicas que permitan restablecer el funcionamiento con el menor impacto posible.",
+          "Atendemos fallas, ajustes, reemplazos y correcciones necesarias para mantener la operación activa. Cada intervención se realiza cuidando la seguridad del personal, la protección de los equipos y la estabilidad de las instalaciones.",
+        ]}
+        pills={[
+          "Diagnóstico eléctrico",
+          "Corrección de fallas",
+          "Respuesta rápida",
+          "Soluciones seguras",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/1zHsZg5q/5077.jpg",
+          alt: "Reparaciones eléctricas y soluciones rápidas",
+        }}
+      />
 
-      {/* Segunda sección */}
-      <section className="bg-neutral-800 py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-    
-          {/* Imágenes a la izquierda */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 flex flex-col gap-6"
-          >
-            <img
-              src="https://i.postimg.cc/1zHsZg5q/5077.jpg"
-              className="rounded-lg shadow-md w-full"
-            />
-          </motion.div>
-
-          {/* Texto a la derecha */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-white"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Reparaciones y Soluciones Rápidas
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En Soluciones Integrales JB, ofrecemos servicios de mantenimiento eléctrico preventivo especializados para empresas que buscan asegurar la fiabilidad y eficiencia de sus sistemas. Nuestro enfoque se centra en la detección proactiva de problemas, mediante inspecciones regulares y pruebas de funcionamiento. Esto no solo minimiza riesgos de averías costosas, sino que también mejora la durabilidad de las instalaciones eléctricas, beneficiando así el rendimiento operativo y reduciendo tiempos de inactividad imprevistos.
-            </p>
-            <a href="/contacto">
-              <button className="px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-                CONTÁCTANOS
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Tercera sección */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 text-gray-800"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Cumplimiento Normativo y Seguridad
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nos comprometemos a cumplir con las normativas eléctricas vigentes, garantizando que todas las actividades de mantenimiento estén alineadas con los estándares de seguridad. Esto no solo protege tus activos y personal, sino que también refuerza la reputación de tu empresa como operador comprometido con prácticas seguras y responsables. Además, la transparencia en el cumplimiento normativo fortalece la credibilidad online, mejorando la percepción de marca y atrayendo a clientes que valoran la seguridad y el cumplimiento legal.
-            </p>
-          </motion.div>
-
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="md:w-1/2"
-          >
-            <img
-              src="https://i.postimg.cc/SQ5qqbqT/6115.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[3000px] h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <ServiceSection
+        title="Cumplimiento Normativo y Seguridad"
+        badge="Seguridad Eléctrica"
+        paragraphs={[
+          "Nos comprometemos a trabajar conforme a las normativas eléctricas vigentes y estándares de seguridad aplicables. Cada actividad de mantenimiento se desarrolla con criterios técnicos que ayudan a proteger los activos, reducir riesgos y brindar mayor confianza en la operación diaria.",
+          "El cumplimiento normativo fortalece la responsabilidad de la empresa y mejora la percepción de seguridad frente a clientes, colaboradores y aliados. Nuestro servicio busca que tus instalaciones funcionen de manera confiable, segura y alineada con buenas prácticas profesionales.",
+        ]}
+        pills={[
+          "Normativa vigente",
+          "Protección de activos",
+          "Buenas prácticas",
+          "Operación confiable",
+        ]}
+        image={{
+          src: "https://i.postimg.cc/SQ5qqbqT/6115.jpg",
+          alt: "Cumplimiento normativo y seguridad eléctrica",
+        }}
+      />
 
       {/* ====================== SECCIÓN DE OPINIONES CON CARRUSEL MEJORADO ====================== */}
       <section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
@@ -191,7 +257,7 @@ const MantenimientoElectrico: React.FC = () => {
             >
               Testimonios
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -209,7 +275,7 @@ const MantenimientoElectrico: React.FC = () => {
               viewport={{ once: true }}
               className="text-base text-slate-600 mt-4 max-w-2xl mx-auto text-justify"
             >
-              Descubre cómo nuestros servicios de mantenimiento eléctrico han mejorado la eficiencia de empresas
+              Descubre cómo nuestros servicios de mantenimiento eléctrico han mejorado la eficiencia de empresas.
             </motion.p>
           </motion.div>
 
@@ -336,6 +402,7 @@ const MantenimientoElectrico: React.FC = () => {
           `}</style>
         </div>
       </section>
+
       <ScrollButton />
     </div>
   );

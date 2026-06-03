@@ -32,10 +32,10 @@ const ComunidadActiva = () => {
 
             {/* Botón de información - NUEVO ESTILO ROJO */}
             <a
-  href="https://wa.me/51996720630"
-  target="_blank"
-  rel="noopener noreferrer"
->
+              href="https://wa.me/51996720630"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="cta-rojo">
                 <span className="span-rojo">Información</span>
                 <span className="second-rojo">

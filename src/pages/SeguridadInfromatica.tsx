@@ -1,120 +1,124 @@
+
 import React from "react";
-import fondoN from "../assets/fondoN.jpg"; // 👈 asegúrate de que la ruta sea correcta
+import fondoN from "../assets/fondoN.jpg";
 import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
+import TestimoniosCarousel from "../components/TestimoniosCarousel";
 import { motion } from "framer-motion";
 
-const SeguridadInformatica = () => {
+const CYAN = "#06b6d4";
+
+interface PillProps {
+  children: React.ReactNode;
+}
+
+const Pill: React.FC<PillProps> = ({ children }) => {
+  return (
+    <span className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-700 transition-all duration-300 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-[0_10px_28px_rgba(6,182,212,0.22)]">
+      {children}
+    </span>
+  );
+};
+
+const SeguridadInformatica: React.FC = () => {
   return (
     <div className="font-sans">
-      {/* Hero con fondo */}
+      {/* ====================== HERO PRINCIPAL ====================== */}
       <div
-        className="relative h-[300px] bg-cover bg-center flex items-center justify-center"
+        className="relative flex h-[300px] items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        {/* Título animado */}
-        <motion.h1
-          className="relative text-4xl md:text-5xl font-bold text-cyan-500 text-center z-10"
-        
-        >
+        <motion.h1 className="relative z-10 text-center text-4xl font-bold text-cyan-500 md:text-5xl">
           <TextType
             text={["Seguridad Informática"]}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
+            textColors={[CYAN]}
           />
         </motion.h1>
       </div>
 
-      {/* Contenido principal */}
-      <div className="px-4 py-12 max-w-7xl mx-auto">
-        <div className="flex items-center flex-wrap mt-8">
-          {/* Imagen a la izquierda */}
+      {/* ====================== CONTENIDO PRINCIPAL ====================== */}
+      <section className="relative overflow-hidden bg-white px-4 py-14 md:px-8 md:py-20">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/20 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+          {/* Card de imagen */}
           <motion.div
-            className="flex-1 pr-12 min-w-[300px]"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
           >
-            <img
-              src="https://i.postimg.cc/k4KG8Mnq/seguridad-informatuca.jpg"
-              alt="Consultoría en Seguridad Informática"
-              className="w-full max-w-[3000px] h-auto rounded-lg shadow-lg"
-            />
-          </motion.div>
-
-          {/* Información a la derecha */}
-          <motion.div
-            className="flex-1 min-w-[300px]"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-5 text-[#2c3e50]">
-                <span className="text-cyan-500">
-                  Consultoría en Seguridad Informática
-                </span>
-              </h2>
-
-              <p className="text-[#34495e] text-base leading-relaxed mb-5 text-justify">
-                Protege tu empresa de amenazas digitales con soluciones
-                avanzadas y personalizadas. Mi compromiso es garantizar la
-                integridad, disponibilidad y confidencialidad de tus datos,
-                ayudándote a prevenir riesgos y fortalecer tus sistemas.
-              </p>
-
-              {/* Lista animada */}
-              <motion.ul
-                className="text-[#34495e] text-base leading-7 list-disc pl-6 text-left inline-block mb-5"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <li className="text-justify">
-                  <strong>Análisis de vulnerabilidades:</strong> identifico y
-                  elimino puntos débiles en tus sistemas.
-                </li>
-                <li className="text-justify">
-                  <strong>Implementación de medidas de seguridad:</strong> diseño
-                  soluciones adaptadas a tus necesidades.
-                </li>
-                <li className="text-justify">
-                  <strong>Respaldo y recuperación:</strong> garantizo la
-                  protección y recuperación de tu información crítica.
-                </li>
-                <li className="text-justify">
-                  <strong>Capacitación en ciberseguridad:</strong> preparo a tu
-                  equipo para enfrentar amenazas digitales.
-                </li>
-              </motion.ul>
-
-              <p className="text-[#34495e] text-base leading-relaxed mb-6 text-justify">
-                Mi enfoque es cercano y profesional, trabajando contigo para
-                implementar estrategias de seguridad que mantengan tu negocio
-                protegido en todo momento.
-              </p>
-
-              {/* Botón con animación interactiva */}
-              <motion.a
-                href="/contacto"
-                className="bg-[#3498db] text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-[#2980b9] transition duration-300 inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                ¡Protejamos tu empresa!
-              </motion.a>
+            <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl md:min-h-[420px]">
+              <img
+                src="https://i.postimg.cc/k4KG8Mnq/seguridad-informatuca.jpg"
+                alt="Consultoría en Seguridad Informática"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95" />
             </div>
           </motion.div>
+
+          {/* Card de texto */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group flex h-full flex-col justify-center rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)] md:p-8"
+          >
+            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-[11px] font-extrabold uppercase tracking-[0.22em] text-cyan-500 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+              Ciberseguridad
+            </div>
+
+            <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide text-cyan-500 md:text-4xl">
+              Consultoría en Seguridad Informática
+            </h2>
+
+            <div className="space-y-4 text-left text-[15px] leading-7 text-slate-700 md:text-base">
+              <p>
+                Protegemos tu empresa frente a amenazas digitales mediante
+                soluciones de seguridad informática avanzadas, personalizadas y
+                alineadas con las necesidades reales de tu organización. Nuestro
+                objetivo es fortalecer la integridad, disponibilidad y
+                confidencialidad de tu información crítica.
+              </p>
+
+              <p>
+                Analizamos vulnerabilidades, implementamos medidas preventivas,
+                reforzamos respaldos y preparamos a tu equipo para responder de
+                forma segura ante riesgos digitales. Trabajamos con un enfoque
+                profesional, cercano y orientado a mantener tu negocio protegido
+                en todo momento.
+              </p>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Pill>Análisis de vulnerabilidades</Pill>
+              <Pill>Medidas de seguridad</Pill>
+              <Pill>Respaldo y recuperación</Pill>
+              <Pill>Capacitación en ciberseguridad</Pill>
+            </div>
+
+            <div className="mt-7 h-[3px] w-14 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-24" />
+          </motion.div>
         </div>
+
         <ScrollButton />
-      </div>
+      </section>
+
+      {/* ====================== TESTIMONIOS ====================== */}
+      <TestimoniosCarousel />
     </div>
   );
 };

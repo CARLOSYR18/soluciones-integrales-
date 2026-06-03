@@ -1,232 +1,248 @@
+
 import React from 'react';
 import fondoN from '../assets/fondoN.jpg';
 import { motion } from 'framer-motion';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ScrollButton from "../components/ScrollButton";
-import TextType from "../components/animacion";
-import TestimoniosCarousel from "../components/TestimoniosCarousel";
-const testimonios = [
-  {
-    nombre: 'Maria Torres',
-    imagen: 'https://randomuser.me/api/portraits/women/44.jpg',
-    opinion: 'Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.',
-  },
-  {
-    nombre: 'Carlos Gómez',
-    imagen: 'https://randomuser.me/api/portraits/men/32.jpg',
-    opinion: 'La integración fue muy sencilla. En pocos días ya estábamos facturando sin problemas.',
-  },
-  {
-    nombre: 'Laura Ramírez',
-    imagen: 'https://randomuser.me/api/portraits/women/55.jpg',
-    opinion: 'El soporte técnico es excelente. Siempre disponibles para ayudarnos cuando lo necesitamos.',
-  },
-];
+import TextType from '../components/animacion';
+import TestimoniosCarousel from '../components/TestimoniosCarousel';
+
+interface SectionBlockProps {
+  title: string;
+  paragraphs: string[];
+  pills: string[];
+  images: {
+    src: string;
+    alt: string;
+  }[];
+  dark?: boolean;
+  reverse?: boolean;
+}
+
+const CYAN = '#06b6d4';
+
+const SectionBlock: React.FC<SectionBlockProps> = ({
+  title,
+  paragraphs,
+  pills,
+  images,
+  dark = false,
+  reverse = false,
+}) => {
+  const sectionBg = dark ? 'bg-black text-white' : 'bg-white text-slate-900';
+  const textCard =
+    dark
+      ? 'border-white/10 bg-zinc-950 text-slate-200 shadow-[0_22px_70px_rgba(0,0,0,0.45)]'
+      : 'border-slate-200 bg-white text-slate-700 shadow-[0_18px_55px_rgba(15,23,42,0.10)]';
+  const imageCard =
+    dark
+      ? 'border-white/10 bg-zinc-950 shadow-[0_22px_70px_rgba(0,0,0,0.45)]'
+      : 'border-slate-200 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.10)]';
+
+  return (
+    <section className={`relative overflow-hidden py-16 px-5 md:px-10 lg:px-16 ${sectionBg}`}>
+      <div className="pointer-events-none absolute -top-28 -left-28 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-28 -right-28 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+
+      <div
+        className={[
+          'relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12',
+          reverse ? 'lg:[&>div:first-child]:order-2' : '',
+        ].join(' ')}
+      >
+        {/* Card de texto */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? 45 : -45 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.25 }}
+          className={`group flex min-h-[420px] flex-col justify-center rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-2 sm:p-8 md:p-10 ${textCard}`}
+        >
+          <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-slate-200/70 bg-white/90 px-5 py-2 text-[11px] font-extrabold uppercase tracking-[0.22em] text-cyan-500 shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+            Soporte TI
+          </div>
+
+          <h2 className="text-2xl font-black leading-tight tracking-wide text-cyan-500 md:text-3xl">
+            {title}
+          </h2>
+
+          <div className="mt-5 space-y-4">
+            {paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-sm leading-7 md:text-[15px] ${
+                  dark ? 'text-slate-200' : 'text-slate-700'
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {pills.map((pill, index) => (
+              <span
+                key={`${pill}-${index}`}
+                className={[
+                  'inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs font-bold transition-all duration-300',
+                  dark
+                    ? 'border-white/15 bg-white/5 text-slate-100 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white'
+                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white',
+                ].join(' ')}
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-7 h-[3px] w-14 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-24" />
+        </motion.div>
+
+        {/* Card de imagen */}
+        <motion.div
+          initial={{ opacity: 0, x: reverse ? -45 : 45 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.25 }}
+          className={`group flex min-h-[420px] items-center justify-center rounded-3xl border p-4 transition-all duration-300 hover:-translate-y-2 sm:p-5 ${imageCard}`}
+        >
+          <div
+            className={[
+              'grid h-full w-full gap-4',
+              images.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1',
+            ].join(' ')}
+          >
+            {images.map((image, index) => (
+              <div
+                key={`${image.src}-${index}`}
+                className="relative min-h-[330px] overflow-hidden rounded-2xl"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90" />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const Soporte: React.FC = () => {
   return (
     <div className="px-0 py-0 max-w-full font-sans">
-
       {/* Banner Superior */}
       <div
-        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
+        className="relative flex h-[300px] w-full items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-sky-400 text-center z-10">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <h1 className="relative z-10 text-center text-4xl font-bold text-cyan-500 md:text-5xl">
           <TextType
             text={['Soporte Técnico']}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
             showCursor={false}
-            textColors={['#38bdf8']}
+            textColors={[CYAN]}
           />
         </h1>
       </div>
 
-      {/* Sección de Hosting y Dominio */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <SectionBlock
+        title="Asistencia Técnica Integral"
+        paragraphs={[
+          'En Soluciones Integrales JB brindamos soporte técnico integral para garantizar el correcto funcionamiento de tus sistemas, equipos e infraestructura tecnológica. Nuestro equipo atiende incidencias de hardware y software con soluciones rápidas, ordenadas y orientadas a reducir tiempos de inactividad.',
+          'Nos enfocamos en mantener la continuidad operativa de tu negocio mediante atención especializada, diagnóstico oportuno y acompañamiento técnico confiable. De esta manera, tu empresa puede trabajar con mayor seguridad, estabilidad y eficiencia.',
+        ]}
+        pills={[
+          'Soporte especializado',
+          'Diagnóstico técnico',
+          'Continuidad operativa',
+          'Atención eficiente',
+        ]}
+        images={[
+          {
+            src: 'https://i.postimg.cc/vZgP5C6j/800-imagen-1.jpg',
+            alt: 'Asistencia técnica integral',
+          },
+        ]}
+      />
 
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
-              Asistencia Técnica Integral
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              En <strong>Soluciones Integrales JB</strong>, brindamos un soporte técnico integral para garantizar el óptimo funcionamiento de tus sistemas. Nuestro equipo de expertos está disponible para resolver cualquier inconveniente técnico, ya sea relacionado con hardware o software, proporcionando soluciones rápidas y efectivas que minimizan el tiempo de inactividad. 
-            </p>
-            <p className="leading-relaxed text-justify">
-              Nos comprometemos a mantener la continuidad operativa de tus sistemas tecnológicos, asegurando que tu negocio siga funcionando sin interrupciones. Confía en nosotros para gestionar y mantener tus infraestructuras tecnológicas de manera eficiente.
-            </p>
-          </motion.div>
+      <SectionBlock
+        dark
+        reverse
+        title="Monitoreo y Mantenimiento Proactivo"
+        paragraphs={[
+          'Nuestro servicio no se limita a resolver problemas cuando aparecen. Implementamos monitoreo y mantenimiento proactivo para anticiparnos a posibles fallas, supervisando tus sistemas y aplicando acciones preventivas que reduzcan riesgos operativos.',
+          'Este enfoque permite conservar la infraestructura tecnológica en condiciones óptimas, mejorar el rendimiento de los equipos y prolongar su vida útil. Así, tu negocio obtiene mayor estabilidad, productividad y control sobre sus recursos tecnológicos.',
+        ]}
+        pills={[
+          'Monitoreo preventivo',
+          'Mantenimiento continuo',
+          'Mayor estabilidad',
+          'Optimización de equipos',
+        ]}
+        images={[
+          {
+            src: 'https://i.postimg.cc/hjp8k0dj/4051.jpg',
+            alt: 'Monitoreo técnico',
+          },
+          {
+            src: 'https://i.postimg.cc/nVSYT0ZF/images-4.jpg',
+            alt: 'Mantenimiento tecnológico',
+          },
+        ]}
+      />
 
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://i.postimg.cc/vZgP5C6j/800-imagen-1.jpg"
-              alt="Descripción de la imagen"
-              className="w-full max-w-[500px] h-auto rounded-lg shadow-lg"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <SectionBlock
+        title="Soporte Remoto y On-Site"
+        paragraphs={[
+          'Ofrecemos soporte técnico remoto y presencial, adaptándonos a las necesidades de cada cliente. A través del soporte remoto realizamos diagnósticos, configuraciones y soluciones rápidas mediante herramientas seguras de acceso y asistencia en línea.',
+          'Cuando la situación requiere atención física, nuestros técnicos pueden acudir a tus instalaciones para revisar computadoras, laptops, impresoras y otros equipos. Esta flexibilidad permite resolver incidencias complejas y ejecutar mantenimientos programados con mayor precisión.',
+        ]}
+        pills={[
+          'Atención remota',
+          'Servicio presencial',
+          'Equipos de cómputo',
+          'Respuesta flexible',
+        ]}
+        images={[
+          {
+            src: 'https://i.postimg.cc/KzqLqv6L/retrato-hombre-negocios-atractivo-30s-vistiendo-traje-telefono-movil-mientras-trabaja-computadora-of.jpg',
+            alt: 'Soporte remoto y presencial',
+          },
+        ]}
+      />
 
-      {/* Sección Monitoreo */}
-      <section className="bg-neutral-800 py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <SectionBlock
+        dark
+        reverse
+        title="Consultoría y Asesoramiento Tecnológico"
+        paragraphs={[
+          'Además de brindar soporte técnico, ofrecemos consultoría para optimizar la infraestructura tecnológica de tu empresa. Evaluamos el estado actual de tus sistemas, identificamos oportunidades de mejora y recomendamos soluciones alineadas con tus objetivos operativos.',
+          'Nuestro propósito es ayudarte a tomar decisiones tecnológicas más seguras y estratégicas, priorizando eficiencia, escalabilidad y protección de la información. Con una visión técnica clara, tu negocio estará mejor preparado para crecer y adaptarse al entorno digital.',
+        ]}
+        pills={[
+          'Asesoría tecnológica',
+          'Mejora de procesos',
+          'Seguridad TI',
+          'Escalabilidad',
+        ]}
+        images={[
+          {
+            src: 'https://i.postimg.cc/VN4bvkkN/Frame-934.png',
+            alt: 'Consultoría tecnológica',
+          },
+        ]}
+      />
 
-          {/* Imágenes */}
-          <motion.div
-            className="md:w-1/2 flex flex-col gap-6 items-center"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://i.postimg.cc/hjp8k0dj/4051.jpg"
-              alt="Imagen 1"
-              className="rounded-lg shadow-md w-full max-w-[350px] mx-auto"
-            />
-            <img
-              src="https://i.postimg.cc/nVSYT0ZF/images-4.jpg"
-              alt="Imagen 2"
-              className="rounded-lg shadow-md w-full max-w-[350px] mx-auto"
-            />
-          </motion.div>
-
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-white flex flex-col"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
-              Monitoreo y Mantenimiento Proactivo
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nuestro servicio de soporte técnico va más allá de la simple resolución de problemas; incluye monitoreo y mantenimiento proactivo para anticiparnos a posibles fallos. Utilizamos herramientas avanzadas para supervisar tus sistemas en tiempo real, detectando cualquier irregularidad y aplicando ajustes preventivos para evitar interrupciones.
-            </p>
-            <p className="mb-6 leading-relaxed text-justify">
-              Nos comprometemos a mantener tu infraestructura tecnológica en su mejor estado, asegurando un rendimiento óptimo y prolongando la vida útil de tus equipos, lo que se traduce en una mayor eficiencia operativa para tu negocio.
-            </p>
-            <div className="separator"></div>
-            <a href="/contacto">
-              <button className="solutions-contact-btn">CONTACTANOS</button>
-            </a>
-          </motion.div>
-          
-        </div>
-
-      </section>
-
-
-      {/* Sección Remoto y On-Site */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
-              Soporte Remoto y On-Site
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Ofrecemos soporte técnico tanto remoto como on-site, adaptándonos a las necesidades específicas de tu negocio. A través de nuestro soporte remoto, utilizamos herramientas avanzadas de acceso y diagnóstico en línea para resolver problemas de manera rápida y eficiente.
-            </p>
-            <p className="leading-relaxed text-justify">
-              Cuando es necesario, enviamos técnicos calificados a tus instalaciones para realizar mantenimiento de computadoras de escritorio, portátiles, impresoras y otros equipos tecnológicos. Con nosotros, tienes la flexibilidad de recibir el soporte que necesitas, ya sea para solucionar problemas complejos o realizar mantenimientos programados.
-            </p>
-          </motion.div>
-
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://i.postimg.cc/KzqLqv6L/retrato-hombre-negocios-atractivo-30s-vistiendo-traje-telefono-movil-mientras-trabaja-computadora-of.jpg"
-              alt="Soporte remoto"
-              className="w-full max-w-[500px] h-auto rounded-lg shadow-lg"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sección Consultoría */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-
-          {/* Imagen */}
-          <motion.div
-            className="md:w-1/2 flex flex-col gap-6"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://i.postimg.cc/VN4bvkkN/Frame-934.png"
-              alt="Consultoría tecnológica"
-              className="rounded-lg shadow-md w-full max-w-[500px]"
-            />
-          </motion.div>
-
-          {/* Texto */}
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-6">
-              Consultoría y Asesoramiento Tecnológico
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Además de resolver problemas técnicos, proporcionamos consultoría y asesoramiento para optimizar tu infraestructura tecnológica. Evaluamos tus necesidades actuales y futuras, recomendando mejoras y actualizaciones que aumenten la eficiencia y la seguridad de tus sistemas. 
-            </p>
-            <p className="mb-6 leading-relaxed text-justify">
-              Nuestro objetivo es ayudarte a tomar decisiones informadas sobre tus inversiones tecnológicas, asegurando que tu negocio esté preparado para crecer y adaptarse a las nuevas demandas del mercado.
-            </p>
-            <a href="/contacto">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-                CONTACTAR
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
-<TestimoniosCarousel />
-     
-
-    </div> 
-    
+      <TestimoniosCarousel />
+    </div>
   );
 };
 

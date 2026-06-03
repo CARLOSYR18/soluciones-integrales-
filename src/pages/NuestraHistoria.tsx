@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import ScrollButton from "../components/ScrollButton";
@@ -49,6 +50,26 @@ const timelineItems = [
   {
     year: "2023",
     text: "Lanzamiento de nuevos servicios tecnológicos innovadores para seguir creciendo.",
+  },
+  {
+    year: "2024",
+    text: "Fortalecimos nuestra presencia digital, optimizando soluciones tecnológicas para brindar mayor seguridad, eficiencia y soporte a nuestros clientes.",
+  },
+  {
+    year: "2025",
+    text: "Impulsamos nuevos proyectos de innovación, integrando herramientas modernas para mejorar la gestión, conectividad y continuidad operativa.",
+  },
+  {
+    year: "2026",
+    text: "Consolidamos nuestra experiencia en transformación digital, seguridad tecnológica y servicios especializados orientados al crecimiento empresarial.",
+  },
+  {
+    year: "2027",
+    text: "Proyectamos nuevas soluciones inteligentes, escalables y seguras para acompañar la evolución tecnológica de nuestros clientes.",
+  },
+  {
+    year: "2028",
+    text: "Continuamos avanzando hacia una etapa de mayor innovación, integrando tecnología, experiencia y compromiso en cada proyecto desarrollado.",
   },
 ];
  
@@ -681,7 +702,7 @@ const NuestraHistoria: React.FC = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="text-gray-300 max-w-3xl mx-auto mb-16"
+              className="text-white max-w-3xl mx-auto mb-16"
             >
               Desde nuestros inicios, nos hemos dedicado a brindar soluciones tecnológicas innovadoras...
             </motion.p>
@@ -748,7 +769,7 @@ const NuestraHistoria: React.FC = () => {
                       {item.year}
                     </h4>
  
-                    <p className="text-sm text-gray-300 leading-relaxed text-center max-w-[240px]">
+                    <p className="text-sm text-white leading-relaxed text-center max-w-[240px]">
                       {item.text}
                     </p>
                   </motion.div>

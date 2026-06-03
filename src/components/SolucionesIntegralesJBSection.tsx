@@ -9,6 +9,7 @@ import LogoLoop from "./LogoLoop";
 import LogoKeyed from "../components/LogoKeyed";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { FaMedal, FaClock, FaHandshake, FaShieldAlt } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 // ---- Types ----
 interface Service {
@@ -547,118 +548,9 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       {/* ====================== HERO: VIDEO PRIMERO → CARRUSEL DESPUÉS ====================== */}
       <div className="w-full mb-10 relative overflow-hidden">
         <AnimatePresence mode="wait">
-          {!heroVideoEnded ? (
-            /* ═══ VIDEO HERO ═══ */
-            <motion.div
-              key="hero-video"
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="relative w-full h-[60vh] md:h-[80vh] bg-black"
-            >
-              <video
-                ref={heroVideoRef}
-                className="w-full h-full object-cover"
-                src={videoUrl}
-                autoPlay
-                muted
-                playsInline
-                onEnded={handleVideoEnded}
-                poster={videoPoster}
-              />
-
-              {/* Overlay transparente clickeable para activar audio */}
-              {videoIsMuted && (
-                <div
-                  className="absolute inset-0 z-25 cursor-pointer"
-                  onClick={handleUnmute}
-                />
-              )}
-
-              {/* Ícono de volumen muted — pequeño, esquina superior derecha */}
-              {videoIsMuted && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                  onClick={handleUnmute}
-                  className="absolute top-6 right-6 z-30 flex items-center gap-2 px-4 py-2.5
-                             rounded-full bg-black/50 backdrop-blur-md border border-white/20
-                             cursor-pointer hover:bg-black/70 transition-all duration-300"
-                >
-                  <motion.svg
-                    width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                    animate={{ opacity: [1, 0.4, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                    <line x1="23" y1="9" x2="17" y2="15" />
-                    <line x1="17" y1="9" x2="23" y2="15" />
-                  </motion.svg>
-                  <span className="text-white text-xs font-semibold">Toca para activar audio</span>
-                </motion.div>
-              )}
-
-              {/* Overlay gradiente inferior */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent" />
-              </div>
-
-              {/* Botón Saltar Video */}
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.5 }}
-                onClick={handleSkipVideo}
-                className="absolute bottom-6 right-6 z-20 flex items-center gap-2 px-5 py-2.5 
-                           rounded-full bg-white/15 backdrop-blur-md border border-white/25
-                           text-white text-sm font-semibold
-                           hover:bg-white/25 hover:border-white/40
-                           transition-all duration-300 cursor-pointer
-                           pointer-events-auto"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Saltar video</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="5 4 15 12 5 20 5 4" />
-                  <line x1="19" y1="5" x2="19" y2="19" />
-                </svg>
-              </motion.button>
-
-              {/* Barra de progreso del video */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-20">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-cyan-400 to-blue-500"
-                  style={{ width: "0%" }}
-                  animate={{
-                    width: "100%",
-                  }}
-                  transition={{
-                    duration: heroVideoRef.current?.duration || 30,
-                    ease: "linear",
-                  }}
-                />
-              </div>
-
-              {/* Badge "EN VIVO" / "PRESENTACIÓN" */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute top-6 left-6 z-20 flex items-center gap-2 px-4 py-2 
-                           rounded-full bg-black/40 backdrop-blur-md border border-white/15"
-              >
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                <span className="text-white text-xs font-bold tracking-wider uppercase">
-                  Presentación
-                </span>
-              </motion.div>
-            </motion.div>
-          ) : (
+          
             /* ═══ CARRUSEL DE IMÁGENES REDISEÑADO ═══ */
             <HeroSlider slides={heroSlides} />
-          )}
         </AnimatePresence>
       </div>
       
@@ -834,8 +726,8 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   viewport={{ once: true }}
   className="max-w-5xl mx-auto px-6 mt-16 md:mt-20 flex justify-center"
 >
-  <a
-    href="/servicios"
+  <Link
+    to="/DesarrolloDeSitiosWeb"
     className="group relative inline-flex items-center gap-3 text-white/80 hover:text-white text-lg font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-8 focus-visible:ring-offset-black rounded-full"
   >
     <span>Explorar todos los servicios</span>
@@ -860,7 +752,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
       aria-hidden="true"
       className="absolute -inset-2 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
     />
-  </a>
+  </Link>
 </motion.div>
   </div>
 </section>

@@ -1,370 +1,243 @@
-  import React, { useState, useEffect } from "react";
-  import { motion } from "framer-motion";
-  import ScrollButton from "../components/ScrollButton";
-  import TextType from "../components/animacion";
-  import Carousel from "react-multi-carousel";
-  import "react-multi-carousel/lib/styles.css";
-  import Magnet from '../components/magnet';
-  import { Link } from "react-router-dom";
-  import ClientesCarousel from "../components/ClientesCarousel";
-  import TestimoniosCarousel from "../components/TestimoniosCarousel";
-  import fondoN from "../assets/fondoN.jpg";
-  const DesarrolloWebBanner: React.FC = () => {
-    // Datos para el carrusel de testimonios (ahora con 4 comentarios)
-    const testimonials = [
-      {
-        quote: "La experiencia de usuario mejoró significativamente desde que rediseñaron nuestro sitio. Excelente trabajo.",
-        name: "Naomi Sifuentes",
-        avatar: "https://i.postimg.cc/90hKzpFq/imagen-2024-06-23-215557883-removebg-preview-1-1.png" // Usé un avatar de ejemplo
-      },
-      {
-        quote: "El equipo entendió perfectamente nuestras necesidades y creó un sitio web funcional y atractivo. ¡Estamos encantados!",
-        name: "Lonardo",
-        avatar: "https://i.postimg.cc/qMC4NmLz/Frame-918.png" // Usé un avatar de ejemplo
-      },
-      {
-        quote: "Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.",
-        name: "Maria Torres",
-        avatar: "https://i.postimg.cc/Dw6XNyXV/Frame-919.png" // Usé un avatar de ejemplo
-      },
-      {
-        quote: "La integración de las nuevas funcionalidades ha optimizado nuestros procesos internos de manera increíble. ¡Gran solución!",
-        name: "juana deprado",
-        avatar: "https://i.postimg.cc/SKjJtL48/Frame-921-1.png" // Usé un avatar de ejemplo
-      }
-    ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+import React from "react";
+import { motion } from "framer-motion";
+import TextType from "../components/animacion";
+import TestimoniosCarousel from "../components/TestimoniosCarousel";
+import fondoN from "../assets/fondoN.jpg";
 
-    // Efecto para el cambio automático de testimonios cada 3 segundos
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-      }, 3000); // Cambia cada 3000 milisegundos (3 segundos)
-
-      // Limpia el intervalo cuando el componente se desmonta
-      return () => clearInterval(intervalId);
-    }, [testimonials.length]); // Se ejecuta una vez al montar y cuando cambia el número de testimonios
-
-    // Función para ir a un testimonio específico
-    const goToSlide = (index: number) => {
-      setCurrentIndex(index);
-    };
-
-    return (
-      <div id="desarrollo-software" className="font-sans">
+const DesarrolloWebBanner: React.FC = () => {
+  return (
+    <div id="desarrollo-software" className="font-sans">
       {/* ====================== BANNER PRINCIPAL ====================== */}
-<header
-  className="relative w-full h-64 md:h-80 flex flex-col items-center justify-center text-white bg-cover bg-center overflow-hidden"
-  style={{ backgroundImage: `url(${fondoN})` }}
->
-
-  {/* Overlay oscuro */}
-  <div className="absolute inset-0 bg-black/60"></div>
-
-  {/* Contenido */}
-  <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-
-    <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
-      <TextType
-        text={["Desarrollo de Software"]}
-        typingSpeed={70}
-        pauseDuration={2000}
-        loop={false}
-        showCursor={false}
-      />
-    </h1>
-
-  </div>
-
-</header>
-        {/* ====================== SECCIÓN DE CONTENIDO - DESARROLLO WEB ====================== */}
-  <section className="bg-white py-16 px-4 md:px-8">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      {/* Texto descriptivo */}
-      <div className="text-gray-800 max-w-3xl mx-auto text-justify">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center "
-        >
-          Desarrollo Web Personalizado
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-        >
-          Diseñamos sitios web únicos y funcionales, perfectamente alineados con
-          las necesidades específicas de tu negocio. Nuestro equipo se dedica a
-          comprender a fondo tus objetivos para transformarlos en una plataforma
-          digital que potencie tu identidad de marca. Implementamos las
-          tecnologías más avanzadas para garantizar un rendimiento rápido y
-          fluido, lo que no solo optimiza la experiencia del usuario, sino que
-          también disminuye las tasas de rebote, prolonga el tiempo de
-          permanencia en el sitio y favorece el posicionamiento en motores de
-          búsqueda. Nos aseguramos de que tu sitio sea completamente responsive,
-          adaptándose sin esfuerzo a cualquier dispositivo para ofrecer una
-          experiencia homogénea y de alta calidad en móviles, tabletas o
-          computadoras de escritorio. Con un enfoque sólido en la optimización y
-          la accesibilidad, garantizamos que la navegación sea intuitiva y
-          accesible para todos los usuarios, independientemente de su nivel
-          técnico, mejorando así la interacción y la conversión.
-        </motion.p>
-      </div>
-
-      {/* Imagen descriptiva */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex justify-center lg:justify-end"
+      <header
+        className="relative w-full h-64 md:h-80 flex flex-col items-center justify-center text-white bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url(${fondoN})` }}
       >
-        <img
-          src="https://i.postimg.cc/gc81zB8N/Desarrollo-de-un-sitio-web-Como-es-el-proceso.jpg"
-          alt="Desarrollo Web Personalizado"
-          className="rounded-lg shadow-xl max-w-full h-auto"
-        />
-      </motion.div>
-    </div>
-  </section>
+        {/* Overlay oscuro */}
+        <div className="absolute inset-0 bg-black/60"></div>
 
+        {/* Contenido */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-sky-400">
+            <TextType
+              text={["Desarrollo de Software"]}
+              typingSpeed={70}
+              pauseDuration={2000}
+              loop={false}
+              showCursor={false}
+            />
+          </h1>
+        </div>
+      </header>
 
-        {/* ====================== SECCIÓN DE MANTENIMIENTO Y SOPORTE ====================== */}
-  <section className="bg-neutral-800 text-white py-16 px-4 md:px-8">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      {/* Imagen de Mantenimiento y Soporte */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex justify-center lg:justify-start"
-      >
-        <img
-          src="https://i.postimg.cc/1XVFSqfj/soporte-web-agradable.jpg"
-          alt="Mantenimiento y Soporte"
-          className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-        />
-      </motion.div>
+      {/* ====================== SECCIÓN DE CONTENIDO - DESARROLLO WEB ====================== */}
+      <section className="relative overflow-hidden bg-white py-14 md:py-20 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/20 blur-3xl" />
 
-      {/* Texto de Mantenimiento y Soporte */}
-      <div className="text-gray-300 max-w-3xl mx-auto text-justify">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
-        >
-          Mantenimiento y Soporte
-        </motion.h2>
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Texto descriptivo */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-500 mb-6 text-center tracking-wide">
+              Desarrollo Web Personalizado
+            </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-        >
-          Ofrecemos mantenimiento continuo y soporte técnico para que tu sitio
-          web esté siempre actualizado y seguro. Nos encargamos de actualizaciones
-          regulares, copias de seguridad automáticas y monitoreo de seguridad para
-          proteger tu plataforma. Con un equipo de soporte disponible en todo
-          momento, solucionamos rápidamente cualquier problema técnico,
-          minimizando el tiempo de inactividad y garantizando la confiabilidad de
-          tu sitio.
-        </motion.p>
+            <div className="space-y-4 text-slate-700 text-[15px] md:text-base leading-7 text-left">
+              <p>
+                Diseñamos sitios web únicos, funcionales y alineados con los objetivos de cada negocio. Analizamos tus necesidades para convertirlas en una plataforma digital clara, moderna y coherente con la identidad de tu marca.
+              </p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-8 text-justify tracking-wide"
-        >
-          Nuestro enfoque proactivo previene problemas antes de que ocurran,
-          asegurando un funcionamiento fluido y una experiencia consistente para
-          los usuarios. Con nuestro soporte, puedes concentrarte en hacer crecer
-          tu negocio, sabiendo que tu sitio está en buenas manos.
-        </motion.p>
+              <p>
+                Implementamos tecnologías actuales para ofrecer velocidad, seguridad, diseño responsive y una navegación intuitiva en móviles, tabletas y computadoras. Nuestro enfoque mejora la experiencia del usuario, fortalece la presencia digital y favorece la conversión de visitantes en clientes.
+              </p>
+            </div>
+          </motion.div>
 
-        {/* BOTÓN ACTUALIZADO */}
-     <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Mantenimiento%20y%20Soporte"
-target="_blank"
-rel="noopener noreferrer"
->
+          {/* Imagen descriptiva */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+          >
+            <div className="relative h-full min-h-[320px] md:min-h-[380px] overflow-hidden rounded-2xl">
+              <img
+                src="https://i.postimg.cc/gc81zB8N/Desarrollo-de-un-sitio-web-Como-es-el-proceso.jpg"
+                alt="Desarrollo Web Personalizado"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-70" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-<button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition mx-auto block">
+      {/* ====================== SECCIÓN DE MANTENIMIENTO Y SOPORTE ====================== */}
+      <section className="relative overflow-hidden bg-black text-white py-14 md:py-20 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl" />
 
-CONTÁCTANOS
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Imagen de Mantenimiento y Soporte */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.45)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_24px_75px_rgba(6,182,212,0.14)]"
+          >
+            <div className="relative h-full min-h-[320px] md:min-h-[380px] overflow-hidden rounded-2xl">
+              <img
+                src="https://i.postimg.cc/1XVFSqfj/soporte-web-agradable.jpg"
+                alt="Mantenimiento y Soporte"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+            </div>
+          </motion.div>
 
-</button>
+          {/* Texto de Mantenimiento y Soporte */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-6 md:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.45)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_24px_75px_rgba(6,182,212,0.14)]"
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-6 text-center tracking-wide">
+              Mantenimiento y Soporte
+            </h2>
 
-</a>
+            <div className="space-y-4 text-white/85 text-[15px] md:text-base leading-7 text-left">
+              <p>
+                Brindamos mantenimiento continuo y soporte técnico para que tu sitio web se mantenga actualizado, seguro y estable. Gestionamos mejoras, copias de seguridad, revisión de funcionamiento y monitoreo preventivo para proteger tu plataforma.
+              </p>
 
-</div>
-
-</div>
-</section>
+              <p>
+                Nuestro enfoque proactivo permite detectar incidencias antes de que afecten la experiencia del usuario. Atendemos los requerimientos técnicos con orden y rapidez, reduciendo interrupciones y asegurando que tu negocio mantenga una presencia digital confiable.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ====================== SECCIÓN DE DISEÑO UX/UI ====================== */}
-  <section className="bg-white py-16 px-4 md:px-8">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      {/* Texto Descriptivo UX/UI */}
-      <div className="text-gray-800 max-w-3xl mx-auto text-justify">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
-        >
-          Diseño UX/UI
-        </motion.h2>
+      <section className="relative overflow-hidden bg-white py-14 md:py-20 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-200/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-blue-200/20 blur-3xl" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-        >
-          Desarrollamos interfaces intuitivas y visualmente atractivas que
-          optimizan la experiencia del usuario. Nuestro enfoque en diseño UX/UI
-          equilibra estética, funcionalidad y facilidad de uso. Mediante
-          investigaciones y pruebas con usuarios, perfeccionamos cada elemento de
-          la interfaz para garantizar una navegación fluida y sin obstáculos. Una
-          excelente UX/UI no solo fideliza a los visitantes, sino que también
-          mejora la satisfacción del cliente y aumenta las tasas de conversión.
-        </motion.p>
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Texto Descriptivo UX/UI */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-500 mb-6 text-center tracking-wide">
+              Diseño UX/UI
+            </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed text-justify tracking-wide"
-        >
-          Prestamos especial atención a detalles como la velocidad de carga y la
-          estructura de la información, creando un entorno digital que proyecta
-          profesionalismo y cuidado al cliente. Nuestra misión es transformar cada
-          visita en una experiencia positiva que no solo impulse la interacción,
-          sino que también motive a los usuarios a regresar.
-        </motion.p>
-      </div>
+            <div className="space-y-4 text-slate-700 text-[15px] md:text-base leading-7 text-left">
+              <p>
+                Creamos interfaces intuitivas, modernas y visualmente atractivas que facilitan la interacción del usuario. Nuestro diseño combina estética, funcionalidad y claridad para que cada sección del sitio tenga un propósito definido.
+              </p>
 
-      {/* Imagen Descriptiva UX/UI */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex justify-center lg:justify-end"
-      >
-        <img
-          src="https://i.postimg.cc/9FTZ0KBg/2149749873-1.jpg"
-          alt="Diseño UX/UI"
-          className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-        />
-      </motion.div>
+              <p>
+                Organizamos la información de forma estratégica, cuidando detalles como navegación, estructura, velocidad y accesibilidad. Así logramos una experiencia profesional, fluida y orientada a generar confianza, satisfacción y mejores resultados comerciales.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Imagen Descriptiva UX/UI */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+          >
+            <div className="relative h-full min-h-[320px] md:min-h-[380px] overflow-hidden rounded-2xl">
+              <img
+                src="https://i.postimg.cc/9FTZ0KBg/2149749873-1.jpg"
+                alt="Diseño UX/UI"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-70" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ====================== SECCIÓN DE INTEGRACIÓN DE FUNCIONALIDADES ====================== */}
+      <section className="relative overflow-hidden bg-black text-white py-14 md:py-20 px-4 md:px-8">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          {/* Imagen de Integración */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.45)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_24px_75px_rgba(6,182,212,0.14)]"
+          >
+            <div className="relative h-full min-h-[320px] md:min-h-[380px] overflow-hidden rounded-2xl">
+              <img
+                src="https://i.postimg.cc/zvwDZCn7/Ventajas-de-la-Integracion-de-Sistemas-y-Datos-scaled-1-2048x1018.webp"
+                alt="Integración de Funcionalidades"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+            </div>
+          </motion.div>
+
+          {/* Texto de Integración */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+            whileHover={{ y: -6 }}
+            className="group h-full rounded-3xl border border-white/10 bg-neutral-950 p-6 md:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.45)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_24px_75px_rgba(6,182,212,0.14)]"
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-6 text-center tracking-wide">
+              Integración de Funcionalidades
+            </h2>
+
+            <div className="space-y-4 text-white/85 text-[15px] md:text-base leading-7 text-left">
+              <p>
+                Integramos funcionalidades que optimizan la operación de tu negocio, como formularios de contacto, chatbots, gestores de contenido, CRM y herramientas de automatización. Cada solución se adapta a tus procesos y objetivos digitales.
+              </p>
+
+              <p>
+                Priorizamos compatibilidad, rendimiento y facilidad de uso en todos los dispositivos. Con estas integraciones, tu sitio web deja de ser solo una vitrina y se convierte en una herramienta activa para mejorar la gestión, la atención y el crecimiento de tu empresa.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Carrusel de clientes al final */}
+      <TestimoniosCarousel />
     </div>
-  </section>
+  );
+};
 
-
-        {/* ====================== SECCIÓN DE INTEGRACIÓN DE FUNCIONALIDADES ====================== */}
-  <section className="bg-gray-50 py-16 px-4 md:px-8">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      {/* Imagen de Integración */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex justify-center lg:justify-start"
-      >
-        <img
-          src="https://i.postimg.cc/zvwDZCn7/Ventajas-de-la-Integracion-de-Sistemas-y-Datos-scaled-1-2048x1018.webp"
-          alt="Integración de Funcionalidades"
-          className="rounded-lg shadow-xl w-full max-w-lg h-auto"
-        />
-      </motion.div>
-
-      {/* Texto de Integración */}
-      <div className="text-gray-800 max-w-3xl mx-auto text-justify">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-cyan-500 mb-6 text-center"
-        >
-          Integración de Funcionalidades
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-6 text-justify tracking-wide"
-        >
-          Incorporamos las funcionalidades necesarias para optimizar los procesos
-          de tu negocio. Desde formularios de contacto y chatbots hasta sistemas
-          de gestión de contenido y CRM, nuestras soluciones están diseñadas
-          para aumentar la eficiencia operativa. Garantizamos que todas las
-          integraciones sean compatibles con dispositivos móviles, mejorando el
-          acceso y la usabilidad.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-lg md:text-base leading-relaxed mb-8 text-justify tracking-wide"
-        >
-          Con nuestras soluciones, no solo simplificas la gestión, sino que también
-          ofreces una experiencia más completa y satisfactoria a tus usuarios.
-          Además, personalizamos cada funcionalidad para que se alinee
-          perfectamente con tus necesidades específicas, asegurando que tu sitio
-          web no solo sea una herramienta, sino una extensión efectiva de tu
-          estrategia de negocio. Esto te permite concentrarte en lo más importante:
-          expandir y mejorar tu empresa.
-        </motion.p>
-
-        {/* BOTÓN ACTUALIZADO */}
-       <a
-  href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Integración%20de%20Funcionalidades"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <motion.button
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.6 }}
-    viewport={{ once: true, amount: 0.3 }}
-    className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 mx-auto block"
-  >
-    CONTACTAR
-  </motion.button>
-</a>
-      </div>
-    </div>
-  </section>
-
-  
-  {/* Carrusel de clientes al final */}
-<TestimoniosCarousel />
-      </div>
-    );
-  };
-
-  export default DesarrolloWebBanner;
+export default DesarrolloWebBanner;

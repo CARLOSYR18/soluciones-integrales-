@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -254,15 +255,15 @@ const Convenios = () => {
   >
     <motion.div
       className="bg-gradient-to-br from-black/75 to-black/90 
-                 px-12 py-10 rounded-2xl border-2 border-cyan-500 text-center 
-                 w-[480px] shadow-2xl hover:shadow-cyan-500/60 
+                 px-12 py-10 rounded-2xl border border-white/70 text-center 
+                 w-[480px] shadow-2xl hover:shadow-white/25 
                  transition-all duration-300 group relative overflow-hidden
                  max-[768px]:w-[90%] max-[768px]:px-8 max-[768px]:py-8"
-      whileHover={{ scale: 1.05, borderColor: "rgb(34, 211, 238)" }}
+      whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.95)" }}
     >
       {/* Fondo animado */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/10 
+        className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 
                    rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
         transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -277,14 +278,14 @@ const Convenios = () => {
           className="text-5xl font-black text-white mb-4 tracking-tight
                      max-[1024px]:text-4xl max-[768px]:text-3xl max-[480px]:text-2xl"
         >
-          <span className="text-cyan-400 drop-shadow-lg">Convenios</span>
+          <span className="text-white drop-shadow-lg">Convenios</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-cyan-300 text-lg font-semibold mb-6
+          className="text-white text-lg font-semibold mb-6
                      max-[768px]:text-base max-[480px]:text-sm"
         >
           Prácticas - Profesionales
@@ -353,56 +354,53 @@ const Convenios = () => {
   <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
 
   <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-10 md:py-14">
-    <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center">
-      {/* ================= TEXTO ================= */}
-      <div className="order-1 flex flex-col">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
-            CONVENIOS
-          </div>
-        </motion.div>
+    {/* Badge centrado entre ambos cards */}
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="mb-8 flex justify-center"
+    >
+      <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 shadow-sm">
+        <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+        CONVENIOS
+      </div>
+    </motion.div>
 
-        {/* TÍTULO */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mt-5 text-center text-[27px] sm:text-[32px] md:text-[38px] lg:text-[41px] font-extrabold text-cyan-500 leading-[1.15] tracking-wide"
-        >
-          ¿Por qué es importante <br className="hidden sm:block" />
-          el convenio?
-        </motion.h3>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+      {/* ================= CARD TEXTO ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -35 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        whileHover={{ y: -8, scale: 1.01 }}
+        className="group flex h-full"
+      >
+        <div className="flex h-full min-h-[390px] w-full flex-col justify-center rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 md:p-10 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:border-cyan-400/60 group-hover:shadow-[0_22px_70px_rgba(6,182,212,0.18)]">
+          <motion.h3
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-center text-[26px] sm:text-[31px] md:text-[36px] font-extrabold text-cyan-500 leading-[1.15] tracking-wide"
+          >
+            ¿Por qué es importante <br className="hidden sm:block" />
+            el convenio?
+          </motion.h3>
 
-        {/* TEXTO */}
-        <motion.div
-          initial={{ opacity: 0, x: -35 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 md:p-7 shadow-[0_14px_45px_rgba(15,23,42,0.08)]"
-        >
-          <p className="text-[14px] sm:text-[15px] md:text-base text-slate-700 leading-7 text-justify">
-            Nuestra empresa tiene convenios con diversas instituciones públicas y
-            privadas para la formación de nuevos profesionales. Nuestra propuesta
-            de trabajo estratégico e integrado es ofrecer a través de diferentes
-            áreas de servicios, en donde nuestros equipos de profesionales se
-            encargan de transmitir todos los conocimientos necesarios para
-            preparar a los estudiantes o egresados de una carrera como
-            profesionales competentes.
+          <p className="mt-6 text-[14px] sm:text-[15px] md:text-base text-slate-700 leading-7 text-justify">
+            Nuestra empresa mantiene convenios con diversas instituciones públicas y privadas para impulsar la formación de nuevos profesionales mediante experiencias reales de aprendizaje, acompañamiento técnico y participación en proyectos vinculados al entorno laboral.
+          </p>
+
+          <p className="mt-4 text-[14px] sm:text-[15px] md:text-base text-slate-700 leading-7 text-justify">
+            A través de un trabajo estratégico e integrado, nuestros equipos comparten conocimientos especializados para fortalecer las competencias de estudiantes y egresados, preparándolos como profesionales competentes, responsables y orientados a resultados.
           </p>
 
           {/* Píldoras */}
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {["Prácticas profesionales", "Formación aplicada", "Vinculación laboral", "Formación aplicada"].map(
+            {["Prácticas profesionales", "Formación aplicada", "Vinculación laboral", "Mentoría especializada"].map(
               (t, i) => (
                 <motion.span
                   key={`${t}-${i}`}
@@ -410,51 +408,34 @@ const Convenios = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: 0.07 * i }}
                   viewport={{ once: true }}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 transition-all duration-300 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-md"
                 >
                   {t}
                 </motion.span>
               )
             )}
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        {/* RECUADRO AZUL */}
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75 }}
-          viewport={{ once: true }}
-          className="mt-5 rounded-2xl bg-cyan-500 px-5 sm:px-6 py-5 text-white shadow-[0_16px_45px_rgba(6,182,212,0.25)]"
-        >
-          <h4 className="text-base sm:text-lg font-extrabold">
-            Conectamos talento con experiencia real
-          </h4>
-
-          <p className="mt-2 text-sm leading-6 text-white/95">
-            Impulsamos la empleabilidad con oportunidades, mentoría y formación
-            en entornos profesionales.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* ================= IMAGEN ================= */}
+      {/* ================= CARD IMAGEN ================= */}
       <motion.div
         initial={{ opacity: 0, x: 45 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.85, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="order-2 w-full"
+        whileHover={{ y: -8, scale: 1.01 }}
+        className="group flex h-full"
       >
-        <div className="relative rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)]">
+        <div className="relative flex h-full min-h-[390px] w-full items-center rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 group-hover:border-cyan-400/60 group-hover:shadow-[0_22px_70px_rgba(6,182,212,0.18)]">
           <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl" />
           <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-blue-300/20 blur-3xl" />
 
-          <div className="relative overflow-hidden rounded-2xl shadow-lg">
+          <div className="relative h-full min-h-[360px] w-full overflow-hidden rounded-2xl shadow-lg">
             <img
               src="https://i.postimg.cc/0QG1nHLt/image.png"
               alt="Convenios"
-              className="h-[300px] sm:h-[360px] lg:h-[390px] w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
         </div>
@@ -632,7 +613,7 @@ const Convenios = () => {
 
       <h2 className="mt-5 text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">
         Convenios con{" "}
-        <span className="text-cyan-500">instituciones</span>
+        <span className="text-cyan-500">Instituciones</span>
       </h2>
 
       <p className="mt-4 text-slate-600 max-w-3xl mx-auto leading-relaxed">

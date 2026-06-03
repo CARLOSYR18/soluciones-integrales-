@@ -1,3 +1,4 @@
+
 import React from "react";
 import quienes from '../assets/quienes.jpg';
 import { FaChartLine, FaEye } from "react-icons/fa";
@@ -144,75 +145,90 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   {/* Capa oscura encima de la imagen */}
   <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-  {/* Contenido centrado en móvil y alineado a la derecha en pantallas grandes */}
-  <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end px-4 sm:px-8 md:pr-12 text-center md:text-right">
-    <div className="bg-black bg-opacity-40 px-6 sm:px-8 md:px-12 py-8 rounded-lg border-2 border-gray-300 text-justify max-w-[90%] sm:max-w-md md:w-[450px]">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-3">
+  {/* Contenido centrado en móvil y ubicado abajo a la derecha en pantallas grandes */}
+  <div className="absolute inset-0 flex flex-col justify-center items-center md:justify-end md:items-end px-4 sm:px-8 md:pr-16 lg:pr-24 pb-8 md:pb-14 text-center">
+    <div className="hero-glass-card text-center max-w-[94%] sm:max-w-[500px] md:w-[500px]">
+      <h2 className="hero-glass-title">
         ¿Quiénes Somos?
       </h2>
-      <p className="text-white text-sm sm:text-base mb-6">
+      <p className="hero-glass-subtitle">
         Destino e Innovación
       </p>
-      <Link to="/DesarrolloDeSitiosWeb">
-  <button className="cta cta-large">
-    <span className="span">
-      Descubre
-      <br />
-      nuestros servicios
-    </span>
+      <Link to="/DesarrolloDeSitiosWeb" className="inline-flex">
+        <button className="cta cta-large">
+          <span className="span">
+            Descubre
+            <br />
+            nuestros servicios
+          </span>
 
-    <span className="second">
-      <svg
-        width="50px"
-        height="20px"
-        viewBox="0 0 66 43"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g fill="none" fillRule="evenodd">
-          <path
-            className="one"
-            d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
-            fill="#fff"
-          />
-          <path
-            className="two"
-            d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
-            fill="#fff"
-          />
-        </g>
-      </svg>
-    </span>
-  </button>
-</Link>
-
-</div>   {/* cierra el cuadro negro */}
+          <span className="second">
+            <svg
+              width="58px"
+              height="24px"
+              viewBox="0 0 86 43"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g fill="none" fillRule="evenodd">
+                <path
+                  className="three"
+                  d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
+                  fill="#fff"
+                />
+                <path
+                  className="two"
+                  d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+                  fill="#fff"
+                />
+                <path
+                  className="one"
+                  d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
+                  fill="#fff"
+                />
+              </g>
+            </svg>
+          </span>
+        </button>
+      </Link>
+    </div>   {/* cierra el cuadro negro */}
 </div>   {/* cierra el contenedor del hero */}
 </div>   {/* cierra el hero principal */}
      
         
 
-{/* ====================== QUIENES SOMOS - SECCIÓN LIMPIA ====================== */}
+{/* ====================== QUIÉNES SOMOS - SECCIÓN MEJORADA ====================== */}
 <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
-  <div className="mx-auto max-w-6xl px-4 py-16">
-    <div className="grid lg:grid-cols-2 gap-14 items-center">
+  <div className="mx-auto max-w-5xl px-4 py-10 md:py-12">
+
+    {/* Etiqueta centrada entre los cards de imagen y texto */}
+    <div className="mb-6 flex justify-center">
+      <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-[10px] md:text-[11px] font-semibold text-slate-600 shadow-sm whitespace-nowrap">
+        <span className="h-2 w-2 rounded-full bg-cyan-500"></span>
+        INNOVACIÓN Y TECNOLOGÍA PARA TU CRECIMIENTO
+      </div>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
 
       {/* ================= IMÁGENES ================= */}
-      <div className="flex flex-col gap-8">
+      <div className="grid grid-cols-1 gap-6 h-full">
 
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
+          className="group bg-white rounded-2xl shadow-xl border border-slate-200 p-4 h-[270px] md:h-[285px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-cyan-400"
         >
-          <img
-            src={hero2}
-            alt="Automatización"
-            className="w-full rounded-xl object-cover"
-          />
-          <div className="mt-4 text-center">
-            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm">
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src={hero2}
+              alt="Automatización de procesos tecnológicos"
+              className="w-full h-[195px] md:h-[205px] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="mt-2 flex justify-center">
+            <span className="inline-flex items-center justify-center bg-slate-100 text-slate-700 text-sm px-6 py-2 rounded-full shadow-sm min-w-[230px] text-center transition-all duration-300 group-hover:bg-cyan-500 group-hover:text-white group-hover:shadow-md">
               Automatización • ITSM • ITIL
             </span>
           </div>
@@ -223,15 +239,17 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6"
+          className="group bg-white rounded-2xl shadow-xl border border-slate-200 p-4 h-[270px] md:h-[285px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-cyan-400"
         >
-          <img
-            src={hero3}
-            alt="Innovación"
-            className="w-full rounded-xl object-cover"
-          />
-          <div className="mt-4 text-center">
-            <span className="inline-block bg-slate-100 text-slate-700 text-sm px-5 py-2 rounded-full shadow-sm">
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src={hero3}
+              alt="Innovación tecnológica en procesos"
+              className="w-full h-[195px] md:h-[205px] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="mt-2 flex justify-center">
+            <span className="inline-flex items-center justify-center bg-slate-100 text-slate-700 text-sm px-6 py-2 rounded-full shadow-sm min-w-[230px] text-center transition-all duration-300 group-hover:bg-cyan-500 group-hover:text-white group-hover:shadow-md">
               Innovación en procesos
             </span>
           </div>
@@ -245,53 +263,44 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="flex flex-col"
+        className="grid grid-cols-1 gap-6 h-full"
       >
 
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold text-slate-600 shadow-sm w-fit">
-          <span className="h-2 w-2 rounded-full bg-cyan-500"></span>
-          INNOVACIÓN Y TECNOLOGÍA PARA TU CRECIMIENTO
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-5 md:p-7 h-[270px] md:h-[285px] flex flex-col justify-start pt-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-cyan-400 overflow-hidden">
+          <h2 className="text-3xl md:text-4xl font-bold text-cyan-500 text-center leading-tight">
+            Quiénes Somos
+          </h2>
+
+          <div className="mt-3 space-y-2 text-left">
+            <p className="text-slate-700 leading-relaxed text-[13px] md:text-[14px]">
+              Somos una empresa especializada en soluciones tecnológicas orientadas a automatizar, optimizar y mejorar de forma continua los procesos empresariales, integrando servicios basados en ITSM, ITIL e innovación aplicada.
+            </p>
+
+            <p className="text-slate-700 leading-relaxed text-[13px] md:text-[14px]">
+            </p>
+          </div>
         </div>
 
-        {/* Título */}
-        <h2 className="mt-5 text-3xl md:text-4xl font-bold text-cyan-500">
-          Quiénes Somos
-        </h2>
-
-        {/* Card de texto */}
-        <div className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-xl p-8">
-
-          <p className="text-slate-700 leading-relaxed text-[15px] md:text-base">
-            Somos una empresa de tecnología especializada en automatizar procesos de
-            negocio para mejorar la eficiencia y resultados en diversas áreas de
-            producción. Nos enfocamos en la Gestión de Servicios de TI, ofreciendo
-            soluciones basadas en ITSM e ITIL.
-          </p>
-
-          <p className="mt-6 text-slate-700 leading-relaxed text-[15px] md:text-base">
-            Contamos con un equipo de profesionales que optimizan tanto el tiempo
-            como los recursos económicos de nuestros clientes, garantizando un
-            servicio de alta calidad.
-          </p>
-
-        </div>
-
-        {/* Recuadro azul */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-8 bg-cyan-500 rounded-2xl p-6 text-white shadow-lg"
+          className="rounded-2xl p-5 md:p-7 h-[270px] md:h-[285px] text-white shadow-xl bg-gradient-to-r from-cyan-500 to-cyan-600 flex flex-col justify-start pt-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
         >
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-xl md:text-2xl font-bold text-white text-center leading-snug">
             Impulsamos la transformación digital de tu empresa
           </h3>
-          <p className="text-sm mt-2 opacity-90">
-            Implementamos soluciones tecnológicas alineadas a tus objetivos estratégicos,
-            optimizando procesos y garantizando resultados medibles.
-          </p>
+
+          <div className="mt-3 space-y-2 text-left">
+            <p className="text-[13px] md:text-[14px] text-white/95 leading-relaxed">
+              Implementamos soluciones tecnológicas alineadas a tus objetivos estratégicos, fortaleciendo la productividad, la seguridad y la gestión diaria de tus procesos.
+            </p>
+
+            <p className="text-[13px] md:text-[14px] text-white/95 leading-relaxed">
+              Integramos análisis, automatización, soporte y mejora continua para que cada proyecto avance con orden, resultados medibles y crecimiento sostenible.
+            </p>
+          </div>
         </motion.div>
 
       </motion.div>
@@ -616,49 +625,59 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
 </section>
 
       {/* ====================== OBJETIVOS ====================== */}
-<section className="w-full bg-black py-16 flex justify-center items-center">
-  <div className="max-w-3xl w-full text-center px-4">
-    <h2 className="text-white text-3xl font-bold mb-6">OBJETIVOS</h2>
+<section className="w-full bg-black py-16 md:py-20 flex justify-center items-center">
+  <div className="max-w-4xl w-full text-center px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.25 }}
+      className="rounded-3xl border border-white/15 bg-white/5 px-6 md:px-10 py-10 shadow-2xl"
+    >
+      <h2 className="text-white text-3xl md:text-4xl font-bold mb-6">OBJETIVOS</h2>
 
-    <p className="text-white mb-8">
-      La empresa se centra en reforzar la gestión de servicios de TI,
-      desarrollando soluciones que respondan a las necesidades de los
-      clientes mediante el uso de tecnología avanzada. Buscamos mejorar
-      nuestras operaciones y proyectos, fortaleciendo nuestras habilidades
-      para enfrentar los retos digitales actuales, promoviendo la seguridad
-      y la productividad.
-    </p>
+      <p className="text-white/90 mb-9 text-[15px] md:text-base leading-relaxed text-center md:text-justify">
+        La empresa se centra en reforzar la gestión de servicios de TI, desarrollando soluciones que respondan
+        a las necesidades de los clientes mediante el uso de tecnología avanzada. Buscamos mejorar nuestras
+        operaciones y proyectos, fortaleciendo nuestras capacidades para enfrentar los retos digitales actuales,
+        promoviendo la seguridad, la productividad y la mejora continua.
+      </p>
 
-    <div className="flex justify-center">
-      <Link to="/contacto">
-        <button className="cta cta-large">
-          <span className="span">CONTACTANOS</span>
+      <div className="flex justify-center">
+        <Link to="/contacto" className="inline-flex">
+          <button className="cta cta-large cta-contact">
+            <span className="span">CONTÁCTANOS</span>
 
-          <span className="second">
-            <svg
-              width="50px"
-              height="20px"
-              viewBox="0 0 66 43"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g fill="none" fillRule="evenodd">
-                <path
-                  className="one"
-                  d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
-                  fill="#fff"
-                />
-                <path
-                  className="two"
-                  d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
-                  fill="#fff"
-                />
-              </g>
-            </svg>
-          </span>
-        </button>
-      </Link>
-    </div>
-
+            <span className="second">
+              <svg
+                width="58px"
+                height="24px"
+                viewBox="0 0 86 43"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g fill="none" fillRule="evenodd">
+                  <path
+                    className="three"
+                    d="M0.15 3.89L3.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L4.67 42.86a.5.5 0 01-.7 0L0.15 39.1a.5.5 0 01.01-.71L16.99 21.86a.5.5 0 000-.71L0.15 3.9z"
+                    fill="#fff"
+                  />
+                  <path
+                    className="two"
+                    d="M20.15 3.89L23.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L24.67 42.86a.5.5 0 01-.7 0L20.15 39.1a.5.5 0 01.01-.71L36.99 21.86a.5.5 0 000-.71L20.15 3.9z"
+                    fill="#fff"
+                  />
+                  <path
+                    className="one"
+                    d="M40.15 3.89L43.97.14c.2-.19.51-.19.7 0l21.01 20.65c.4.39.4 1.02 0 1.41L44.67 42.86a.5.5 0 01-.7 0L40.15 39.1a.5.5 0 01.01-.71L56.99 21.86a.5.5 0 000-.71L40.15 3.9z"
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
+            </span>
+          </button>
+        </Link>
+      </div>
+    </motion.div>
   </div>
 </section>
      {/* ====================== NUESTROS VALORES (FLIP PRO) ====================== */}
@@ -1192,6 +1211,48 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   `}</style>
 </section>
       <style>{`
+
+        .hero-glass-card {
+          background: rgba(0,0,0,0.48);
+          padding: 38px 28px;
+          border-radius: 14px;
+          border: 2px solid rgba(255,255,255,0.82);
+          box-shadow: 0 20px 55px rgba(0,0,0,0.35);
+          backdrop-filter: blur(5px);
+          transition: transform 0.55s ease, box-shadow 0.55s ease, border-color 0.55s ease, background 0.55s ease;
+        }
+
+        .hero-glass-card:hover {
+          transform: translateY(-6px) scale(1.015);
+          border-color: #ffffff;
+          background: rgba(0,0,0,0.62);
+          box-shadow: 0 28px 70px rgba(0,0,0,0.55), 0 0 28px rgba(255,255,255,0.16);
+        }
+
+        .hero-glass-title {
+          color: #fff;
+          font-size: clamp(30px, 4vw, 44px);
+          line-height: 1.1;
+          font-weight: 900;
+          margin-bottom: 18px;
+          text-align: center;
+          white-space: nowrap;
+          text-shadow: 0 8px 18px rgba(0,0,0,0.45);
+        }
+
+        .hero-glass-subtitle {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 22px;
+          text-align: center !important;
+        }
+
+        @media (max-width: 480px) {
+          .hero-glass-card { padding: 30px 18px; }
+          .hero-glass-title { font-size: 28px; }
+          .cta.cta-large { min-width: 245px; padding: 12px 26px; font-size: 16px; }
+        }
         .custom-card {
           position: relative;
           width: 100%;
@@ -1295,7 +1356,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
 
         .cta:hover .second {
           transition: 0.5s;
-          margin-right: 45px;
+          margin-right: 48px;
         }
 
         .span {
@@ -1304,23 +1365,30 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
         }
 
         .second {
-          width: 20px;
-          margin-left: 30px;
+          width: 58px;
+          margin-left: 28px;
           position: relative;
           top: 12%;
+          transform: skewX(15deg);
         }
 
         .one {
           transition: 0.4s;
-          transform: translateX(-60%);
+          transform: translateX(-70%);
         }
 
         .two {
           transition: 0.5s;
-          transform: translateX(-30%);
+          transform: translateX(-45%);
+        }
+
+        .three {
+          transition: 0.6s;
+          transform: translateX(-20%);
         }
 
         .cta:hover .three {
+          transform: translateX(0%);
           animation: color_anim 1s infinite 0.2s;
         }
 
@@ -1345,12 +1413,9 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
             fill: #fff;
           }
         }
-          /* ================= TEXTO JUSTIFICADO GLOBAL ================= */
+          /* ================= TIPOGRAFÍA GENERAL ================= */
 section p,
-section span,
-section li,
-section a {
-  text-align: justify;
+section li {
   font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.7;
   letter-spacing: 0.2px;

@@ -1,9 +1,6 @@
-import React from 'react';
-import fondoN from '../assets/fondoN.jpg';
-import { Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css/autoplay';
-import 'swiper/css';
-import 'swiper/css/pagination';
+
+import React from "react";
+import fondoN from "../assets/fondoN.jpg";
 import ScrollButton from "../components/ScrollButton";
 import TextType from "../components/animacion";
 import { motion } from "framer-motion";
@@ -12,23 +9,25 @@ import "react-multi-carousel/lib/styles.css";
 
 const testimonios = [
   {
-    nombre: 'Maria Torres',
-    imagen: 'https://randomuser.me/api/portraits/women/44.jpg',
-    opinion: 'Muy profesionalismo y rapidez nos impresionaron. El nuevo diseño ha atraído más clientes.',
+    nombre: "Maria Torres",
+    imagen: "https://randomuser.me/api/portraits/women/44.jpg",
+    opinion:
+      "El servicio fue rápido y profesional. La facturación electrónica nos ayudó a ordenar mejor nuestros procesos.",
   },
   {
-    nombre: 'Carlos Gómez',
-    imagen: 'https://randomuser.me/api/portraits/men/32.jpg',
-    opinion: 'La integración fue muy sencilla. En pocos días ya estábamos facturando sin problemas.',
+    nombre: "Carlos Gómez",
+    imagen: "https://randomuser.me/api/portraits/men/32.jpg",
+    opinion:
+      "La integración fue sencilla. En pocos días ya estábamos emitiendo comprobantes de forma segura y sin complicaciones.",
   },
   {
-    nombre: 'Laura Ramírez',
-    imagen: 'https://randomuser.me/api/portraits/women/55.jpg',
-    opinion: 'El soporte técnico es excelente. Siempre disponibles para ayudarnos cuando lo necesitamos.',
+    nombre: "Laura Ramírez",
+    imagen: "https://randomuser.me/api/portraits/women/55.jpg",
+    opinion:
+      "El soporte técnico fue excelente. Siempre estuvieron disponibles para orientarnos durante la implementación.",
   },
 ];
 
-// Variantes de animación
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
@@ -44,19 +43,148 @@ const fadeInRight = {
   visible: { opacity: 1, x: 0 },
 };
 
+interface ContentSectionProps {
+  title: string;
+  paragraphs: string[];
+  image: string;
+  imageAlt: string;
+  imagePosition?: "left" | "right";
+  dark?: boolean;
+  pills?: string[];
+}
+
+const ContentSection: React.FC<ContentSectionProps> = ({
+  title,
+  paragraphs,
+  image,
+  imageAlt,
+  imagePosition = "right",
+  dark = false,
+  pills = [],
+}) => {
+  const imageCard = (
+    <motion.div
+      className="w-full"
+      variants={imagePosition === "left" ? fadeInLeft : fadeInRight}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div
+        className={[
+          "group relative h-full overflow-hidden rounded-3xl p-3 transition-all duration-500",
+          "hover:-translate-y-2",
+          dark
+            ? "border border-white/10 bg-white/5 shadow-[0_18px_55px_rgba(6,182,212,0.12)] hover:border-cyan-500/50 hover:shadow-[0_22px_70px_rgba(6,182,212,0.22)]"
+            : "border border-slate-200 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.10)] hover:border-cyan-300 hover:shadow-[0_22px_70px_rgba(15,23,42,0.16)]",
+        ].join(" ")}
+      >
+        <div className="absolute -top-16 -left-16 h-44 w-44 rounded-full bg-cyan-400/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="relative h-[260px] sm:h-[330px] lg:h-[360px] overflow-hidden rounded-2xl">
+          <img
+            src={image}
+            alt={imageAlt}
+            className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/10" />
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const textCard = (
+    <motion.div
+      className="w-full"
+      variants={imagePosition === "left" ? fadeInRight : fadeInLeft}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div
+        className={[
+          "group relative h-full rounded-3xl p-7 sm:p-8 lg:p-10 transition-all duration-500",
+          "hover:-translate-y-2",
+          dark
+            ? "border border-white/10 bg-white/5 text-white shadow-[0_18px_55px_rgba(6,182,212,0.12)] hover:border-cyan-500/50 hover:shadow-[0_22px_70px_rgba(6,182,212,0.22)]"
+            : "border border-slate-200 bg-white text-slate-800 shadow-[0_18px_55px_rgba(15,23,42,0.10)] hover:border-cyan-300 hover:shadow-[0_22px_70px_rgba(15,23,42,0.16)]",
+        ].join(" ")}
+      >
+        <div className="absolute right-6 top-6 h-16 w-16 rounded-full bg-cyan-400/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+        <h2 className="relative text-center text-2xl sm:text-3xl md:text-4xl font-extrabold text-cyan-500 leading-tight">
+          {title}
+        </h2>
+
+        <div className="mt-6 space-y-4">
+          {paragraphs.map((paragraph, index) => (
+            <p
+              key={index}
+              className={[
+                "text-sm sm:text-base leading-7 text-justify",
+                dark ? "text-slate-200" : "text-slate-700",
+              ].join(" ")}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        {pills.length > 0 && (
+          <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {pills.map((pill, index) => (
+              <span
+                key={`${pill}-${index}`}
+                className={[
+                  "inline-flex items-center justify-center rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-300",
+                  "hover:-translate-y-1",
+                  dark
+                    ? "border border-white/15 bg-white/5 text-slate-100 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white"
+                    : "border border-slate-200 bg-slate-50 text-slate-700 hover:border-cyan-500 hover:bg-cyan-500 hover:text-white",
+                ].join(" ")}
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <section className={dark ? "bg-black py-16 px-4 md:px-8" : "bg-white py-16 px-4 md:px-8"}>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
+        {imagePosition === "left" ? (
+          <>
+            {imageCard}
+            {textCard}
+          </>
+        ) : (
+          <>
+            {textCard}
+            {imageCard}
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
+
 const FacturacionElectronica: React.FC = () => {
   return (
     <div className="px-0 py-0 max-w-full font-sans">
-
       {/* Banner Superior */}
       <div
         className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${fondoN})` }}
       >
-          <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative text-4xl md:text-5xl font-bold text-center z-10">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <h1 className="relative text-4xl md:text-5xl font-bold text-center text-cyan-500 z-10">
           <TextType
-            text={['Facturación Electrónica']}
+            text={["Facturación Electrónica"]}
             typingSpeed={70}
             pauseDuration={2000}
             loop={false}
@@ -65,213 +193,66 @@ const FacturacionElectronica: React.FC = () => {
         </h1>
       </div>
 
-      {/* Sección 1 */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Automatiza tu Proceso de Facturación
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nuestro servicio de Facturación Electrónica te permite automatizar todo el proceso de facturación, desde la emisión hasta el almacenamiento de documentos, simplificando así la gestión financiera de tu empresa. Este sistema no solo optimiza el tiempo y reduce errores, sino que también garantiza la seguridad y confidencialidad de la información.
-            </p>
-            <p className="leading-relaxed text-justify">
-              Con integración directa a SUNAT, nuestro software asegura que todas tus facturas cumplan con las regulaciones fiscales vigentes en Perú, facilitando el cumplimiento de tus obligaciones tributarias. Además, el sistema está diseñado para adaptarse a las necesidades de empresas de diversos tamaños, brindándote flexibilidad y escalabilidad a medida que tu negocio crece.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="md:w-1/2"
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2150062347.jpg"
-              alt="Automatización"
-              className="w-full max-w-[500px] h-auto rounded-lg shadow-md mx-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sección 2 */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-
-          <motion.div
-            className="md:w-1/2 flex flex-col gap-6"
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2148938351.jpg"
-              alt="Integración 1"
-              className="rounded-lg shadow-md w-full max-w-[450px] mx-auto"
-            />
-            <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/personnel-officer-2-450x253-1.jpg"
-              alt="Integración 2"
-              className="rounded-lg shadow-md w-full max-w-[450px] mx-auto"
-            />
-          </motion.div>
-
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Integración Fácil y Rápida
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Nuestro sistema de Facturación Electrónica se integra fácilmente con tus sistemas existentes, facilitando una transición sin problemas. Ya sea que utilices un ERP, un sistema de contabilidad específico o cualquier otra plataforma, nuestra solución se adapta a tus necesidades.
-            </p>
-            <p className="leading-relaxed text-justify mb-6">
-              La integración es rápida y sencilla, permitiéndote comenzar a emitir facturas electrónicas en poco tiempo. Además, ofrecemos soporte técnico para garantizar una implementación exitosa y sin complicaciones.
-            </p>
-
-            <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Facturación%20Electrónica"
-target="_blank"
-rel="noopener noreferrer"
->
-
-<button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-CONTÁCTANOS
-</button>
-
-</a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sección 3 */}
-<section className="bg-neutral-900 py-16 px-6 md:px-16">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-    
-    {/* Texto */}
-    <motion.div
-      className="md:w-1/2 text-white"
-      variants={fadeInLeft}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-    >
-      <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6"> Acceso y Control desde Cualquier Lugar </h2>
-
-      <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
-        Con nuestro software, puedes acceder a tus facturas electrónicas y gestionar tus operaciones 
-        desde cualquier lugar y en cualquier momento, garantizando la seguridad de tus datos. 
-        La plataforma en la nube te permite monitorear y controlar tus facturas en tiempo real 
-        desde cualquier dispositivo: computadora, tablet o smartphone.
-      </p>
-
-      <p className="text-lg md:text-xl leading-relaxed text-gray-300">
-        Esto no solo aumenta la eficiencia, sino que también te brinda la flexibilidad necesaria 
-        para adaptarte rápidamente a las necesidades de tu negocio. Además, las actualizaciones 
-        automáticas aseguran que siempre cuentes con la última tecnología sin complicaciones.
-      </p>
-
-      <div className="separator"></div>
-    </motion.div>
-
-    {/* Imagen */}
-    <motion.div
-      className="md:w-1/2 flex justify-center"
-      variants={fadeInRight}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-    >
-      <img
-        src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/700a3e638490cb4d215f4b94405c40d1.jpg"
-        alt="Acceso remoto"
-        className="w-full max-w-[550px] h-auto rounded-2xl shadow-2xl border-4 border-blue-600"
+      <ContentSection
+        title="Automatiza tu Proceso de Facturación"
+        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2150062347.jpg"
+        imageAlt="Automatización de facturación electrónica"
+        imagePosition="right"
+        dark={false}
+        paragraphs={[
+          "Nuestro servicio de facturación electrónica permite automatizar la emisión, validación y almacenamiento de comprobantes, simplificando la gestión financiera de tu empresa. La solución optimiza tiempos, reduce errores operativos y fortalece la seguridad de la información.",
+          "Con integración directa a SUNAT, el sistema ayuda a cumplir con las obligaciones tributarias vigentes en Perú. Además, se adapta a empresas de distintos tamaños, brindando flexibilidad, control y escalabilidad para acompañar el crecimiento del negocio.",
+        ]}
+        pills={["Emisión electrónica", "Control documental", "Integración SUNAT", "Gestión segura"]}
       />
-    </motion.div>
-  </div>
-</section>
 
-      {/* Sección 4 */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <ContentSection
+        title="Integración Fácil y Rápida"
+        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2148938351.jpg"
+        imageAlt="Integración de sistemas de facturación"
+        imagePosition="left"
+        dark={true}
+        paragraphs={[
+          "Nuestro sistema se integra de forma práctica con plataformas existentes, como ERP, sistemas contables u otras herramientas administrativas. El objetivo es facilitar una transición ordenada, segura y sin interrupciones para las operaciones del negocio.",
+          "La implementación está orientada a que puedas comenzar a emitir comprobantes electrónicos en poco tiempo. También brindamos acompañamiento técnico para asegurar una configuración correcta y una experiencia de uso estable desde el inicio.",
+        ]}
+        pills={["Implementación ágil", "Soporte técnico", "ERP y contabilidad", "Proceso ordenado"]}
+      />
 
-          <motion.div
-            className="md:w-1/2 flex flex-col gap-6"
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/El-nuevo-programa-cooperativo-de-cumplimiento-fiscal-en-Ecuador.jpg"
-              alt="Cumplimiento fiscal"
-              className="rounded-lg shadow-md w-full max-w-[500px] mx-auto"
-            />
-          </motion.div>
+      <ContentSection
+        title="Acceso y Control desde Cualquier Lugar"
+        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/700a3e638490cb4d215f4b94405c40d1.jpg"
+        imageAlt="Acceso remoto a facturación electrónica"
+        imagePosition="right"
+        dark={false}
+        paragraphs={[
+          "Con nuestra plataforma puedes acceder a tus comprobantes electrónicos y gestionar tus operaciones desde cualquier lugar, manteniendo el control de la información en tiempo real. La solución está preparada para funcionar desde computadoras, tablets o smartphones.",
+          "Este enfoque mejora la eficiencia operativa y brinda mayor flexibilidad para responder a las necesidades del negocio. Las actualizaciones automáticas permiten contar siempre con una herramienta moderna, segura y alineada con los procesos actuales.",
+        ]}
+        pills={["Acceso remoto", "Control en tiempo real", "Plataforma segura", "Actualizaciones automáticas"]}
+      />
 
-          <motion.div
-            className="md:w-1/2 text-gray-800"
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-cyan-500 mb-6">
-              Cumplimiento Fiscal Garantizado
-            </h2>
-            <p className="mb-4 leading-relaxed text-justify">
-              Por eso, nuestro software de Facturación Electrónica está meticulosamente diseñado para garantizar que todas tus transacciones sean registradas y reportadas conforme a los estrictos requerimientos de la SUNAT.
-            </p>
-            <p className="leading-relaxed text-justify mb-6">
-              Con actualizaciones automáticas que incorporan los últimos cambios en las normativas fiscales, puedes estar seguro de que siempre cumplirás con la ley sin necesidad de preocuparte por ajustes manuales o errores. Nuestra plataforma te permite mantener tu negocio al día con total confianza, ofreciendo soluciones confiables y seguras que no solo protegen la integridad de tus operaciones, sino que también te ayudan a evitar sanciones innecesarias. Al optar por nuestras soluciones, te aseguras de que tu negocio esté siempre en plena conformidad, permitiéndote concentrarte en lo que realmente importa: el crecimiento y éxito de tu empresa.
-            </p>
-
-           <a
-href="https://wa.me/51996720630?text=Hola%20quiero%20información%20sobre%20Facturación%20Electrónica"
-target="_blank"
-rel="noopener noreferrer"
->
-
-<button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-CONTACTAR
-</button>
-
-</a>
-          </motion.div>
-        </div>
-      </section>
+      <ContentSection
+        title="Cumplimiento Fiscal Garantizado"
+        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/El-nuevo-programa-cooperativo-de-cumplimiento-fiscal-en-Ecuador.jpg"
+        imageAlt="Cumplimiento fiscal y normativo"
+        imagePosition="left"
+        dark={true}
+        paragraphs={[
+          "Nuestro software de facturación electrónica está diseñado para registrar y reportar las transacciones conforme a los requerimientos tributarios correspondientes. Esto permite mantener una operación ordenada, trazable y alineada con las exigencias normativas.",
+          "Las actualizaciones automáticas incorporan cambios fiscales relevantes, reduciendo riesgos por errores manuales o procesos desactualizados. Así, tu empresa puede operar con mayor confianza y enfocarse en su crecimiento.",
+        ]}
+        pills={["Cumplimiento normativo", "Reportes confiables", "Actualización fiscal", "Operación segura"]}
+      />
 
       {/* Sección Testimonios - CARRUSEL MEJORADO */}
       <section className="bg-white py-16 px-4 md:px-8 relative overflow-hidden">
-        {/* Decorativos de fondo */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Encabezado mejorado */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -284,11 +265,11 @@ CONTACTAR
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-cyan-400 text-sm font-black tracking-[0.2em] uppercase inline-block px-4 py-2 border border-cyan-400/30 rounded-full bg-cyan-400/5 mb-4"
+              className="text-cyan-500 text-sm font-black tracking-[0.2em] uppercase inline-block px-4 py-2 border border-cyan-500/30 rounded-full bg-cyan-500/5 mb-4"
             >
               Testimonios
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -296,7 +277,7 @@ CONTACTAR
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-black text-slate-900 mt-4 leading-tight"
             >
-              Opiniones de Nuestros <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Clientes</span>
+              Opiniones de Nuestros <span className="text-cyan-500">Clientes</span>
             </motion.h2>
 
             <motion.p
@@ -306,11 +287,10 @@ CONTACTAR
               viewport={{ once: true }}
               className="text-base text-slate-600 mt-4 max-w-2xl mx-auto"
             >
-              Descubre cómo nuestro servicio de facturación electrónica ha transformado negocios
+              Descubre cómo nuestro servicio de facturación electrónica ha optimizado la gestión de distintos negocios.
             </motion.p>
           </motion.div>
 
-          {/* Carrusel de testimonios mejorado */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -336,22 +316,25 @@ CONTACTAR
               {testimonios.map((testimonio, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200 hover:-translate-y-3"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 h-full flex flex-col group border border-slate-100 hover:border-cyan-200 hover:-translate-y-3"
                 >
-                  {/* Estrellas animadas */}
                   <div className="flex gap-2 mb-5">
                     {[...Array(5)].map((_, i) => (
                       <motion.svg
                         key={i}
                         initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
                         whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 0.2 + i * 0.08,
+                          ease: "easeOut",
+                        }}
                         viewport={{ once: true }}
-                        whileHover={{ 
-                          scale: 1.4, 
+                        whileHover={{
+                          scale: 1.4,
                           rotateZ: 360,
                           y: -10,
-                          transition: { duration: 0.5 } 
+                          transition: { duration: 0.5 },
                         }}
                         className="w-6 h-6 fill-yellow-400 cursor-pointer"
                         viewBox="0 0 20 20"
@@ -361,23 +344,17 @@ CONTACTAR
                     ))}
                   </div>
 
-                  {/* Icono de comilla */}
-                  <div className="text-5xl text-cyan-400/20 mb-3 leading-none">
-                    "
-                  </div>
+                  <div className="text-5xl text-cyan-500/20 mb-3 leading-none">"</div>
 
-                  {/* Texto del testimonio */}
                   <p className="text-slate-700 text-base leading-relaxed mb-8 flex-grow font-medium">
                     {testimonio.opinion}
                   </p>
 
-                  {/* Separador */}
-                  <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 rounded-full"></div>
+                  <div className="h-1 w-12 bg-cyan-500 mb-6 rounded-full"></div>
 
-                  {/* Avatar y nombre */}
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-cyan-500 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <img
                         src={testimonio.imagen}
                         alt={testimonio.nombre}
@@ -388,7 +365,9 @@ CONTACTAR
                       <p className="font-bold text-slate-900 text-sm">
                         {testimonio.nombre}
                       </p>
-                      <p className="text-cyan-500 text-xs font-semibold">Cliente satisfecho</p>
+                      <p className="text-cyan-500 text-xs font-semibold">
+                        Cliente satisfecho
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -396,8 +375,7 @@ CONTACTAR
             </Carousel>
           </motion.div>
 
-          {/* Estilos personalizados */}
-          <style jsx>{`
+          <style>{`
             .custom-testimonial-dots {
               display: flex;
               justify-content: center;
@@ -421,18 +399,19 @@ CONTACTAR
             }
 
             .custom-testimonial-dots li.react-multi-carousel-dot:hover {
-              background: rgba(34, 211, 238, 0.8);
+              background: rgba(6, 182, 212, 0.8);
               transform: scale(1.2);
             }
 
             .custom-testimonial-dots li.react-multi-carousel-dot.active {
-              background: linear-gradient(90deg, #22d3ee, #3b82f6);
+              background: #06b6d4;
               width: 2rem;
-              box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+              box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
             }
           `}</style>
         </div>
       </section>
+
       <ScrollButton />
     </div>
   );
