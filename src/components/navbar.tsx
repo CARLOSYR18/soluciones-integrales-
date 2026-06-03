@@ -124,8 +124,8 @@ function Navbar() {
     desc?: string;
   }) => (
     <li style={{ listStyle: "none" }} className="dropdown-item">
-      <a
-        href={href}
+      <Link
+        to={href}
         style={{
           display: "flex",
           alignItems: "center",
@@ -182,7 +182,7 @@ function Navbar() {
             </div>
           )}
         </div>
-      </a>
+      </Link>
     </li>
   );
 
@@ -304,8 +304,8 @@ function Navbar() {
           className="hidden md:flex"
         >
           <li style={{ whiteSpace: "nowrap" }}>
-            <a
-              href="/"
+            <Link
+              to="/"
               style={menuLinkBase}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "#38bdf8";
@@ -317,7 +317,7 @@ function Navbar() {
               }}
             >
               INICIO
-            </a>
+            </Link>
           </li>
 
           {/* ── NOSOTROS ── */}
@@ -619,29 +619,29 @@ function Navbar() {
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Nuestra Identidad</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaUsers /> <a href="/QuienesSomos" style={{ color: "inherit", textDecoration: "none" }}>Quiénes Somos</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaHistory /> <a href="/NuestraHistoria" style={{ color: "inherit", textDecoration: "none" }}>Nuestra Historia</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaUsers /> <Link to="/QuienesSomos" style={{ color: "inherit", textDecoration: "none" }}>Quiénes Somos</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaHistory /> <Link to="/NuestraHistoria" style={{ color: "inherit", textDecoration: "none" }}>Nuestra Historia</Link></li>
                         </ul>
                       </div>
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Alianzas</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaHandshake /> <a href="/convenios" style={{ color: "inherit", textDecoration: "none" }}>Convenios</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPeopleCarry /> <a href="/comunidadActiva" style={{ color: "inherit", textDecoration: "none" }}>Comunidad Activa</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaHandshake /> <Link to="/convenios" style={{ color: "inherit", textDecoration: "none" }}>Convenios</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPeopleCarry /> <Link to="/comunidadActiva" style={{ color: "inherit", textDecoration: "none" }}>Comunidad Activa</Link></li>
                         </ul>
                       </div>
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Consultoría</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLaptopCode /> <a href="/ConsultoriaTI" style={{ color: "inherit", textDecoration: "none" }}>Consultoría TI</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBuilding /> <a href="/ConsultoriaEmpresarial" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Empresarial</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLaptopCode /> <Link to="/ConsultoriaTI" style={{ color: "inherit", textDecoration: "none" }}>Consultoría TI</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBuilding /> <Link to="/ConsultoriaEmpresarial" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Empresarial</Link></li>
                         </ul>
                       </div>
                       <div>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Equipo</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaUserTie /> <a href="/NuestroEquipo" style={{ color: "inherit", textDecoration: "none" }}>Nuestro Equipo</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSitemap /> <a href="/Organigrama" style={{ color: "inherit", textDecoration: "none" }}>Organigrama</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaUserTie /> <Link to="/NuestroEquipo" style={{ color: "inherit", textDecoration: "none" }}>Nuestro Equipo</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSitemap /> <Link to="/Organigrama" style={{ color: "inherit", textDecoration: "none" }}>Organigrama</Link></li>
                         </ul>
                       </div>
                     </div>
@@ -671,40 +671,40 @@ function Navbar() {
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Tecnología de Información</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaCode /> <a href="/DesarrolloDeSoftware" style={{ color: "inherit", textDecoration: "none" }}>Desarrollo de Software</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaFileInvoiceDollar /> <a href="/FacturacionElectronica" style={{ color: "inherit", textDecoration: "none" }}>Facturación Electrónica</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLock /> <a href="/TecnologiaEnSeguridad" style={{ color: "inherit", textDecoration: "none" }}>Tecnología en Seguridad</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaNetworkWired /> <a href="/RedesEInfraestructura" style={{ color: "inherit", textDecoration: "none" }}>Redes e Infraestructura</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaServer /> <a href="/HostingYDominio" style={{ color: "inherit", textDecoration: "none" }}>Hosting y Dominio</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaTools /> <a href="/SoporteTecnico" style={{ color: "inherit", textDecoration: "none" }}>Soporte Técnico</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaCode /> <Link to="/DesarrolloDeSoftware" style={{ color: "inherit", textDecoration: "none" }}>Desarrollo de Software</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaFileInvoiceDollar /> <Link to="/FacturacionElectronica" style={{ color: "inherit", textDecoration: "none" }}>Facturación Electrónica</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLock /> <Link to="/TecnologiaEnSeguridad" style={{ color: "inherit", textDecoration: "none" }}>Tecnología en Seguridad</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaNetworkWired /> <Link to="/RedesEInfraestructura" style={{ color: "inherit", textDecoration: "none" }}>Redes e Infraestructura</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaServer /> <Link to="/HostingYDominio" style={{ color: "inherit", textDecoration: "none" }}>Hosting y Dominio</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaTools /> <Link to="/SoporteTecnico" style={{ color: "inherit", textDecoration: "none" }}>Soporte Técnico</Link></li>
                         </ul>
                       </div>
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Consultoría</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLaptopCode /> <a href="/ConsultoriaTI" style={{ color: "inherit", textDecoration: "none" }}>Consultoría TI</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBuilding /> <a href="/ConsultoriaEmpresarial" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Empresarial</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaChalkboardTeacher /> <a href="/ConsultoriaEducativa" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Educativa</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaClipboardCheck /> <a href="/Auditorias" style={{ color: "inherit", textDecoration: "none" }}>Auditorías</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaShieldAlt /> <a href="/SeguridadInformatica" style={{ color: "inherit", textDecoration: "none" }}>Seguridad Informática</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaLaptopCode /> <Link to="/ConsultoriaTI" style={{ color: "inherit", textDecoration: "none" }}>Consultoría TI</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBuilding /> <Link to="/ConsultoriaEmpresarial" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Empresarial</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaChalkboardTeacher /> <Link to="/ConsultoriaEducativa" style={{ color: "inherit", textDecoration: "none" }}>Consultoría Educativa</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaClipboardCheck /> <Link to="/Auditorias" style={{ color: "inherit", textDecoration: "none" }}>Auditorías</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaShieldAlt /> <Link to="/SeguridadInformatica" style={{ color: "inherit", textDecoration: "none" }}>Seguridad Informática</Link></li>
                         </ul>
                       </div>
                       <div style={{ marginBottom: "16px" }}>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Marketing Digital</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaCode /> <a href="/DesarrolloDeSitiosWeb" style={{ color: "inherit", textDecoration: "none" }}>Desarrollo de Sitio Web</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSearch /> <a href="/PosicionamientoSEO" style={{ color: "inherit", textDecoration: "none" }}>Posicionamiento SEO</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPaintBrush /> <a href="/GraficaPublicitaria" style={{ color: "inherit", textDecoration: "none" }}>Gráfica Publicitaria</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaGift /> <a href="/Merchandising" style={{ color: "inherit", textDecoration: "none" }}>Merchandising</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaShareAlt /> <a href="/SocialMedia" style={{ color: "inherit", textDecoration: "none" }}>Social Media</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaCode /> <Link to="/DesarrolloDeSitiosWeb" style={{ color: "inherit", textDecoration: "none" }}>Desarrollo de Sitio Web</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSearch /> <Link to="/PosicionamientoSEO" style={{ color: "inherit", textDecoration: "none" }}>Posicionamiento SEO</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPaintBrush /> <Link to="/GraficaPublicitaria" style={{ color: "inherit", textDecoration: "none" }}>Gráfica Publicitaria</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaGift /> <Link to="/Merchandising" style={{ color: "inherit", textDecoration: "none" }}>Merchandising</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaShareAlt /> <Link to="/SocialMedia" style={{ color: "inherit", textDecoration: "none" }}>Social Media</Link></li>
                         </ul>
                       </div>
                       <div>
                         <h4 style={{ fontSize: "11px", textTransform: "uppercase", fontWeight: 700, color: "#1e5fa8", letterSpacing: "1px", marginBottom: "8px", paddingLeft: "8px" }}>Ing. Eléctrica</h4>
                         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBolt /> <a href="/MantenimientoElectrico" style={{ color: "inherit", textDecoration: "none" }}>Mantenimiento Eléctrico</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSnowflake /> <a href="/RefrigeracionIndustrial" style={{ color: "inherit", textDecoration: "none" }}>Refrigeración Industrial</a></li>
-                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPlug /> <a href="/InstalacionesElectricas" style={{ color: "inherit", textDecoration: "none" }}>Instalaciones Eléctricas</a></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaBolt /> <Link to="/MantenimientoElectrico" style={{ color: "inherit", textDecoration: "none" }}>Mantenimiento Eléctrico</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaSnowflake /> <Link to="/RefrigeracionIndustrial" style={{ color: "inherit", textDecoration: "none" }}>Refrigeración Industrial</Link></li>
+                          <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 8px", fontSize: "13px", color: "#475569" }}><FaPlug /> <Link to="/InstalacionesElectricas" style={{ color: "inherit", textDecoration: "none" }}>Instalaciones Eléctricas</Link></li>
                         </ul>
                       </div>
                     </div>
