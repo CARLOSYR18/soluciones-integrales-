@@ -189,7 +189,7 @@ const Graficapublicitaria: React.FC = () => {
           "Comunicación visual",
         ]}
         image={{
-          src: "https://solucionesintegralesjb.com/wp-content/uploads/2024/09/Importancia-del-diseno-grafico-en-la-publicidad-930x620-1.jpg",
+          src: "https://i.postimg.cc/bwZQCxny/dd11.jpg",
           alt: "Diseños impactantes y personalizados",
         }}
       />

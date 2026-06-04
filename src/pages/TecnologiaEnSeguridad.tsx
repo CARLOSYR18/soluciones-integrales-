@@ -138,7 +138,7 @@ const FacturacionElectronica: React.FC = () => {
             <div className="h-full rounded-3xl border border-white/10 bg-neutral-950 p-3 md:p-4 shadow-[0_18px_55px_rgba(0,0,0,0.45)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-500/50 group-hover:shadow-[0_24px_70px_rgba(6,182,212,0.18)]">
               <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl">
                 <img
-                  src="https://i.postimg.cc/sD6JsGbw/image2.jpg"
+                  src="https://i.postimg.cc/9f9BLd7n/dd2.jpg"
                   alt="Soluciones personalizadas de seguridad"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />

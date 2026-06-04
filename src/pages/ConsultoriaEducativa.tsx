@@ -44,7 +44,7 @@ const ConsultoriaEducativa = () => {
           >
             <div className="relative h-full min-h-[320px] md:min-h-[420px] overflow-hidden rounded-2xl">
               <img
-                src="https://i.postimg.cc/vZYnsnGr/educativa.jpg"
+                src="https://i.postimg.cc/Z5WRtjVb/dd7.jpg"
                 alt="Consultoría Educativa"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

@@ -167,7 +167,7 @@ const PosicionamientoSEO: React.FC = () => {
           "Visibilidad orgánica",
         ]}
         image={{
-          src: "https://i.postimg.cc/hP5nDWBY/seo-94e1f354aed0.jpg",
+          src: "https://i.postimg.cc/5y8rCcxT/dd10.jpg",
           alt: "Optimización SEO fundamental",
         }}
       />

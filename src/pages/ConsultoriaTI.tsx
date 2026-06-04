@@ -48,7 +48,7 @@ const ConsultoriaTI: React.FC = () => {
           >
             <div className="relative h-full min-h-[320px] md:min-h-[420px] overflow-hidden rounded-2xl">
               <img
-                src="https://i.postimg.cc/nLVG05Xg/qe0pwt6j.png"
+                src="https://i.postimg.cc/HsyJfMXK/IMG-20260603-WA0015.jpg"
                 alt="Consultoría en Tecnologías de la Información"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

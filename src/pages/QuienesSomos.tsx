@@ -37,9 +37,8 @@ const badges = [
   { label: "Soporte", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
   { label: "Personalizado", icon: "https://solucionesintegralesjb.com/wp-content/uploads/2024/06/icons8-done-1-1.svg" },
 ];
-
-const hero3 = "https://i.postimg.cc/3xpmd24k/image.png"
-const hero2 = "https://i.postimg.cc/NjwLCSFn/image.png"
+const hero2 = "https://i.postimg.cc/mZqzXj1f/IMG-20260603-WA0010.jpg"
+const hero3 = "https://i.postimg.cc/66S2jc4x/IMG-20260603-WA0012.jpg"
 const heroImage = "https://i.postimg.cc/zfGKDvWg/image.png";
 const heroImageAlt = "";
 const uiImage = "https://solucionesintegralesjb.com/wp-content/uploads/elementor/thumbs/Frame-932-qqow7tfd3r2zohqj4jx9yf23tmjv30p5niiolmvipc.png";
@@ -137,7 +136,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   <section className={"w-full " + (className || "")}>
   <div className="relative w-full h-[600px] sm:h-[500px] md:h-[600px] overflow-hidden flex items-center justify-center bg-gray-900">
   <img
-    src="https://i.postimg.cc/j58sskRM/Frame-916-1.png"
+    src="https://i.postimg.cc/QNP94mKD/IMG-20260603-WA0011.jpg"
     alt="Quiénes somos"
     className="absolute w-full h-full object-cover object-center"
   />

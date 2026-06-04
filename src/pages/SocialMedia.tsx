@@ -183,7 +183,7 @@ const SocialMedia: React.FC = () => {
         ]}
         images={[
           {
-            src: "https://i.postimg.cc/wxkJbFpK/gestionar-redes-sociales-desde-computadora-o-celular.png",
+            src: "https://i.postimg.cc/02DfPdQw/dd13.jpg",
             alt: "Gestión profesional de redes sociales",
           },
         ]}

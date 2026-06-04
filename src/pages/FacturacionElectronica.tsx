@@ -81,7 +81,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
         ].join(" ")}
       >
         <div className="absolute -top-16 -left-16 h-44 w-44 rounded-full bg-cyan-400/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="relative h-[260px] sm:h-[330px] lg:h-[360px] overflow-hidden rounded-2xl">
+        <div className="relative h-full overflow-hidden rounded-2xl">
           <img
             src={image}
             alt={imageAlt}
@@ -195,7 +195,7 @@ const FacturacionElectronica: React.FC = () => {
 
       <ContentSection
         title="Automatiza tu Proceso de Facturación"
-        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2150062347.jpg"
+        image="https://i.postimg.cc/gkZwfh8C/IMG-20260603-WA0017.jpg"
         imageAlt="Automatización de facturación electrónica"
         imagePosition="right"
         dark={false}
@@ -208,7 +208,7 @@ const FacturacionElectronica: React.FC = () => {
 
       <ContentSection
         title="Integración Fácil y Rápida"
-        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/07/2148938351.jpg"
+        image="https://i.postimg.cc/tCx1L6Fb/IMG-20260603-WA0020.jpg"
         imageAlt="Integración de sistemas de facturación"
         imagePosition="left"
         dark={true}
@@ -221,7 +221,7 @@ const FacturacionElectronica: React.FC = () => {
 
       <ContentSection
         title="Acceso y Control desde Cualquier Lugar"
-        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/700a3e638490cb4d215f4b94405c40d1.jpg"
+        image="https://i.postimg.cc/zGsBFK50/dd.jpg"
         imageAlt="Acceso remoto a facturación electrónica"
         imagePosition="right"
         dark={false}
@@ -234,7 +234,7 @@ const FacturacionElectronica: React.FC = () => {
 
       <ContentSection
         title="Cumplimiento Fiscal Garantizado"
-        image="https://solucionesintegralesjb.com/wp-content/uploads/2024/09/El-nuevo-programa-cooperativo-de-cumplimiento-fiscal-en-Ecuador.jpg"
+        image="https://i.postimg.cc/Jh0f0dSj/dd1-1.png"
         imageAlt="Cumplimiento fiscal y normativo"
         imagePosition="left"
         dark={true}

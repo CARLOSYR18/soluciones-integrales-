@@ -189,12 +189,8 @@ const Soporte: React.FC = () => {
         ]}
         images={[
           {
-            src: 'https://i.postimg.cc/hjp8k0dj/4051.jpg',
+            src: 'https://i.postimg.cc/g0r37v6L/dd6.png',
             alt: 'Monitoreo técnico',
-          },
-          {
-            src: 'https://i.postimg.cc/nVSYT0ZF/images-4.jpg',
-            alt: 'Mantenimiento tecnológico',
           },
         ]}
       />

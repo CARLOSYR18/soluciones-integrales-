@@ -55,7 +55,7 @@ const ConsultoriaEmpresarial = () => {
 
                 <div className="relative h-full min-h-[360px] overflow-hidden rounded-2xl bg-slate-900 shadow-lg">
                   <img
-                    src="https://i.postimg.cc/XJqNzY5H/empresarial.jpg"
+                    src="https://i.postimg.cc/bNtGKnk4/IMG-20260603-WA0016.jpg"
                     alt="Consultoría Empresarial"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                   />

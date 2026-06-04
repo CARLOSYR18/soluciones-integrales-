@@ -59,7 +59,7 @@ const SeguridadInformatica: React.FC = () => {
           >
             <div className="relative h-full min-h-[320px] overflow-hidden rounded-2xl md:min-h-[420px]">
               <img
-                src="https://i.postimg.cc/k4KG8Mnq/seguridad-informatuca.jpg"
+                src="https://i.postimg.cc/K85yWThH/dd9.jpg"
                 alt="Consultoría en Seguridad Informática"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />

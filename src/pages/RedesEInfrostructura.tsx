@@ -114,7 +114,7 @@ const RedesEinfroestructura: React.FC = () => {
             <div className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_75px_rgba(15,23,42,0.16)]">
               <div className="relative h-full min-h-[330px] overflow-hidden rounded-2xl">
                 <img
-                  src="https://i.postimg.cc/FsncgRjB/ingenieros-redes-tableta-tiro-medio-23-2148323447.jpg"
+                  src="https://i.postimg.cc/nLQtTPTJ/dd4.jpg"
                   alt="Diseño e implementación de redes"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                 />
@@ -286,7 +286,7 @@ const RedesEinfroestructura: React.FC = () => {
             <div className="group h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_18px_55px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_75px_rgba(15,23,42,0.16)]">
               <div className="relative h-full min-h-[330px] overflow-hidden rounded-2xl">
                 <img
-                  src="https://i.postimg.cc/dV2sQNVv/images-2.jpg"
+                  src="https://i.postimg.cc/jq14Y34B/dd5.jpg"
                   alt="Seguridad en redes"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                 />

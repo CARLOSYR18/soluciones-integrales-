@@ -238,7 +238,7 @@ const Convenios = () => {
       {/* Banner principal */}
       <div className="relative w-screen h-screen bg-gray-900 overflow-hidden">
   <img
-    src="https://i.postimg.cc/X7HyydWB/job-g9afc21b12-1920-1600x1000-1.jpg"
+    src="https://i.postimg.cc/66S2jc4X/IMG-20260603-WA0013.jpg"
     alt="Fondo de la historia"
     className="absolute inset-0 w-full h-full object-cover"
   />
@@ -433,7 +433,7 @@ const Convenios = () => {
 
           <div className="relative h-full min-h-[360px] w-full overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="https://i.postimg.cc/0QG1nHLt/image.png"
+              src="https://i.postimg.cc/ZKd91NpQ/IMG-20260603-WA0014.jpg"
               alt="Convenios"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
