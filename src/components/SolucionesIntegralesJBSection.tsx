@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 import ScrollButton from "../components/ScrollButton";
+import ChatBot from "./ChatBot";
 import '../App.css'
 import LogoLoop from "./LogoLoop";
 import LogoKeyed from "../components/LogoKeyed";
@@ -1277,6 +1278,7 @@ const SolucionesIntegralesJBSection: React.FC<Props> = ({ className }) => {
   </div>
 
   <div className="max-w-3xl mx-auto mt-10 text-center">
+    <ChatBot />
     <ScrollButton />
   </div>
 </section>
