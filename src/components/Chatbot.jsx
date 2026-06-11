@@ -12,7 +12,7 @@ const knowledge = [
     // Respuesta del bot
     reply: "Ofrecemos servicios en 4 áreas:\n\n💻 Tecnología de Información: desarrollo de software, facturación electrónica, redes, hosting y soporte técnico.\n\n📊 Consultoría: TI, empresarial, educativa y auditorías.\n\n📣 Marketing Digital: páginas web, SEO, diseño gráfico y redes sociales.\n\n⚡ Ing. Eléctrica: instalaciones, mantenimiento y refrigeración industrial.",
     // Posibles preguntas de seguimiento que se sugieren
-    followUp: ["¿Cuánto cuestan los servicios?", "¿Cómo los contrato?", "¿Dónde están ubicados?"]
+    followUp: ["¿Cuánto cuestan los servicios?", "¿Dónde están ubicados?"]
   },
   {
     tags: ["precio", "costo", "cuanto", "cuánto", "cobran", "tarifa", "presupuesto", "cotizar", "cotización"],
@@ -21,13 +21,13 @@ const knowledge = [
   },
   {
     tags: ["contacto", "contactar", "comunicar", "escribir", "llamar", "correo", "email", "telefono", "teléfono", "whatsapp"],
-    reply: "Puedes contactarnos por:\n\n📧 Correo: soporte@solucionesintegralesjb.com\n📍 Dirección: Calle López de Zúñiga N° 547 Piso 2, Chancay\n\n¡Respondemos en menos de 24 horas!",
+    reply: "Puedes contactarnos por:\n\n📧 Correo: soporte@solucionesintegralesjb.com\n \n📞 Número: +51 926 392 858\n📍 Dirección: Calle López de Zúñiga N° 547 Piso 2, Chancay\n\n¡Respondemos en menos de 24 horas!",
     followUp: ["¿Cuál es su horario?", "¿Dónde están ubicados?"]
   },
   {
     tags: ["horario", "hora", "atienden", "disponible", "abierto", "cuando", "cuándo"],
     reply: "📅 Nuestro horario de atención es:\n\nLunes a Viernes: 9:00 am – 6:00 pm\nSábados: 9:00 am – 1:00 pm\n\nFuera de ese horario puedes escribirnos y te respondemos al día siguiente.",
-    followUp: ["¿Cómo los contacto?", "¿Dónde están ubicados?"]
+    followUp: ["¿Cómo los contacto?", "¿Dónde están ubicados?", "¿Qué servicios ofrecen?"]
   },
   {
     tags: ["ubicacion", "ubicación", "donde", "dónde", "direccion", "dirección", "local", "oficina", "chancay"],
@@ -50,7 +50,7 @@ const knowledge = [
     followUp: ["¿Cuánto cuesta?", "¿Cómo los contacto?"]
   },
   {
-    tags: ["electrica", "eléctrica", "electricidad", "instalacion electrica", "instalación eléctrica", "refrigeracion", "refrigeración"],
+    tags: ["electrica", "eléctrica", "electricidad", "instalacion electrica", "sobre", "instalación eléctrica", "refrigeracion", "refrigeración", "industrial"],
     reply: "⚡ Nuestro equipo de Ingeniería Eléctrica realiza:\n\n• Instalaciones eléctricas industriales y domiciliarias\n• Mantenimiento eléctrico preventivo y correctivo\n• Refrigeración industrial",
     followUp: ["¿Cómo los contacto?", "¿Cuánto cuesta?"]
   },
